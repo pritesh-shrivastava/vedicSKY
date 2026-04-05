@@ -27,7 +27,7 @@ public final class EphemerisEngine {
         "Guru": Int32(SE_JUPITER),
         "Shukra": Int32(SE_VENUS),
         "Shani": Int32(SE_SATURN),
-        "Rahu": Int32(SE_MEAN_NODE),
+        "Rahu": Int32(SE_MEAN_NODE),  // SE_MEAN_NODE = 10, matches Python swe.MEAN_NODE = 10
         // Ketu is computed as Rahu + 180°
     ]
 

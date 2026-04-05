@@ -10,9 +10,9 @@ final class EphemerisTests: XCTestCase {
         // Possible locations to find the fixtures file; try several fallbacks so the test is easy to run locally.
         let candidatePaths = [
             // relative to test file when running in repository
-            URL(fileURLWithPath: #file).deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("tests/fixtures/graha_fixtures.json"),
+            URL(fileURLWithPath: #file).deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("fixtures/graha_fixtures.json"),
             // project root relative (when xcode cwd == project root)
-            URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("tests/fixtures/graha_fixtures.json"),
+            URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("Tests/fixtures/graha_fixtures.json"),
             // bundle resource (if you add fixtures to test bundle resources)
             Bundle(for: EphemerisTests.self).url(forResource: "graha_fixtures", withExtension: "json", subdirectory: "fixtures"),
         ].compactMap { $0 }
@@ -26,7 +26,12 @@ final class EphemerisTests: XCTestCase {
         XCTAssertNotNil(raw)
 
         // Path to ephemeris data bundled in the app/tests. Update as needed.
-        let ephePath = "PATH/TO/EPHEMERIS_FOLDER" // TODO: replace with actual resource path in your test target
+        let ephePath = URL(fileURLWithPath: #file)
+            .deletingLastPathComponent() // EphemerisTests/
+            .deletingLastPathComponent() // Tests/
+            .deletingLastPathComponent() // project root
+            .appendingPathComponent("Resources/ephemeris")
+            .path
         let engine = EphemerisEngine(ephePath: ephePath)
 
         for caseObj in raw ?? [] {
@@ -55,14 +60,11 @@ final class EphemerisTests: XCTestCase {
 
             let calendar = Calendar(identifier: .gregorian)
             guard let localDate = calendar.date(from: comps) else { continue }
-            // Convert to UTC Date (engine expects UTC Date)
-            let utcDate = Date(timeInterval: 0, since: localDate)
-
             let lat = loc["latitude"] as? Double ?? 0.0
             let lon = loc["longitude"] as? Double ?? 0.0
             let alt = loc["altitude"] as? Double ?? 0.0
 
-            let computed = engine.positions(for: utcDate, latitude: lat, longitude: lon, altitude: alt)
+            let computed = engine.positions(for: localDate, latitude: lat, longitude: lon, altitude: alt)
 
             // Build a lookup by graha name for computed positions
             var computedByName: [String: GrahaPosition] = [:]

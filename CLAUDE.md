@@ -1,0 +1,113 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+**Vedic Skyview** is a personal iOS AR app that overlays Navagraha (9 planet) positions, Rashi bands, and Nakshatra grid on a live camera feed, using on-device Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric). Not intended for distribution.
+
+Full architecture: `jyotish_ar_eng_design.md`. Current milestone: **M1 — Ephemeris Core**.
+
+## Build & Test
+
+**Xcode project:** `Vedic Skyview/Vedic Skyview.xcodeproj`
+- iOS 16+ deployment target, Xcode 15+
+- Build and run tests via Xcode or `xcodebuild`
+
+**Run Swift tests (command line):**
+```bash
+xcodebuild test -project "Vedic Skyview/Vedic Skyview.xcodeproj" \
+  -scheme "Vedic Skyview" -destination "platform=iOS Simulator,name=iPhone 15"
+```
+
+**Run a single Swift test:**
+```bash
+xcodebuild test -project "Vedic Skyview/Vedic Skyview.xcodeproj" \
+  -scheme "Vedic Skyview" -only-testing:"Vedic SkyviewTests/EphemerisTests/testFixturesMatch" \
+  -destination "platform=iOS Simulator,name=iPhone 15"
+```
+
+**Python reference tests:**
+```bash
+python -m pytest Tests/test_graha_positions.py -v
+```
+
+**Generate fixture JSON** (requires `pip install swisseph pandas`):
+```bash
+python scripts/export_fixtures.py
+# writes Tests/fixtures/graha_fixtures.json
+```
+
+## Repo Structure
+
+```
+/
+├── Ephemeris/EphemerisEngine.swift       ← Swift wrapper for libswe C API
+├── Tests/
+│   ├── EphemerisTests/EphemerisTests.swift  ← XCTest comparing against fixtures
+│   ├── test_graha_positions.py              ← Python tests for reference impl
+│   └── fixtures/graha_fixtures.json         ← Ground-truth fixture output
+├── graha_positions_reference.py          ← Canonical Python ground truth
+├── scripts/export_fixtures.py            ← Generates fixtures from Python ref
+├── Resources/ephemeris/                  ← .se1 binary data files (not in git)
+└── Vedic Skyview/                        ← Xcode project
+    ├── VedicSkyview-Bridging-Header.h    ← Exposes swephexp.h to Swift
+    └── Vedic Skyview/                    ← App source (ContentView, App entry)
+```
+
+## Architecture
+
+The pipeline is: **Ephemeris Engine → Coordinate Pipeline → AR Renderer**
+
+| Layer | File(s) | Status |
+|---|---|---|
+| Ephemeris Engine | `Ephemeris/EphemerisEngine.swift` | M1 scaffold (compiles, needs libswe) |
+| Coordinate Pipeline | `Coordinates/CoordinatePipeline.swift` | M2 (not yet created) |
+| AR Scene | `AR/JyotishARViewController.swift` | M3 (not yet created) |
+| SwiftUI HUD | `UI/` | M5 (not yet created) |
+
+## Key Implementation Rules
+
+**Ground truth:** `graha_positions_reference.py` is the canonical reference. All Swift output must match it to within **0.0001°** for identical inputs. Never change the Python script's computation logic — it's the test oracle.
+
+**Swiss Ephemeris constants** (must match Python exactly):
+- Ayanamsha: `SE_SIDM_LAHIRI` (Lahiri/Chitrapaksha)
+- Rahu: `SE_MEAN_NODE` (not true node)
+- Ketu: computed as `(rahu_tropical + 180°) % 360°` — not a SWE body
+- Flags: `SEFLG_TOPOCTR` for topocentric positions
+- Always call `swe_set_topo(lon, lat, alt)` before `swe_calc_ut`
+
+**Graha order** (canonical, matches Python): `["Surya","Chandra","Mangala","Budha","Guru","Shukra","Shani","Rahu","Ketu"]`
+
+**Nakshatra math:**
+```
+NAKSHATRA_SPAN = 360/27  = 13.333...°
+PADA_SPAN      = 360/108 =  3.333...°
+nakshatra_index = Int(sidereal_lon / NAKSHATRA_SPAN)           // 0–26
+pada            = Int((sidereal_lon % NAKSHATRA_SPAN) / PADA_SPAN) + 1  // 1–4
+```
+
+## Ephemeris Data Files
+
+The `.se1` binary files in `Resources/ephemeris/` are **not tracked in git** (too large). They are required for `EphemerisEngine` and tests to run. Obtain from the Swiss Ephemeris distribution and place in that directory. The path is passed to `swe_set_ephe_path` at init.
+
+## libswe Integration
+
+Swiss Ephemeris C sources live in `Vedic Skyview/ThirdParty/` (not yet populated). The bridging header at `Vedic Skyview/VedicSkyview-Bridging-Header.h` includes `swephexp.h`. Add `swisseph` C sources to the Xcode target and compile them directly — no package manager needed.
+
+## Coordinate Pipeline (M2 — not yet built)
+
+The transformation chain for placing grahas in AR space:
+```
+Sidereal Ecliptic (λ, β)
+  → eclipticToEquatorial(ε)  → (RA, Dec)
+  → equatorialToHorizontal(lat, lon, LST)  → (Alt, Az)
+  → altAzToARVector()  → SIMD3<Float> in ARKit world space
+```
+ARKit frame with `.gravityAndHeading`: +X=East, +Y=Up, -Z=North. Sky-sphere radius = 1000 units.
+
+## Testing Approach
+
+- Swift `EphemerisTests.testFixturesMatch` loads `Tests/fixtures/graha_fixtures.json` and compares computed vs expected longitudes within `tol = 1e-4°`
+- Fixture JSON is generated by `scripts/export_fixtures.py` using the Python reference
+- Fixture test cases use Ujjain (23.1765°N, 75.7885°E) as the reference location for dates: 2026-01-01, 2000-01-01, 1990-12-23

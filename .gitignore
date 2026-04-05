@@ -25,3 +25,6 @@ __pycache__/
 # *.se1
 *.se1
 Resources/*.se1
+
+# API keys
+.env

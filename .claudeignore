@@ -1,0 +1,12 @@
+# Binary ephemeris data files
+Resources/
+
+
+# Standard ignores
+.git/
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+.vscode/
