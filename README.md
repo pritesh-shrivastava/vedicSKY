@@ -5,7 +5,7 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
 (Lahiri ayanamsha, sidereal, topocentric).
 
 **Docs:** See `jyotish_ar_eng_design.md` for full architecture.
-**Reference implementation:** `graha_positions_reference.py` — canonical Python ground truth; all iOS Swift output must match this script's output for the same inputs.
+**Reference implementation:** `scripts/graha_positions_reference.py` — canonical Python ground truth; all iOS Swift output must match this script's output for the same inputs.
 
 ---
 
@@ -15,10 +15,9 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
 /                                         ← git repo root
 ├── README.md
 ├── jyotish_ar_eng_design.md
-├── graha_positions_reference.py          ← reference implementation + test harness
-├── scripts/export_fixtures.py            ← generates Tests/fixtures/graha_fixtures.json
-├── Tests/                                ← Python tests + fixture JSON
-│   ├── fixtures/graha_fixtures.json      ← ground-truth fixture output
+├── scripts/
+│   ├── graha_positions_reference.py      ← reference implementation + test harness
+│   ├── export_fixtures.py                ← generates graha_fixtures.json
 │   └── test_graha_positions.py           ← Python tests for reference impl
 └── Vedic Skyview/                        ← ALL Swift/Xcode files live here
     ├── Vedic Skyview.xcodeproj
@@ -32,6 +31,8 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
     ├── Source/ThirdParty/swisseph/       ← libswe C sources
     └── Vedic SkyviewTests/               ← XCTest suite
         ├── EphemerisTests/               ← testFixturesMatch (M1)
+        │   ├── EphemerisTests.swift
+        │   └── graha_fixtures.json       ← ground-truth fixture (test bundle resource)
         └── CoordinateTests/              ← coordinate pipeline tests (M2)
 ```
 

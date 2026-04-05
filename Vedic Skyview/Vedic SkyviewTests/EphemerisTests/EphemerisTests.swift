@@ -7,31 +7,16 @@ final class EphemerisTests: XCTestCase {
     let tol: Double = 5e-4
 
     func testFixturesMatch() throws {
-        // Possible locations to find the fixtures file; try several fallbacks so the test is easy to run locally.
-        let candidatePaths = [
-            // relative to test file when running in repository
-            URL(fileURLWithPath: #file).deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("fixtures/graha_fixtures.json"),
-            // project root relative (when xcode cwd == project root)
-            URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("Tests/fixtures/graha_fixtures.json"),
-            // bundle resource (if you add fixtures to test bundle resources)
-            Bundle(for: EphemerisTests.self).url(forResource: "graha_fixtures", withExtension: "json", subdirectory: "fixtures"),
-        ].compactMap { $0 }
-
-        guard let fixturesURL = candidatePaths.first(where: { FileManager.default.fileExists(atPath: $0.path) }) else {
-            throw XCTSkip("graha_fixtures.json not found in expected locations; generate with scripts/export_fixtures.py")
+        guard let fixturesURL = Bundle(for: EphemerisTests.self).url(forResource: "graha_fixtures", withExtension: "json") else {
+            throw XCTSkip("graha_fixtures.json not found in test bundle; generate with scripts/export_fixtures.py")
         }
 
         let data = try Data(contentsOf: fixturesURL)
         let raw = try JSONSerialization.jsonObject(with: data) as? [[String:Any]]
         XCTAssertNotNil(raw)
 
-        // Path to ephemeris data bundled in the app/tests. Update as needed.
-        let ephePath = URL(fileURLWithPath: #file)
-            .deletingLastPathComponent() // EphemerisTests/
-            .deletingLastPathComponent() // Tests/
-            .deletingLastPathComponent() // project root
-            .appendingPathComponent("Resources/ephemeris")
-            .path
+        // .se1 ephemeris data files are bundled in the main app target; swe_set_ephe_path needs the directory.
+        let ephePath = Bundle.main.bundlePath
         let engine = EphemerisEngine(ephePath: ephePath)
 
         for caseObj in raw ?? [] {

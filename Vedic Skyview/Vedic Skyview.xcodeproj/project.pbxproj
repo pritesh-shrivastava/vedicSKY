@@ -1454,7 +1454,6 @@
 				CBD63F322F8144060024CAF4 /* seasm18.se1 in Resources */,
 				CBD63F122F8144060024CAF4 /* seplm78.se1 in Resources */,
 				CBD63E922F8144060024CAF4 /* sep4_231 in Resources */,
-				CBD63F4F2F8144280024CAF4 /* graha_fixtures.json in Resources */,
 				CBD63E7D2F8144060024CAF4 /* sep4_241 in Resources */,
 				CBD63F0E2F8144060024CAF4 /* seas_108.se1 in Resources */,
 				CBD63E7B2F8144060024CAF4 /* sep4_248 in Resources */,
@@ -1551,6 +1550,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD63F4F2F8144280024CAF4 /* graha_fixtures.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,12 +2,12 @@
 """
 Export graha fixtures from `graha_positions_reference.py` to JSON.
 
-Writes `tests/fixtures/graha_fixtures.json` containing per-test-case rows
+Writes `Vedic Skyview/Vedic SkyviewTests/EphemerisTests/graha_fixtures.json` containing per-test-case rows
 from `calculate_graha_positions_for_local_dt` so Swift/XCTest can consume
 the ground-truth values for M1 validation.
 
 Usage:
-  python scripts/export_fixtures.py [--out tests/fixtures/graha_fixtures.json]
+  python scripts/export_fixtures.py
 
 This script requires the `swisseph` Python bindings to be installed.
 """
@@ -53,7 +53,9 @@ def serializable_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def main() -> int:
-    out_path = Path("tests/fixtures/graha_fixtures.json")
+    # Write to EphemerisTests/ inside the Xcode project, where the Swift test bundle picks it up.
+    repo_root = Path(__file__).parent.parent
+    out_path = repo_root / "Vedic Skyview" / "Vedic SkyviewTests" / "EphemerisTests" / "graha_fixtures.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     fixtures: list[dict[str, Any]] = []
