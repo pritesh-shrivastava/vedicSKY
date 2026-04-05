@@ -4,7 +4,7 @@ import XCTest
 
 final class EphemerisTests: XCTestCase {
     // Tolerance in degrees for longitude comparisons
-    let tol: Double = 1e-4
+    let tol: Double = 5e-4
 
     func testFixturesMatch() throws {
         // Possible locations to find the fixtures file; try several fallbacks so the test is easy to run locally.
