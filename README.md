@@ -1,4 +1,4 @@
-# Jyotish AR — Project README
+# Vedic Skyview — Project README
 
 Personal research tool. iOS AR app that overlays Navagraha positions, Rashi bands,
 and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calculations
@@ -36,14 +36,6 @@ User toggle: `Show orbital planes` renders:
 When the toggle is off, fall back to plain ☊ / ☋ glyphs at the computed positions.
 
 See §9.1 of the design doc for the full parametric math.
-
----
-
-## TODO
-
-### ✅ Done
-
-- **Verify nakshatra test cases (topocentric, Ujjain)** — Tests in `graha_positions_reference.py` have been run and verified locally for three fixtures: `2026-01-01 00:00 IST`, `2000-01-01 12:00 IST`, and `1990-12-23 21:57 IST`. All use Ujjain (23.1828°N, 75.7772°E) as the reference observer with `swe.FLG_TOPOCTR`. Expected nakshatra values have been updated in the script and the test harness exits non-zero on failure. 
 
 ---
 
@@ -100,7 +92,7 @@ See §9.1 of the design doc for the full parametric math.
 | Constant | Value | Notes |
 |---|---|---|
 | Ayanamsha | Lahiri (`SE_SIDM_LAHIRI`) | Indian government standard |
-| Rahu node type | Mean node (`SE_MEAN_NODE`) | Smoother for Jyotish; true node oscillates |
+| Rahu node type | Mean node (`SE_MEAN_NODE`) | Smoother for Jyotish/Jyotisha practice; true node oscillates |
 | Ketu | `(Rahu + 180°) % 360` | Derived, not a SWE body |
 | Positions | Topocentric (`SEFLG_TOPOCTR`) | Observer location via `swe_set_topo` |
 | Rashi span | 30° | 12 × 30° = 360° |

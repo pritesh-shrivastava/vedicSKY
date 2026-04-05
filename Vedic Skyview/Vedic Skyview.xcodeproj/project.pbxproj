@@ -1,0 +1,1892 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CBD63CAF2F8140020024CAF4 /* Vedic_SkyviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CAE2F8140020024CAF4 /* Vedic_SkyviewApp.swift */; };
+		CBD63CB12F8140020024CAF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CB02F8140020024CAF4 /* ContentView.swift */; };
+		CBD63CB32F8140050024CAF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBD63CB22F8140050024CAF4 /* Assets.xcassets */; };
+		CBD63CB62F8140060024CAF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBD63CB52F8140060024CAF4 /* Preview Assets.xcassets */; };
+		CBD63CC02F8140060024CAF4 /* Vedic_SkyviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CBF2F8140060024CAF4 /* Vedic_SkyviewTests.swift */; };
+		CBD63CCA2F8140060024CAF4 /* Vedic_SkyviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CC92F8140060024CAF4 /* Vedic_SkyviewUITests.swift */; };
+		CBD63CCC2F8140060024CAF4 /* Vedic_SkyviewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CCB2F8140060024CAF4 /* Vedic_SkyviewUITestsLaunchTests.swift */; };
+		CBD63D182F8143690024CAF4 /* constants.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CE12F8143690024CAF4 /* constants.c */; };
+		CBD63D192F8143690024CAF4 /* swemmoon.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CE52F8143690024CAF4 /* swemmoon.c */; };
+		CBD63D1B2F8143690024CAF4 /* sweephe4.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CE82F8143690024CAF4 /* sweephe4.c */; };
+		CBD63D1D2F8143690024CAF4 /* swehel.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CEF2F8143690024CAF4 /* swehel.c */; };
+		CBD63D212F8143690024CAF4 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CF82F8143690024CAF4 /* reader.c */; };
+		CBD63D262F8143690024CAF4 /* swehouse.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CFE2F8143690024CAF4 /* swehouse.c */; };
+		CBD63D272F8143690024CAF4 /* swecl.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CFF2F8143690024CAF4 /* swecl.c */; };
+		CBD63D2B2F81436A0024CAF4 /* sweph.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D062F8143690024CAF4 /* sweph.c */; };
+		CBD63D2C2F81436A0024CAF4 /* swedate.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D072F8143690024CAF4 /* swedate.c */; };
+		CBD63D312F81436A0024CAF4 /* swemplan.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D0C2F8143690024CAF4 /* swemplan.c */; };
+		CBD63D322F81436A0024CAF4 /* swephlib.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D0D2F8143690024CAF4 /* swephlib.c */; };
+		CBD63D352F81436A0024CAF4 /* globals.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D102F8143690024CAF4 /* globals.c */; };
+		CBD63D362F81436A0024CAF4 /* swejpl.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D122F8143690024CAF4 /* swejpl.c */; };
+		CBD63D3C2F8143CF0024CAF4 /* EphemerisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D3B2F8143CF0024CAF4 /* EphemerisEngine.swift */; };
+		CBD63E442F8144060024CAF4 /* sepl_54.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D3F2F8144050024CAF4 /* sepl_54.se1 */; };
+		CBD63E452F8144060024CAF4 /* seplm132.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D402F8144050024CAF4 /* seplm132.se1 */; };
+		CBD63E462F8144060024CAF4 /* seplm126.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D412F8144050024CAF4 /* seplm126.se1 */; };
+		CBD63E472F8144060024CAF4 /* seas_54.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D422F8144050024CAF4 /* seas_54.se1 */; };
+		CBD63E482F8144060024CAF4 /* semo_102.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D432F8144050024CAF4 /* semo_102.se1 */; };
+		CBD63E492F8144060024CAF4 /* semom54.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D442F8144050024CAF4 /* semom54.se1 */; };
+		CBD63E4A2F8144060024CAF4 /* sepl_120.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D452F8144050024CAF4 /* sepl_120.se1 */; };
+		CBD63E4B2F8144060024CAF4 /* sepl_108.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D462F8144050024CAF4 /* sepl_108.se1 */; };
+		CBD63E4C2F8144060024CAF4 /* semom96.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D472F8144050024CAF4 /* semom96.se1 */; };
+		CBD63E4D2F8144060024CAF4 /* seas_96.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D482F8144050024CAF4 /* seas_96.se1 */; };
+		CBD63E4E2F8144060024CAF4 /* sepl_96.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D492F8144050024CAF4 /* sepl_96.se1 */; };
+		CBD63E4F2F8144060024CAF4 /* semo_00.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D4A2F8144050024CAF4 /* semo_00.se1 */; };
+		CBD63E502F8144060024CAF4 /* semom42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D4B2F8144050024CAF4 /* semom42.se1 */; };
+		CBD63E512F8144060024CAF4 /* semo_114.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D4C2F8144050024CAF4 /* semo_114.se1 */; };
+		CBD63E522F8144060024CAF4 /* seas_42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D4D2F8144050024CAF4 /* seas_42.se1 */; };
+		CBD63E532F8144060024CAF4 /* sepl_42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D4E2F8144050024CAF4 /* sepl_42.se1 */; };
+		CBD63E542F8144060024CAF4 /* sep4_219 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D502F8144050024CAF4 /* sep4_219 */; };
+		CBD63E552F8144060024CAF4 /* sep4_226 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D512F8144050024CAF4 /* sep4_226 */; };
+		CBD63E562F8144060024CAF4 /* sep4_221 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D522F8144050024CAF4 /* sep4_221 */; };
+		CBD63E572F8144060024CAF4 /* sep4_228 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D532F8144050024CAF4 /* sep4_228 */; };
+		CBD63E582F8144060024CAF4 /* sep4_217 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D542F8144050024CAF4 /* sep4_217 */; };
+		CBD63E592F8144060024CAF4 /* sep4_210 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D552F8144050024CAF4 /* sep4_210 */; };
+		CBD63E5A2F8144060024CAF4 /* sep4_244 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D562F8144050024CAF4 /* sep4_244 */; };
+		CBD63E5B2F8144060024CAF4 /* sep4_243 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D572F8144050024CAF4 /* sep4_243 */; };
+		CBD63E5C2F8144060024CAF4 /* sep4_211 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D582F8144050024CAF4 /* sep4_211 */; };
+		CBD63E5D2F8144060024CAF4 /* sep4_229 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D592F8144050024CAF4 /* sep4_229 */; };
+		CBD63E5E2F8144060024CAF4 /* sep4_216 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D5A2F8144050024CAF4 /* sep4_216 */; };
+		CBD63E5F2F8144060024CAF4 /* sep4_220 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D5B2F8144050024CAF4 /* sep4_220 */; };
+		CBD63E602F8144060024CAF4 /* sep4_218 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D5C2F8144050024CAF4 /* sep4_218 */; };
+		CBD63E612F8144060024CAF4 /* sep4_227 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D5D2F8144050024CAF4 /* sep4_227 */; };
+		CBD63E622F8144060024CAF4 /* sep4_242 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D5E2F8144050024CAF4 /* sep4_242 */; };
+		CBD63E632F8144060024CAF4 /* sep4_245 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D5F2F8144050024CAF4 /* sep4_245 */; };
+		CBD63E642F8144060024CAF4 /* sep4_258 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D602F8144050024CAF4 /* sep4_258 */; };
+		CBD63E652F8144060024CAF4 /* sep4_260 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D612F8144050024CAF4 /* sep4_260 */; };
+		CBD63E662F8144060024CAF4 /* sep4_256 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D622F8144050024CAF4 /* sep4_256 */; };
+		CBD63E672F8144060024CAF4 /* sep4_251 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D632F8144050024CAF4 /* sep4_251 */; };
+		CBD63E682F8144060024CAF4 /* sep4_205 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D642F8144050024CAF4 /* sep4_205 */; };
+		CBD63E692F8144060024CAF4 /* sep4_202 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D652F8144050024CAF4 /* sep4_202 */; };
+		CBD63E6A2F8144060024CAF4 /* sep4_234 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D662F8144050024CAF4 /* sep4_234 */; };
+		CBD63E6B2F8144060024CAF4 /* sep4_233 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D672F8144050024CAF4 /* sep4_233 */; };
+		CBD63E6C2F8144060024CAF4 /* sep4_250 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D682F8144050024CAF4 /* sep4_250 */; };
+		CBD63E6D2F8144060024CAF4 /* sep4_257 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D692F8144050024CAF4 /* sep4_257 */; };
+		CBD63E6E2F8144060024CAF4 /* sep4_261 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D6A2F8144050024CAF4 /* sep4_261 */; };
+		CBD63E6F2F8144060024CAF4 /* sep4_259 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D6B2F8144050024CAF4 /* sep4_259 */; };
+		CBD63E702F8144060024CAF4 /* sep4_232 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D6C2F8144050024CAF4 /* sep4_232 */; };
+		CBD63E712F8144060024CAF4 /* sep4_235 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D6D2F8144050024CAF4 /* sep4_235 */; };
+		CBD63E722F8144060024CAF4 /* sep4_203 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D6E2F8144050024CAF4 /* sep4_203 */; };
+		CBD63E732F8144060024CAF4 /* sep4_204 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D6F2F8144050024CAF4 /* sep4_204 */; };
+		CBD63E742F8144060024CAF4 /* sep4_240 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D702F8144050024CAF4 /* sep4_240 */; };
+		CBD63E752F8144060024CAF4 /* sep4_247 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D712F8144050024CAF4 /* sep4_247 */; };
+		CBD63E762F8144060024CAF4 /* sep4_249 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D722F8144050024CAF4 /* sep4_249 */; };
+		CBD63E772F8144060024CAF4 /* sep4_222 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D732F8144050024CAF4 /* sep4_222 */; };
+		CBD63E782F8144060024CAF4 /* sep4_225 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D742F8144050024CAF4 /* sep4_225 */; };
+		CBD63E792F8144060024CAF4 /* sep4_213 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D752F8144050024CAF4 /* sep4_213 */; };
+		CBD63E7A2F8144060024CAF4 /* sep4_214 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D762F8144050024CAF4 /* sep4_214 */; };
+		CBD63E7B2F8144060024CAF4 /* sep4_248 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D772F8144050024CAF4 /* sep4_248 */; };
+		CBD63E7C2F8144060024CAF4 /* sep4_246 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D782F8144050024CAF4 /* sep4_246 */; };
+		CBD63E7D2F8144060024CAF4 /* sep4_241 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D792F8144050024CAF4 /* sep4_241 */; };
+		CBD63E7E2F8144060024CAF4 /* sep4_215 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D7A2F8144050024CAF4 /* sep4_215 */; };
+		CBD63E7F2F8144060024CAF4 /* sep4_212 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D7B2F8144050024CAF4 /* sep4_212 */; };
+		CBD63E802F8144060024CAF4 /* sep4_224 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D7C2F8144050024CAF4 /* sep4_224 */; };
+		CBD63E812F8144060024CAF4 /* sep4_223 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D7D2F8144050024CAF4 /* sep4_223 */; };
+		CBD63E822F8144060024CAF4 /* sep4_197 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D7E2F8144050024CAF4 /* sep4_197 */; };
+		CBD63E832F8144060024CAF4 /* sep4_199 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D7F2F8144050024CAF4 /* sep4_199 */; };
+		CBD63E842F8144060024CAF4 /* sep4_198 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D802F8144050024CAF4 /* sep4_198 */; };
+		CBD63E852F8144060024CAF4 /* sep4_196 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D812F8144050024CAF4 /* sep4_196 */; };
+		CBD63E862F8144060024CAF4 /* sep4_201 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D822F8144050024CAF4 /* sep4_201 */; };
+		CBD63E872F8144060024CAF4 /* sep4_206 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D832F8144050024CAF4 /* sep4_206 */; };
+		CBD63E882F8144060024CAF4 /* sep4_239 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D842F8144050024CAF4 /* sep4_239 */; };
+		CBD63E892F8144060024CAF4 /* sep4_230 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D852F8144050024CAF4 /* sep4_230 */; };
+		CBD63E8A2F8144060024CAF4 /* sep4_237 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D862F8144050024CAF4 /* sep4_237 */; };
+		CBD63E8B2F8144060024CAF4 /* sep4_208 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D872F8144050024CAF4 /* sep4_208 */; };
+		CBD63E8C2F8144060024CAF4 /* sep4_263 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D882F8144050024CAF4 /* sep4_263 */; };
+		CBD63E8D2F8144060024CAF4 /* sep4_264 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D892F8144050024CAF4 /* sep4_264 */; };
+		CBD63E8E2F8144060024CAF4 /* sep4_252 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D8A2F8144050024CAF4 /* sep4_252 */; };
+		CBD63E8F2F8144060024CAF4 /* sep4_255 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D8B2F8144050024CAF4 /* sep4_255 */; };
+		CBD63E902F8144060024CAF4 /* sep4_236 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D8C2F8144050024CAF4 /* sep4_236 */; };
+		CBD63E912F8144060024CAF4 /* sep4_209 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D8D2F8144050024CAF4 /* sep4_209 */; };
+		CBD63E922F8144060024CAF4 /* sep4_231 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D8E2F8144050024CAF4 /* sep4_231 */; };
+		CBD63E932F8144060024CAF4 /* sep4_207 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D8F2F8144050024CAF4 /* sep4_207 */; };
+		CBD63E942F8144060024CAF4 /* sep4_238 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D902F8144050024CAF4 /* sep4_238 */; };
+		CBD63E952F8144060024CAF4 /* sep4_200 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D912F8144050024CAF4 /* sep4_200 */; };
+		CBD63E962F8144060024CAF4 /* sep4_254 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D922F8144050024CAF4 /* sep4_254 */; };
+		CBD63E972F8144060024CAF4 /* sep4_253 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D932F8144050024CAF4 /* sep4_253 */; };
+		CBD63E982F8144060024CAF4 /* sep4_265 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D942F8144050024CAF4 /* sep4_265 */; };
+		CBD63E992F8144060024CAF4 /* sep4_262 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D952F8144050024CAF4 /* sep4_262 */; };
+		CBD63E9A2F8144060024CAF4 /* seasnam.txt in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D962F8144050024CAF4 /* seasnam.txt */; };
+		CBD63E9B2F8144060024CAF4 /* seplm108.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D972F8144050024CAF4 /* seplm108.se1 */; };
+		CBD63E9C2F8144060024CAF4 /* seplm120.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D982F8144050024CAF4 /* seplm120.se1 */; };
+		CBD63E9D2F8144060024CAF4 /* semo_138.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D992F8144050024CAF4 /* semo_138.se1 */; };
+		CBD63E9E2F8144060024CAF4 /* sepl_132.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D9A2F8144050024CAF4 /* sepl_132.se1 */; };
+		CBD63E9F2F8144060024CAF4 /* sepl_126.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D9B2F8144050024CAF4 /* sepl_126.se1 */; };
+		CBD63EA02F8144060024CAF4 /* seas_90.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D9C2F8144050024CAF4 /* seas_90.se1 */; };
+		CBD63EA12F8144060024CAF4 /* seas_84.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D9D2F8144050024CAF4 /* seas_84.se1 */; };
+		CBD63EA22F8144060024CAF4 /* semom84.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D9E2F8144050024CAF4 /* semom84.se1 */; };
+		CBD63EA32F8144060024CAF4 /* semom90.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63D9F2F8144050024CAF4 /* semom90.se1 */; };
+		CBD63EA42F8144060024CAF4 /* sepl_90.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA02F8144050024CAF4 /* sepl_90.se1 */; };
+		CBD63EA52F8144060024CAF4 /* sepl_84.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA12F8144050024CAF4 /* sepl_84.se1 */; };
+		CBD63EA62F8144060024CAF4 /* semom102.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA22F8144050024CAF4 /* semom102.se1 */; };
+		CBD63EA72F8144060024CAF4 /* seas_162.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA32F8144050024CAF4 /* seas_162.se1 */; };
+		CBD63EA82F8144060024CAF4 /* seasm12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA42F8144050024CAF4 /* seasm12.se1 */; };
+		CBD63EA92F8144060024CAF4 /* semom114.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA52F8144050024CAF4 /* semom114.se1 */; };
+		CBD63EAA2F8144060024CAF4 /* seasm06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA62F8144050024CAF4 /* seasm06.se1 */; };
+		CBD63EAB2F8144060024CAF4 /* semo_06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA72F8144050024CAF4 /* semo_06.se1 */; };
+		CBD63EAC2F8144060024CAF4 /* semo_12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA82F8144050024CAF4 /* semo_12.se1 */; };
+		CBD63EAD2F8144060024CAF4 /* seplm12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DA92F8144050024CAF4 /* seplm12.se1 */; };
+		CBD63EAE2F8144060024CAF4 /* seplm06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DAA2F8144050024CAF4 /* seplm06.se1 */; };
+		CBD63EAF2F8144060024CAF4 /* semom78.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DAB2F8144050024CAF4 /* semom78.se1 */; };
+		CBD63EB02F8144060024CAF4 /* seas_78.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DAC2F8144050024CAF4 /* seas_78.se1 */; };
+		CBD63EB12F8144060024CAF4 /* sepl_78.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DAD2F8144050024CAF4 /* sepl_78.se1 */; };
+		CBD63EB22F8144060024CAF4 /* seas_138.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DAE2F8144050024CAF4 /* seas_138.se1 */; };
+		CBD63EB32F8144060024CAF4 /* seasm48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DAF2F8144050024CAF4 /* seasm48.se1 */; };
+		CBD63EB42F8144060024CAF4 /* semo_60.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB02F8144050024CAF4 /* semo_60.se1 */; };
+		CBD63EB52F8144060024CAF4 /* seasm60.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB12F8144050024CAF4 /* seasm60.se1 */; };
+		CBD63EB62F8144060024CAF4 /* semo_48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB22F8144050024CAF4 /* semo_48.se1 */; };
+		CBD63EB72F8144060024CAF4 /* seplm48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB32F8144050024CAF4 /* seplm48.se1 */; };
+		CBD63EB82F8144060024CAF4 /* seplm60.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB42F8144050024CAF4 /* seplm60.se1 */; };
+		CBD63EB92F8144060024CAF4 /* sepl_156.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB52F8144050024CAF4 /* sepl_156.se1 */; };
+		CBD63EBA2F8144060024CAF4 /* semom36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB62F8144050024CAF4 /* semom36.se1 */; };
+		CBD63EBB2F8144060024CAF4 /* seas_36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB72F8144050024CAF4 /* seas_36.se1 */; };
+		CBD63EBC2F8144060024CAF4 /* sepl_36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB82F8144050024CAF4 /* sepl_36.se1 */; };
+		CBD63EBD2F8144060024CAF4 /* seasm102.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DB92F8144050024CAF4 /* seasm102.se1 */; };
+		CBD63EBE2F8144060024CAF4 /* seasm114.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DBA2F8144050024CAF4 /* seasm114.se1 */; };
+		CBD63EBF2F8144060024CAF4 /* semo_162.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DBB2F8144050024CAF4 /* semo_162.se1 */; };
+		CBD63EC02F8144060024CAF4 /* seorbel.txt in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DBC2F8144050024CAF4 /* seorbel.txt */; };
+		CBD63EC12F8144060024CAF4 /* seas_102.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DBD2F8144050024CAF4 /* seas_102.se1 */; };
+		CBD63EC22F8144060024CAF4 /* seasm66.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DBE2F8144050024CAF4 /* seasm66.se1 */; };
+		CBD63EC32F8144060024CAF4 /* seasm72.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DBF2F8144050024CAF4 /* seasm72.se1 */; };
+		CBD63EC42F8144060024CAF4 /* semo_72.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC02F8144050024CAF4 /* semo_72.se1 */; };
+		CBD63EC52F8144060024CAF4 /* semo_66.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC12F8144050024CAF4 /* semo_66.se1 */; };
+		CBD63EC62F8144060024CAF4 /* seplm66.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC22F8144050024CAF4 /* seplm66.se1 */; };
+		CBD63EC72F8144060024CAF4 /* seplm72.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC32F8144050024CAF4 /* seplm72.se1 */; };
+		CBD63EC82F8144060024CAF4 /* sepl_144.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC42F8144050024CAF4 /* sepl_144.se1 */; };
+		CBD63EC92F8144060024CAF4 /* sepl_150.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC52F8144050024CAF4 /* sepl_150.se1 */; };
+		CBD63ECA2F8144060024CAF4 /* semom18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC62F8144050024CAF4 /* semom18.se1 */; };
+		CBD63ECB2F8144060024CAF4 /* seas_30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC72F8144050024CAF4 /* seas_30.se1 */; };
+		CBD63ECC2F8144060024CAF4 /* seas_24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC82F8144050024CAF4 /* seas_24.se1 */; };
+		CBD63ECD2F8144060024CAF4 /* semom24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DC92F8144050024CAF4 /* semom24.se1 */; };
+		CBD63ECE2F8144060024CAF4 /* semom30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DCA2F8144050024CAF4 /* semom30.se1 */; };
+		CBD63ECF2F8144060024CAF4 /* seas_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DCB2F8144050024CAF4 /* seas_18.se1 */; };
+		CBD63ED02F8144060024CAF4 /* sepl_30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DCC2F8144050024CAF4 /* sepl_30.se1 */; };
+		CBD63ED12F8144060024CAF4 /* sepl_24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DCD2F8144050024CAF4 /* sepl_24.se1 */; };
+		CBD63ED22F8144060024CAF4 /* sepl_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DCE2F8144050024CAF4 /* sepl_18.se1 */; };
+		CBD63ED32F8144060024CAF4 /* seas_114.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DCF2F8144050024CAF4 /* seas_114.se1 */; };
+		CBD63ED42F8144060024CAF4 /* astlistn.md in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD02F8144050024CAF4 /* astlistn.md */; };
+		CBD63ED52F8144060024CAF4 /* semo_96.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD12F8144050024CAF4 /* semo_96.se1 */; };
+		CBD63ED62F8144060024CAF4 /* seasm96.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD22F8144050024CAF4 /* seasm96.se1 */; };
+		CBD63ED72F8144060024CAF4 /* seplm96.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD32F8144050024CAF4 /* seplm96.se1 */; };
+		CBD63ED82F8144060024CAF4 /* sepl_162.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD42F8144050024CAF4 /* sepl_162.se1 */; };
+		CBD63ED92F8144060024CAF4 /* seplm54.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD52F8144050024CAF4 /* seplm54.se1 */; };
+		CBD63EDA2F8144060024CAF4 /* seasm54.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD62F8144050024CAF4 /* seasm54.se1 */; };
+		CBD63EDB2F8144060024CAF4 /* semo_54.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD72F8144050024CAF4 /* semo_54.se1 */; };
+		CBD63EDC2F8144060024CAF4 /* list.zip in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD82F8144050024CAF4 /* list.zip */; };
+		CBD63EDD2F8144060024CAF4 /* seas_126.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DD92F8144050024CAF4 /* seas_126.se1 */; };
+		CBD63EDE2F8144060024CAF4 /* seas_132.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DDA2F8144050024CAF4 /* seas_132.se1 */; };
+		CBD63EDF2F8144060024CAF4 /* semo_42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DDB2F8144050024CAF4 /* semo_42.se1 */; };
+		CBD63EE02F8144060024CAF4 /* seasm42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DDC2F8144050024CAF4 /* seasm42.se1 */; };
+		CBD63EE12F8144060024CAF4 /* seplm42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DDD2F8144050024CAF4 /* seplm42.se1 */; };
+		CBD63EE22F8144060024CAF4 /* semo_156.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DDE2F8144050024CAF4 /* semo_156.se1 */; };
+		CBD63EE32F8144060024CAF4 /* seas_00.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DDF2F8144050024CAF4 /* seas_00.se1 */; };
+		CBD63EE42F8144060024CAF4 /* sepl_00.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE02F8144050024CAF4 /* sepl_00.se1 */; };
+		CBD63EE52F8144060024CAF4 /* seasm120.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE12F8144050024CAF4 /* seasm120.se1 */; };
+		CBD63EE62F8144060024CAF4 /* seasm108.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE22F8144050024CAF4 /* seasm108.se1 */; };
+		CBD63EE72F8144060024CAF4 /* seasm84.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE32F8144050024CAF4 /* seasm84.se1 */; };
+		CBD63EE82F8144060024CAF4 /* seasm90.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE42F8144050024CAF4 /* seasm90.se1 */; };
+		CBD63EE92F8144060024CAF4 /* semo_90.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE52F8144050024CAF4 /* semo_90.se1 */; };
+		CBD63EEA2F8144060024CAF4 /* sepm9801.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE72F8144050024CAF4 /* sepm9801.se1 */; };
+		CBD63EEB2F8144060024CAF4 /* sepm9802.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE82F8144050024CAF4 /* sepm9802.se1 */; };
+		CBD63EEC2F8144060024CAF4 /* sepm9608.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DE92F8144050024CAF4 /* sepm9608.se1 */; };
+		CBD63EED2F8144060024CAF4 /* sepm9999.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DEA2F8144050024CAF4 /* sepm9999.se1 */; };
+		CBD63EEE2F8144060024CAF4 /* sepm9902.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DEB2F8144050024CAF4 /* sepm9902.se1 */; };
+		CBD63EEF2F8144060024CAF4 /* sepm9903.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DEC2F8144050024CAF4 /* sepm9903.se1 */; };
+		CBD63EF02F8144060024CAF4 /* sepm9901.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DED2F8144050024CAF4 /* sepm9901.se1 */; };
+		CBD63EF12F8144060024CAF4 /* sepm9904.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DEE2F8144050024CAF4 /* sepm9904.se1 */; };
+		CBD63EF22F8144060024CAF4 /* sepm9905.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DEF2F8144050024CAF4 /* sepm9905.se1 */; };
+		CBD63EF32F8144060024CAF4 /* plmolist.txt in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF02F8144050024CAF4 /* plmolist.txt */; };
+		CBD63EF42F8144060024CAF4 /* sepm9899.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF12F8144050024CAF4 /* sepm9899.se1 */; };
+		CBD63EF52F8144060024CAF4 /* sepm9704.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF22F8144050024CAF4 /* sepm9704.se1 */; };
+		CBD63EF62F8144060024CAF4 /* sepm9705.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF32F8144050024CAF4 /* sepm9705.se1 */; };
+		CBD63EF72F8144060024CAF4 /* sepm9699.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF42F8144050024CAF4 /* sepm9699.se1 */; };
+		CBD63EF82F8144060024CAF4 /* sepm9504.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF52F8144050024CAF4 /* sepm9504.se1 */; };
+		CBD63EF92F8144060024CAF4 /* sepm9702.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF62F8144050024CAF4 /* sepm9702.se1 */; };
+		CBD63EFA2F8144060024CAF4 /* sepm9501.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF72F8144050024CAF4 /* sepm9501.se1 */; };
+		CBD63EFB2F8144060024CAF4 /* sepm9703.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF82F8144050024CAF4 /* sepm9703.se1 */; };
+		CBD63EFC2F8144060024CAF4 /* sepm9701.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DF92F8144050024CAF4 /* sepm9701.se1 */; };
+		CBD63EFD2F8144060024CAF4 /* sepm9503.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DFA2F8144050024CAF4 /* sepm9503.se1 */; };
+		CBD63EFE2F8144060024CAF4 /* sepm9502.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DFB2F8144050024CAF4 /* sepm9502.se1 */; };
+		CBD63EFF2F8144060024CAF4 /* sepm9808.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DFC2F8144050024CAF4 /* sepm9808.se1 */; };
+		CBD63F002F8144060024CAF4 /* sepm9607.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DFD2F8144050024CAF4 /* sepm9607.se1 */; };
+		CBD63F012F8144060024CAF4 /* sepm9606.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DFE2F8144050024CAF4 /* sepm9606.se1 */; };
+		CBD63F022F8144060024CAF4 /* sepm9799.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63DFF2F8144050024CAF4 /* sepm9799.se1 */; };
+		CBD63F032F8144060024CAF4 /* sepm9599.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E002F8144050024CAF4 /* sepm9599.se1 */; };
+		CBD63F042F8144060024CAF4 /* sepm9604.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E012F8144050024CAF4 /* sepm9604.se1 */; };
+		CBD63F052F8144060024CAF4 /* sepm9605.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E022F8144050024CAF4 /* sepm9605.se1 */; };
+		CBD63F062F8144060024CAF4 /* sepm9601.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E032F8144050024CAF4 /* sepm9601.se1 */; };
+		CBD63F072F8144060024CAF4 /* sepm9402.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E042F8144050024CAF4 /* sepm9402.se1 */; };
+		CBD63F082F8144060024CAF4 /* sepm9602.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E052F8144050024CAF4 /* sepm9602.se1 */; };
+		CBD63F092F8144060024CAF4 /* sepm9603.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E062F8144050024CAF4 /* sepm9603.se1 */; };
+		CBD63F0A2F8144060024CAF4 /* sepm9401.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E072F8144050024CAF4 /* sepm9401.se1 */; };
+		CBD63F0B2F8144060024CAF4 /* semo_84.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E082F8144050024CAF4 /* semo_84.se1 */; };
+		CBD63F0C2F8144060024CAF4 /* seplm84.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E092F8144050024CAF4 /* seplm84.se1 */; };
+		CBD63F0D2F8144060024CAF4 /* seplm90.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E0A2F8144050024CAF4 /* seplm90.se1 */; };
+		CBD63F0E2F8144060024CAF4 /* seas_108.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E0B2F8144050024CAF4 /* seas_108.se1 */; };
+		CBD63F0F2F8144060024CAF4 /* seas_120.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E0C2F8144050024CAF4 /* seas_120.se1 */; };
+		CBD63F102F8144060024CAF4 /* semo_78.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E0D2F8144060024CAF4 /* semo_78.se1 */; };
+		CBD63F112F8144060024CAF4 /* seasm78.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E0E2F8144060024CAF4 /* seasm78.se1 */; };
+		CBD63F122F8144060024CAF4 /* seplm78.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E0F2F8144060024CAF4 /* seplm78.se1 */; };
+		CBD63F132F8144060024CAF4 /* semo_144.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E102F8144060024CAF4 /* semo_144.se1 */; };
+		CBD63F142F8144060024CAF4 /* seas_06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E112F8144060024CAF4 /* seas_06.se1 */; };
+		CBD63F152F8144060024CAF4 /* seas_12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E122F8144060024CAF4 /* seas_12.se1 */; };
+		CBD63F162F8144060024CAF4 /* semo_150.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E132F8144060024CAF4 /* semo_150.se1 */; };
+		CBD63F172F8144060024CAF4 /* semom12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E142F8144060024CAF4 /* semom12.se1 */; };
+		CBD63F182F8144060024CAF4 /* semom06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E152F8144060024CAF4 /* semom06.se1 */; };
+		CBD63F192F8144060024CAF4 /* sepl_06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E162F8144060024CAF4 /* sepl_06.se1 */; };
+		CBD63F1A2F8144060024CAF4 /* sepl_12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E172F8144060024CAF4 /* sepl_12.se1 */; };
+		CBD63F1B2F8144060024CAF4 /* seasm126.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E182F8144060024CAF4 /* seasm126.se1 */; };
+		CBD63F1C2F8144060024CAF4 /* seasm132.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E192F8144060024CAF4 /* seasm132.se1 */; };
+		CBD63F1D2F8144060024CAF4 /* swe_deltat.inactive.txt in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E1A2F8144060024CAF4 /* swe_deltat.inactive.txt */; };
+		CBD63F1E2F8144060024CAF4 /* semo_36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E1B2F8144060024CAF4 /* semo_36.se1 */; };
+		CBD63F1F2F8144060024CAF4 /* seasm36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E1C2F8144060024CAF4 /* seasm36.se1 */; };
+		CBD63F202F8144060024CAF4 /* seplm36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E1D2F8144060024CAF4 /* seplm36.se1 */; };
+		CBD63F212F8144060024CAF4 /* sepl_114.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E1E2F8144060024CAF4 /* sepl_114.se1 */; };
+		CBD63F222F8144060024CAF4 /* semom60.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E1F2F8144060024CAF4 /* semom60.se1 */; };
+		CBD63F232F8144060024CAF4 /* seas_48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E202F8144060024CAF4 /* seas_48.se1 */; };
+		CBD63F242F8144060024CAF4 /* semom48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E212F8144060024CAF4 /* semom48.se1 */; };
+		CBD63F252F8144060024CAF4 /* seas_60.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E222F8144060024CAF4 /* seas_60.se1 */; };
+		CBD63F262F8144060024CAF4 /* sepl_48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E232F8144060024CAF4 /* sepl_48.se1 */; };
+		CBD63F272F8144060024CAF4 /* sepl_60.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E242F8144060024CAF4 /* sepl_60.se1 */; };
+		CBD63F282F8144060024CAF4 /* semo_120.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E252F8144060024CAF4 /* semo_120.se1 */; };
+		CBD63F292F8144060024CAF4 /* semo_108.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E262F8144060024CAF4 /* semo_108.se1 */; };
+		CBD63F2A2F8144060024CAF4 /* sepl_102.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E272F8144060024CAF4 /* sepl_102.se1 */; };
+		CBD63F2B2F8144060024CAF4 /* semom132.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E282F8144060024CAF4 /* semom132.se1 */; };
+		CBD63F2C2F8144060024CAF4 /* semom126.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E292F8144060024CAF4 /* semom126.se1 */; };
+		CBD63F2D2F8144060024CAF4 /* seas_150.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E2A2F8144060024CAF4 /* seas_150.se1 */; };
+		CBD63F2E2F8144060024CAF4 /* seas_144.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E2B2F8144060024CAF4 /* seas_144.se1 */; };
+		CBD63F2F2F8144060024CAF4 /* seasm24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E2C2F8144060024CAF4 /* seasm24.se1 */; };
+		CBD63F302F8144060024CAF4 /* seasm30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E2D2F8144060024CAF4 /* seasm30.se1 */; };
+		CBD63F312F8144060024CAF4 /* semo_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E2E2F8144060024CAF4 /* semo_18.se1 */; };
+		CBD63F322F8144060024CAF4 /* seasm18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E2F2F8144060024CAF4 /* seasm18.se1 */; };
+		CBD63F332F8144060024CAF4 /* semo_30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E302F8144060024CAF4 /* semo_30.se1 */; };
+		CBD63F342F8144060024CAF4 /* semo_24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E312F8144060024CAF4 /* semo_24.se1 */; };
+		CBD63F352F8144060024CAF4 /* seplm24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E322F8144060024CAF4 /* seplm24.se1 */; };
+		CBD63F362F8144060024CAF4 /* seplm30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E332F8144060024CAF4 /* seplm30.se1 */; };
+		CBD63F372F8144060024CAF4 /* seplm18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E342F8144060024CAF4 /* seplm18.se1 */; };
+		CBD63F382F8144060024CAF4 /* seas_72.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E352F8144060024CAF4 /* seas_72.se1 */; };
+		CBD63F392F8144060024CAF4 /* seas_66.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E362F8144060024CAF4 /* seas_66.se1 */; };
+		CBD63F3A2F8144060024CAF4 /* semom66.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E372F8144060024CAF4 /* semom66.se1 */; };
+		CBD63F3B2F8144060024CAF4 /* semom72.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E382F8144060024CAF4 /* semom72.se1 */; };
+		CBD63F3C2F8144060024CAF4 /* seplm114.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E392F8144060024CAF4 /* seplm114.se1 */; };
+		CBD63F3D2F8144060024CAF4 /* sepl_72.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E3A2F8144060024CAF4 /* sepl_72.se1 */; };
+		CBD63F3E2F8144060024CAF4 /* sepl_66.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E3B2F8144060024CAF4 /* sepl_66.se1 */; };
+		CBD63F3F2F8144060024CAF4 /* seplm102.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E3C2F8144060024CAF4 /* seplm102.se1 */; };
+		CBD63F402F8144060024CAF4 /* semo_132.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E3D2F8144060024CAF4 /* semo_132.se1 */; };
+		CBD63F412F8144060024CAF4 /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E3E2F8144060024CAF4 /* sefstars.txt */; };
+		CBD63F422F8144060024CAF4 /* semo_126.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E3F2F8144060024CAF4 /* semo_126.se1 */; };
+		CBD63F432F8144060024CAF4 /* sepl_138.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E402F8144060024CAF4 /* sepl_138.se1 */; };
+		CBD63F442F8144060024CAF4 /* semom108.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E412F8144060024CAF4 /* semom108.se1 */; };
+		CBD63F452F8144060024CAF4 /* semom120.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E422F8144060024CAF4 /* semom120.se1 */; };
+		CBD63F462F8144060024CAF4 /* seas_156.se1 in Resources */ = {isa = PBXBuildFile; fileRef = CBD63E432F8144060024CAF4 /* seas_156.se1 */; };
+		CBD63F4E2F8144280024CAF4 /* test_graha_positions.py in Resources */ = {isa = PBXBuildFile; fileRef = CBD63F4A2F8144280024CAF4 /* test_graha_positions.py */; };
+		CBD63F4F2F8144280024CAF4 /* graha_fixtures.json in Resources */ = {isa = PBXBuildFile; fileRef = CBD63F4C2F8144280024CAF4 /* graha_fixtures.json */; };
+		CBD63F522F81463E0024CAF4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBD63F512F81463E0024CAF4 /* XCTest.framework */; platformFilter = ios; };
+		CBD63F532F814D280024CAF4 /* EphemerisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D3B2F8143CF0024CAF4 /* EphemerisEngine.swift */; };
+		CBD63F542F814E9A0024CAF4 /* EphemerisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63F492F8144280024CAF4 /* EphemerisTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CBD63CBC2F8140060024CAF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBD63CA32F8140020024CAF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBD63CAA2F8140020024CAF4;
+			remoteInfo = "Vedic Skyview";
+		};
+		CBD63CC62F8140060024CAF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBD63CA32F8140020024CAF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBD63CAA2F8140020024CAF4;
+			remoteInfo = "Vedic Skyview";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CBD63CAB2F8140020024CAF4 /* Vedic Skyview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vedic Skyview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD63CAE2F8140020024CAF4 /* Vedic_SkyviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vedic_SkyviewApp.swift; sourceTree = "<group>"; };
+		CBD63CB02F8140020024CAF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CBD63CB22F8140050024CAF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CBD63CB52F8140060024CAF4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CBD63CBB2F8140060024CAF4 /* Vedic SkyviewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Vedic SkyviewTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD63CBF2F8140060024CAF4 /* Vedic_SkyviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vedic_SkyviewTests.swift; sourceTree = "<group>"; };
+		CBD63CC52F8140060024CAF4 /* Vedic SkyviewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Vedic SkyviewUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD63CC92F8140060024CAF4 /* Vedic_SkyviewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vedic_SkyviewUITests.swift; sourceTree = "<group>"; };
+		CBD63CCB2F8140060024CAF4 /* Vedic_SkyviewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vedic_SkyviewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CBD63CDD2F8143690024CAF4 /* suite_03_misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_03_misc.c; sourceTree = "<group>"; };
+		CBD63CDE2F8143690024CAF4 /* swewin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swewin.h; sourceTree = "<group>"; };
+		CBD63CDF2F8143690024CAF4 /* testdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testdata.h; sourceTree = "<group>"; };
+		CBD63CE02F8143690024CAF4 /* swemptab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swemptab.h; sourceTree = "<group>"; };
+		CBD63CE12F8143690024CAF4 /* constants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = constants.c; sourceTree = "<group>"; };
+		CBD63CE22F8143690024CAF4 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		CBD63CE32F8143690024CAF4 /* swewin64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swewin64.h; sourceTree = "<group>"; };
+		CBD63CE42F8143690024CAF4 /* testsuite_facade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testsuite_facade.h; sourceTree = "<group>"; };
+		CBD63CE52F8143690024CAF4 /* swemmoon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swemmoon.c; sourceTree = "<group>"; };
+		CBD63CE62F8143690024CAF4 /* suite_06_houses.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_06_houses.c; sourceTree = "<group>"; };
+		CBD63CE72F8143690024CAF4 /* swevents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swevents.h; sourceTree = "<group>"; };
+		CBD63CE82F8143690024CAF4 /* sweephe4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sweephe4.c; sourceTree = "<group>"; };
+		CBD63CE92F8143690024CAF4 /* globals_suite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = globals_suite.c; sourceTree = "<group>"; };
+		CBD63CEA2F8143690024CAF4 /* swehouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swehouse.h; sourceTree = "<group>"; };
+		CBD63CEB2F8143690024CAF4 /* swephexp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swephexp.h; sourceTree = "<group>"; };
+		CBD63CEC2F8143690024CAF4 /* setest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setest.h; sourceTree = "<group>"; };
+		CBD63CED2F8143690024CAF4 /* sweph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweph.h; sourceTree = "<group>"; };
+		CBD63CEE2F8143690024CAF4 /* swedate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swedate.h; sourceTree = "<group>"; };
+		CBD63CEF2F8143690024CAF4 /* swehel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swehel.c; sourceTree = "<group>"; };
+		CBD63CF02F8143690024CAF4 /* checkpoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkpoints.h; sourceTree = "<group>"; };
+		CBD63CF12F8143690024CAF4 /* swejpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swejpl.h; sourceTree = "<group>"; };
+		CBD63CF22F8143690024CAF4 /* multivalues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multivalues.h; sourceTree = "<group>"; };
+		CBD63CF32F8143690024CAF4 /* suite_05_date_time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_05_date_time.c; sourceTree = "<group>"; };
+		CBD63CF42F8143690024CAF4 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		CBD63CF52F8143690024CAF4 /* swephlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swephlib.h; sourceTree = "<group>"; };
+		CBD63CF62F8143690024CAF4 /* swewin64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swewin64.c; sourceTree = "<group>"; };
+		CBD63CF72F8143690024CAF4 /* suite_09_rise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_09_rise.c; sourceTree = "<group>"; };
+		CBD63CF82F8143690024CAF4 /* reader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = reader.c; sourceTree = "<group>"; };
+		CBD63CF92F8143690024CAF4 /* testdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testdata.c; sourceTree = "<group>"; };
+		CBD63CFA2F8143690024CAF4 /* swewin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swewin.c; sourceTree = "<group>"; };
+		CBD63CFB2F8143690024CAF4 /* swephgen4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swephgen4.c; sourceTree = "<group>"; };
+		CBD63CFC2F8143690024CAF4 /* suite_02_fixstar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_02_fixstar.c; sourceTree = "<group>"; };
+		CBD63CFD2F8143690024CAF4 /* swedll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swedll.h; sourceTree = "<group>"; };
+		CBD63CFE2F8143690024CAF4 /* swehouse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swehouse.c; sourceTree = "<group>"; };
+		CBD63CFF2F8143690024CAF4 /* swecl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swecl.c; sourceTree = "<group>"; };
+		CBD63D002F8143690024CAF4 /* suite_10_solcross.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_10_solcross.c; sourceTree = "<group>"; };
+		CBD63D012F8143690024CAF4 /* sweephe4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweephe4.h; sourceTree = "<group>"; };
+		CBD63D022F8143690024CAF4 /* resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resource.h; sourceTree = "<group>"; };
+		CBD63D032F8143690024CAF4 /* swenut2000a.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swenut2000a.h; sourceTree = "<group>"; };
+		CBD63D042F8143690024CAF4 /* swevents.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swevents.c; sourceTree = "<group>"; };
+		CBD63D052F8143690024CAF4 /* suite_04_ayanamsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_04_ayanamsa.c; sourceTree = "<group>"; };
+		CBD63D062F8143690024CAF4 /* sweph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sweph.c; sourceTree = "<group>"; };
+		CBD63D072F8143690024CAF4 /* swedate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swedate.c; sourceTree = "<group>"; };
+		CBD63D082F8143690024CAF4 /* swetest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swetest.c; sourceTree = "<group>"; };
+		CBD63D092F8143690024CAF4 /* suite_08_eclipses.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_08_eclipses.c; sourceTree = "<group>"; };
+		CBD63D0A2F8143690024CAF4 /* suite_01_calc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_01_calc.c; sourceTree = "<group>"; };
+		CBD63D0B2F8143690024CAF4 /* setest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = setest.c; sourceTree = "<group>"; };
+		CBD63D0C2F8143690024CAF4 /* swemplan.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swemplan.c; sourceTree = "<group>"; };
+		CBD63D0D2F8143690024CAF4 /* swephlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swephlib.c; sourceTree = "<group>"; };
+		CBD63D0E2F8143690024CAF4 /* suite_07_apsides.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = suite_07_apsides.c; sourceTree = "<group>"; };
+		CBD63D0F2F8143690024CAF4 /* obama.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = obama.c; sourceTree = "<group>"; };
+		CBD63D102F8143690024CAF4 /* globals.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = globals.c; sourceTree = "<group>"; };
+		CBD63D112F8143690024CAF4 /* testsuite_final.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testsuite_final.h; sourceTree = "<group>"; };
+		CBD63D122F8143690024CAF4 /* swejpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swejpl.c; sourceTree = "<group>"; };
+		CBD63D132F8143690024CAF4 /* multivalues.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = multivalues.c; sourceTree = "<group>"; };
+		CBD63D142F8143690024CAF4 /* sweodef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweodef.h; sourceTree = "<group>"; };
+		CBD63D152F8143690024CAF4 /* checkpoints.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = checkpoints.c; sourceTree = "<group>"; };
+		CBD63D162F8143690024CAF4 /* swemini.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swemini.c; sourceTree = "<group>"; };
+		CBD63D3B2F8143CF0024CAF4 /* EphemerisEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EphemerisEngine.swift; sourceTree = "<group>"; };
+		CBD63D3F2F8144050024CAF4 /* sepl_54.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_54.se1; sourceTree = "<group>"; };
+		CBD63D402F8144050024CAF4 /* seplm132.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm132.se1; sourceTree = "<group>"; };
+		CBD63D412F8144050024CAF4 /* seplm126.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm126.se1; sourceTree = "<group>"; };
+		CBD63D422F8144050024CAF4 /* seas_54.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_54.se1; sourceTree = "<group>"; };
+		CBD63D432F8144050024CAF4 /* semo_102.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_102.se1; sourceTree = "<group>"; };
+		CBD63D442F8144050024CAF4 /* semom54.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom54.se1; sourceTree = "<group>"; };
+		CBD63D452F8144050024CAF4 /* sepl_120.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_120.se1; sourceTree = "<group>"; };
+		CBD63D462F8144050024CAF4 /* sepl_108.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_108.se1; sourceTree = "<group>"; };
+		CBD63D472F8144050024CAF4 /* semom96.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom96.se1; sourceTree = "<group>"; };
+		CBD63D482F8144050024CAF4 /* seas_96.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_96.se1; sourceTree = "<group>"; };
+		CBD63D492F8144050024CAF4 /* sepl_96.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_96.se1; sourceTree = "<group>"; };
+		CBD63D4A2F8144050024CAF4 /* semo_00.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_00.se1; sourceTree = "<group>"; };
+		CBD63D4B2F8144050024CAF4 /* semom42.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom42.se1; sourceTree = "<group>"; };
+		CBD63D4C2F8144050024CAF4 /* semo_114.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_114.se1; sourceTree = "<group>"; };
+		CBD63D4D2F8144050024CAF4 /* seas_42.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_42.se1; sourceTree = "<group>"; };
+		CBD63D4E2F8144050024CAF4 /* sepl_42.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_42.se1; sourceTree = "<group>"; };
+		CBD63D502F8144050024CAF4 /* sep4_219 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_219; sourceTree = "<group>"; };
+		CBD63D512F8144050024CAF4 /* sep4_226 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_226; sourceTree = "<group>"; };
+		CBD63D522F8144050024CAF4 /* sep4_221 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_221; sourceTree = "<group>"; };
+		CBD63D532F8144050024CAF4 /* sep4_228 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_228; sourceTree = "<group>"; };
+		CBD63D542F8144050024CAF4 /* sep4_217 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_217; sourceTree = "<group>"; };
+		CBD63D552F8144050024CAF4 /* sep4_210 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_210; sourceTree = "<group>"; };
+		CBD63D562F8144050024CAF4 /* sep4_244 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_244; sourceTree = "<group>"; };
+		CBD63D572F8144050024CAF4 /* sep4_243 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_243; sourceTree = "<group>"; };
+		CBD63D582F8144050024CAF4 /* sep4_211 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_211; sourceTree = "<group>"; };
+		CBD63D592F8144050024CAF4 /* sep4_229 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_229; sourceTree = "<group>"; };
+		CBD63D5A2F8144050024CAF4 /* sep4_216 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_216; sourceTree = "<group>"; };
+		CBD63D5B2F8144050024CAF4 /* sep4_220 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_220; sourceTree = "<group>"; };
+		CBD63D5C2F8144050024CAF4 /* sep4_218 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_218; sourceTree = "<group>"; };
+		CBD63D5D2F8144050024CAF4 /* sep4_227 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_227; sourceTree = "<group>"; };
+		CBD63D5E2F8144050024CAF4 /* sep4_242 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_242; sourceTree = "<group>"; };
+		CBD63D5F2F8144050024CAF4 /* sep4_245 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_245; sourceTree = "<group>"; };
+		CBD63D602F8144050024CAF4 /* sep4_258 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_258; sourceTree = "<group>"; };
+		CBD63D612F8144050024CAF4 /* sep4_260 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_260; sourceTree = "<group>"; };
+		CBD63D622F8144050024CAF4 /* sep4_256 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_256; sourceTree = "<group>"; };
+		CBD63D632F8144050024CAF4 /* sep4_251 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_251; sourceTree = "<group>"; };
+		CBD63D642F8144050024CAF4 /* sep4_205 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_205; sourceTree = "<group>"; };
+		CBD63D652F8144050024CAF4 /* sep4_202 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_202; sourceTree = "<group>"; };
+		CBD63D662F8144050024CAF4 /* sep4_234 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_234; sourceTree = "<group>"; };
+		CBD63D672F8144050024CAF4 /* sep4_233 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_233; sourceTree = "<group>"; };
+		CBD63D682F8144050024CAF4 /* sep4_250 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_250; sourceTree = "<group>"; };
+		CBD63D692F8144050024CAF4 /* sep4_257 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_257; sourceTree = "<group>"; };
+		CBD63D6A2F8144050024CAF4 /* sep4_261 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_261; sourceTree = "<group>"; };
+		CBD63D6B2F8144050024CAF4 /* sep4_259 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_259; sourceTree = "<group>"; };
+		CBD63D6C2F8144050024CAF4 /* sep4_232 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_232; sourceTree = "<group>"; };
+		CBD63D6D2F8144050024CAF4 /* sep4_235 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_235; sourceTree = "<group>"; };
+		CBD63D6E2F8144050024CAF4 /* sep4_203 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_203; sourceTree = "<group>"; };
+		CBD63D6F2F8144050024CAF4 /* sep4_204 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_204; sourceTree = "<group>"; };
+		CBD63D702F8144050024CAF4 /* sep4_240 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_240; sourceTree = "<group>"; };
+		CBD63D712F8144050024CAF4 /* sep4_247 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_247; sourceTree = "<group>"; };
+		CBD63D722F8144050024CAF4 /* sep4_249 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_249; sourceTree = "<group>"; };
+		CBD63D732F8144050024CAF4 /* sep4_222 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_222; sourceTree = "<group>"; };
+		CBD63D742F8144050024CAF4 /* sep4_225 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_225; sourceTree = "<group>"; };
+		CBD63D752F8144050024CAF4 /* sep4_213 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_213; sourceTree = "<group>"; };
+		CBD63D762F8144050024CAF4 /* sep4_214 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_214; sourceTree = "<group>"; };
+		CBD63D772F8144050024CAF4 /* sep4_248 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_248; sourceTree = "<group>"; };
+		CBD63D782F8144050024CAF4 /* sep4_246 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_246; sourceTree = "<group>"; };
+		CBD63D792F8144050024CAF4 /* sep4_241 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_241; sourceTree = "<group>"; };
+		CBD63D7A2F8144050024CAF4 /* sep4_215 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_215; sourceTree = "<group>"; };
+		CBD63D7B2F8144050024CAF4 /* sep4_212 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_212; sourceTree = "<group>"; };
+		CBD63D7C2F8144050024CAF4 /* sep4_224 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_224; sourceTree = "<group>"; };
+		CBD63D7D2F8144050024CAF4 /* sep4_223 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_223; sourceTree = "<group>"; };
+		CBD63D7E2F8144050024CAF4 /* sep4_197 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_197; sourceTree = "<group>"; };
+		CBD63D7F2F8144050024CAF4 /* sep4_199 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_199; sourceTree = "<group>"; };
+		CBD63D802F8144050024CAF4 /* sep4_198 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_198; sourceTree = "<group>"; };
+		CBD63D812F8144050024CAF4 /* sep4_196 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_196; sourceTree = "<group>"; };
+		CBD63D822F8144050024CAF4 /* sep4_201 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_201; sourceTree = "<group>"; };
+		CBD63D832F8144050024CAF4 /* sep4_206 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_206; sourceTree = "<group>"; };
+		CBD63D842F8144050024CAF4 /* sep4_239 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_239; sourceTree = "<group>"; };
+		CBD63D852F8144050024CAF4 /* sep4_230 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_230; sourceTree = "<group>"; };
+		CBD63D862F8144050024CAF4 /* sep4_237 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_237; sourceTree = "<group>"; };
+		CBD63D872F8144050024CAF4 /* sep4_208 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_208; sourceTree = "<group>"; };
+		CBD63D882F8144050024CAF4 /* sep4_263 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_263; sourceTree = "<group>"; };
+		CBD63D892F8144050024CAF4 /* sep4_264 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_264; sourceTree = "<group>"; };
+		CBD63D8A2F8144050024CAF4 /* sep4_252 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_252; sourceTree = "<group>"; };
+		CBD63D8B2F8144050024CAF4 /* sep4_255 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_255; sourceTree = "<group>"; };
+		CBD63D8C2F8144050024CAF4 /* sep4_236 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_236; sourceTree = "<group>"; };
+		CBD63D8D2F8144050024CAF4 /* sep4_209 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_209; sourceTree = "<group>"; };
+		CBD63D8E2F8144050024CAF4 /* sep4_231 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_231; sourceTree = "<group>"; };
+		CBD63D8F2F8144050024CAF4 /* sep4_207 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_207; sourceTree = "<group>"; };
+		CBD63D902F8144050024CAF4 /* sep4_238 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_238; sourceTree = "<group>"; };
+		CBD63D912F8144050024CAF4 /* sep4_200 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_200; sourceTree = "<group>"; };
+		CBD63D922F8144050024CAF4 /* sep4_254 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_254; sourceTree = "<group>"; };
+		CBD63D932F8144050024CAF4 /* sep4_253 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_253; sourceTree = "<group>"; };
+		CBD63D942F8144050024CAF4 /* sep4_265 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_265; sourceTree = "<group>"; };
+		CBD63D952F8144050024CAF4 /* sep4_262 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sep4_262; sourceTree = "<group>"; };
+		CBD63D962F8144050024CAF4 /* seasnam.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seasnam.txt; sourceTree = "<group>"; };
+		CBD63D972F8144050024CAF4 /* seplm108.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm108.se1; sourceTree = "<group>"; };
+		CBD63D982F8144050024CAF4 /* seplm120.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm120.se1; sourceTree = "<group>"; };
+		CBD63D992F8144050024CAF4 /* semo_138.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_138.se1; sourceTree = "<group>"; };
+		CBD63D9A2F8144050024CAF4 /* sepl_132.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_132.se1; sourceTree = "<group>"; };
+		CBD63D9B2F8144050024CAF4 /* sepl_126.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_126.se1; sourceTree = "<group>"; };
+		CBD63D9C2F8144050024CAF4 /* seas_90.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_90.se1; sourceTree = "<group>"; };
+		CBD63D9D2F8144050024CAF4 /* seas_84.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_84.se1; sourceTree = "<group>"; };
+		CBD63D9E2F8144050024CAF4 /* semom84.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom84.se1; sourceTree = "<group>"; };
+		CBD63D9F2F8144050024CAF4 /* semom90.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom90.se1; sourceTree = "<group>"; };
+		CBD63DA02F8144050024CAF4 /* sepl_90.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_90.se1; sourceTree = "<group>"; };
+		CBD63DA12F8144050024CAF4 /* sepl_84.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_84.se1; sourceTree = "<group>"; };
+		CBD63DA22F8144050024CAF4 /* semom102.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom102.se1; sourceTree = "<group>"; };
+		CBD63DA32F8144050024CAF4 /* seas_162.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_162.se1; sourceTree = "<group>"; };
+		CBD63DA42F8144050024CAF4 /* seasm12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm12.se1; sourceTree = "<group>"; };
+		CBD63DA52F8144050024CAF4 /* semom114.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom114.se1; sourceTree = "<group>"; };
+		CBD63DA62F8144050024CAF4 /* seasm06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm06.se1; sourceTree = "<group>"; };
+		CBD63DA72F8144050024CAF4 /* semo_06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_06.se1; sourceTree = "<group>"; };
+		CBD63DA82F8144050024CAF4 /* semo_12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_12.se1; sourceTree = "<group>"; };
+		CBD63DA92F8144050024CAF4 /* seplm12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm12.se1; sourceTree = "<group>"; };
+		CBD63DAA2F8144050024CAF4 /* seplm06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm06.se1; sourceTree = "<group>"; };
+		CBD63DAB2F8144050024CAF4 /* semom78.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom78.se1; sourceTree = "<group>"; };
+		CBD63DAC2F8144050024CAF4 /* seas_78.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_78.se1; sourceTree = "<group>"; };
+		CBD63DAD2F8144050024CAF4 /* sepl_78.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_78.se1; sourceTree = "<group>"; };
+		CBD63DAE2F8144050024CAF4 /* seas_138.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_138.se1; sourceTree = "<group>"; };
+		CBD63DAF2F8144050024CAF4 /* seasm48.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm48.se1; sourceTree = "<group>"; };
+		CBD63DB02F8144050024CAF4 /* semo_60.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_60.se1; sourceTree = "<group>"; };
+		CBD63DB12F8144050024CAF4 /* seasm60.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm60.se1; sourceTree = "<group>"; };
+		CBD63DB22F8144050024CAF4 /* semo_48.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_48.se1; sourceTree = "<group>"; };
+		CBD63DB32F8144050024CAF4 /* seplm48.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm48.se1; sourceTree = "<group>"; };
+		CBD63DB42F8144050024CAF4 /* seplm60.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm60.se1; sourceTree = "<group>"; };
+		CBD63DB52F8144050024CAF4 /* sepl_156.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_156.se1; sourceTree = "<group>"; };
+		CBD63DB62F8144050024CAF4 /* semom36.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom36.se1; sourceTree = "<group>"; };
+		CBD63DB72F8144050024CAF4 /* seas_36.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_36.se1; sourceTree = "<group>"; };
+		CBD63DB82F8144050024CAF4 /* sepl_36.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_36.se1; sourceTree = "<group>"; };
+		CBD63DB92F8144050024CAF4 /* seasm102.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm102.se1; sourceTree = "<group>"; };
+		CBD63DBA2F8144050024CAF4 /* seasm114.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm114.se1; sourceTree = "<group>"; };
+		CBD63DBB2F8144050024CAF4 /* semo_162.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_162.se1; sourceTree = "<group>"; };
+		CBD63DBC2F8144050024CAF4 /* seorbel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seorbel.txt; sourceTree = "<group>"; };
+		CBD63DBD2F8144050024CAF4 /* seas_102.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_102.se1; sourceTree = "<group>"; };
+		CBD63DBE2F8144050024CAF4 /* seasm66.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm66.se1; sourceTree = "<group>"; };
+		CBD63DBF2F8144050024CAF4 /* seasm72.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm72.se1; sourceTree = "<group>"; };
+		CBD63DC02F8144050024CAF4 /* semo_72.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_72.se1; sourceTree = "<group>"; };
+		CBD63DC12F8144050024CAF4 /* semo_66.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_66.se1; sourceTree = "<group>"; };
+		CBD63DC22F8144050024CAF4 /* seplm66.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm66.se1; sourceTree = "<group>"; };
+		CBD63DC32F8144050024CAF4 /* seplm72.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm72.se1; sourceTree = "<group>"; };
+		CBD63DC42F8144050024CAF4 /* sepl_144.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_144.se1; sourceTree = "<group>"; };
+		CBD63DC52F8144050024CAF4 /* sepl_150.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_150.se1; sourceTree = "<group>"; };
+		CBD63DC62F8144050024CAF4 /* semom18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom18.se1; sourceTree = "<group>"; };
+		CBD63DC72F8144050024CAF4 /* seas_30.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_30.se1; sourceTree = "<group>"; };
+		CBD63DC82F8144050024CAF4 /* seas_24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_24.se1; sourceTree = "<group>"; };
+		CBD63DC92F8144050024CAF4 /* semom24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom24.se1; sourceTree = "<group>"; };
+		CBD63DCA2F8144050024CAF4 /* semom30.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom30.se1; sourceTree = "<group>"; };
+		CBD63DCB2F8144050024CAF4 /* seas_18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_18.se1; sourceTree = "<group>"; };
+		CBD63DCC2F8144050024CAF4 /* sepl_30.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_30.se1; sourceTree = "<group>"; };
+		CBD63DCD2F8144050024CAF4 /* sepl_24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_24.se1; sourceTree = "<group>"; };
+		CBD63DCE2F8144050024CAF4 /* sepl_18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_18.se1; sourceTree = "<group>"; };
+		CBD63DCF2F8144050024CAF4 /* seas_114.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_114.se1; sourceTree = "<group>"; };
+		CBD63DD02F8144050024CAF4 /* astlistn.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = astlistn.md; sourceTree = "<group>"; };
+		CBD63DD12F8144050024CAF4 /* semo_96.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_96.se1; sourceTree = "<group>"; };
+		CBD63DD22F8144050024CAF4 /* seasm96.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm96.se1; sourceTree = "<group>"; };
+		CBD63DD32F8144050024CAF4 /* seplm96.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm96.se1; sourceTree = "<group>"; };
+		CBD63DD42F8144050024CAF4 /* sepl_162.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_162.se1; sourceTree = "<group>"; };
+		CBD63DD52F8144050024CAF4 /* seplm54.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm54.se1; sourceTree = "<group>"; };
+		CBD63DD62F8144050024CAF4 /* seasm54.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm54.se1; sourceTree = "<group>"; };
+		CBD63DD72F8144050024CAF4 /* semo_54.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_54.se1; sourceTree = "<group>"; };
+		CBD63DD82F8144050024CAF4 /* list.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = list.zip; sourceTree = "<group>"; };
+		CBD63DD92F8144050024CAF4 /* seas_126.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_126.se1; sourceTree = "<group>"; };
+		CBD63DDA2F8144050024CAF4 /* seas_132.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_132.se1; sourceTree = "<group>"; };
+		CBD63DDB2F8144050024CAF4 /* semo_42.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_42.se1; sourceTree = "<group>"; };
+		CBD63DDC2F8144050024CAF4 /* seasm42.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm42.se1; sourceTree = "<group>"; };
+		CBD63DDD2F8144050024CAF4 /* seplm42.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm42.se1; sourceTree = "<group>"; };
+		CBD63DDE2F8144050024CAF4 /* semo_156.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_156.se1; sourceTree = "<group>"; };
+		CBD63DDF2F8144050024CAF4 /* seas_00.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_00.se1; sourceTree = "<group>"; };
+		CBD63DE02F8144050024CAF4 /* sepl_00.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_00.se1; sourceTree = "<group>"; };
+		CBD63DE12F8144050024CAF4 /* seasm120.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm120.se1; sourceTree = "<group>"; };
+		CBD63DE22F8144050024CAF4 /* seasm108.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm108.se1; sourceTree = "<group>"; };
+		CBD63DE32F8144050024CAF4 /* seasm84.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm84.se1; sourceTree = "<group>"; };
+		CBD63DE42F8144050024CAF4 /* seasm90.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm90.se1; sourceTree = "<group>"; };
+		CBD63DE52F8144050024CAF4 /* semo_90.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_90.se1; sourceTree = "<group>"; };
+		CBD63DE72F8144050024CAF4 /* sepm9801.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9801.se1; sourceTree = "<group>"; };
+		CBD63DE82F8144050024CAF4 /* sepm9802.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9802.se1; sourceTree = "<group>"; };
+		CBD63DE92F8144050024CAF4 /* sepm9608.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9608.se1; sourceTree = "<group>"; };
+		CBD63DEA2F8144050024CAF4 /* sepm9999.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9999.se1; sourceTree = "<group>"; };
+		CBD63DEB2F8144050024CAF4 /* sepm9902.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9902.se1; sourceTree = "<group>"; };
+		CBD63DEC2F8144050024CAF4 /* sepm9903.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9903.se1; sourceTree = "<group>"; };
+		CBD63DED2F8144050024CAF4 /* sepm9901.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9901.se1; sourceTree = "<group>"; };
+		CBD63DEE2F8144050024CAF4 /* sepm9904.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9904.se1; sourceTree = "<group>"; };
+		CBD63DEF2F8144050024CAF4 /* sepm9905.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9905.se1; sourceTree = "<group>"; };
+		CBD63DF02F8144050024CAF4 /* plmolist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plmolist.txt; sourceTree = "<group>"; };
+		CBD63DF12F8144050024CAF4 /* sepm9899.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9899.se1; sourceTree = "<group>"; };
+		CBD63DF22F8144050024CAF4 /* sepm9704.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9704.se1; sourceTree = "<group>"; };
+		CBD63DF32F8144050024CAF4 /* sepm9705.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9705.se1; sourceTree = "<group>"; };
+		CBD63DF42F8144050024CAF4 /* sepm9699.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9699.se1; sourceTree = "<group>"; };
+		CBD63DF52F8144050024CAF4 /* sepm9504.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9504.se1; sourceTree = "<group>"; };
+		CBD63DF62F8144050024CAF4 /* sepm9702.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9702.se1; sourceTree = "<group>"; };
+		CBD63DF72F8144050024CAF4 /* sepm9501.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9501.se1; sourceTree = "<group>"; };
+		CBD63DF82F8144050024CAF4 /* sepm9703.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9703.se1; sourceTree = "<group>"; };
+		CBD63DF92F8144050024CAF4 /* sepm9701.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9701.se1; sourceTree = "<group>"; };
+		CBD63DFA2F8144050024CAF4 /* sepm9503.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9503.se1; sourceTree = "<group>"; };
+		CBD63DFB2F8144050024CAF4 /* sepm9502.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9502.se1; sourceTree = "<group>"; };
+		CBD63DFC2F8144050024CAF4 /* sepm9808.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9808.se1; sourceTree = "<group>"; };
+		CBD63DFD2F8144050024CAF4 /* sepm9607.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9607.se1; sourceTree = "<group>"; };
+		CBD63DFE2F8144050024CAF4 /* sepm9606.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9606.se1; sourceTree = "<group>"; };
+		CBD63DFF2F8144050024CAF4 /* sepm9799.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9799.se1; sourceTree = "<group>"; };
+		CBD63E002F8144050024CAF4 /* sepm9599.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9599.se1; sourceTree = "<group>"; };
+		CBD63E012F8144050024CAF4 /* sepm9604.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9604.se1; sourceTree = "<group>"; };
+		CBD63E022F8144050024CAF4 /* sepm9605.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9605.se1; sourceTree = "<group>"; };
+		CBD63E032F8144050024CAF4 /* sepm9601.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9601.se1; sourceTree = "<group>"; };
+		CBD63E042F8144050024CAF4 /* sepm9402.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9402.se1; sourceTree = "<group>"; };
+		CBD63E052F8144050024CAF4 /* sepm9602.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9602.se1; sourceTree = "<group>"; };
+		CBD63E062F8144050024CAF4 /* sepm9603.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9603.se1; sourceTree = "<group>"; };
+		CBD63E072F8144050024CAF4 /* sepm9401.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepm9401.se1; sourceTree = "<group>"; };
+		CBD63E082F8144050024CAF4 /* semo_84.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_84.se1; sourceTree = "<group>"; };
+		CBD63E092F8144050024CAF4 /* seplm84.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm84.se1; sourceTree = "<group>"; };
+		CBD63E0A2F8144050024CAF4 /* seplm90.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm90.se1; sourceTree = "<group>"; };
+		CBD63E0B2F8144050024CAF4 /* seas_108.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_108.se1; sourceTree = "<group>"; };
+		CBD63E0C2F8144050024CAF4 /* seas_120.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_120.se1; sourceTree = "<group>"; };
+		CBD63E0D2F8144060024CAF4 /* semo_78.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_78.se1; sourceTree = "<group>"; };
+		CBD63E0E2F8144060024CAF4 /* seasm78.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm78.se1; sourceTree = "<group>"; };
+		CBD63E0F2F8144060024CAF4 /* seplm78.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm78.se1; sourceTree = "<group>"; };
+		CBD63E102F8144060024CAF4 /* semo_144.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_144.se1; sourceTree = "<group>"; };
+		CBD63E112F8144060024CAF4 /* seas_06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_06.se1; sourceTree = "<group>"; };
+		CBD63E122F8144060024CAF4 /* seas_12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_12.se1; sourceTree = "<group>"; };
+		CBD63E132F8144060024CAF4 /* semo_150.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_150.se1; sourceTree = "<group>"; };
+		CBD63E142F8144060024CAF4 /* semom12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom12.se1; sourceTree = "<group>"; };
+		CBD63E152F8144060024CAF4 /* semom06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom06.se1; sourceTree = "<group>"; };
+		CBD63E162F8144060024CAF4 /* sepl_06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_06.se1; sourceTree = "<group>"; };
+		CBD63E172F8144060024CAF4 /* sepl_12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_12.se1; sourceTree = "<group>"; };
+		CBD63E182F8144060024CAF4 /* seasm126.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm126.se1; sourceTree = "<group>"; };
+		CBD63E192F8144060024CAF4 /* seasm132.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm132.se1; sourceTree = "<group>"; };
+		CBD63E1A2F8144060024CAF4 /* swe_deltat.inactive.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swe_deltat.inactive.txt; sourceTree = "<group>"; };
+		CBD63E1B2F8144060024CAF4 /* semo_36.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_36.se1; sourceTree = "<group>"; };
+		CBD63E1C2F8144060024CAF4 /* seasm36.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm36.se1; sourceTree = "<group>"; };
+		CBD63E1D2F8144060024CAF4 /* seplm36.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm36.se1; sourceTree = "<group>"; };
+		CBD63E1E2F8144060024CAF4 /* sepl_114.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_114.se1; sourceTree = "<group>"; };
+		CBD63E1F2F8144060024CAF4 /* semom60.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom60.se1; sourceTree = "<group>"; };
+		CBD63E202F8144060024CAF4 /* seas_48.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_48.se1; sourceTree = "<group>"; };
+		CBD63E212F8144060024CAF4 /* semom48.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom48.se1; sourceTree = "<group>"; };
+		CBD63E222F8144060024CAF4 /* seas_60.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_60.se1; sourceTree = "<group>"; };
+		CBD63E232F8144060024CAF4 /* sepl_48.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_48.se1; sourceTree = "<group>"; };
+		CBD63E242F8144060024CAF4 /* sepl_60.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_60.se1; sourceTree = "<group>"; };
+		CBD63E252F8144060024CAF4 /* semo_120.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_120.se1; sourceTree = "<group>"; };
+		CBD63E262F8144060024CAF4 /* semo_108.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_108.se1; sourceTree = "<group>"; };
+		CBD63E272F8144060024CAF4 /* sepl_102.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_102.se1; sourceTree = "<group>"; };
+		CBD63E282F8144060024CAF4 /* semom132.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom132.se1; sourceTree = "<group>"; };
+		CBD63E292F8144060024CAF4 /* semom126.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom126.se1; sourceTree = "<group>"; };
+		CBD63E2A2F8144060024CAF4 /* seas_150.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_150.se1; sourceTree = "<group>"; };
+		CBD63E2B2F8144060024CAF4 /* seas_144.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_144.se1; sourceTree = "<group>"; };
+		CBD63E2C2F8144060024CAF4 /* seasm24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm24.se1; sourceTree = "<group>"; };
+		CBD63E2D2F8144060024CAF4 /* seasm30.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm30.se1; sourceTree = "<group>"; };
+		CBD63E2E2F8144060024CAF4 /* semo_18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_18.se1; sourceTree = "<group>"; };
+		CBD63E2F2F8144060024CAF4 /* seasm18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seasm18.se1; sourceTree = "<group>"; };
+		CBD63E302F8144060024CAF4 /* semo_30.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_30.se1; sourceTree = "<group>"; };
+		CBD63E312F8144060024CAF4 /* semo_24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_24.se1; sourceTree = "<group>"; };
+		CBD63E322F8144060024CAF4 /* seplm24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm24.se1; sourceTree = "<group>"; };
+		CBD63E332F8144060024CAF4 /* seplm30.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm30.se1; sourceTree = "<group>"; };
+		CBD63E342F8144060024CAF4 /* seplm18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm18.se1; sourceTree = "<group>"; };
+		CBD63E352F8144060024CAF4 /* seas_72.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_72.se1; sourceTree = "<group>"; };
+		CBD63E362F8144060024CAF4 /* seas_66.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_66.se1; sourceTree = "<group>"; };
+		CBD63E372F8144060024CAF4 /* semom66.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom66.se1; sourceTree = "<group>"; };
+		CBD63E382F8144060024CAF4 /* semom72.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom72.se1; sourceTree = "<group>"; };
+		CBD63E392F8144060024CAF4 /* seplm114.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm114.se1; sourceTree = "<group>"; };
+		CBD63E3A2F8144060024CAF4 /* sepl_72.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_72.se1; sourceTree = "<group>"; };
+		CBD63E3B2F8144060024CAF4 /* sepl_66.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_66.se1; sourceTree = "<group>"; };
+		CBD63E3C2F8144060024CAF4 /* seplm102.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seplm102.se1; sourceTree = "<group>"; };
+		CBD63E3D2F8144060024CAF4 /* semo_132.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_132.se1; sourceTree = "<group>"; };
+		CBD63E3E2F8144060024CAF4 /* sefstars.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sefstars.txt; sourceTree = "<group>"; };
+		CBD63E3F2F8144060024CAF4 /* semo_126.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_126.se1; sourceTree = "<group>"; };
+		CBD63E402F8144060024CAF4 /* sepl_138.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_138.se1; sourceTree = "<group>"; };
+		CBD63E412F8144060024CAF4 /* semom108.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom108.se1; sourceTree = "<group>"; };
+		CBD63E422F8144060024CAF4 /* semom120.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semom120.se1; sourceTree = "<group>"; };
+		CBD63E432F8144060024CAF4 /* seas_156.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_156.se1; sourceTree = "<group>"; };
+		CBD63F492F8144280024CAF4 /* EphemerisTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EphemerisTests.swift; sourceTree = "<group>"; };
+		CBD63F4A2F8144280024CAF4 /* test_graha_positions.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = test_graha_positions.py; sourceTree = "<group>"; };
+		CBD63F4C2F8144280024CAF4 /* graha_fixtures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = graha_fixtures.json; sourceTree = "<group>"; };
+		CBD63F512F81463E0024CAF4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CBF642272F8158500097D194 /* VedicSkyview-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VedicSkyview-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CBD63CA82F8140020024CAF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBD63CB82F8140060024CAF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBD63F522F81463E0024CAF4 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBD63CC22F8140060024CAF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CBD63CA22F8140020024CAF4 = {
+			isa = PBXGroup;
+			children = (
+				CBF642272F8158500097D194 /* VedicSkyview-Bridging-Header.h */,
+				CBD63F472F8144280024CAF4 /* Tests */,
+				CBD63D3D2F8144050024CAF4 /* Resources */,
+				CBD63D3A2F8143CF0024CAF4 /* Ephemeris */,
+				CBD63CDA2F8143690024CAF4 /* Source */,
+				CBD63CAD2F8140020024CAF4 /* Vedic Skyview */,
+				CBD63CBE2F8140060024CAF4 /* Vedic SkyviewTests */,
+				CBD63CC82F8140060024CAF4 /* Vedic SkyviewUITests */,
+				CBD63CAC2F8140020024CAF4 /* Products */,
+				CBD63F502F81463D0024CAF4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CBD63CAC2F8140020024CAF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CAB2F8140020024CAF4 /* Vedic Skyview.app */,
+				CBD63CBB2F8140060024CAF4 /* Vedic SkyviewTests.xctest */,
+				CBD63CC52F8140060024CAF4 /* Vedic SkyviewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CBD63CAD2F8140020024CAF4 /* Vedic Skyview */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CAE2F8140020024CAF4 /* Vedic_SkyviewApp.swift */,
+				CBD63CB02F8140020024CAF4 /* ContentView.swift */,
+				CBD63CB22F8140050024CAF4 /* Assets.xcassets */,
+				CBD63CB42F8140060024CAF4 /* Preview Content */,
+			);
+			path = "Vedic Skyview";
+			sourceTree = "<group>";
+		};
+		CBD63CB42F8140060024CAF4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CB52F8140060024CAF4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CBD63CBE2F8140060024CAF4 /* Vedic SkyviewTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CBF2F8140060024CAF4 /* Vedic_SkyviewTests.swift */,
+			);
+			path = "Vedic SkyviewTests";
+			sourceTree = "<group>";
+		};
+		CBD63CC82F8140060024CAF4 /* Vedic SkyviewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CC92F8140060024CAF4 /* Vedic_SkyviewUITests.swift */,
+				CBD63CCB2F8140060024CAF4 /* Vedic_SkyviewUITestsLaunchTests.swift */,
+			);
+			path = "Vedic SkyviewUITests";
+			sourceTree = "<group>";
+		};
+		CBD63CDA2F8143690024CAF4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CDB2F8143690024CAF4 /* ThirdParty */,
+			);
+			name = Source;
+			path = ../Source;
+			sourceTree = "<group>";
+		};
+		CBD63CDB2F8143690024CAF4 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CDC2F8143690024CAF4 /* swisseph */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		CBD63CDC2F8143690024CAF4 /* swisseph */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63CDD2F8143690024CAF4 /* suite_03_misc.c */,
+				CBD63CDE2F8143690024CAF4 /* swewin.h */,
+				CBD63CDF2F8143690024CAF4 /* testdata.h */,
+				CBD63CE02F8143690024CAF4 /* swemptab.h */,
+				CBD63CE12F8143690024CAF4 /* constants.c */,
+				CBD63CE22F8143690024CAF4 /* reader.h */,
+				CBD63CE32F8143690024CAF4 /* swewin64.h */,
+				CBD63CE42F8143690024CAF4 /* testsuite_facade.h */,
+				CBD63CE52F8143690024CAF4 /* swemmoon.c */,
+				CBD63CE62F8143690024CAF4 /* suite_06_houses.c */,
+				CBD63CE72F8143690024CAF4 /* swevents.h */,
+				CBD63CE82F8143690024CAF4 /* sweephe4.c */,
+				CBD63CE92F8143690024CAF4 /* globals_suite.c */,
+				CBD63CEA2F8143690024CAF4 /* swehouse.h */,
+				CBD63CEB2F8143690024CAF4 /* swephexp.h */,
+				CBD63CEC2F8143690024CAF4 /* setest.h */,
+				CBD63CED2F8143690024CAF4 /* sweph.h */,
+				CBD63CEE2F8143690024CAF4 /* swedate.h */,
+				CBD63CEF2F8143690024CAF4 /* swehel.c */,
+				CBD63CF02F8143690024CAF4 /* checkpoints.h */,
+				CBD63CF12F8143690024CAF4 /* swejpl.h */,
+				CBD63CF22F8143690024CAF4 /* multivalues.h */,
+				CBD63CF32F8143690024CAF4 /* suite_05_date_time.c */,
+				CBD63CF42F8143690024CAF4 /* globals.h */,
+				CBD63CF52F8143690024CAF4 /* swephlib.h */,
+				CBD63CF62F8143690024CAF4 /* swewin64.c */,
+				CBD63CF72F8143690024CAF4 /* suite_09_rise.c */,
+				CBD63CF82F8143690024CAF4 /* reader.c */,
+				CBD63CF92F8143690024CAF4 /* testdata.c */,
+				CBD63CFA2F8143690024CAF4 /* swewin.c */,
+				CBD63CFB2F8143690024CAF4 /* swephgen4.c */,
+				CBD63CFC2F8143690024CAF4 /* suite_02_fixstar.c */,
+				CBD63CFD2F8143690024CAF4 /* swedll.h */,
+				CBD63CFE2F8143690024CAF4 /* swehouse.c */,
+				CBD63CFF2F8143690024CAF4 /* swecl.c */,
+				CBD63D002F8143690024CAF4 /* suite_10_solcross.c */,
+				CBD63D012F8143690024CAF4 /* sweephe4.h */,
+				CBD63D022F8143690024CAF4 /* resource.h */,
+				CBD63D032F8143690024CAF4 /* swenut2000a.h */,
+				CBD63D042F8143690024CAF4 /* swevents.c */,
+				CBD63D052F8143690024CAF4 /* suite_04_ayanamsa.c */,
+				CBD63D062F8143690024CAF4 /* sweph.c */,
+				CBD63D072F8143690024CAF4 /* swedate.c */,
+				CBD63D082F8143690024CAF4 /* swetest.c */,
+				CBD63D092F8143690024CAF4 /* suite_08_eclipses.c */,
+				CBD63D0A2F8143690024CAF4 /* suite_01_calc.c */,
+				CBD63D0B2F8143690024CAF4 /* setest.c */,
+				CBD63D0C2F8143690024CAF4 /* swemplan.c */,
+				CBD63D0D2F8143690024CAF4 /* swephlib.c */,
+				CBD63D0E2F8143690024CAF4 /* suite_07_apsides.c */,
+				CBD63D0F2F8143690024CAF4 /* obama.c */,
+				CBD63D102F8143690024CAF4 /* globals.c */,
+				CBD63D112F8143690024CAF4 /* testsuite_final.h */,
+				CBD63D122F8143690024CAF4 /* swejpl.c */,
+				CBD63D132F8143690024CAF4 /* multivalues.c */,
+				CBD63D142F8143690024CAF4 /* sweodef.h */,
+				CBD63D152F8143690024CAF4 /* checkpoints.c */,
+				CBD63D162F8143690024CAF4 /* swemini.c */,
+			);
+			path = swisseph;
+			sourceTree = "<group>";
+		};
+		CBD63D3A2F8143CF0024CAF4 /* Ephemeris */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63D3B2F8143CF0024CAF4 /* EphemerisEngine.swift */,
+			);
+			name = Ephemeris;
+			path = ../Ephemeris;
+			sourceTree = "<group>";
+		};
+		CBD63D3D2F8144050024CAF4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63D3E2F8144050024CAF4 /* ephemeris */,
+			);
+			name = Resources;
+			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		CBD63D3E2F8144050024CAF4 /* ephemeris */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63D3F2F8144050024CAF4 /* sepl_54.se1 */,
+				CBD63D402F8144050024CAF4 /* seplm132.se1 */,
+				CBD63D412F8144050024CAF4 /* seplm126.se1 */,
+				CBD63D422F8144050024CAF4 /* seas_54.se1 */,
+				CBD63D432F8144050024CAF4 /* semo_102.se1 */,
+				CBD63D442F8144050024CAF4 /* semom54.se1 */,
+				CBD63D452F8144050024CAF4 /* sepl_120.se1 */,
+				CBD63D462F8144050024CAF4 /* sepl_108.se1 */,
+				CBD63D472F8144050024CAF4 /* semom96.se1 */,
+				CBD63D482F8144050024CAF4 /* seas_96.se1 */,
+				CBD63D492F8144050024CAF4 /* sepl_96.se1 */,
+				CBD63D4A2F8144050024CAF4 /* semo_00.se1 */,
+				CBD63D4B2F8144050024CAF4 /* semom42.se1 */,
+				CBD63D4C2F8144050024CAF4 /* semo_114.se1 */,
+				CBD63D4D2F8144050024CAF4 /* seas_42.se1 */,
+				CBD63D4E2F8144050024CAF4 /* sepl_42.se1 */,
+				CBD63D4F2F8144050024CAF4 /* ep4 */,
+				CBD63D962F8144050024CAF4 /* seasnam.txt */,
+				CBD63D972F8144050024CAF4 /* seplm108.se1 */,
+				CBD63D982F8144050024CAF4 /* seplm120.se1 */,
+				CBD63D992F8144050024CAF4 /* semo_138.se1 */,
+				CBD63D9A2F8144050024CAF4 /* sepl_132.se1 */,
+				CBD63D9B2F8144050024CAF4 /* sepl_126.se1 */,
+				CBD63D9C2F8144050024CAF4 /* seas_90.se1 */,
+				CBD63D9D2F8144050024CAF4 /* seas_84.se1 */,
+				CBD63D9E2F8144050024CAF4 /* semom84.se1 */,
+				CBD63D9F2F8144050024CAF4 /* semom90.se1 */,
+				CBD63DA02F8144050024CAF4 /* sepl_90.se1 */,
+				CBD63DA12F8144050024CAF4 /* sepl_84.se1 */,
+				CBD63DA22F8144050024CAF4 /* semom102.se1 */,
+				CBD63DA32F8144050024CAF4 /* seas_162.se1 */,
+				CBD63DA42F8144050024CAF4 /* seasm12.se1 */,
+				CBD63DA52F8144050024CAF4 /* semom114.se1 */,
+				CBD63DA62F8144050024CAF4 /* seasm06.se1 */,
+				CBD63DA72F8144050024CAF4 /* semo_06.se1 */,
+				CBD63DA82F8144050024CAF4 /* semo_12.se1 */,
+				CBD63DA92F8144050024CAF4 /* seplm12.se1 */,
+				CBD63DAA2F8144050024CAF4 /* seplm06.se1 */,
+				CBD63DAB2F8144050024CAF4 /* semom78.se1 */,
+				CBD63DAC2F8144050024CAF4 /* seas_78.se1 */,
+				CBD63DAD2F8144050024CAF4 /* sepl_78.se1 */,
+				CBD63DAE2F8144050024CAF4 /* seas_138.se1 */,
+				CBD63DAF2F8144050024CAF4 /* seasm48.se1 */,
+				CBD63DB02F8144050024CAF4 /* semo_60.se1 */,
+				CBD63DB12F8144050024CAF4 /* seasm60.se1 */,
+				CBD63DB22F8144050024CAF4 /* semo_48.se1 */,
+				CBD63DB32F8144050024CAF4 /* seplm48.se1 */,
+				CBD63DB42F8144050024CAF4 /* seplm60.se1 */,
+				CBD63DB52F8144050024CAF4 /* sepl_156.se1 */,
+				CBD63DB62F8144050024CAF4 /* semom36.se1 */,
+				CBD63DB72F8144050024CAF4 /* seas_36.se1 */,
+				CBD63DB82F8144050024CAF4 /* sepl_36.se1 */,
+				CBD63DB92F8144050024CAF4 /* seasm102.se1 */,
+				CBD63DBA2F8144050024CAF4 /* seasm114.se1 */,
+				CBD63DBB2F8144050024CAF4 /* semo_162.se1 */,
+				CBD63DBC2F8144050024CAF4 /* seorbel.txt */,
+				CBD63DBD2F8144050024CAF4 /* seas_102.se1 */,
+				CBD63DBE2F8144050024CAF4 /* seasm66.se1 */,
+				CBD63DBF2F8144050024CAF4 /* seasm72.se1 */,
+				CBD63DC02F8144050024CAF4 /* semo_72.se1 */,
+				CBD63DC12F8144050024CAF4 /* semo_66.se1 */,
+				CBD63DC22F8144050024CAF4 /* seplm66.se1 */,
+				CBD63DC32F8144050024CAF4 /* seplm72.se1 */,
+				CBD63DC42F8144050024CAF4 /* sepl_144.se1 */,
+				CBD63DC52F8144050024CAF4 /* sepl_150.se1 */,
+				CBD63DC62F8144050024CAF4 /* semom18.se1 */,
+				CBD63DC72F8144050024CAF4 /* seas_30.se1 */,
+				CBD63DC82F8144050024CAF4 /* seas_24.se1 */,
+				CBD63DC92F8144050024CAF4 /* semom24.se1 */,
+				CBD63DCA2F8144050024CAF4 /* semom30.se1 */,
+				CBD63DCB2F8144050024CAF4 /* seas_18.se1 */,
+				CBD63DCC2F8144050024CAF4 /* sepl_30.se1 */,
+				CBD63DCD2F8144050024CAF4 /* sepl_24.se1 */,
+				CBD63DCE2F8144050024CAF4 /* sepl_18.se1 */,
+				CBD63DCF2F8144050024CAF4 /* seas_114.se1 */,
+				CBD63DD02F8144050024CAF4 /* astlistn.md */,
+				CBD63DD12F8144050024CAF4 /* semo_96.se1 */,
+				CBD63DD22F8144050024CAF4 /* seasm96.se1 */,
+				CBD63DD32F8144050024CAF4 /* seplm96.se1 */,
+				CBD63DD42F8144050024CAF4 /* sepl_162.se1 */,
+				CBD63DD52F8144050024CAF4 /* seplm54.se1 */,
+				CBD63DD62F8144050024CAF4 /* seasm54.se1 */,
+				CBD63DD72F8144050024CAF4 /* semo_54.se1 */,
+				CBD63DD82F8144050024CAF4 /* list.zip */,
+				CBD63DD92F8144050024CAF4 /* seas_126.se1 */,
+				CBD63DDA2F8144050024CAF4 /* seas_132.se1 */,
+				CBD63DDB2F8144050024CAF4 /* semo_42.se1 */,
+				CBD63DDC2F8144050024CAF4 /* seasm42.se1 */,
+				CBD63DDD2F8144050024CAF4 /* seplm42.se1 */,
+				CBD63DDE2F8144050024CAF4 /* semo_156.se1 */,
+				CBD63DDF2F8144050024CAF4 /* seas_00.se1 */,
+				CBD63DE02F8144050024CAF4 /* sepl_00.se1 */,
+				CBD63DE12F8144050024CAF4 /* seasm120.se1 */,
+				CBD63DE22F8144050024CAF4 /* seasm108.se1 */,
+				CBD63DE32F8144050024CAF4 /* seasm84.se1 */,
+				CBD63DE42F8144050024CAF4 /* seasm90.se1 */,
+				CBD63DE52F8144050024CAF4 /* semo_90.se1 */,
+				CBD63DE62F8144050024CAF4 /* sat */,
+				CBD63E082F8144050024CAF4 /* semo_84.se1 */,
+				CBD63E092F8144050024CAF4 /* seplm84.se1 */,
+				CBD63E0A2F8144050024CAF4 /* seplm90.se1 */,
+				CBD63E0B2F8144050024CAF4 /* seas_108.se1 */,
+				CBD63E0C2F8144050024CAF4 /* seas_120.se1 */,
+				CBD63E0D2F8144060024CAF4 /* semo_78.se1 */,
+				CBD63E0E2F8144060024CAF4 /* seasm78.se1 */,
+				CBD63E0F2F8144060024CAF4 /* seplm78.se1 */,
+				CBD63E102F8144060024CAF4 /* semo_144.se1 */,
+				CBD63E112F8144060024CAF4 /* seas_06.se1 */,
+				CBD63E122F8144060024CAF4 /* seas_12.se1 */,
+				CBD63E132F8144060024CAF4 /* semo_150.se1 */,
+				CBD63E142F8144060024CAF4 /* semom12.se1 */,
+				CBD63E152F8144060024CAF4 /* semom06.se1 */,
+				CBD63E162F8144060024CAF4 /* sepl_06.se1 */,
+				CBD63E172F8144060024CAF4 /* sepl_12.se1 */,
+				CBD63E182F8144060024CAF4 /* seasm126.se1 */,
+				CBD63E192F8144060024CAF4 /* seasm132.se1 */,
+				CBD63E1A2F8144060024CAF4 /* swe_deltat.inactive.txt */,
+				CBD63E1B2F8144060024CAF4 /* semo_36.se1 */,
+				CBD63E1C2F8144060024CAF4 /* seasm36.se1 */,
+				CBD63E1D2F8144060024CAF4 /* seplm36.se1 */,
+				CBD63E1E2F8144060024CAF4 /* sepl_114.se1 */,
+				CBD63E1F2F8144060024CAF4 /* semom60.se1 */,
+				CBD63E202F8144060024CAF4 /* seas_48.se1 */,
+				CBD63E212F8144060024CAF4 /* semom48.se1 */,
+				CBD63E222F8144060024CAF4 /* seas_60.se1 */,
+				CBD63E232F8144060024CAF4 /* sepl_48.se1 */,
+				CBD63E242F8144060024CAF4 /* sepl_60.se1 */,
+				CBD63E252F8144060024CAF4 /* semo_120.se1 */,
+				CBD63E262F8144060024CAF4 /* semo_108.se1 */,
+				CBD63E272F8144060024CAF4 /* sepl_102.se1 */,
+				CBD63E282F8144060024CAF4 /* semom132.se1 */,
+				CBD63E292F8144060024CAF4 /* semom126.se1 */,
+				CBD63E2A2F8144060024CAF4 /* seas_150.se1 */,
+				CBD63E2B2F8144060024CAF4 /* seas_144.se1 */,
+				CBD63E2C2F8144060024CAF4 /* seasm24.se1 */,
+				CBD63E2D2F8144060024CAF4 /* seasm30.se1 */,
+				CBD63E2E2F8144060024CAF4 /* semo_18.se1 */,
+				CBD63E2F2F8144060024CAF4 /* seasm18.se1 */,
+				CBD63E302F8144060024CAF4 /* semo_30.se1 */,
+				CBD63E312F8144060024CAF4 /* semo_24.se1 */,
+				CBD63E322F8144060024CAF4 /* seplm24.se1 */,
+				CBD63E332F8144060024CAF4 /* seplm30.se1 */,
+				CBD63E342F8144060024CAF4 /* seplm18.se1 */,
+				CBD63E352F8144060024CAF4 /* seas_72.se1 */,
+				CBD63E362F8144060024CAF4 /* seas_66.se1 */,
+				CBD63E372F8144060024CAF4 /* semom66.se1 */,
+				CBD63E382F8144060024CAF4 /* semom72.se1 */,
+				CBD63E392F8144060024CAF4 /* seplm114.se1 */,
+				CBD63E3A2F8144060024CAF4 /* sepl_72.se1 */,
+				CBD63E3B2F8144060024CAF4 /* sepl_66.se1 */,
+				CBD63E3C2F8144060024CAF4 /* seplm102.se1 */,
+				CBD63E3D2F8144060024CAF4 /* semo_132.se1 */,
+				CBD63E3E2F8144060024CAF4 /* sefstars.txt */,
+				CBD63E3F2F8144060024CAF4 /* semo_126.se1 */,
+				CBD63E402F8144060024CAF4 /* sepl_138.se1 */,
+				CBD63E412F8144060024CAF4 /* semom108.se1 */,
+				CBD63E422F8144060024CAF4 /* semom120.se1 */,
+				CBD63E432F8144060024CAF4 /* seas_156.se1 */,
+			);
+			path = ephemeris;
+			sourceTree = "<group>";
+		};
+		CBD63D4F2F8144050024CAF4 /* ep4 */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63D502F8144050024CAF4 /* sep4_219 */,
+				CBD63D512F8144050024CAF4 /* sep4_226 */,
+				CBD63D522F8144050024CAF4 /* sep4_221 */,
+				CBD63D532F8144050024CAF4 /* sep4_228 */,
+				CBD63D542F8144050024CAF4 /* sep4_217 */,
+				CBD63D552F8144050024CAF4 /* sep4_210 */,
+				CBD63D562F8144050024CAF4 /* sep4_244 */,
+				CBD63D572F8144050024CAF4 /* sep4_243 */,
+				CBD63D582F8144050024CAF4 /* sep4_211 */,
+				CBD63D592F8144050024CAF4 /* sep4_229 */,
+				CBD63D5A2F8144050024CAF4 /* sep4_216 */,
+				CBD63D5B2F8144050024CAF4 /* sep4_220 */,
+				CBD63D5C2F8144050024CAF4 /* sep4_218 */,
+				CBD63D5D2F8144050024CAF4 /* sep4_227 */,
+				CBD63D5E2F8144050024CAF4 /* sep4_242 */,
+				CBD63D5F2F8144050024CAF4 /* sep4_245 */,
+				CBD63D602F8144050024CAF4 /* sep4_258 */,
+				CBD63D612F8144050024CAF4 /* sep4_260 */,
+				CBD63D622F8144050024CAF4 /* sep4_256 */,
+				CBD63D632F8144050024CAF4 /* sep4_251 */,
+				CBD63D642F8144050024CAF4 /* sep4_205 */,
+				CBD63D652F8144050024CAF4 /* sep4_202 */,
+				CBD63D662F8144050024CAF4 /* sep4_234 */,
+				CBD63D672F8144050024CAF4 /* sep4_233 */,
+				CBD63D682F8144050024CAF4 /* sep4_250 */,
+				CBD63D692F8144050024CAF4 /* sep4_257 */,
+				CBD63D6A2F8144050024CAF4 /* sep4_261 */,
+				CBD63D6B2F8144050024CAF4 /* sep4_259 */,
+				CBD63D6C2F8144050024CAF4 /* sep4_232 */,
+				CBD63D6D2F8144050024CAF4 /* sep4_235 */,
+				CBD63D6E2F8144050024CAF4 /* sep4_203 */,
+				CBD63D6F2F8144050024CAF4 /* sep4_204 */,
+				CBD63D702F8144050024CAF4 /* sep4_240 */,
+				CBD63D712F8144050024CAF4 /* sep4_247 */,
+				CBD63D722F8144050024CAF4 /* sep4_249 */,
+				CBD63D732F8144050024CAF4 /* sep4_222 */,
+				CBD63D742F8144050024CAF4 /* sep4_225 */,
+				CBD63D752F8144050024CAF4 /* sep4_213 */,
+				CBD63D762F8144050024CAF4 /* sep4_214 */,
+				CBD63D772F8144050024CAF4 /* sep4_248 */,
+				CBD63D782F8144050024CAF4 /* sep4_246 */,
+				CBD63D792F8144050024CAF4 /* sep4_241 */,
+				CBD63D7A2F8144050024CAF4 /* sep4_215 */,
+				CBD63D7B2F8144050024CAF4 /* sep4_212 */,
+				CBD63D7C2F8144050024CAF4 /* sep4_224 */,
+				CBD63D7D2F8144050024CAF4 /* sep4_223 */,
+				CBD63D7E2F8144050024CAF4 /* sep4_197 */,
+				CBD63D7F2F8144050024CAF4 /* sep4_199 */,
+				CBD63D802F8144050024CAF4 /* sep4_198 */,
+				CBD63D812F8144050024CAF4 /* sep4_196 */,
+				CBD63D822F8144050024CAF4 /* sep4_201 */,
+				CBD63D832F8144050024CAF4 /* sep4_206 */,
+				CBD63D842F8144050024CAF4 /* sep4_239 */,
+				CBD63D852F8144050024CAF4 /* sep4_230 */,
+				CBD63D862F8144050024CAF4 /* sep4_237 */,
+				CBD63D872F8144050024CAF4 /* sep4_208 */,
+				CBD63D882F8144050024CAF4 /* sep4_263 */,
+				CBD63D892F8144050024CAF4 /* sep4_264 */,
+				CBD63D8A2F8144050024CAF4 /* sep4_252 */,
+				CBD63D8B2F8144050024CAF4 /* sep4_255 */,
+				CBD63D8C2F8144050024CAF4 /* sep4_236 */,
+				CBD63D8D2F8144050024CAF4 /* sep4_209 */,
+				CBD63D8E2F8144050024CAF4 /* sep4_231 */,
+				CBD63D8F2F8144050024CAF4 /* sep4_207 */,
+				CBD63D902F8144050024CAF4 /* sep4_238 */,
+				CBD63D912F8144050024CAF4 /* sep4_200 */,
+				CBD63D922F8144050024CAF4 /* sep4_254 */,
+				CBD63D932F8144050024CAF4 /* sep4_253 */,
+				CBD63D942F8144050024CAF4 /* sep4_265 */,
+				CBD63D952F8144050024CAF4 /* sep4_262 */,
+			);
+			path = ep4;
+			sourceTree = "<group>";
+		};
+		CBD63DE62F8144050024CAF4 /* sat */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63DE72F8144050024CAF4 /* sepm9801.se1 */,
+				CBD63DE82F8144050024CAF4 /* sepm9802.se1 */,
+				CBD63DE92F8144050024CAF4 /* sepm9608.se1 */,
+				CBD63DEA2F8144050024CAF4 /* sepm9999.se1 */,
+				CBD63DEB2F8144050024CAF4 /* sepm9902.se1 */,
+				CBD63DEC2F8144050024CAF4 /* sepm9903.se1 */,
+				CBD63DED2F8144050024CAF4 /* sepm9901.se1 */,
+				CBD63DEE2F8144050024CAF4 /* sepm9904.se1 */,
+				CBD63DEF2F8144050024CAF4 /* sepm9905.se1 */,
+				CBD63DF02F8144050024CAF4 /* plmolist.txt */,
+				CBD63DF12F8144050024CAF4 /* sepm9899.se1 */,
+				CBD63DF22F8144050024CAF4 /* sepm9704.se1 */,
+				CBD63DF32F8144050024CAF4 /* sepm9705.se1 */,
+				CBD63DF42F8144050024CAF4 /* sepm9699.se1 */,
+				CBD63DF52F8144050024CAF4 /* sepm9504.se1 */,
+				CBD63DF62F8144050024CAF4 /* sepm9702.se1 */,
+				CBD63DF72F8144050024CAF4 /* sepm9501.se1 */,
+				CBD63DF82F8144050024CAF4 /* sepm9703.se1 */,
+				CBD63DF92F8144050024CAF4 /* sepm9701.se1 */,
+				CBD63DFA2F8144050024CAF4 /* sepm9503.se1 */,
+				CBD63DFB2F8144050024CAF4 /* sepm9502.se1 */,
+				CBD63DFC2F8144050024CAF4 /* sepm9808.se1 */,
+				CBD63DFD2F8144050024CAF4 /* sepm9607.se1 */,
+				CBD63DFE2F8144050024CAF4 /* sepm9606.se1 */,
+				CBD63DFF2F8144050024CAF4 /* sepm9799.se1 */,
+				CBD63E002F8144050024CAF4 /* sepm9599.se1 */,
+				CBD63E012F8144050024CAF4 /* sepm9604.se1 */,
+				CBD63E022F8144050024CAF4 /* sepm9605.se1 */,
+				CBD63E032F8144050024CAF4 /* sepm9601.se1 */,
+				CBD63E042F8144050024CAF4 /* sepm9402.se1 */,
+				CBD63E052F8144050024CAF4 /* sepm9602.se1 */,
+				CBD63E062F8144050024CAF4 /* sepm9603.se1 */,
+				CBD63E072F8144050024CAF4 /* sepm9401.se1 */,
+			);
+			path = sat;
+			sourceTree = "<group>";
+		};
+		CBD63F472F8144280024CAF4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63F482F8144280024CAF4 /* EphemerisTests */,
+				CBD63F4A2F8144280024CAF4 /* test_graha_positions.py */,
+				CBD63F4B2F8144280024CAF4 /* fixtures */,
+			);
+			name = Tests;
+			path = ../Tests;
+			sourceTree = "<group>";
+		};
+		CBD63F482F8144280024CAF4 /* EphemerisTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63F492F8144280024CAF4 /* EphemerisTests.swift */,
+			);
+			path = EphemerisTests;
+			sourceTree = "<group>";
+		};
+		CBD63F4B2F8144280024CAF4 /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63F4C2F8144280024CAF4 /* graha_fixtures.json */,
+			);
+			path = fixtures;
+			sourceTree = "<group>";
+		};
+		CBD63F502F81463D0024CAF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBD63F512F81463E0024CAF4 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBD63CAA2F8140020024CAF4 /* Vedic Skyview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBD63CCF2F8140060024CAF4 /* Build configuration list for PBXNativeTarget "Vedic Skyview" */;
+			buildPhases = (
+				CBD63CA72F8140020024CAF4 /* Sources */,
+				CBD63CA82F8140020024CAF4 /* Frameworks */,
+				CBD63CA92F8140020024CAF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Vedic Skyview";
+			productName = "Vedic Skyview";
+			productReference = CBD63CAB2F8140020024CAF4 /* Vedic Skyview.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CBD63CBA2F8140060024CAF4 /* Vedic SkyviewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBD63CD22F8140060024CAF4 /* Build configuration list for PBXNativeTarget "Vedic SkyviewTests" */;
+			buildPhases = (
+				CBD63CB72F8140060024CAF4 /* Sources */,
+				CBD63CB82F8140060024CAF4 /* Frameworks */,
+				CBD63CB92F8140060024CAF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBD63CBD2F8140060024CAF4 /* PBXTargetDependency */,
+			);
+			name = "Vedic SkyviewTests";
+			productName = "Vedic SkyviewTests";
+			productReference = CBD63CBB2F8140060024CAF4 /* Vedic SkyviewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CBD63CC42F8140060024CAF4 /* Vedic SkyviewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBD63CD52F8140060024CAF4 /* Build configuration list for PBXNativeTarget "Vedic SkyviewUITests" */;
+			buildPhases = (
+				CBD63CC12F8140060024CAF4 /* Sources */,
+				CBD63CC22F8140060024CAF4 /* Frameworks */,
+				CBD63CC32F8140060024CAF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBD63CC72F8140060024CAF4 /* PBXTargetDependency */,
+			);
+			name = "Vedic SkyviewUITests";
+			productName = "Vedic SkyviewUITests";
+			productReference = CBD63CC52F8140060024CAF4 /* Vedic SkyviewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CBD63CA32F8140020024CAF4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					CBD63CAA2F8140020024CAF4 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					CBD63CBA2F8140060024CAF4 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CBD63CAA2F8140020024CAF4;
+					};
+					CBD63CC42F8140060024CAF4 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CBD63CAA2F8140020024CAF4;
+					};
+				};
+			};
+			buildConfigurationList = CBD63CA62F8140020024CAF4 /* Build configuration list for PBXProject "Vedic Skyview" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CBD63CA22F8140020024CAF4;
+			productRefGroup = CBD63CAC2F8140020024CAF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBD63CAA2F8140020024CAF4 /* Vedic Skyview */,
+				CBD63CBA2F8140060024CAF4 /* Vedic SkyviewTests */,
+				CBD63CC42F8140060024CAF4 /* Vedic SkyviewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBD63CA92F8140020024CAF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBD63F142F8144060024CAF4 /* seas_06.se1 in Resources */,
+				CBD63E5A2F8144060024CAF4 /* sep4_244 in Resources */,
+				CBD63EA72F8144060024CAF4 /* seas_162.se1 in Resources */,
+				CBD63EAD2F8144060024CAF4 /* seplm12.se1 in Resources */,
+				CBD63E7A2F8144060024CAF4 /* sep4_214 in Resources */,
+				CBD63F412F8144060024CAF4 /* sefstars.txt in Resources */,
+				CBD63EAE2F8144060024CAF4 /* seplm06.se1 in Resources */,
+				CBD63E9D2F8144060024CAF4 /* semo_138.se1 in Resources */,
+				CBD63EF02F8144060024CAF4 /* sepm9901.se1 in Resources */,
+				CBD63EC32F8144060024CAF4 /* seasm72.se1 in Resources */,
+				CBD63EEF2F8144060024CAF4 /* sepm9903.se1 in Resources */,
+				CBD63F4E2F8144280024CAF4 /* test_graha_positions.py in Resources */,
+				CBD63E6D2F8144060024CAF4 /* sep4_257 in Resources */,
+				CBD63E502F8144060024CAF4 /* semom42.se1 in Resources */,
+				CBD63EBC2F8144060024CAF4 /* sepl_36.se1 in Resources */,
+				CBD63E572F8144060024CAF4 /* sep4_228 in Resources */,
+				CBD63F012F8144060024CAF4 /* sepm9606.se1 in Resources */,
+				CBD63EFB2F8144060024CAF4 /* sepm9703.se1 in Resources */,
+				CBD63F282F8144060024CAF4 /* semo_120.se1 in Resources */,
+				CBD63F0B2F8144060024CAF4 /* semo_84.se1 in Resources */,
+				CBD63EDE2F8144060024CAF4 /* seas_132.se1 in Resources */,
+				CBD63EB72F8144060024CAF4 /* seplm48.se1 in Resources */,
+				CBD63E552F8144060024CAF4 /* sep4_226 in Resources */,
+				CBD63EF52F8144060024CAF4 /* sepm9704.se1 in Resources */,
+				CBD63E662F8144060024CAF4 /* sep4_256 in Resources */,
+				CBD63EF92F8144060024CAF4 /* sepm9702.se1 in Resources */,
+				CBD63E8D2F8144060024CAF4 /* sep4_264 in Resources */,
+				CBD63F1A2F8144060024CAF4 /* sepl_12.se1 in Resources */,
+				CBD63E852F8144060024CAF4 /* sep4_196 in Resources */,
+				CBD63F162F8144060024CAF4 /* semo_150.se1 in Resources */,
+				CBD63F1B2F8144060024CAF4 /* seasm126.se1 in Resources */,
+				CBD63EAA2F8144060024CAF4 /* seasm06.se1 in Resources */,
+				CBD63E5C2F8144060024CAF4 /* sep4_211 in Resources */,
+				CBD63F072F8144060024CAF4 /* sepm9402.se1 in Resources */,
+				CBD63EA82F8144060024CAF4 /* seasm12.se1 in Resources */,
+				CBD63E702F8144060024CAF4 /* sep4_232 in Resources */,
+				CBD63EBF2F8144060024CAF4 /* semo_162.se1 in Resources */,
+				CBD63E752F8144060024CAF4 /* sep4_247 in Resources */,
+				CBD63F3A2F8144060024CAF4 /* semom66.se1 in Resources */,
+				CBD63E9E2F8144060024CAF4 /* sepl_132.se1 in Resources */,
+				CBD63F2E2F8144060024CAF4 /* seas_144.se1 in Resources */,
+				CBD63E4D2F8144060024CAF4 /* seas_96.se1 in Resources */,
+				CBD63EDF2F8144060024CAF4 /* semo_42.se1 in Resources */,
+				CBD63EB12F8144060024CAF4 /* sepl_78.se1 in Resources */,
+				CBD63F0F2F8144060024CAF4 /* seas_120.se1 in Resources */,
+				CBD63EC52F8144060024CAF4 /* semo_66.se1 in Resources */,
+				CBD63EDB2F8144060024CAF4 /* semo_54.se1 in Resources */,
+				CBD63E952F8144060024CAF4 /* sep4_200 in Resources */,
+				CBD63E472F8144060024CAF4 /* seas_54.se1 in Resources */,
+				CBD63EB22F8144060024CAF4 /* seas_138.se1 in Resources */,
+				CBD63EDA2F8144060024CAF4 /* seasm54.se1 in Resources */,
+				CBD63E912F8144060024CAF4 /* sep4_209 in Resources */,
+				CBD63F2F2F8144060024CAF4 /* seasm24.se1 in Resources */,
+				CBD63ECB2F8144060024CAF4 /* seas_30.se1 in Resources */,
+				CBD63EE02F8144060024CAF4 /* seasm42.se1 in Resources */,
+				CBD63EC72F8144060024CAF4 /* seplm72.se1 in Resources */,
+				CBD63ED02F8144060024CAF4 /* sepl_30.se1 in Resources */,
+				CBD63F2B2F8144060024CAF4 /* semom132.se1 in Resources */,
+				CBD63EFC2F8144060024CAF4 /* sepm9701.se1 in Resources */,
+				CBD63E652F8144060024CAF4 /* sep4_260 in Resources */,
+				CBD63EE32F8144060024CAF4 /* seas_00.se1 in Resources */,
+				CBD63EE42F8144060024CAF4 /* sepl_00.se1 in Resources */,
+				CBD63EC22F8144060024CAF4 /* seasm66.se1 in Resources */,
+				CBD63CB62F8140060024CAF4 /* Preview Assets.xcassets in Resources */,
+				CBD63EEC2F8144060024CAF4 /* sepm9608.se1 in Resources */,
+				CBD63ED42F8144060024CAF4 /* astlistn.md in Resources */,
+				CBD63E6F2F8144060024CAF4 /* sep4_259 in Resources */,
+				CBD63F3C2F8144060024CAF4 /* seplm114.se1 in Resources */,
+				CBD63ECC2F8144060024CAF4 /* seas_24.se1 in Resources */,
+				CBD63EE92F8144060024CAF4 /* semo_90.se1 in Resources */,
+				CBD63E8C2F8144060024CAF4 /* sep4_263 in Resources */,
+				CBD63EB52F8144060024CAF4 /* seasm60.se1 in Resources */,
+				CBD63EAB2F8144060024CAF4 /* semo_06.se1 in Resources */,
+				CBD63F032F8144060024CAF4 /* sepm9599.se1 in Resources */,
+				CBD63E562F8144060024CAF4 /* sep4_221 in Resources */,
+				CBD63F152F8144060024CAF4 /* seas_12.se1 in Resources */,
+				CBD63F1F2F8144060024CAF4 /* seasm36.se1 in Resources */,
+				CBD63F3B2F8144060024CAF4 /* semom72.se1 in Resources */,
+				CBD63E8B2F8144060024CAF4 /* sep4_208 in Resources */,
+				CBD63EB02F8144060024CAF4 /* seas_78.se1 in Resources */,
+				CBD63E8A2F8144060024CAF4 /* sep4_237 in Resources */,
+				CBD63E932F8144060024CAF4 /* sep4_207 in Resources */,
+				CBD63EDC2F8144060024CAF4 /* list.zip in Resources */,
+				CBD63EB82F8144060024CAF4 /* seplm60.se1 in Resources */,
+				CBD63F262F8144060024CAF4 /* sepl_48.se1 in Resources */,
+				CBD63F0D2F8144060024CAF4 /* seplm90.se1 in Resources */,
+				CBD63E6E2F8144060024CAF4 /* sep4_261 in Resources */,
+				CBD63E622F8144060024CAF4 /* sep4_242 in Resources */,
+				CBD63E632F8144060024CAF4 /* sep4_245 in Resources */,
+				CBD63EA52F8144060024CAF4 /* sepl_84.se1 in Resources */,
+				CBD63E742F8144060024CAF4 /* sep4_240 in Resources */,
+				CBD63E832F8144060024CAF4 /* sep4_199 in Resources */,
+				CBD63EE82F8144060024CAF4 /* seasm90.se1 in Resources */,
+				CBD63EA92F8144060024CAF4 /* semom114.se1 in Resources */,
+				CBD63EEA2F8144060024CAF4 /* sepm9801.se1 in Resources */,
+				CBD63F132F8144060024CAF4 /* semo_144.se1 in Resources */,
+				CBD63F192F8144060024CAF4 /* sepl_06.se1 in Resources */,
+				CBD63F1D2F8144060024CAF4 /* swe_deltat.inactive.txt in Resources */,
+				CBD63E962F8144060024CAF4 /* sep4_254 in Resources */,
+				CBD63F332F8144060024CAF4 /* semo_30.se1 in Resources */,
+				CBD63F042F8144060024CAF4 /* sepm9604.se1 in Resources */,
+				CBD63EC82F8144060024CAF4 /* sepl_144.se1 in Resources */,
+				CBD63E5F2F8144060024CAF4 /* sep4_220 in Resources */,
+				CBD63CB32F8140050024CAF4 /* Assets.xcassets in Resources */,
+				CBD63E692F8144060024CAF4 /* sep4_202 in Resources */,
+				CBD63F082F8144060024CAF4 /* sepm9602.se1 in Resources */,
+				CBD63ED12F8144060024CAF4 /* sepl_24.se1 in Resources */,
+				CBD63F1C2F8144060024CAF4 /* seasm132.se1 in Resources */,
+				CBD63ED62F8144060024CAF4 /* seasm96.se1 in Resources */,
+				CBD63F3F2F8144060024CAF4 /* seplm102.se1 in Resources */,
+				CBD63F442F8144060024CAF4 /* semom108.se1 in Resources */,
+				CBD63F2C2F8144060024CAF4 /* semom126.se1 in Resources */,
+				CBD63E7C2F8144060024CAF4 /* sep4_246 in Resources */,
+				CBD63EFF2F8144060024CAF4 /* sepm9808.se1 in Resources */,
+				CBD63E582F8144060024CAF4 /* sep4_217 in Resources */,
+				CBD63EDD2F8144060024CAF4 /* seas_126.se1 in Resources */,
+				CBD63F002F8144060024CAF4 /* sepm9607.se1 in Resources */,
+				CBD63F302F8144060024CAF4 /* seasm30.se1 in Resources */,
+				CBD63EFA2F8144060024CAF4 /* sepm9501.se1 in Resources */,
+				CBD63EE62F8144060024CAF4 /* seasm108.se1 in Resources */,
+				CBD63E4E2F8144060024CAF4 /* sepl_96.se1 in Resources */,
+				CBD63E682F8144060024CAF4 /* sep4_205 in Resources */,
+				CBD63EE12F8144060024CAF4 /* seplm42.se1 in Resources */,
+				CBD63F222F8144060024CAF4 /* semom60.se1 in Resources */,
+				CBD63ED32F8144060024CAF4 /* seas_114.se1 in Resources */,
+				CBD63E792F8144060024CAF4 /* sep4_213 in Resources */,
+				CBD63F432F8144060024CAF4 /* sepl_138.se1 in Resources */,
+				CBD63F2A2F8144060024CAF4 /* sepl_102.se1 in Resources */,
+				CBD63F242F8144060024CAF4 /* semom48.se1 in Resources */,
+				CBD63ED92F8144060024CAF4 /* seplm54.se1 in Resources */,
+				CBD63F202F8144060024CAF4 /* seplm36.se1 in Resources */,
+				CBD63F462F8144060024CAF4 /* seas_156.se1 in Resources */,
+				CBD63E822F8144060024CAF4 /* sep4_197 in Resources */,
+				CBD63F452F8144060024CAF4 /* semom120.se1 in Resources */,
+				CBD63F0C2F8144060024CAF4 /* seplm84.se1 in Resources */,
+				CBD63F3E2F8144060024CAF4 /* sepl_66.se1 in Resources */,
+				CBD63EF62F8144060024CAF4 /* sepm9705.se1 in Resources */,
+				CBD63E902F8144060024CAF4 /* sep4_236 in Resources */,
+				CBD63F182F8144060024CAF4 /* semom06.se1 in Resources */,
+				CBD63EB32F8144060024CAF4 /* seasm48.se1 in Resources */,
+				CBD63E772F8144060024CAF4 /* sep4_222 in Resources */,
+				CBD63EBD2F8144060024CAF4 /* seasm102.se1 in Resources */,
+				CBD63E8E2F8144060024CAF4 /* sep4_252 in Resources */,
+				CBD63E6B2F8144060024CAF4 /* sep4_233 in Resources */,
+				CBD63F172F8144060024CAF4 /* semom12.se1 in Resources */,
+				CBD63F292F8144060024CAF4 /* semo_108.se1 in Resources */,
+				CBD63F092F8144060024CAF4 /* sepm9603.se1 in Resources */,
+				CBD63EC92F8144060024CAF4 /* sepl_150.se1 in Resources */,
+				CBD63F392F8144060024CAF4 /* seas_66.se1 in Resources */,
+				CBD63EE52F8144060024CAF4 /* seasm120.se1 in Resources */,
+				CBD63E9C2F8144060024CAF4 /* seplm120.se1 in Resources */,
+				CBD63E452F8144060024CAF4 /* seplm132.se1 in Resources */,
+				CBD63E7E2F8144060024CAF4 /* sep4_215 in Resources */,
+				CBD63E9A2F8144060024CAF4 /* seasnam.txt in Resources */,
+				CBD63E492F8144060024CAF4 /* semom54.se1 in Resources */,
+				CBD63F312F8144060024CAF4 /* semo_18.se1 in Resources */,
+				CBD63ED52F8144060024CAF4 /* semo_96.se1 in Resources */,
+				CBD63E642F8144060024CAF4 /* sep4_258 in Resources */,
+				CBD63ECD2F8144060024CAF4 /* semom24.se1 in Resources */,
+				CBD63EE22F8144060024CAF4 /* semo_156.se1 in Resources */,
+				CBD63EA22F8144060024CAF4 /* semom84.se1 in Resources */,
+				CBD63E442F8144060024CAF4 /* sepl_54.se1 in Resources */,
+				CBD63E9B2F8144060024CAF4 /* seplm108.se1 in Resources */,
+				CBD63F1E2F8144060024CAF4 /* semo_36.se1 in Resources */,
+				CBD63EEE2F8144060024CAF4 /* sepm9902.se1 in Resources */,
+				CBD63EAC2F8144060024CAF4 /* semo_12.se1 in Resources */,
+				CBD63EFE2F8144060024CAF4 /* sepm9502.se1 in Resources */,
+				CBD63ECF2F8144060024CAF4 /* seas_18.se1 in Resources */,
+				CBD63EF12F8144060024CAF4 /* sepm9904.se1 in Resources */,
+				CBD63F382F8144060024CAF4 /* seas_72.se1 in Resources */,
+				CBD63F322F8144060024CAF4 /* seasm18.se1 in Resources */,
+				CBD63F122F8144060024CAF4 /* seplm78.se1 in Resources */,
+				CBD63E922F8144060024CAF4 /* sep4_231 in Resources */,
+				CBD63F4F2F8144280024CAF4 /* graha_fixtures.json in Resources */,
+				CBD63E7D2F8144060024CAF4 /* sep4_241 in Resources */,
+				CBD63F0E2F8144060024CAF4 /* seas_108.se1 in Resources */,
+				CBD63E7B2F8144060024CAF4 /* sep4_248 in Resources */,
+				CBD63E892F8144060024CAF4 /* sep4_230 in Resources */,
+				CBD63EA12F8144060024CAF4 /* seas_84.se1 in Resources */,
+				CBD63F3D2F8144060024CAF4 /* sepl_72.se1 in Resources */,
+				CBD63EEB2F8144060024CAF4 /* sepm9802.se1 in Resources */,
+				CBD63EB62F8144060024CAF4 /* semo_48.se1 in Resources */,
+				CBD63F362F8144060024CAF4 /* seplm30.se1 in Resources */,
+				CBD63E762F8144060024CAF4 /* sep4_249 in Resources */,
+				CBD63E7F2F8144060024CAF4 /* sep4_212 in Resources */,
+				CBD63E9F2F8144060024CAF4 /* sepl_126.se1 in Resources */,
+				CBD63F232F8144060024CAF4 /* seas_48.se1 in Resources */,
+				CBD63EC42F8144060024CAF4 /* semo_72.se1 in Resources */,
+				CBD63E722F8144060024CAF4 /* sep4_203 in Resources */,
+				CBD63EA02F8144060024CAF4 /* seas_90.se1 in Resources */,
+				CBD63F052F8144060024CAF4 /* sepm9605.se1 in Resources */,
+				CBD63E8F2F8144060024CAF4 /* sep4_255 in Resources */,
+				CBD63EB92F8144060024CAF4 /* sepl_156.se1 in Resources */,
+				CBD63ED22F8144060024CAF4 /* sepl_18.se1 in Resources */,
+				CBD63ECE2F8144060024CAF4 /* semom30.se1 in Resources */,
+				CBD63E882F8144060024CAF4 /* sep4_239 in Resources */,
+				CBD63E872F8144060024CAF4 /* sep4_206 in Resources */,
+				CBD63E732F8144060024CAF4 /* sep4_204 in Resources */,
+				CBD63E522F8144060024CAF4 /* seas_42.se1 in Resources */,
+				CBD63ECA2F8144060024CAF4 /* semom18.se1 in Resources */,
+				CBD63F422F8144060024CAF4 /* semo_126.se1 in Resources */,
+				CBD63E712F8144060024CAF4 /* sep4_235 in Resources */,
+				CBD63E6C2F8144060024CAF4 /* sep4_250 in Resources */,
+				CBD63E942F8144060024CAF4 /* sep4_238 in Resources */,
+				CBD63F212F8144060024CAF4 /* sepl_114.se1 in Resources */,
+				CBD63EA32F8144060024CAF4 /* semom90.se1 in Resources */,
+				CBD63E6A2F8144060024CAF4 /* sep4_234 in Resources */,
+				CBD63F402F8144060024CAF4 /* semo_132.se1 in Resources */,
+				CBD63E592F8144060024CAF4 /* sep4_210 in Resources */,
+				CBD63E972F8144060024CAF4 /* sep4_253 in Resources */,
+				CBD63ED82F8144060024CAF4 /* sepl_162.se1 in Resources */,
+				CBD63EC12F8144060024CAF4 /* seas_102.se1 in Resources */,
+				CBD63E462F8144060024CAF4 /* seplm126.se1 in Resources */,
+				CBD63F252F8144060024CAF4 /* seas_60.se1 in Resources */,
+				CBD63F342F8144060024CAF4 /* semo_24.se1 in Resources */,
+				CBD63E4F2F8144060024CAF4 /* semo_00.se1 in Resources */,
+				CBD63E4B2F8144060024CAF4 /* sepl_108.se1 in Resources */,
+				CBD63F372F8144060024CAF4 /* seplm18.se1 in Resources */,
+				CBD63EAF2F8144060024CAF4 /* semom78.se1 in Resources */,
+				CBD63E542F8144060024CAF4 /* sep4_219 in Resources */,
+				CBD63E5B2F8144060024CAF4 /* sep4_243 in Resources */,
+				CBD63EF42F8144060024CAF4 /* sepm9899.se1 in Resources */,
+				CBD63E782F8144060024CAF4 /* sep4_225 in Resources */,
+				CBD63E5E2F8144060024CAF4 /* sep4_216 in Resources */,
+				CBD63F102F8144060024CAF4 /* semo_78.se1 in Resources */,
+				CBD63EBB2F8144060024CAF4 /* seas_36.se1 in Resources */,
+				CBD63EA42F8144060024CAF4 /* sepl_90.se1 in Resources */,
+				CBD63EE72F8144060024CAF4 /* seasm84.se1 in Resources */,
+				CBD63E672F8144060024CAF4 /* sep4_251 in Resources */,
+				CBD63EF22F8144060024CAF4 /* sepm9905.se1 in Resources */,
+				CBD63F062F8144060024CAF4 /* sepm9601.se1 in Resources */,
+				CBD63E512F8144060024CAF4 /* semo_114.se1 in Resources */,
+				CBD63F352F8144060024CAF4 /* seplm24.se1 in Resources */,
+				CBD63EBE2F8144060024CAF4 /* seasm114.se1 in Resources */,
+				CBD63EB42F8144060024CAF4 /* semo_60.se1 in Resources */,
+				CBD63F2D2F8144060024CAF4 /* seas_150.se1 in Resources */,
+				CBD63EFD2F8144060024CAF4 /* sepm9503.se1 in Resources */,
+				CBD63E4A2F8144060024CAF4 /* sepl_120.se1 in Resources */,
+				CBD63EA62F8144060024CAF4 /* semom102.se1 in Resources */,
+				CBD63EF32F8144060024CAF4 /* plmolist.txt in Resources */,
+				CBD63F272F8144060024CAF4 /* sepl_60.se1 in Resources */,
+				CBD63ED72F8144060024CAF4 /* seplm96.se1 in Resources */,
+				CBD63EED2F8144060024CAF4 /* sepm9999.se1 in Resources */,
+				CBD63EC62F8144060024CAF4 /* seplm66.se1 in Resources */,
+				CBD63E5D2F8144060024CAF4 /* sep4_229 in Resources */,
+				CBD63E982F8144060024CAF4 /* sep4_265 in Resources */,
+				CBD63E862F8144060024CAF4 /* sep4_201 in Resources */,
+				CBD63E482F8144060024CAF4 /* semo_102.se1 in Resources */,
+				CBD63EF72F8144060024CAF4 /* sepm9699.se1 in Resources */,
+				CBD63F022F8144060024CAF4 /* sepm9799.se1 in Resources */,
+				CBD63E812F8144060024CAF4 /* sep4_223 in Resources */,
+				CBD63EBA2F8144060024CAF4 /* semom36.se1 in Resources */,
+				CBD63E4C2F8144060024CAF4 /* semom96.se1 in Resources */,
+				CBD63E532F8144060024CAF4 /* sepl_42.se1 in Resources */,
+				CBD63E842F8144060024CAF4 /* sep4_198 in Resources */,
+				CBD63E612F8144060024CAF4 /* sep4_227 in Resources */,
+				CBD63EF82F8144060024CAF4 /* sepm9504.se1 in Resources */,
+				CBD63F112F8144060024CAF4 /* seasm78.se1 in Resources */,
+				CBD63EC02F8144060024CAF4 /* seorbel.txt in Resources */,
+				CBD63E992F8144060024CAF4 /* sep4_262 in Resources */,
+				CBD63E602F8144060024CAF4 /* sep4_218 in Resources */,
+				CBD63F0A2F8144060024CAF4 /* sepm9401.se1 in Resources */,
+				CBD63E802F8144060024CAF4 /* sep4_224 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBD63CB92F8140060024CAF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBD63CC32F8140060024CAF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CBD63CA72F8140020024CAF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBD63D192F8143690024CAF4 /* swemmoon.c in Sources */,
+				CBD63D3C2F8143CF0024CAF4 /* EphemerisEngine.swift in Sources */,
+				CBD63D322F81436A0024CAF4 /* swephlib.c in Sources */,
+				CBD63D262F8143690024CAF4 /* swehouse.c in Sources */,
+				CBD63D1D2F8143690024CAF4 /* swehel.c in Sources */,
+				CBD63D2C2F81436A0024CAF4 /* swedate.c in Sources */,
+				CBD63D272F8143690024CAF4 /* swecl.c in Sources */,
+				CBD63D352F81436A0024CAF4 /* globals.c in Sources */,
+				CBD63CB12F8140020024CAF4 /* ContentView.swift in Sources */,
+				CBD63D182F8143690024CAF4 /* constants.c in Sources */,
+				CBD63D2B2F81436A0024CAF4 /* sweph.c in Sources */,
+				CBD63D362F81436A0024CAF4 /* swejpl.c in Sources */,
+				CBD63D1B2F8143690024CAF4 /* sweephe4.c in Sources */,
+				CBD63CAF2F8140020024CAF4 /* Vedic_SkyviewApp.swift in Sources */,
+				CBD63D312F81436A0024CAF4 /* swemplan.c in Sources */,
+				CBD63D212F8143690024CAF4 /* reader.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBD63CB72F8140060024CAF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBD63F542F814E9A0024CAF4 /* EphemerisTests.swift in Sources */,
+				CBD63F532F814D280024CAF4 /* EphemerisEngine.swift in Sources */,
+				CBD63CC02F8140060024CAF4 /* Vedic_SkyviewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBD63CC12F8140060024CAF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBD63CCA2F8140060024CAF4 /* Vedic_SkyviewUITests.swift in Sources */,
+				CBD63CCC2F8140060024CAF4 /* Vedic_SkyviewUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CBD63CBD2F8140060024CAF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBD63CAA2F8140020024CAF4 /* Vedic Skyview */;
+			targetProxy = CBD63CBC2F8140060024CAF4 /* PBXContainerItemProxy */;
+		};
+		CBD63CC72F8140060024CAF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBD63CAA2F8140020024CAF4 /* Vedic Skyview */;
+			targetProxy = CBD63CC62F8140060024CAF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CBD63CCD2F8140060024CAF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CBD63CCE2F8140060024CAF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CBD63CD02F8140060024CAF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Vedic Skyview/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Source/ThirdParty/swisseph/**";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vedicskyview.Vedic-Skyview";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VedicSkyview-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CBD63CD12F8140060024CAF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Vedic Skyview/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Source/ThirdParty/swisseph/**";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vedicskyview.Vedic-Skyview";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VedicSkyview-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CBD63CD32F8140060024CAF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Source/ThirdParty/swisseph/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vedicskyview.Vedic-SkyviewTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VedicSkyview-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vedic Skyview.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vedic Skyview";
+			};
+			name = Debug;
+		};
+		CBD63CD42F8140060024CAF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Source/ThirdParty/swisseph/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vedicskyview.Vedic-SkyviewTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VedicSkyview-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vedic Skyview.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vedic Skyview";
+			};
+			name = Release;
+		};
+		CBD63CD62F8140060024CAF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vedicskyview.Vedic-SkyviewUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Vedic Skyview";
+			};
+			name = Debug;
+		};
+		CBD63CD72F8140060024CAF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vedicskyview.Vedic-SkyviewUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Vedic Skyview";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CBD63CA62F8140020024CAF4 /* Build configuration list for PBXProject "Vedic Skyview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBD63CCD2F8140060024CAF4 /* Debug */,
+				CBD63CCE2F8140060024CAF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBD63CCF2F8140060024CAF4 /* Build configuration list for PBXNativeTarget "Vedic Skyview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBD63CD02F8140060024CAF4 /* Debug */,
+				CBD63CD12F8140060024CAF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBD63CD22F8140060024CAF4 /* Build configuration list for PBXNativeTarget "Vedic SkyviewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBD63CD32F8140060024CAF4 /* Debug */,
+				CBD63CD42F8140060024CAF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBD63CD52F8140060024CAF4 /* Build configuration list for PBXNativeTarget "Vedic SkyviewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBD63CD62F8140060024CAF4 /* Debug */,
+				CBD63CD72F8140060024CAF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CBD63CA32F8140020024CAF4 /* Project object */;
+}

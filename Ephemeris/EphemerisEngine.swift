@@ -57,7 +57,7 @@ public final class EphemerisEngine {
         let hour = Double((comps.hour ?? 0)) + Double((comps.minute ?? 0))/60.0 + Double((comps.second ?? 0))/3600.0
 
         // Compute Julian Day using C API. The exact swe function signature may vary; adjust if needed.
-        let jdUt = swe_julday(Int32(year), Int32(month), Int32(day), hour)
+        let jdUt = swe_julday(Int32(year), Int32(month), Int32(day), hour, Int32(SE_GREG_CAL))
 
         // set topocentric location
         swe_set_topo(longitude, latitude, altitude)
