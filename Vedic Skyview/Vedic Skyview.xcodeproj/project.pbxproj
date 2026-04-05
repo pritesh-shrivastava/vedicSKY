@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBB256822F829C22003C10AE /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB256812F829C21003C10AE /* CoordinateTests.swift */; };
 		CBD63CAF2F8140020024CAF4 /* Vedic_SkyviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CAE2F8140020024CAF4 /* Vedic_SkyviewApp.swift */; };
 		CBD63CB12F8140020024CAF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63CB02F8140020024CAF4 /* ContentView.swift */; };
 		CBD63CB32F8140050024CAF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBD63CB22F8140050024CAF4 /* Assets.xcassets */; };
@@ -312,6 +313,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CBB2567A2F829A9C003C10AE /* SphericalMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphericalMath.swift; sourceTree = "<group>"; };
+		CBB2567B2F829A9D003C10AE /* CoordinatePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatePipeline.swift; sourceTree = "<group>"; };
+		CBB2567C2F829A9E003C10AE /* SiderealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiderealTime.swift; sourceTree = "<group>"; };
+		CBB256812F829C21003C10AE /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		CBD63CAB2F8140020024CAF4 /* Vedic Skyview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vedic Skyview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD63CAE2F8140020024CAF4 /* Vedic_SkyviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vedic_SkyviewApp.swift; sourceTree = "<group>"; };
 		CBD63CB02F8140020024CAF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -673,9 +678,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CBB256802F829B8F003C10AE /* Coordinates */ = {
+			isa = PBXGroup;
+			children = (
+				CBB2567B2F829A9D003C10AE /* CoordinatePipeline.swift */,
+				CBB2567C2F829A9E003C10AE /* SiderealTime.swift */,
+				CBB2567A2F829A9C003C10AE /* SphericalMath.swift */,
+			);
+			path = Coordinates;
+			sourceTree = "<group>";
+		};
+		CBB256832F829CFD003C10AE /* CoordinateTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBB256812F829C21003C10AE /* CoordinateTests.swift */,
+			);
+			path = CoordinateTests;
+			sourceTree = "<group>";
+		};
 		CBD63CA22F8140020024CAF4 = {
 			isa = PBXGroup;
 			children = (
+				CBB256802F829B8F003C10AE /* Coordinates */,
 				CBF642272F8158500097D194 /* VedicSkyview-Bridging-Header.h */,
 				CBD63F472F8144280024CAF4 /* Tests */,
 				CBD63D3D2F8144050024CAF4 /* Resources */,
@@ -721,6 +745,8 @@
 		CBD63CBE2F8140060024CAF4 /* Vedic SkyviewTests */ = {
 			isa = PBXGroup;
 			children = (
+				CBD63F482F8144280024CAF4 /* EphemerisTests */,
+				CBB256832F829CFD003C10AE /* CoordinateTests */,
 				CBD63CBF2F8140060024CAF4 /* Vedic_SkyviewTests.swift */,
 			);
 			path = "Vedic SkyviewTests";
@@ -741,7 +767,7 @@
 				CBD63CDB2F8143690024CAF4 /* ThirdParty */,
 			);
 			name = Source;
-			path = ../Source;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		CBD63CDB2F8143690024CAF4 /* ThirdParty */ = {
@@ -823,7 +849,7 @@
 				CBD63D3B2F8143CF0024CAF4 /* EphemerisEngine.swift */,
 			);
 			name = Ephemeris;
-			path = ../Ephemeris;
+			path = Ephemeris;
 			sourceTree = "<group>";
 		};
 		CBD63D3D2F8144050024CAF4 /* Resources */ = {
@@ -832,7 +858,7 @@
 				CBD63D3E2F8144050024CAF4 /* ephemeris */,
 			);
 			name = Resources;
-			path = ../Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CBD63D3E2F8144050024CAF4 /* ephemeris */ = {
@@ -1120,7 +1146,6 @@
 		CBD63F472F8144280024CAF4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CBD63F482F8144280024CAF4 /* EphemerisTests */,
 				CBD63F4A2F8144280024CAF4 /* test_graha_positions.py */,
 				CBD63F4B2F8144280024CAF4 /* fixtures */,
 			);
@@ -1569,6 +1594,7 @@
 				CBD63F542F814E9A0024CAF4 /* EphemerisTests.swift in Sources */,
 				CBD63F532F814D280024CAF4 /* EphemerisEngine.swift in Sources */,
 				CBD63CC02F8140060024CAF4 /* Vedic_SkyviewTests.swift in Sources */,
+				CBB256822F829C22003C10AE /* CoordinateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

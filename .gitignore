@@ -21,10 +21,9 @@ __pycache__/
 # OS
 .DS_Store
 
-# Ephemeris Data (Optional: if you don't want to track large .se1 files)
-# *.se1
+# Ephemeris Data — large binary files, not tracked
 *.se1
-Resources/*.se1
+sep4_*
 
 # API keys
 .env

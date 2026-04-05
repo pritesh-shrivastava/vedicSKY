@@ -9,18 +9,33 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
 
 ---
 
-## Repo Structure (planned)
+## Repo Structure
 
 ```
-/
+/                                         ← git repo root
 ├── README.md
 ├── jyotish_ar_eng_design.md
-├── graha_positions_reference.py    ← reference implementation + test harness
-├── iOS/                            ← Xcode project
-└── data/                           ← generated CSVs / JSON fixtures
+├── graha_positions_reference.py          ← reference implementation + test harness
+├── scripts/export_fixtures.py            ← generates Tests/fixtures/graha_fixtures.json
+├── Tests/                                ← Python tests + fixture JSON
+│   ├── fixtures/graha_fixtures.json      ← ground-truth fixture output
+│   └── test_graha_positions.py           ← Python tests for reference impl
+└── Vedic Skyview/                        ← ALL Swift/Xcode files live here
+    ├── Vedic Skyview.xcodeproj
+    ├── Ephemeris/EphemerisEngine.swift   ← Swift wrapper for libswe C API
+    ├── Coordinates/                      ← M2 coordinate pipeline
+    │   ├── SphericalMath.swift
+    │   ├── SiderealTime.swift
+    │   └── CoordinatePipeline.swift
+    ├── Resources/ephemeris/              ← .se1 binary data files (not in git)
+    │   └── sat/plmolist.txt              ← planetary moon index (required)
+    ├── Source/ThirdParty/swisseph/       ← libswe C sources
+    └── Vedic SkyviewTests/               ← XCTest suite
+        ├── EphemerisTests/               ← testFixturesMatch (M1)
+        └── CoordinateTests/              ← coordinate pipeline tests (M2)
 ```
 
-**Note:** The large ephemeris data files (`.se1`) in the `Resources/ephemeris` directory are intentionally not committed to this repository due to their size. They are required for the `EphemerisEngine` to function and must be obtained separately.
+**Note:** The `.se1` ephemeris data files in `Vedic Skyview/Resources/ephemeris/` are not committed to this repository due to their size. Obtain them from the Swiss Ephemeris distribution (astro.com or `github.com/aloistr/swisseph`) and place them in that directory. The `sat/` subdirectory and its `plmolist.txt` index file must also be present.
 
 ---
 
@@ -43,9 +58,9 @@ See §9.1 of the design doc for the full parametric math.
 
 ### 🟡 iOS v1 milestones (in order)
 
-- [ ] **M1 — Ephemeris Core**: Integrate `libswe` C sources into Xcode, create Swift bridging header, implement `EphemerisEngine.swift` mirroring the Python reference. Use `swe_set_topo` for topocentric positions and `SE_MEAN_NODE` for Rahu. Verify Surya's sidereal longitude for a chosen fixture matches `graha_positions_reference.py` output to within 0.0001°.
+- [x] **M1 — Ephemeris Core**: Integrate `libswe` C sources into Xcode, create Swift bridging header, implement `EphemerisEngine.swift` mirroring the Python reference. Use `swe_set_topo` for topocentric positions and `SE_MEAN_NODE` for Rahu. All 9 graha positions verified against `graha_positions_reference.py` fixtures — tests passing.
 
-- [ ] **M2 — Coordinate Pipeline**: Implement full `sidereal ecliptic → equatorial → horizontal → ARKit world vector` chain in `CoordinatePipeline.swift`. Validate against Stellarium for a known star (Spica/Chitra ~180° sidereal) at a specific lat/lon/time.
+- [ ] **M2 — Coordinate Pipeline**: Implement full `sidereal ecliptic → equatorial → horizontal → ARKit world vector` chain in `CoordinatePipeline.swift`. `SphericalMath.swift`, `SiderealTime.swift`, and `CoordinatePipeline.swift` created; XCTests written. Pending: Stellarium cross-check for Spica/Chitra at a specific lat/lon/time.
 
 - [ ] **M3 — Basic AR Scene**: 9 graha dots visible on sky with rough alignment. Use `ARWorldTrackingConfiguration.worldAlignment = .gravityAndHeading`.
 

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Vedic Skyview** is a personal iOS AR app that overlays Navagraha (9 planet) positions, Rashi bands, and Nakshatra grid on a live camera feed, using on-device Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric). Not intended for distribution.
 
-Full architecture: `jyotish_ar_eng_design.md`. Current milestone: **M1 — Ephemeris Core**.
+Full architecture: `jyotish_ar_eng_design.md`. Current milestone: **M2 — Coordinate Pipeline**.
 
 ## Build & Test
 
@@ -41,19 +41,44 @@ python scripts/export_fixtures.py
 ## Repo Structure
 
 ```
-/
-├── Ephemeris/EphemerisEngine.swift       ← Swift wrapper for libswe C API
-├── Tests/
-│   ├── EphemerisTests/EphemerisTests.swift  ← XCTest comparing against fixtures
-│   ├── test_graha_positions.py              ← Python tests for reference impl
-│   └── fixtures/graha_fixtures.json         ← Ground-truth fixture output
+/                                         ← git repo root
+├── Tests/                                ← Python tests + fixture JSON only
+│   ├── fixtures/graha_fixtures.json      ← Ground-truth fixture output
+│   └── test_graha_positions.py           ← Python tests for reference impl
 ├── graha_positions_reference.py          ← Canonical Python ground truth
 ├── scripts/export_fixtures.py            ← Generates fixtures from Python ref
-├── Resources/ephemeris/                  ← .se1 binary data files (not in git)
-└── Vedic Skyview/                        ← Xcode project
-    ├── VedicSkyview-Bridging-Header.h    ← Exposes swephexp.h to Swift
-    └── Vedic Skyview/                    ← App source (ContentView, App entry)
+└── Vedic Skyview/                        ← ALL Swift/Xcode files live here
+    ├── Vedic Skyview.xcodeproj
+    ├── Ephemeris/
+    │   └── EphemerisEngine.swift         ← Swiss Ephemeris Swift wrapper
+    ├── Coordinates/                      ← M2 coordinate pipeline
+    │   ├── SphericalMath.swift
+    │   ├── SiderealTime.swift
+    │   └── CoordinatePipeline.swift
+    ├── Resources/ephemeris/              ← .se1 binary data files (not in git)
+    ├── Source/ThirdParty/swisseph/       ← libswe C sources
+    ├── Vedic Skyview/                    ← App source (ContentView, App entry)
+    ├── Vedic SkyviewTests/               ← XCTest suite
+    │   ├── EphemerisTests/EphemerisTests.swift
+    │   └── CoordinateTests/CoordinateTests.swift
+    └── VedicSkyview-Bridging-Header.h    ← Exposes swephexp.h to Swift
 ```
+
+## File Placement Rules
+
+**All new Swift source files must be created inside `Vedic Skyview/`**, never at the repo root. Follow this pattern:
+
+| What | Where |
+|---|---|
+| New Swift source layer (e.g. AR, UI) | `Vedic Skyview/<LayerName>/` |
+| New XCTest file | `Vedic Skyview/Vedic SkyviewTests/<GroupName>/` |
+| New Python script or fixture | repo root `scripts/` or `Tests/` |
+| New ephemeris data files | `Vedic Skyview/Resources/ephemeris/` |
+
+**When adding a new Swift file in Xcode:**
+- Right-click the appropriate group in the Navigator → Add Files
+- "Copy items if needed" = **OFF** if you created the file in the right place on disk already; **ON** only if the file is outside `Vedic Skyview/`
+- Never use `path = ../` references in the Xcode project — all paths should be relative within `Vedic Skyview/`
 
 ## Architecture
 
@@ -61,10 +86,10 @@ The pipeline is: **Ephemeris Engine → Coordinate Pipeline → AR Renderer**
 
 | Layer | File(s) | Status |
 |---|---|---|
-| Ephemeris Engine | `Ephemeris/EphemerisEngine.swift` | M1 scaffold (compiles, needs libswe) |
-| Coordinate Pipeline | `Coordinates/CoordinatePipeline.swift` | M2 (not yet created) |
-| AR Scene | `AR/JyotishARViewController.swift` | M3 (not yet created) |
-| SwiftUI HUD | `UI/` | M5 (not yet created) |
+| Ephemeris Engine | `Vedic Skyview/Ephemeris/EphemerisEngine.swift` | M1 complete, tests passing |
+| Coordinate Pipeline | `Vedic Skyview/Coordinates/CoordinatePipeline.swift` | M2 in progress |
+| AR Scene | `Vedic Skyview/AR/JyotishARViewController.swift` | M3 (not yet created) |
+| SwiftUI HUD | `Vedic Skyview/UI/` | M5 (not yet created) |
 
 ## Key Implementation Rules
 
@@ -89,11 +114,11 @@ pada            = Int((sidereal_lon % NAKSHATRA_SPAN) / PADA_SPAN) + 1  // 1–4
 
 ## Ephemeris Data Files
 
-The `.se1` binary files in `Resources/ephemeris/` are **not tracked in git** (too large). They are required for `EphemerisEngine` and tests to run. Obtain from the Swiss Ephemeris distribution and place in that directory. The path is passed to `swe_set_ephe_path` at init.
+The `.se1` binary files in `Vedic Skyview/Resources/ephemeris/` are **not tracked in git** (too large). They are required for `EphemerisEngine` and tests to run. Obtain from the Swiss Ephemeris distribution and place in that directory. The path is passed to `swe_set_ephe_path` at init.
 
 ## libswe Integration
 
-Swiss Ephemeris C sources live in `Vedic Skyview/ThirdParty/` (not yet populated). The bridging header at `Vedic Skyview/VedicSkyview-Bridging-Header.h` includes `swephexp.h`. Add `swisseph` C sources to the Xcode target and compile them directly — no package manager needed.
+Swiss Ephemeris C sources live in `Vedic Skyview/Source/ThirdParty/swisseph/`. The bridging header at `Vedic Skyview/VedicSkyview-Bridging-Header.h` includes `swephexp.h`. C sources are compiled directly into the Xcode target — no package manager needed.
 
 ## Coordinate Pipeline (M2 — not yet built)
 
