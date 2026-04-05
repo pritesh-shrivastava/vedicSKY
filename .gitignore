@@ -23,3 +23,4 @@ __pycache__/
 
 # Ephemeris Data (Optional: if you don't want to track large .se1 files)
 # *.se1
+*.se1
