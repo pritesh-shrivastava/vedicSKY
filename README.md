@@ -20,6 +20,8 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
 └── data/                           ← generated CSVs / JSON fixtures
 ```
 
+**Note:** The large ephemeris data files (`.se1`) in the `Resources/ephemeris` directory are intentionally not committed to this repository due to their size. They are required for the `EphemerisEngine` to function and must be obtained separately.
+
 ---
 
 ## Design Decisions
