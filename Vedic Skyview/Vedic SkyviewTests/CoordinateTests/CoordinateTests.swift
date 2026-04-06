@@ -258,8 +258,8 @@ final class CoordinateTests: XCTestCase {
 
         let (alt, az) = equatorialToHorizontal(ra: ra, dec: dec, latitude: lat, lst: lst)
 
-        // Sanity bounds — tighten after manual Stellarium verification
-        XCTAssertEqual(alt,  -2.0, accuracy: 0.5, "Spica altitude mismatch")
-        XCTAssertEqual(az,  255.0, accuracy: 2.0, "Spica azimuth mismatch")
+        // Values verified in Stellarium (atmosphere off, geometric) 2000-01-01 12:00 UT, Greenwich
+        XCTAssertEqual(alt, -2.093, accuracy: 0.1, "Spica altitude mismatch")
+        XCTAssertEqual(az, 254.632, accuracy: 0.5, "Spica azimuth mismatch")
     }
 }

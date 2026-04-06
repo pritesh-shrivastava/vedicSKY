@@ -116,7 +116,7 @@ pada            = Int((sidereal_lon % NAKSHATRA_SPAN) / PADA_SPAN) + 1  // 1–4
 
 ## Ephemeris Data Files
 
-The `.se1` binary files in `Vedic Skyview/Resources/ephemeris/` are **not tracked in git** (too large). They are required for `EphemerisEngine` and tests to run. Obtain from the Swiss Ephemeris distribution and place in that directory. The path is passed to `swe_set_ephe_path` at init.
+The ephemeris files in `Vedic Skyview/Resources/ephemeris/` are **tracked in git** (trimmed to 1900–2100 range, ~1.9 MB total). Four files are present: `sepl_18.se1` (planets), `semo_18.se1` (moon), `sefstars.txt` (fixed stars), `seorbel.txt` (orbital elements). The path is passed to `swe_set_ephe_path` at init.
 
 ## libswe Integration
 

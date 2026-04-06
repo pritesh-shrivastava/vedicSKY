@@ -1,4 +1,4 @@
-# Jyotish AR — Engineering Design Document
+# Vedic Skyview — Engineering Design Document
 **Version:** 0.3
 **Author:** TBD
 **Status:** Planning — personal research tool, no distribution
@@ -460,9 +460,9 @@ class JyotishARViewController: UIViewController {
 ## 12. Project Structure
 
 ```
-JyotishAR/
+Vedic Skyview/
 ├── App/
-│   ├── JyotishARApp.swift
+│   ├── VedicSkyviewApp.swift
 │   └── ContentView.swift
 ├── AR/
 │   ├── JyotishARViewController.swift
@@ -563,4 +563,4 @@ Not a v1 concern — decide when you reach Android.
 2. **Retrograde (vakri) indicator?** Show ℞ badge when longitude speed from SWE is negative. Good v2 feature.
 3. **Moon phase rendering?** Compute illuminated fraction from SWE for Chandra's visual appearance. Deferred to v2.
 4. **Special yogas in HUD?** Display active yogas (e.g. Gajakesari, Budhaditya) when current positions form them. Deferred to v2.
-5. **App name / Sanskrit branding?** "Akasha Darshan" (आकाश दर्शन, "vision of the sky") is a candidate.
+5. **App name decided:** "Vedic Skyview". "Akasha Darshan" (आकाश दर्शन, "vision of the sky") remains a candidate for a future rename before public release.

@@ -21,8 +21,7 @@ __pycache__/
 # OS
 .DS_Store
 
-# Ephemeris Data — large binary files, not tracked
-*.se1
+# Ephemeris Data
 sep4_*
 
 # API keys

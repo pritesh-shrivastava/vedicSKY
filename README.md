@@ -61,7 +61,7 @@ See §9.1 of the design doc for the full parametric math.
 
 - [x] **M1 — Ephemeris Core**: Integrate `libswe` C sources into Xcode, create Swift bridging header, implement `EphemerisEngine.swift` mirroring the Python reference. Use `swe_set_topo` for topocentric positions and `SE_MEAN_NODE` for Rahu. All 9 graha positions verified against `graha_positions_reference.py` fixtures — tests passing.
 
-- [ ] **M2 — Coordinate Pipeline**: Implement full `sidereal ecliptic → equatorial → horizontal → ARKit world vector` chain in `CoordinatePipeline.swift`. `SphericalMath.swift`, `SiderealTime.swift`, and `CoordinatePipeline.swift` created; XCTests written. Pending: Stellarium cross-check for Spica/Chitra at a specific lat/lon/time.
+- [x] **M2 — Coordinate Pipeline**: Implement full `sidereal ecliptic → equatorial → horizontal → ARKit world vector` chain in `CoordinatePipeline.swift`. `SphericalMath.swift`, `SiderealTime.swift`, and `CoordinatePipeline.swift` created; all XCTests passing. Spica/Chitra Alt/Az verified against Stellarium at J2000.0 from Greenwich (Alt −2.093°, Az 254.632°).
 
 - [ ] **M3 — Basic AR Scene**: 9 graha dots visible on sky with rough alignment. Use `ARWorldTrackingConfiguration.worldAlignment = .gravityAndHeading`.
 
@@ -97,7 +97,7 @@ See §9.1 of the design doc for the full parametric math.
 
 - [ ] **Swiss Ephemeris license**: Currently AGPL — fine for personal use. If this ever becomes a distributed or paid app, purchase the commercial license (~€100 one-time from astro.com).
 
-- [ ] **App name**: "Akasha Darshan" (आकाश दर्शन) is a candidate. Decide before any public release.
+- [ ] **App name**: Currently "Vedic Skyview". "Akasha Darshan" (आकाश दर्शन) is a candidate for rename before any public release.
 
 - [ ] **Special yogas in HUD**: Display active yogas (e.g. Gajakesari, Budhaditya) when current positions form them.
 
