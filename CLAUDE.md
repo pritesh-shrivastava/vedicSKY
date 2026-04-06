@@ -6,25 +6,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Vedic Skyview** is a personal iOS AR app that overlays Navagraha (9 planet) positions, Rashi bands, and Nakshatra grid on a live camera feed, using on-device Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric). Not intended for distribution.
 
-Full architecture: `jyotish_ar_eng_design.md`. Current milestone: **M2 — Coordinate Pipeline**.
+Full architecture: `engg_design_doc.md`. Current milestone: **M3 — Basic AR Scene**.
 
 ## Build & Test
 
 **Xcode project:** `Vedic Skyview/Vedic Skyview.xcodeproj`
-- iOS 16+ deployment target, Xcode 15+
+- iOS 16+ deployment target, Xcode 14+ (Xcode 16 on CI)
 - Build and run tests via Xcode or `xcodebuild`
 
 **Run Swift tests (command line):**
 ```bash
 xcodebuild test -project "Vedic Skyview/Vedic Skyview.xcodeproj" \
-  -scheme "Vedic Skyview" -destination "platform=iOS Simulator,name=iPhone 15"
+  -scheme "Vedic Skyview" -destination "platform=iOS Simulator,name=iPhone 14"
 ```
 
 **Run a single Swift test:**
 ```bash
 xcodebuild test -project "Vedic Skyview/Vedic Skyview.xcodeproj" \
   -scheme "Vedic Skyview" -only-testing:"Vedic SkyviewTests/EphemerisTests/testFixturesMatch" \
-  -destination "platform=iOS Simulator,name=iPhone 15"
+  -destination "platform=iOS Simulator,name=iPhone 14"
 ```
 
 **Python reference tests:**
@@ -54,7 +54,7 @@ python scripts/export_fixtures.py
     │   ├── SphericalMath.swift
     │   ├── SiderealTime.swift
     │   └── CoordinatePipeline.swift
-    ├── Resources/ephemeris/              ← .se1 binary data files (not in git)
+    ├── Resources/ephemeris/              ← .se1 binary data files (only relevant ones)
     ├── Source/ThirdParty/swisseph/       ← libswe C sources
     ├── Vedic Skyview/                    ← App source (ContentView, App entry)
     ├── Vedic SkyviewTests/               ← XCTest suite
@@ -89,7 +89,7 @@ The pipeline is: **Ephemeris Engine → Coordinate Pipeline → AR Renderer**
 | Layer | File(s) | Status |
 |---|---|---|
 | Ephemeris Engine | `Vedic Skyview/Ephemeris/EphemerisEngine.swift` | M1 complete, tests passing |
-| Coordinate Pipeline | `Vedic Skyview/Coordinates/CoordinatePipeline.swift` | M2 in progress |
+| Coordinate Pipeline | `Vedic Skyview/Coordinates/CoordinatePipeline.swift` | M2 complete |
 | AR Scene | `Vedic Skyview/AR/JyotishARViewController.swift` | M3 (not yet created) |
 | SwiftUI HUD | `Vedic Skyview/UI/` | M5 (not yet created) |
 
@@ -122,7 +122,7 @@ The ephemeris files in `Vedic Skyview/Resources/ephemeris/` are **tracked in git
 
 Swiss Ephemeris C sources live in `Vedic Skyview/Source/ThirdParty/swisseph/`. The bridging header at `Vedic Skyview/VedicSkyview-Bridging-Header.h` includes `swephexp.h`. C sources are compiled directly into the Xcode target — no package manager needed.
 
-## Coordinate Pipeline (M2 — not yet built)
+## Coordinate Pipeline (M2)
 
 The transformation chain for placing grahas in AR space:
 ```

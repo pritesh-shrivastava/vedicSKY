@@ -9,14 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        ARViewContainer()
+            .ignoresSafeArea()
     }
+}
+
+/// Bridges VedicSkyviewController into the SwiftUI scene.
+struct ARViewContainer: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> VedicSkyviewController {
+        VedicSkyviewController()
+    }
+    func updateUIViewController(_ uiViewController: VedicSkyviewController, context: Context) {}
 }
 
 struct ContentView_Previews: PreviewProvider {

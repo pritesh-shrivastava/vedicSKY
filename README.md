@@ -4,7 +4,7 @@ Personal research tool. iOS AR app that overlays Navagraha positions, Rashi band
 and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calculations
 (Lahiri ayanamsha, sidereal, topocentric).
 
-**Docs:** See `jyotish_ar_eng_design.md` for full architecture.
+**Docs:** See `engg_design_doc.md` for full architecture.
 **Reference implementation:** `scripts/graha_positions_reference.py` — canonical Python ground truth; all iOS Swift output must match this script's output for the same inputs.
 
 ---
@@ -14,7 +14,7 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
 ```
 /                                         ← git repo root
 ├── README.md
-├── jyotish_ar_eng_design.md
+├── engg_design_doc.md
 ├── scripts/
 │   ├── graha_positions_reference.py      ← reference implementation + test harness
 │   ├── export_fixtures.py                ← generates graha_fixtures.json
@@ -36,7 +36,6 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
         └── CoordinateTests/              ← coordinate pipeline tests (M2)
 ```
 
-**Note:** The `.se1` ephemeris data files in `Vedic Skyview/Resources/ephemeris/` are not committed to this repository due to their size. Obtain them from the Swiss Ephemeris distribution (astro.com or `github.com/aloistr/swisseph`) and place them in that directory. The `sat/` subdirectory and its `plmolist.txt` index file must also be present.
 
 ---
 

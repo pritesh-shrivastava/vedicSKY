@@ -3,7 +3,7 @@
 **Author:** TBD
 **Status:** Planning — personal research tool, no distribution
 
-**Changelog v0.3:** Confirmed Swift + ARKit + RealityKit as the build target (Unity path evaluated and rejected). Removed Unity architecture, C# references, and stale Python nakshatra snippet (nakshatra logic is now fully implemented and tested in `graha_positions_reference.py`). Minor structural cleanup.
+**Changelog v0.3:** Confirmed Swift + ARKit + RealityKit as the build target (Unity path evaluated and rejected). Minor structural cleanup.
 
 **Changelog v0.2:** Personal tool (no license concern); Python script adopted as reference implementation; nakshatra calculation fully specified; design doc aligned to existing validated Python logic.
 
@@ -410,7 +410,7 @@ struct OrbitalPlanesOverlay {
 ## 10. AR Scene Setup
 
 ```swift
-class JyotishARViewController: UIViewController {
+class VedicSkyViewController: UIViewController {
     var arView: ARView!
     var skyAnchor: AnchorEntity!
     var grahaEntities: [Graha: ModelEntity] = [:]
@@ -465,7 +465,7 @@ Vedic Skyview/
 │   ├── VedicSkyviewApp.swift
 │   └── ContentView.swift
 ├── AR/
-│   ├── JyotishARViewController.swift
+│   ├── VedicSkyViewController.swift
 │   ├── SkySceneBuilder.swift          # builds rashi/nakshatra geometry
 │   ├── GrahaEntityFactory.swift
 │   └── BillboardSystem.swift

@@ -40,6 +40,8 @@
 		CBD63F522F81463E0024CAF4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBD63F512F81463E0024CAF4 /* XCTest.framework */; platformFilter = ios; };
 		CBD63F532F814D280024CAF4 /* EphemerisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63D3B2F8143CF0024CAF4 /* EphemerisEngine.swift */; };
 		CBD63F542F814E9A0024CAF4 /* EphemerisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD63F492F8144280024CAF4 /* EphemerisTests.swift */; };
+		CBD64B032FA00000003C1003 /* VedicSkyviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD64B012FA00000003C1001 /* VedicSkyviewController.swift */; };
+		CBD64B042FA00000003C1004 /* LocationHeadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD64B022FA00000003C1002 /* LocationHeadingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		CBB2567B2F829A9D003C10AE /* CoordinatePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatePipeline.swift; sourceTree = "<group>"; };
 		CBB2567C2F829A9E003C10AE /* SiderealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiderealTime.swift; sourceTree = "<group>"; };
 		CBB256812F829C21003C10AE /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
+		CBD64B012FA00000003C1001 /* VedicSkyviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedicSkyviewController.swift; sourceTree = "<group>"; };
+		CBD64B022FA00000003C1002 /* LocationHeadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHeadingManager.swift; sourceTree = "<group>"; };
 		CBD63CAB2F8140020024CAF4 /* Vedic Skyview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vedic Skyview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD63CAE2F8140020024CAF4 /* Vedic_SkyviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vedic_SkyviewApp.swift; sourceTree = "<group>"; };
 		CBD63CB02F8140020024CAF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				CBB256802F829B8F003C10AE /* Coordinates */,
+				CBD64B052FA00000003C1005 /* AR */,
+				CBD64B062FA00000003C1006 /* Sensors */,
 				CBF642272F8158500097D194 /* VedicSkyview-Bridging-Header.h */,
 				CBD63D3D2F8144050024CAF4 /* Resources */,
 				CBD63D3A2F8143CF0024CAF4 /* Ephemeris */,
@@ -340,6 +346,24 @@
 			);
 			name = Ephemeris;
 			path = Ephemeris;
+			sourceTree = "<group>";
+		};
+		CBD64B052FA00000003C1005 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				CBD64B012FA00000003C1001 /* VedicSkyviewController.swift */,
+			);
+			name = AR;
+			path = AR;
+			sourceTree = "<group>";
+		};
+		CBD64B062FA00000003C1006 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				CBD64B022FA00000003C1002 /* LocationHeadingManager.swift */,
+			);
+			name = Sensors;
+			path = Sensors;
 			sourceTree = "<group>";
 		};
 		CBD63D3D2F8144050024CAF4 /* Resources */ = {
@@ -533,6 +557,8 @@
 				CBB256902F829C22003C10AE /* SphericalMath.swift in Sources */,
 				CBB256912F829C22003C10AE /* SiderealTime.swift in Sources */,
 				CBB256922F829C22003C10AE /* CoordinatePipeline.swift in Sources */,
+				CBD64B032FA00000003C1003 /* VedicSkyviewController.swift in Sources */,
+				CBD64B042FA00000003C1004 /* LocationHeadingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +723,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Source/ThirdParty/swisseph/**";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Vedic Skyview uses the camera as an AR viewfinder to overlay Navagraha positions on the live sky.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to compute accurate topocentric planetary positions.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -727,6 +755,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Source/ThirdParty/swisseph/**";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Vedic Skyview uses the camera as an AR viewfinder to overlay Navagraha positions on the live sky.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to compute accurate topocentric planetary positions.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
