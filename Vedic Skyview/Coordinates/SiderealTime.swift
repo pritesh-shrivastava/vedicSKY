@@ -48,7 +48,7 @@ func greenwichMeanSiderealTime(julianDate jd: Double) -> Double {
     let D = jd - 2_451_545.0          // days since J2000.0
     let T = D / 36_525.0              // Julian centuries
 
-    var gmst = 280.46061837
+    let gmst = 280.46061837
            + 360.98564736629 * D
            + 0.000387933 * T * T
            - (T * T * T) / 38_710_000.0
