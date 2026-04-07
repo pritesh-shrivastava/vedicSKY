@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CBF3E8E32F84DD3500AF0B3C /* NavgrahaClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3E8E22F84DD3500AF0B3C /* NavgrahaClockApp.swift */; };
+		CBF3E8E52F84DD3500AF0B3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3E8E42F84DD3500AF0B3C /* ContentView.swift */; };
+		CBF3E8E72F84DD3800AF0B3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF3E8E62F84DD3800AF0B3C /* Assets.xcassets */; };
+		CBF3E8EA2F84DD3800AF0B3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF3E8E92F84DD3800AF0B3C /* Preview Assets.xcassets */; };
+		CBF3E8F42F84DD3900AF0B3C /* NavgrahaClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3E8F32F84DD3900AF0B3C /* NavgrahaClockTests.swift */; };
+		CBF3E8FE2F84DD3900AF0B3C /* NavgrahaClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3E8FD2F84DD3900AF0B3C /* NavgrahaClockUITests.swift */; };
+		CBF3E9002F84DD3900AF0B3C /* NavgrahaClockUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3E8FF2F84DD3900AF0B3C /* NavgrahaClockUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CBF3E8F02F84DD3900AF0B3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBF3E8D72F84DD3500AF0B3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBF3E8DE2F84DD3500AF0B3C;
+			remoteInfo = NavgrahaClock;
+		};
+		CBF3E8FA2F84DD3900AF0B3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBF3E8D72F84DD3500AF0B3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBF3E8DE2F84DD3500AF0B3C;
+			remoteInfo = NavgrahaClock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CBF3E8DF2F84DD3500AF0B3C /* NavgrahaClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavgrahaClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBF3E8E22F84DD3500AF0B3C /* NavgrahaClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavgrahaClockApp.swift; sourceTree = "<group>"; };
+		CBF3E8E42F84DD3500AF0B3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CBF3E8E62F84DD3800AF0B3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CBF3E8E92F84DD3800AF0B3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CBF3E8EF2F84DD3900AF0B3C /* NavgrahaClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavgrahaClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBF3E8F32F84DD3900AF0B3C /* NavgrahaClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavgrahaClockTests.swift; sourceTree = "<group>"; };
+		CBF3E8F92F84DD3900AF0B3C /* NavgrahaClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavgrahaClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBF3E8FD2F84DD3900AF0B3C /* NavgrahaClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavgrahaClockUITests.swift; sourceTree = "<group>"; };
+		CBF3E8FF2F84DD3900AF0B3C /* NavgrahaClockUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavgrahaClockUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CBF3E8DC2F84DD3500AF0B3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBF3E8EC2F84DD3900AF0B3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBF3E8F62F84DD3900AF0B3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CBF3E8D62F84DD3500AF0B3C = {
+			isa = PBXGroup;
+			children = (
+				CBF3E8E12F84DD3500AF0B3C /* NavgrahaClock */,
+				CBF3E8F22F84DD3900AF0B3C /* NavgrahaClockTests */,
+				CBF3E8FC2F84DD3900AF0B3C /* NavgrahaClockUITests */,
+				CBF3E8E02F84DD3500AF0B3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CBF3E8E02F84DD3500AF0B3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBF3E8DF2F84DD3500AF0B3C /* NavgrahaClock.app */,
+				CBF3E8EF2F84DD3900AF0B3C /* NavgrahaClockTests.xctest */,
+				CBF3E8F92F84DD3900AF0B3C /* NavgrahaClockUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CBF3E8E12F84DD3500AF0B3C /* NavgrahaClock */ = {
+			isa = PBXGroup;
+			children = (
+				CBF3E8E22F84DD3500AF0B3C /* NavgrahaClockApp.swift */,
+				CBF3E8E42F84DD3500AF0B3C /* ContentView.swift */,
+				CBF3E8E62F84DD3800AF0B3C /* Assets.xcassets */,
+				CBF3E8E82F84DD3800AF0B3C /* Preview Content */,
+			);
+			path = NavgrahaClock;
+			sourceTree = "<group>";
+		};
+		CBF3E8E82F84DD3800AF0B3C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CBF3E8E92F84DD3800AF0B3C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CBF3E8F22F84DD3900AF0B3C /* NavgrahaClockTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBF3E8F32F84DD3900AF0B3C /* NavgrahaClockTests.swift */,
+			);
+			path = NavgrahaClockTests;
+			sourceTree = "<group>";
+		};
+		CBF3E8FC2F84DD3900AF0B3C /* NavgrahaClockUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CBF3E8FD2F84DD3900AF0B3C /* NavgrahaClockUITests.swift */,
+				CBF3E8FF2F84DD3900AF0B3C /* NavgrahaClockUITestsLaunchTests.swift */,
+			);
+			path = NavgrahaClockUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBF3E8DE2F84DD3500AF0B3C /* NavgrahaClock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBF3E9032F84DD3900AF0B3C /* Build configuration list for PBXNativeTarget "NavgrahaClock" */;
+			buildPhases = (
+				CBF3E8DB2F84DD3500AF0B3C /* Sources */,
+				CBF3E8DC2F84DD3500AF0B3C /* Frameworks */,
+				CBF3E8DD2F84DD3500AF0B3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NavgrahaClock;
+			productName = NavgrahaClock;
+			productReference = CBF3E8DF2F84DD3500AF0B3C /* NavgrahaClock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CBF3E8EE2F84DD3900AF0B3C /* NavgrahaClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBF3E9062F84DD3900AF0B3C /* Build configuration list for PBXNativeTarget "NavgrahaClockTests" */;
+			buildPhases = (
+				CBF3E8EB2F84DD3900AF0B3C /* Sources */,
+				CBF3E8EC2F84DD3900AF0B3C /* Frameworks */,
+				CBF3E8ED2F84DD3900AF0B3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBF3E8F12F84DD3900AF0B3C /* PBXTargetDependency */,
+			);
+			name = NavgrahaClockTests;
+			productName = NavgrahaClockTests;
+			productReference = CBF3E8EF2F84DD3900AF0B3C /* NavgrahaClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CBF3E8F82F84DD3900AF0B3C /* NavgrahaClockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBF3E9092F84DD3900AF0B3C /* Build configuration list for PBXNativeTarget "NavgrahaClockUITests" */;
+			buildPhases = (
+				CBF3E8F52F84DD3900AF0B3C /* Sources */,
+				CBF3E8F62F84DD3900AF0B3C /* Frameworks */,
+				CBF3E8F72F84DD3900AF0B3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBF3E8FB2F84DD3900AF0B3C /* PBXTargetDependency */,
+			);
+			name = NavgrahaClockUITests;
+			productName = NavgrahaClockUITests;
+			productReference = CBF3E8F92F84DD3900AF0B3C /* NavgrahaClockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CBF3E8D72F84DD3500AF0B3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					CBF3E8DE2F84DD3500AF0B3C = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					CBF3E8EE2F84DD3900AF0B3C = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CBF3E8DE2F84DD3500AF0B3C;
+					};
+					CBF3E8F82F84DD3900AF0B3C = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CBF3E8DE2F84DD3500AF0B3C;
+					};
+				};
+			};
+			buildConfigurationList = CBF3E8DA2F84DD3500AF0B3C /* Build configuration list for PBXProject "NavgrahaClock" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CBF3E8D62F84DD3500AF0B3C;
+			productRefGroup = CBF3E8E02F84DD3500AF0B3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBF3E8DE2F84DD3500AF0B3C /* NavgrahaClock */,
+				CBF3E8EE2F84DD3900AF0B3C /* NavgrahaClockTests */,
+				CBF3E8F82F84DD3900AF0B3C /* NavgrahaClockUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBF3E8DD2F84DD3500AF0B3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBF3E8EA2F84DD3800AF0B3C /* Preview Assets.xcassets in Resources */,
+				CBF3E8E72F84DD3800AF0B3C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBF3E8ED2F84DD3900AF0B3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBF3E8F72F84DD3900AF0B3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CBF3E8DB2F84DD3500AF0B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBF3E8E52F84DD3500AF0B3C /* ContentView.swift in Sources */,
+				CBF3E8E32F84DD3500AF0B3C /* NavgrahaClockApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBF3E8EB2F84DD3900AF0B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBF3E8F42F84DD3900AF0B3C /* NavgrahaClockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBF3E8F52F84DD3900AF0B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBF3E8FE2F84DD3900AF0B3C /* NavgrahaClockUITests.swift in Sources */,
+				CBF3E9002F84DD3900AF0B3C /* NavgrahaClockUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CBF3E8F12F84DD3900AF0B3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBF3E8DE2F84DD3500AF0B3C /* NavgrahaClock */;
+			targetProxy = CBF3E8F02F84DD3900AF0B3C /* PBXContainerItemProxy */;
+		};
+		CBF3E8FB2F84DD3900AF0B3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBF3E8DE2F84DD3500AF0B3C /* NavgrahaClock */;
+			targetProxy = CBF3E8FA2F84DD3900AF0B3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CBF3E9012F84DD3900AF0B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CBF3E9022F84DD3900AF0B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CBF3E9042F84DD3900AF0B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NavgrahaClock/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CBF3E9052F84DD3900AF0B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NavgrahaClock/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CBF3E9072F84DD3900AF0B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NavgrahaClock.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NavgrahaClock";
+			};
+			name = Debug;
+		};
+		CBF3E9082F84DD3900AF0B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NavgrahaClock.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NavgrahaClock";
+			};
+			name = Release;
+		};
+		CBF3E90A2F84DD3900AF0B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NavgrahaClock;
+			};
+			name = Debug;
+		};
+		CBF3E90B2F84DD3900AF0B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NavgrahaClock;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CBF3E8DA2F84DD3500AF0B3C /* Build configuration list for PBXProject "NavgrahaClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBF3E9012F84DD3900AF0B3C /* Debug */,
+				CBF3E9022F84DD3900AF0B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBF3E9032F84DD3900AF0B3C /* Build configuration list for PBXNativeTarget "NavgrahaClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBF3E9042F84DD3900AF0B3C /* Debug */,
+				CBF3E9052F84DD3900AF0B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBF3E9062F84DD3900AF0B3C /* Build configuration list for PBXNativeTarget "NavgrahaClockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBF3E9072F84DD3900AF0B3C /* Debug */,
+				CBF3E9082F84DD3900AF0B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBF3E9092F84DD3900AF0B3C /* Build configuration list for PBXNativeTarget "NavgrahaClockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBF3E90A2F84DD3900AF0B3C /* Debug */,
+				CBF3E90B2F84DD3900AF0B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CBF3E8D72F84DD3500AF0B3C /* Project object */;
+}

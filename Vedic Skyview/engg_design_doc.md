@@ -1,7 +1,9 @@
 # Vedic Skyview — Engineering Design Document
-**Version:** 0.3
+**Version:** 0.4
 **Author:** TBD
-**Status:** Planning — personal research tool, no distribution
+**Status:** In progress — personal research tool, no distribution
+
+**Changelog v0.4:** M3 complete. `VedicSkyviewController` + `LocationHeadingManager` implemented. 9 Navagraha spheres on 1000 m sky-sphere; positions recomputed every 60 s via EphemerisEngine + CoordinatePipeline. Ephemeris data files trimmed to 1900–2100 (~1.9 MB) and tracked in git. Hardware constraint documented: dev Mac (2017 Intel) limited to Xcode 14 / Monterey, so on-device AR testing requires borrowing a Mac with Xcode 16.
 
 **Changelog v0.3:** Confirmed Swift + ARKit + RealityKit as the build target (Unity path evaluated and rejected). Minor structural cleanup.
 
@@ -146,7 +148,7 @@ final class EphemerisEngine {
 | Rahu (N. Node) | `SE_MEAN_NODE` | Mean node; expose true node as user setting |
 | Ketu (S. Node) | computed | `ketu_λ = rahu_λ + 180° mod 360°` |
 
-**Ephemeris data files:** Bundle `seas_18.se1`, `semo_18.se1`, `sepl_18.se1` (Sun/Moon/planets for 1800–2400 CE, ~30 MB total). Set the path with `swe_set_ephe_path`.
+**Ephemeris data files:** `sepl_18.se1`, `semo_18.se1`, `sefstars.txt`, `seorbel.txt` — trimmed to 1900–2100 range (~1.9 MB total), tracked in git under `Resources/ephemeris/`. Set the path with `swe_set_ephe_path(Bundle.main.bundlePath)`.
 
 ---
 
@@ -410,7 +412,7 @@ struct OrbitalPlanesOverlay {
 ## 10. AR Scene Setup
 
 ```swift
-class VedicSkyViewController: UIViewController {
+class VedicSkyviewController: UIViewController {
     var arView: ARView!
     var skyAnchor: AnchorEntity!
     var grahaEntities: [Graha: ModelEntity] = [:]
@@ -453,7 +455,7 @@ class VedicSkyViewController: UIViewController {
 | Location | CoreLocation |
 | Motion | ARKit `.gravityAndHeading` (wraps CoreMotion) |
 | Persistence | UserDefaults (settings only), no backend |
-| Build | Xcode 15+, iOS 16+ deployment target |
+| Build | Xcode 14+ locally (Xcode 16 on CI), iOS 16+ deployment target |
 
 ---
 
@@ -465,7 +467,7 @@ Vedic Skyview/
 │   ├── VedicSkyviewApp.swift
 │   └── ContentView.swift
 ├── AR/
-│   ├── VedicSkyViewController.swift
+│   ├── VedicSkyviewController.swift   # M3 — basic AR scene (implemented)
 │   ├── SkySceneBuilder.swift          # builds rashi/nakshatra geometry
 │   ├── GrahaEntityFactory.swift
 │   └── BillboardSystem.swift
@@ -546,9 +548,9 @@ Not a v1 concern — decide when you reach Android.
 
 | Milestone | Deliverables | Est. Effort |
 |---|---|---|
-| M1 — Ephemeris Core | libswe integrated in Xcode, all 9 graha positions computable in Swift, output matches Python fixture | 1 week |
-| M2 — Coordinate Pipeline | Full λ,β → Alt/Az → ARKit vector; validated against Stellarium | 1 week |
-| M3 — Basic AR Scene | 9 graha dots visible on sky with rough alignment | 1 week |
+| M1 — Ephemeris Core | libswe integrated in Xcode, all 9 graha positions computable in Swift, output matches Python fixture | done |
+| M2 — Coordinate Pipeline | Full λ,β → Alt/Az → ARKit vector; validated against Stellarium | done |
+| M3 — Basic AR Scene | 9 Navagraha spheres on 1000 m sky-sphere; `VedicSkyviewController` + `LocationHeadingManager`; 60 s update loop | testing pending |
 | M4 — Rashi / Nakshatra Grid | Ecliptic line + 12 Rashi bands + 27 Nakshatra boundary lines + orbital planes toggle | 1.5 weeks |
 | M5 — Polish & HUD | Graha labels, tap-to-identify sheet, compass accuracy warning, settings panel | 1 week |
 | M6 — QA | Point at Sun during daylight, verify Rashi labels vs Stellarium, TestFlight | 1 week |

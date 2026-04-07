@@ -2,11 +2,32 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## Projects in this Repo
 
-**Vedic Skyview** is a personal iOS AR app that overlays Navagraha (9 planet) positions, Rashi bands, and Nakshatra grid on a live camera feed, using on-device Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric). Not intended for distribution.
+This repo contains two independent iOS apps:
 
-Full architecture: `engg_design_doc.md`. Current milestone: **M3 — Basic AR Scene**.
+1. **Vedic Skyview** (`Vedic Skyview/`) — AR app overlaying Navagraha positions on live camera. Architecture: `Vedic Skyview/engg_design_doc.md`. Status: M3 AR scene complete, untested on device (hardware constraint).
+
+2. **Navgraha Clock** (`Navgraha Clock/`) — 2D Jyotish visualisation app with four tabs: Rashi Chakra wheel, Celestial Sphere (orthographic globe), North Indian Kundali, South Indian Kundali. Architecture: `Navgraha Clock/design_doc.md`. Status: M1–M4 complete, Xcode project setup pending (user must create in Xcode).
+
+## Hardware Constraints
+
+**Dev machine:** MacBook Air 2017 (Intel) — max macOS is **Monterey 12**, max Xcode is **14.x**
+
+| What | Works? | Notes |
+|---|---|---|
+| Build + unit tests (Simulator) | ✅ | Use `iPhone 14` simulator, not iPhone 15 |
+| Deploy to iPhone XR (iOS 18) via USB | ❌ | Xcode 14 has no iOS 18 device support files; needs Xcode 16 |
+| AR testing on Simulator | ❌ | ARKit world tracking not available in Simulator |
+| Apple Developer Program / TestFlight | ❌ (skipped) | $99/year — not worth it for a learning project |
+
+**Current test strategy:** Run unit tests on the iPhone 14 Simulator. For AR validation, borrow a Mac with Xcode 16 to do a single USB deploy with a free personal provisioning profile (expires every 7 days, free Apple ID is enough).
+
+**Apple Developer Program cost:**
+- Public App Store distribution → $99/year (skipped — personal project)
+- Running on your own iPhone via USB → **free**, personal Apple ID is enough
+- Free provisioning profile expires every 7 days; renew by hitting Run in Xcode again
+- Vedic Skyview needs zero money to run on device — only blocker is the Mac hardware
 
 ## Build & Test
 
@@ -43,31 +64,44 @@ python scripts/export_fixtures.py
 ```
 /                                         ← git repo root
 ├── scripts/
-│   ├── graha_positions_reference.py      ← Canonical Python ground truth
+│   ├── graha_positions_reference.py      ← Canonical Python ground truth (shared)
 │   ├── export_fixtures.py                ← Generates fixtures from Python ref
 │   └── test_graha_positions.py           ← Python tests for reference impl
-└── Vedic Skyview/                        ← ALL Swift/Xcode files live here
-    ├── Vedic Skyview.xcodeproj
-    ├── Ephemeris/
-    │   └── EphemerisEngine.swift         ← Swiss Ephemeris Swift wrapper
-    ├── Coordinates/                      ← M2 coordinate pipeline
-    │   ├── SphericalMath.swift
-    │   ├── SiderealTime.swift
-    │   └── CoordinatePipeline.swift
-    ├── Resources/ephemeris/              ← .se1 binary data files (only relevant ones)
-    ├── Source/ThirdParty/swisseph/       ← libswe C sources
-    ├── Vedic Skyview/                    ← App source (ContentView, App entry)
-    ├── Vedic SkyviewTests/               ← XCTest suite
-    │   ├── EphemerisTests/
-    │   │   ├── EphemerisTests.swift
-    │   │   └── graha_fixtures.json       ← Ground-truth fixture (test bundle resource)
-    │   └── CoordinateTests/CoordinateTests.swift
-    └── VedicSkyview-Bridging-Header.h    ← Exposes swephexp.h to Swift
+├── Vedic Skyview/                        ← AR app
+│   ├── Vedic Skyview.xcodeproj
+│   ├── README.md
+│   ├── engg_design_doc.md
+│   ├── AR/VedicSkyviewController.swift   ← M3 AR scene
+│   ├── Ephemeris/EphemerisEngine.swift
+│   ├── Coordinates/                      ← coordinate pipeline
+│   ├── Sensors/LocationHeadingManager.swift
+│   ├── Resources/ephemeris/              ← .se1 files (original)
+│   ├── Source/ThirdParty/swisseph/       ← libswe C sources (original)
+│   ├── Vedic Skyview/                    ← App source
+│   ├── Vedic SkyviewTests/               ← XCTest suite
+│   └── VedicSkyview-Bridging-Header.h
+└── Navgraha Clock/                       ← 2D Jyotish app (fully self-contained)
+    ├── Navgraha Clock.xcodeproj          ← created by user in Xcode
+    ├── README.md
+    ├── design_doc.md
+    ├── Ephemeris/EphemerisEngine.swift   ← copy
+    ├── Coordinates/                      ← copy of coordinate pipeline
+    ├── Sensors/LocationHeadingManager.swift ← copy
+    ├── Source/ThirdParty/swisseph/       ← full copy of C sources
+    ├── Resources/ephemeris/              ← copy of .se1 files
+    ├── UI/
+    │   ├── NavgrahaViewModel.swift       ← shared ObservableObject
+    │   ├── RashiWheelView.swift          ← Tab 1: ecliptic wheel
+    │   ├── CelestialSphereView.swift     ← Tab 2: orthographic globe
+    │   ├── NorthIndianKundaliView.swift  ← Tab 3: North chart
+    │   ├── SouthIndianKundaliView.swift  ← Tab 4: South chart
+    │   └── ConstellationData.swift       ← hardcoded star data
+    └── NavgrahaClock-Bridging-Header.h
 ```
 
 ## File Placement Rules
 
-**All new Swift source files must be created inside `Vedic Skyview/`**, never at the repo root. Follow this pattern:
+**Vedic Skyview:** New Swift source files go inside `Vedic Skyview/`. Follow this pattern:
 
 | What | Where |
 |---|---|
@@ -90,7 +124,7 @@ The pipeline is: **Ephemeris Engine → Coordinate Pipeline → AR Renderer**
 |---|---|---|
 | Ephemeris Engine | `Vedic Skyview/Ephemeris/EphemerisEngine.swift` | M1 complete, tests passing |
 | Coordinate Pipeline | `Vedic Skyview/Coordinates/CoordinatePipeline.swift` | M2 complete |
-| AR Scene | `Vedic Skyview/AR/JyotishARViewController.swift` | M3 (not yet created) |
+| AR Scene | `Vedic Skyview/AR/VedicSkyviewController.swift` | M3 complete (untested on device — see Hardware Constraints) |
 | SwiftUI HUD | `Vedic Skyview/UI/` | M5 (not yet created) |
 
 ## Key Implementation Rules

@@ -1,0 +1,68 @@
+import XCTest
+
+@testable import Navgraha_Clock
+
+final class EphemerisTests: XCTestCase {
+    // Tolerance in degrees for longitude comparisons
+    let tol: Double = 5e-4
+
+    func testFixturesMatch() throws {
+        guard let fixturesURL = Bundle(for: EphemerisTests.self).url(forResource: "graha_fixtures", withExtension: "json") else {
+            throw XCTSkip("graha_fixtures.json not found in test bundle; generate with scripts/export_fixtures.py")
+        }
+
+        let data = try Data(contentsOf: fixturesURL)
+        let raw = try JSONSerialization.jsonObject(with: data) as? [[String:Any]]
+        XCTAssertNotNil(raw)
+
+        // .se1 ephemeris data files are bundled in the main app target; swe_set_ephe_path needs the directory.
+        let ephePath = Bundle.main.bundlePath
+        let engine = EphemerisEngine(ephePath: ephePath)
+
+        for caseObj in raw ?? [] {
+            guard let caseDict = caseObj["case"] as? [String:Any],
+                  let rows = caseObj["rows"] as? [[String:Any]] else { continue }
+
+            let dateStr = caseDict["date"] as? String ?? "1970-01-01"
+            let timeStr = caseDict["time"] as? String ?? "00:00:00"
+            let loc = caseDict["location"] as? [String:Any] ?? [:]
+            let tz = loc["timezone"] as? String ?? "UTC"
+
+            let dateParts = dateStr.split(separator: "-").map { Int($0) ?? 0 }
+            let timeParts = timeStr.split(separator: ":").map { Int($0) ?? 0 }
+            var comps = DateComponents()
+            comps.year = dateParts.count > 0 ? dateParts[0] : 1970
+            comps.month = dateParts.count > 1 ? dateParts[1] : 1
+            comps.day = dateParts.count > 2 ? dateParts[2] : 1
+            comps.hour = timeParts.count > 0 ? timeParts[0] : 0
+            comps.minute = timeParts.count > 1 ? timeParts[1] : 0
+            comps.second = timeParts.count > 2 ? timeParts[2] : 0
+            comps.timeZone = TimeZone(identifier: tz) ?? TimeZone(secondsFromGMT: 0)
+
+            let calendar = Calendar(identifier: .gregorian)
+            guard let localDate = calendar.date(from: comps) else { continue }
+            let lat = loc["latitude"] as? Double ?? 0.0
+            let lon = loc["longitude"] as? Double ?? 0.0
+            let alt = loc["altitude"] as? Double ?? 0.0
+
+            let computed = engine.positions(for: localDate, latitude: lat, longitude: lon, altitude: alt)
+
+            var computedByName: [String: GrahaPosition] = [:]
+            for p in computed { computedByName[p.graha] = p }
+
+            for row in rows {
+                guard let graha = row["graha"] as? String,
+                      let expectedSidereal = row["sidereal_lon"] as? Double,
+                      let expectedTropical = row["tropical_lon"] as? Double else { continue }
+
+                guard let comp = computedByName[graha] else {
+                    XCTFail("Missing computed graha: \(graha)")
+                    continue
+                }
+
+                XCTAssertEqual(comp.siderealLongitude, expectedSidereal, accuracy: tol, "sidereal lon mismatch for \(graha)")
+                XCTAssertEqual(comp.tropicalLongitude, expectedTropical, accuracy: tol, "tropical lon mismatch for \(graha)")
+            }
+        }
+    }
+}

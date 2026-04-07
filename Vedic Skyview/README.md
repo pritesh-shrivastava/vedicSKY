@@ -21,13 +21,16 @@ and Nakshatra grid on a live camera feed using on-device Swiss Ephemeris calcula
 │   └── test_graha_positions.py           ← Python tests for reference impl
 └── Vedic Skyview/                        ← ALL Swift/Xcode files live here
     ├── Vedic Skyview.xcodeproj
+    ├── AR/
+    │   └── VedicSkyviewController.swift  ← M3 AR scene controller
     ├── Ephemeris/EphemerisEngine.swift   ← Swift wrapper for libswe C API
     ├── Coordinates/                      ← M2 coordinate pipeline
     │   ├── SphericalMath.swift
     │   ├── SiderealTime.swift
     │   └── CoordinatePipeline.swift
-    ├── Resources/ephemeris/              ← .se1 binary data files (not in git)
-    │   └── sat/plmolist.txt              ← planetary moon index (required)
+    ├── Sensors/
+    │   └── LocationHeadingManager.swift  ← CoreLocation wrapper (Combine)
+    ├── Resources/ephemeris/              ← .se1 binary data files (tracked in git, trimmed 1900–2100)
     ├── Source/ThirdParty/swisseph/       ← libswe C sources
     └── Vedic SkyviewTests/               ← XCTest suite
         ├── EphemerisTests/               ← testFixturesMatch (M1)
@@ -62,7 +65,7 @@ See §9.1 of the design doc for the full parametric math.
 
 - [x] **M2 — Coordinate Pipeline**: Implement full `sidereal ecliptic → equatorial → horizontal → ARKit world vector` chain in `CoordinatePipeline.swift`. `SphericalMath.swift`, `SiderealTime.swift`, and `CoordinatePipeline.swift` created; all XCTests passing. Spica/Chitra Alt/Az verified against Stellarium at J2000.0 from Greenwich (Alt −2.093°, Az 254.632°).
 
-- [ ] **M3 — Basic AR Scene**: 9 graha dots visible on sky with rough alignment. Use `ARWorldTrackingConfiguration.worldAlignment = .gravityAndHeading`.
+- [ ] **M3 — Basic AR Scene**: `VedicSkyviewController.swift` places 9 Navagraha spheres on a 1000 m sky-sphere using `ARWorldTrackingConfiguration.worldAlignment = .gravityAndHeading`. Positions driven by `EphemerisEngine` + `CoordinatePipeline`, updated every 60 seconds via CoreLocation. `LocationHeadingManager` streams GPS via Combine. Untested on device — see hardware constraints in CLAUDE.md.
 
 - [ ] **M4 — Rashi / Nakshatra Grid + Orbital Planes**: Ecliptic arc + 12 Rashi bands + 27 Nakshatra boundary lines + lunar orbital arc (silver, ~5.1° inclined). Rahu/Ketu render as intersection glyphs ☊ ☋ at crossing points. Settings toggle to show/hide arcs.
 
