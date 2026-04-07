@@ -1,6 +1,6 @@
 # Navgraha Clock — Engineering Design Document
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Status:** In progress — personal tool, no distribution planned
 
 ---
@@ -174,10 +174,79 @@ Row 3: Dhanu | Vrish | Tula  | Kanya
 
 ---
 
-## 10. Open Questions / Future
+## 10. Open Questions / Future (v1)
 
 - **Time travel:** Scrubber to set custom date/time for historical/future charts
 - **Tap-to-identify:** Bottom sheet showing graha details (Rashi, Nakshatra, Pada, degrees) on tap
 - **Birth chart mode:** Enter birth date + location → freeze positions to that moment
 - **Retrograde indicator:** Badge grahas with ℞ when SWE velocity < 0
 - **Vakri (retrograde) in Kundali:** Mark retrograde grahas with (R) in house cells
+
+---
+
+## 11. v2 — AR Sky Overlay
+
+**Goal:** Point the device camera at the sky and see the 9 Navagrahas rendered at their live sidereal positions as a camera passthrough AR overlay.
+
+### Architecture
+
+```
+EphemerisEngine  ──►  CoordinatePipeline  ──►  VedicSkyviewController
+(libswe C)             altAzToARVector()         (ARKit + RealityKit)
+LocationHeadingManager ──► (lat/lon/alt)
+```
+
+### Entry point
+
+`AR/VedicSkyviewController.swift` — already implemented (140 lines). Not in the Xcode build target yet; will be wired up in v2.
+
+### Coordinate chain
+
+Same ephemeris + coordinate pipeline used by v1 views, extended one step further:
+
+```
+Sidereal Ecliptic (λ, β)
+  → eclipticToEquatorial(ε)       → (RA, Dec)
+  → equatorialToHorizontal(...)   → (Alt, Az)
+  → CoordinatePipeline.altAzToARVector()  → SIMD3<Float>
+```
+
+ARKit frame with `.gravityAndHeading`: +X = East, +Y = Up, −Z = North. Sky-sphere radius = **1000 m**.
+
+### ARKit configuration
+
+```swift
+let config = ARWorldTrackingConfiguration()
+config.worldAlignment = .gravityAndHeading   // fuses GPS + compass + gyro
+arView.session.run(config)
+```
+
+### Graha rendering
+
+9 `ModelEntity` spheres with `SimpleMaterial`; radii and colours per the table below:
+
+| Graha | Radius (m) | Color |
+|---|---|---|
+| Surya | 15 | systemYellow |
+| Chandra | 12 | white |
+| Mangala | 9 | systemRed |
+| Budha | 9 | systemGreen |
+| Guru | 11 | systemOrange |
+| Shukra | 9 | white (95%) |
+| Shani | 10 | systemBlue |
+| Rahu | 8 | systemPurple |
+| Ketu | 8 | systemGray |
+
+### Remaining v2 work
+
+| Item | Notes |
+|---|---|
+| Add `AR/VedicSkyviewController.swift` to Xcode target | Not in build target yet |
+| Add ARKit + RealityKit capabilities in Xcode | Info.plist camera usage description |
+| Rashi / Nakshatra band rendering | Ecliptic arc segments as AR planes |
+| SwiftUI HUD overlay | Tap-to-identify, graha name labels |
+| Device testing on iPhone XR | ARKit not available in Simulator |
+
+### Hardware requirement
+
+Needs **Xcode 16** on a Mac that supports it + a physical iOS 16+ device. A free personal Apple ID provisioning profile is sufficient (no $99 developer program needed). Profile expires every 7 days; renew by hitting Run in Xcode again.

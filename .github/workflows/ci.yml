@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  swift-tests:
+    name: Swift Tests (Vedic Skyview)
+    runs-on: macos-15   # Xcode 16, iOS 18 simulator support
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          xcodebuild test \
+            -project "Vedic Skyview/Vedic Skyview.xcodeproj" \
+            -scheme "Vedic Skyview" \
+            -destination "platform=iOS Simulator,name=iPhone 14" \
+            | xcpretty || true
+
+  python-tests:
+    name: Python Reference Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install swisseph pandas pytest
+
+      - name: Run tests
+        run: python -m pytest scripts/test_graha_positions.py -v

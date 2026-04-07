@@ -15,11 +15,26 @@ A personal iOS app visualising the 9 Navagraha positions and Lagna in real time 
 
 ---
 
+## v2 Roadmap
+
+| Feature | Status | Notes |
+|---|---|---|
+| **AR Sky Overlay** | Coded, untested on device | `AR/VedicSkyviewController.swift` — ARKit + RealityKit scene placing 9 Navagraha spheres on a 1000 m sky-sphere |
+| Rashi / Nakshatra AR bands | Not started | Ecliptic arc segments as AR planes |
+| SwiftUI HUD | Not started | Tap-to-identify, graha name labels in AR |
+| Time-travel scrubber | Not started | Drag to set custom date/time |
+| Retrograde (vakri) badges | Not started | ℞ indicator when SWE velocity < 0 |
+| Birth chart mode | Not started | Freeze positions to a birth date + location |
+
+**AR blocker:** Needs a Mac with Xcode 16 for on-device testing. A free personal Apple ID provisioning profile is enough — no $99 developer program required. Profile expires every 7 days; renew by hitting Run in Xcode.
+
+---
+
 ## Repo Structure
 
 ```
-Navgraha Clock/
-├── Navgraha Clock.xcodeproj
+NavgrahaClock/
+├── NavgrahaClock.xcodeproj
 ├── NavgrahaClockApp.swift
 ├── ContentView.swift               ← 4-tab root view
 ├── Ephemeris/
@@ -49,9 +64,9 @@ Navgraha Clock/
 **Requirements:** Xcode 14+ (Xcode 16 recommended), iOS 16+ target, iPhone 14 Simulator or physical device.
 
 ```bash
-# Unit tests (Vedic Skyview — shared ground truth)
-xcodebuild test -project "../Vedic Skyview/Vedic Skyview.xcodeproj" \
-  -scheme "Vedic Skyview" -destination "platform=iOS Simulator,name=iPhone 14"
+# Build and run unit tests
+xcodebuild test -project "NavgrahaClock/NavgrahaClock.xcodeproj" \
+  -scheme "NavgrahaClock" -destination "platform=iOS Simulator,name=iPhone 14"
 ```
 
 **Simulator location:** `Features → Location → Custom Location` — e.g. Bhopal: 23.259°N, 77.412°E
