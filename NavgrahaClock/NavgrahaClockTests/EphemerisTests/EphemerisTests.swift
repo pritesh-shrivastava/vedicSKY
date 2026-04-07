@@ -1,6 +1,6 @@
 import XCTest
 
-@testable import Navgraha_Clock
+@testable import NavgrahaClock
 
 final class EphemerisTests: XCTestCase {
     // Tolerance in degrees for longitude comparisons

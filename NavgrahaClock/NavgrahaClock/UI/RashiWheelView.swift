@@ -155,7 +155,7 @@ struct RashiWheelView: View {
             let pt = project(lon: midLon, lat: 0, center: center, radius: labelRadius)
 
             // Sanskrit name
-            var nameText = Text(rashi.name).font(.system(size: 10, weight: .medium)).foregroundColor(rashiCyan)
+            let nameText = Text(rashi.name).font(.system(size: 10, weight: .medium)).foregroundColor(rashiCyan)
             ctx.draw(nameText, at: pt, anchor: .center)
 
             // Symbol below name
@@ -177,7 +177,7 @@ struct RashiWheelView: View {
                 layerCtx.translateBy(x: pt.x, y: pt.y)
                 // Rotate label to be tangential to the wheel
                 layerCtx.rotate(by: Angle(radians: angle - .pi / 2))
-                var t = Text(name).font(.system(size: 7)).foregroundColor(grahaLabelGray)
+                let t = Text(name).font(.system(size: 7)).foregroundColor(grahaLabelGray)
                 layerCtx.draw(t, at: .zero, anchor: .center)
             }
         }
@@ -204,7 +204,7 @@ struct RashiWheelView: View {
 
         // Label
         let labelPt = project(lon: vm.lagnaSidereal, lat: 0, center: center, radius: radius * 0.88)
-        var t = Text("Lagna").font(.system(size: 8, weight: .bold)).foregroundColor(lagnaGold)
+        let t = Text("Lagna").font(.system(size: 8, weight: .bold)).foregroundColor(lagnaGold)
         ctx.draw(t, at: labelPt, anchor: .center)
     }
 
@@ -221,7 +221,7 @@ struct RashiWheelView: View {
 
             // Label — offset inward (toward center)
             let labelPt = project(lon: graha.siderealLon, lat: 0, center: center, radius: radius * 0.85)
-            var t = Text(graha.name).font(.system(size: 8, weight: .semibold)).foregroundColor(grahaLabelGray)
+            let t = Text(graha.name).font(.system(size: 8, weight: .semibold)).foregroundColor(grahaLabelGray)
             ctx.draw(t, at: labelPt, anchor: .center)
         }
     }

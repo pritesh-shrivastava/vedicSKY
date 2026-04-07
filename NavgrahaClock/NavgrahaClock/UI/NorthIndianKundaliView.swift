@@ -76,8 +76,6 @@ struct NorthIndianKundaliView: View {
             let x = frame.minX, y = frame.minY
             let w = frame.width, h = frame.height
             let mx = x + w / 2, my = y + h / 2
-            let tx = x + w / 4, ty = y + h / 4    // top quadrant corners
-            let bx = x + w / 4, by = y + 3 * h / 4
 
             // Outer square
             ctx.stroke(Path(frame), with: stroke, lineWidth: 1.5)

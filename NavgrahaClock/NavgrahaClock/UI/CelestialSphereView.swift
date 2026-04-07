@@ -150,7 +150,7 @@ struct CelestialSphereView: View {
             guard let pt = project(ra: ra, dec: dec, center: center, radius: radius, rot: rot) else { continue }
             let dot = CGRect(x: pt.x - 2.5, y: pt.y - 2.5, width: 5, height: 5)
             ctx.fill(Path(ellipseIn: dot), with: .color(eclipticColor))
-            var t = Text("\(Int(lon))°").font(.system(size: 8)).foregroundColor(eclipticColor)
+            let t = Text("\(Int(lon))°").font(.system(size: 8)).foregroundColor(eclipticColor)
             ctx.draw(t, at: CGPoint(x: pt.x + 6, y: pt.y - 4), anchor: .leading)
         }
     }
@@ -209,7 +209,7 @@ struct CelestialSphereView: View {
         tick.addLine(to: CGPoint(x: pt.x, y: pt.y + size))
         ctx.stroke(tick, with: .color(.red), lineWidth: 2)
 
-        var t = Text(label).font(.system(size: 8, weight: .bold)).foregroundColor(.red)
+        let t = Text(label).font(.system(size: 8, weight: .bold)).foregroundColor(.red)
         ctx.draw(t, at: CGPoint(x: pt.x + 10, y: pt.y), anchor: .leading)
     }
 
@@ -232,7 +232,7 @@ struct CelestialSphereView: View {
             let (ra, dec) = eclipticToEquatorial(lambda: midLon, beta: 4, epsilon: epsilon)
             guard let pt = project(ra: ra, dec: dec, center: center, radius: radius, rot: rot) else { continue }
 
-            var t = Text(name).font(.system(size: 7)).foregroundColor(labelColor)
+            let t = Text(name).font(.system(size: 7)).foregroundColor(labelColor)
             ctx.draw(t, at: pt, anchor: .center)
         }
     }
@@ -261,7 +261,7 @@ struct CelestialSphereView: View {
                 ctx.fill(Path(ellipseIn: glowRect), with: .color(Color.yellow.opacity(0.15)))
             }
 
-            var t = Text(graha.name).font(.system(size: 9, weight: .semibold)).foregroundColor(color)
+            let t = Text(graha.name).font(.system(size: 9, weight: .semibold)).foregroundColor(color)
             ctx.draw(t, at: CGPoint(x: pt.x, y: pt.y - dotR - 6), anchor: .center)
         }
     }
@@ -272,7 +272,7 @@ struct CelestialSphereView: View {
         let polePt = CGPoint(x: center.x, y: center.y - radius)
         let dot = CGRect(x: polePt.x - 3, y: polePt.y - 3, width: 6, height: 6)
         ctx.fill(Path(ellipseIn: dot), with: .color(.white))
-        var t = Text("Dhruva ✦").font(.system(size: 9, weight: .medium)).foregroundColor(.white)
+        let t = Text("Dhruva ✦").font(.system(size: 9, weight: .medium)).foregroundColor(.white)
         ctx.draw(t, at: CGPoint(x: polePt.x, y: polePt.y - 12), anchor: .center)
     }
 

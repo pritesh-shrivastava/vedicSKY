@@ -1,5 +1,5 @@
 import XCTest
-@testable import Navgraha_Clock
+@testable import NavgrahaClock
 
 final class CoordinateTests: XCTestCase {
 
