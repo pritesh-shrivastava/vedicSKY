@@ -189,10 +189,10 @@ struct CelestialSphereView: View {
         ctx.stroke(path, with: .color(.white.opacity(0.75)), lineWidth: 1.2)
 
         // Rahu marker (ascending node) — red tick
-        drawNodeMarker(at: rahuLon, label: "Rahu ☊", ctx: ctx, center: center, radius: radius, rot: rot, epsilon: epsilon)
+        drawNodeMarker(at: rahuLon, label: "Rahu ☊", ctx: ctx, center, radius, rot: rot, epsilon: epsilon)
         // Ketu marker (descending node)
         let ketuLon = (rahuLon + 180).truncatingRemainder(dividingBy: 360)
-        drawNodeMarker(at: ketuLon, label: "Ketu ☋", ctx: ctx, center: center, radius: radius, rot: rot, epsilon: epsilon)
+        drawNodeMarker(at: ketuLon, label: "Ketu ☋", ctx: ctx, center, radius, rot: rot, epsilon: epsilon)
     }
 
     private func drawNodeMarker(at lon: Double, label: String, ctx: GraphicsContext,

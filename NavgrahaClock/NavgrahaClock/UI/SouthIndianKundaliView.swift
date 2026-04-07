@@ -97,38 +97,7 @@ struct SouthIndianKundaliView: View {
 
                 // Cell labels
                 ForEach(cells, id: \.rashi) { cell in
-                    let cx = left + CGFloat(cell.col) * cellSize + cellSize / 2
-                    let cy = top  + CGFloat(cell.row) * cellSize + cellSize / 2
-                    let rashi  = cell.rashi
-                    let house  = houseForRashi(rashi)
-                    let grahas = grahasInRashi(rashi)
-                    let isLagna = house == 1
-
-                    VStack(spacing: 1) {
-                        // House number
-                        Text("\(house)")
-                            .font(.system(size: 9, weight: .bold))
-                            .foregroundColor(isLagna
-                                ? Color(red: 1, green: 0.8, blue: 0)
-                                : Color(red: 0.5, green: 0.5, blue: 0.7))
-
-                        // Rashi symbol + short name
-                        HStack(spacing: 1) {
-                            Text(rashiSymbols[rashi])
-                                .font(.system(size: 11))
-                            Text(String(rashiNames[rashi].prefix(3)))
-                                .font(.system(size: 8))
-                                .foregroundColor(Color(red: 0.3, green: 0.8, blue: 0.8))
-                        }
-
-                        // Grahas
-                        ForEach(grahas, id: \.self) { g in
-                            Text(abbreviate(g))
-                                .font(.system(size: 8, weight: .bold))
-                                .foregroundColor(grahaColor(g))
-                        }
-                    }
-                    .position(x: cx, y: cy)
+                    cellView(cell: cell, left: left, top: top, cellSize: cellSize)
                 }
 
                 // Center label
@@ -141,6 +110,37 @@ struct SouthIndianKundaliView: View {
         }
         .background(Color.black)
         .ignoresSafeArea(edges: .top)
+    }
+
+    @ViewBuilder
+    private func cellView(cell: (row: Int, col: Int, rashi: Int),
+                          left: CGFloat, top: CGFloat, cellSize: CGFloat) -> some View {
+        let cx = left + CGFloat(cell.col) * cellSize + cellSize / 2
+        let cy = top  + CGFloat(cell.row) * cellSize + cellSize / 2
+        let rashi   = cell.rashi
+        let house   = houseForRashi(rashi)
+        let grahas  = grahasInRashi(rashi)
+        let isLagna = house == 1
+        let houseColor: Color = isLagna ? Color(red: 1, green: 0.8, blue: 0) : Color(red: 0.5, green: 0.5, blue: 0.7)
+
+        VStack(spacing: 1) {
+            Text("\(house)")
+                .font(.system(size: 9, weight: .bold))
+                .foregroundColor(houseColor)
+            HStack(spacing: 1) {
+                Text(rashiSymbols[rashi])
+                    .font(.system(size: 11))
+                Text(String(rashiNames[rashi].prefix(3)))
+                    .font(.system(size: 8))
+                    .foregroundColor(Color(red: 0.3, green: 0.8, blue: 0.8))
+            }
+            ForEach(grahas, id: \.self) { g in
+                Text(abbreviate(g))
+                    .font(.system(size: 8, weight: .bold))
+                    .foregroundColor(grahaColor(g))
+            }
+        }
+        .position(x: cx, y: cy)
     }
 
     private func abbreviate(_ graha: String) -> String {

@@ -1,26 +1,24 @@
-//
-//  ContentView.swift
-//  NavgrahaClock
-//
-//  Created by Pritesh Shrivastava on 07/04/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+    @StateObject private var vm = NavgrahaViewModel()
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    var body: some View {
+        TabView {
+            RashiWheelView()
+                .tabItem { Label("Chakra", systemImage: "circle") }
+
+            CelestialSphereView()
+                .tabItem { Label("Sphere", systemImage: "globe") }
+
+            NorthIndianKundaliView()
+                .tabItem { Label("North", systemImage: "square.grid.2x2") }
+
+            SouthIndianKundaliView()
+                .tabItem { Label("South", systemImage: "tablecells") }
+        }
+        .environmentObject(vm)
+        .background(Color.black)
+        .preferredColorScheme(.dark)
     }
 }

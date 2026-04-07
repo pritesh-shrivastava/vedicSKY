@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA000000000000000000B001 /* CoordinatePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F002 /* CoordinatePipeline.swift */; };
+		AA000000000000000000B002 /* SiderealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F003 /* SiderealTime.swift */; };
+		AA000000000000000000B003 /* SphericalMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F004 /* SphericalMath.swift */; };
+		AA000000000000000000B004 /* EphemerisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F006 /* EphemerisEngine.swift */; };
+		AA000000000000000000B005 /* LocationHeadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F008 /* LocationHeadingManager.swift */; };
+		AA000000000000000000B006 /* CelestialSphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00A /* CelestialSphereView.swift */; };
+		AA000000000000000000B007 /* ConstellationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00B /* ConstellationData.swift */; };
+		AA000000000000000000B008 /* NavgrahaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00C /* NavgrahaViewModel.swift */; };
+		AA000000000000000000B009 /* NorthIndianKundaliView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00D /* NorthIndianKundaliView.swift */; };
+		AA000000000000000000B00A /* RashiWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00E /* RashiWheelView.swift */; };
+		AA000000000000000000B00B /* SouthIndianKundaliView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00F /* SouthIndianKundaliView.swift */; };
+		AA000000000000000000B00C /* swecl.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F013 /* swecl.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B00D /* swedate.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F014 /* swedate.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B00E /* sweephe4.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F015 /* sweephe4.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B00F /* swehel.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F016 /* swehel.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B010 /* swehouse.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F017 /* swehouse.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B011 /* swejpl.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F018 /* swejpl.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B012 /* swemmoon.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F019 /* swemmoon.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B013 /* swemplan.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F01A /* swemplan.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B014 /* sweph.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F01B /* sweph.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B015 /* swephlib.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F01C /* swephlib.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B016 /* globals.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F01D /* globals.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B017 /* constants.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F01E /* constants.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B018 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F01F /* reader.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		AA000000000000000000B019 /* sepl_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F023 /* sepl_18.se1 */; };
+		AA000000000000000000B01A /* semo_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F024 /* semo_18.se1 */; };
+		AA000000000000000000B01B /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F025 /* sefstars.txt */; };
+		AA000000000000000000B01C /* seorbel.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F026 /* seorbel.txt */; };
+		AA000000000000000000B01D /* EphemerisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F028 /* EphemerisTests.swift */; };
+		AA000000000000000000B01E /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F02B /* CoordinateTests.swift */; };
+		AA000000000000000000B01F /* graha_fixtures.json in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F029 /* graha_fixtures.json */; };
 		CBF3E8E32F84DD3500AF0B3C /* NavgrahaClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3E8E22F84DD3500AF0B3C /* NavgrahaClockApp.swift */; };
 		CBF3E8E52F84DD3500AF0B3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3E8E42F84DD3500AF0B3C /* ContentView.swift */; };
 		CBF3E8E72F84DD3800AF0B3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF3E8E62F84DD3800AF0B3C /* Assets.xcassets */; };
@@ -34,6 +65,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA000000000000000000F002 /* CoordinatePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatePipeline.swift; sourceTree = "<group>"; };
+		AA000000000000000000F003 /* SiderealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiderealTime.swift; sourceTree = "<group>"; };
+		AA000000000000000000F004 /* SphericalMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphericalMath.swift; sourceTree = "<group>"; };
+		AA000000000000000000F006 /* EphemerisEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EphemerisEngine.swift; sourceTree = "<group>"; };
+		AA000000000000000000F008 /* LocationHeadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHeadingManager.swift; sourceTree = "<group>"; };
+		AA000000000000000000F00A /* CelestialSphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelestialSphereView.swift; sourceTree = "<group>"; };
+		AA000000000000000000F00B /* ConstellationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstellationData.swift; sourceTree = "<group>"; };
+		AA000000000000000000F00C /* NavgrahaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavgrahaViewModel.swift; sourceTree = "<group>"; };
+		AA000000000000000000F00D /* NorthIndianKundaliView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthIndianKundaliView.swift; sourceTree = "<group>"; };
+		AA000000000000000000F00E /* RashiWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RashiWheelView.swift; sourceTree = "<group>"; };
+		AA000000000000000000F00F /* SouthIndianKundaliView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SouthIndianKundaliView.swift; sourceTree = "<group>"; };
+		AA000000000000000000F013 /* swecl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swecl.c; sourceTree = "<group>"; };
+		AA000000000000000000F014 /* swedate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swedate.c; sourceTree = "<group>"; };
+		AA000000000000000000F015 /* sweephe4.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sweephe4.c; sourceTree = "<group>"; };
+		AA000000000000000000F016 /* swehel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swehel.c; sourceTree = "<group>"; };
+		AA000000000000000000F017 /* swehouse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swehouse.c; sourceTree = "<group>"; };
+		AA000000000000000000F018 /* swejpl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swejpl.c; sourceTree = "<group>"; };
+		AA000000000000000000F019 /* swemmoon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swemmoon.c; sourceTree = "<group>"; };
+		AA000000000000000000F01A /* swemplan.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swemplan.c; sourceTree = "<group>"; };
+		AA000000000000000000F01B /* sweph.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sweph.c; sourceTree = "<group>"; };
+		AA000000000000000000F01C /* swephlib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swephlib.c; sourceTree = "<group>"; };
+		AA000000000000000000F01D /* globals.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = globals.c; sourceTree = "<group>"; };
+		AA000000000000000000F01E /* constants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = constants.c; sourceTree = "<group>"; };
+		AA000000000000000000F01F /* reader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = reader.c; sourceTree = "<group>"; };
+		AA000000000000000000F020 /* NavgrahaClock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NavgrahaClock-Bridging-Header.h"; sourceTree = "<group>"; };
+		AA000000000000000000F023 /* sepl_18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sepl_18.se1; sourceTree = "<group>"; };
+		AA000000000000000000F024 /* semo_18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = semo_18.se1; sourceTree = "<group>"; };
+		AA000000000000000000F025 /* sefstars.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = sefstars.txt; sourceTree = "<group>"; };
+		AA000000000000000000F026 /* seorbel.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = seorbel.txt; sourceTree = "<group>"; };
+		AA000000000000000000F028 /* EphemerisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EphemerisTests.swift; sourceTree = "<group>"; };
+		AA000000000000000000F029 /* graha_fixtures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = graha_fixtures.json; sourceTree = "<group>"; };
+		AA000000000000000000F02B /* CoordinateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		CBF3E8DF2F84DD3500AF0B3C /* NavgrahaClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavgrahaClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF3E8E22F84DD3500AF0B3C /* NavgrahaClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavgrahaClockApp.swift; sourceTree = "<group>"; };
 		CBF3E8E42F84DD3500AF0B3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +134,117 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA000000000000000000F001 /* Coordinates */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F002 /* CoordinatePipeline.swift */,
+				AA000000000000000000F003 /* SiderealTime.swift */,
+				AA000000000000000000F004 /* SphericalMath.swift */,
+			);
+			path = Coordinates;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F005 /* Ephemeris */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F006 /* EphemerisEngine.swift */,
+			);
+			path = Ephemeris;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F007 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F008 /* LocationHeadingManager.swift */,
+			);
+			path = Sensors;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F009 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F00A /* CelestialSphereView.swift */,
+				AA000000000000000000F00B /* ConstellationData.swift */,
+				AA000000000000000000F00C /* NavgrahaViewModel.swift */,
+				AA000000000000000000F00D /* NorthIndianKundaliView.swift */,
+				AA000000000000000000F00E /* RashiWheelView.swift */,
+				AA000000000000000000F00F /* SouthIndianKundaliView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F010 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F011 /* ThirdParty */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F011 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F012 /* swisseph */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F012 /* swisseph */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F013 /* swecl.c */,
+				AA000000000000000000F014 /* swedate.c */,
+				AA000000000000000000F015 /* sweephe4.c */,
+				AA000000000000000000F016 /* swehel.c */,
+				AA000000000000000000F017 /* swehouse.c */,
+				AA000000000000000000F018 /* swejpl.c */,
+				AA000000000000000000F019 /* swemmoon.c */,
+				AA000000000000000000F01A /* swemplan.c */,
+				AA000000000000000000F01B /* sweph.c */,
+				AA000000000000000000F01C /* swephlib.c */,
+				AA000000000000000000F01D /* globals.c */,
+				AA000000000000000000F01E /* constants.c */,
+				AA000000000000000000F01F /* reader.c */,
+			);
+			path = swisseph;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F021 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F022 /* ephemeris */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F022 /* ephemeris */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F023 /* sepl_18.se1 */,
+				AA000000000000000000F024 /* semo_18.se1 */,
+				AA000000000000000000F025 /* sefstars.txt */,
+				AA000000000000000000F026 /* seorbel.txt */,
+			);
+			path = ephemeris;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F027 /* EphemerisTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F028 /* EphemerisTests.swift */,
+				AA000000000000000000F029 /* graha_fixtures.json */,
+			);
+			path = EphemerisTests;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000F02A /* CoordinateTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000F02B /* CoordinateTests.swift */,
+			);
+			path = CoordinateTests;
+			sourceTree = "<group>";
+		};
 		CBF3E8D62F84DD3500AF0B3C = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +268,15 @@
 		CBF3E8E12F84DD3500AF0B3C /* NavgrahaClock */ = {
 			isa = PBXGroup;
 			children = (
+				AA000000000000000000F020 /* NavgrahaClock-Bridging-Header.h */,
 				CBF3E8E22F84DD3500AF0B3C /* NavgrahaClockApp.swift */,
 				CBF3E8E42F84DD3500AF0B3C /* ContentView.swift */,
+				AA000000000000000000F001 /* Coordinates */,
+				AA000000000000000000F005 /* Ephemeris */,
+				AA000000000000000000F007 /* Sensors */,
+				AA000000000000000000F009 /* UI */,
+				AA000000000000000000F010 /* Source */,
+				AA000000000000000000F021 /* Resources */,
 				CBF3E8E62F84DD3800AF0B3C /* Assets.xcassets */,
 				CBF3E8E82F84DD3800AF0B3C /* Preview Content */,
 			);
@@ -114,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				CBF3E8F32F84DD3900AF0B3C /* NavgrahaClockTests.swift */,
+				AA000000000000000000F027 /* EphemerisTests */,
+				AA000000000000000000F02A /* CoordinateTests */,
 			);
 			path = NavgrahaClockTests;
 			sourceTree = "<group>";
@@ -233,6 +416,10 @@
 			files = (
 				CBF3E8EA2F84DD3800AF0B3C /* Preview Assets.xcassets in Resources */,
 				CBF3E8E72F84DD3800AF0B3C /* Assets.xcassets in Resources */,
+				AA000000000000000000B019 /* sepl_18.se1 in Resources */,
+				AA000000000000000000B01A /* semo_18.se1 in Resources */,
+				AA000000000000000000B01B /* sefstars.txt in Resources */,
+				AA000000000000000000B01C /* seorbel.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA000000000000000000B01F /* graha_fixtures.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +447,30 @@
 			files = (
 				CBF3E8E52F84DD3500AF0B3C /* ContentView.swift in Sources */,
 				CBF3E8E32F84DD3500AF0B3C /* NavgrahaClockApp.swift in Sources */,
+				AA000000000000000000B001 /* CoordinatePipeline.swift in Sources */,
+				AA000000000000000000B002 /* SiderealTime.swift in Sources */,
+				AA000000000000000000B003 /* SphericalMath.swift in Sources */,
+				AA000000000000000000B004 /* EphemerisEngine.swift in Sources */,
+				AA000000000000000000B005 /* LocationHeadingManager.swift in Sources */,
+				AA000000000000000000B006 /* CelestialSphereView.swift in Sources */,
+				AA000000000000000000B007 /* ConstellationData.swift in Sources */,
+				AA000000000000000000B008 /* NavgrahaViewModel.swift in Sources */,
+				AA000000000000000000B009 /* NorthIndianKundaliView.swift in Sources */,
+				AA000000000000000000B00A /* RashiWheelView.swift in Sources */,
+				AA000000000000000000B00B /* SouthIndianKundaliView.swift in Sources */,
+				AA000000000000000000B00C /* swecl.c in Sources */,
+				AA000000000000000000B00D /* swedate.c in Sources */,
+				AA000000000000000000B00E /* sweephe4.c in Sources */,
+				AA000000000000000000B00F /* swehel.c in Sources */,
+				AA000000000000000000B010 /* swehouse.c in Sources */,
+				AA000000000000000000B011 /* swejpl.c in Sources */,
+				AA000000000000000000B012 /* swemmoon.c in Sources */,
+				AA000000000000000000B013 /* swemplan.c in Sources */,
+				AA000000000000000000B014 /* sweph.c in Sources */,
+				AA000000000000000000B015 /* swephlib.c in Sources */,
+				AA000000000000000000B016 /* globals.c in Sources */,
+				AA000000000000000000B017 /* constants.c in Sources */,
+				AA000000000000000000B018 /* reader.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +479,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBF3E8F42F84DD3900AF0B3C /* NavgrahaClockTests.swift in Sources */,
+				AA000000000000000000B01D /* EphemerisTests.swift in Sources */,
+				AA000000000000000000B01E /* CoordinateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +633,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NavgrahaClock/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n/**",
+				);
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to compute Lagna and planet positions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -432,6 +650,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "NavgrahaClock/NavgrahaClock-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,6 +666,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NavgrahaClock/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n$(SRCROOT)/NavgrahaClock/Source/ThirdParty/swisseph\n/**",
+				);
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to compute Lagna and planet positions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -460,6 +683,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vedicskyview.NavgrahaClock.NavgrahaClock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "NavgrahaClock/NavgrahaClock-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
