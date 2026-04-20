@@ -9,14 +9,14 @@ struct SettingsView: View {
         ("Mangala", .red),
         ("Budha",   .green),
         ("Guru",    .orange),
-        ("Shukra",  Color(white: 0.85)),
+        ("Shukra",  Color(white: 0.95)),
         ("Shani",   .blue),
         ("Rahu",    .purple),
         ("Ketu",    .gray),
     ]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section("Location") {
                     infoRow("Position", vm.locationLabel)
