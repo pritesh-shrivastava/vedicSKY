@@ -39,49 +39,47 @@ struct GrahaDetailSheet: View {
     private var degInNakshatra: Double { graha.siderealLon.truncatingRemainder(dividingBy: Self.nakshatraSpan) }
     private var color: Color           { grahaColors[graha.name] ?? .white }
 
+    private let labelColor = Color(red: 0.5, green: 0.5, blue: 0.7)
+
     var body: some View {
         VStack(spacing: 20) {
-            RoundedRectangle(cornerRadius: 2.5)
-                .fill(Color.gray.opacity(0.5))
-                .frame(width: 40, height: 5)
-                .padding(.top, 8)
-
             Text(graha.name)
                 .font(.title.bold())
                 .foregroundColor(color)
+                .padding(.top, 24)
 
             Grid(alignment: .leading, horizontalSpacing: 20, verticalSpacing: 12) {
                 GridRow {
                     Text("Sidereal Lon")
-                        .font(.subheadline).foregroundColor(Color(white: 0.5))
+                        .font(.subheadline).foregroundColor(labelColor)
                         .gridColumnAlignment(.trailing)
                     Text(String(format: "%.4f°", graha.siderealLon))
                         .font(.subheadline.monospacedDigit()).foregroundColor(.white)
                 }
                 GridRow {
                     Text("Rashi")
-                        .font(.subheadline).foregroundColor(Color(white: 0.5))
+                        .font(.subheadline).foregroundColor(labelColor)
                         .gridColumnAlignment(.trailing)
                     Text("\(rashiNames[rashiIndex])  (\(rashiIndex + 1))")
                         .font(.subheadline).foregroundColor(.white)
                 }
                 GridRow {
                     Text("In Rashi")
-                        .font(.subheadline).foregroundColor(Color(white: 0.5))
+                        .font(.subheadline).foregroundColor(labelColor)
                         .gridColumnAlignment(.trailing)
                     Text(String(format: "%.2f°", degreesInRashi))
                         .font(.subheadline.monospacedDigit()).foregroundColor(.white)
                 }
                 GridRow {
                     Text("Nakshatra")
-                        .font(.subheadline).foregroundColor(Color(white: 0.5))
+                        .font(.subheadline).foregroundColor(labelColor)
                         .gridColumnAlignment(.trailing)
                     Text("\(nakshatraNames[nakshatraIndex])  (pada \(pada))")
                         .font(.subheadline).foregroundColor(.white)
                 }
                 GridRow {
                     Text("In Nakshatra")
-                        .font(.subheadline).foregroundColor(Color(white: 0.5))
+                        .font(.subheadline).foregroundColor(labelColor)
                         .gridColumnAlignment(.trailing)
                     Text(String(format: "%.2f°", degInNakshatra))
                         .font(.subheadline.monospacedDigit()).foregroundColor(.white)
@@ -92,8 +90,8 @@ struct GrahaDetailSheet: View {
             Spacer()
         }
         .frame(maxWidth: .infinity)
-        .background(Color(white: 0.07))
+        .background(Color.black)
         .presentationDetents([.medium])
-        .presentationDragIndicator(.hidden)
+        .presentationDragIndicator(.visible)
     }
 }
