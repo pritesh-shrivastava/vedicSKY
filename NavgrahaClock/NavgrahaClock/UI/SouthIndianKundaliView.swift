@@ -165,7 +165,7 @@ struct SouthIndianKundaliView: View {
         case "Mangala": return .red
         case "Budha": return .green
         case "Guru": return .orange
-        case "Shukra": return Color(white: 0.9)
+        case "Shukra": return Color(white: 0.95)
         case "Shani": return .blue
         case "Rahu": return .purple
         case "Ketu": return .gray
