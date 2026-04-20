@@ -9,7 +9,7 @@ struct TimeTravelSheet: View {
     private let maxDate = Calendar.current.date(from: DateComponents(year: 2100, month: 12, day: 31))!
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 24) {
                 DatePicker(
                     "Date & Time",
@@ -50,6 +50,7 @@ struct TimeTravelSheet: View {
             }
             .background(Color.black)
         }
+        .preferredColorScheme(.dark)
         .onAppear {
             selectedDate = vm.isTimeTravelMode ? vm.displayDate : Date()
         }
