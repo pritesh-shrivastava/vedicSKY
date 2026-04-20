@@ -153,7 +153,7 @@ Row 3: Dhanu | Vrish | Tula  | Kanya
 | M2 — Rashi Wheel | Circular ecliptic wheel with all layers | complete |
 | M3 — Celestial Sphere | Orthographic globe, equatorial grid, ecliptic, lunar orbit | complete |
 | M4 — Kundali Charts | North + South Indian layouts | complete |
-| M5 — Polish | Graha detail tap sheet, time-travel scrubber, settings | pending |
+| M5 — Polish | Graha detail tap sheet, time-travel scrubber, settings | complete |
 
 ---
 
