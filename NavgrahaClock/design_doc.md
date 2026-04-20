@@ -176,8 +176,11 @@ Row 3: Dhanu | Vrish | Tula  | Kanya
 
 ## 10. Open Questions / Future (v1)
 
-- **Time travel:** Scrubber to set custom date/time for historical/future charts
-- **Tap-to-identify:** Bottom sheet showing graha details (Rashi, Nakshatra, Pada, degrees) on tap
+Shipped in M5:
+- ~~**Time travel:** Scrubber to set custom date/time for historical/future charts~~ → `TimeTravelSheet.swift`
+- ~~**Tap-to-identify:** Bottom sheet showing graha details (Rashi, Nakshatra, Pada, degrees) on tap~~ → `GrahaDetailSheet.swift`
+
+Still open:
 - **Birth chart mode:** Enter birth date + location → freeze positions to that moment
 - **Retrograde indicator:** Badge grahas with ℞ when SWE velocity < 0
 - **Vakri (retrograde) in Kundali:** Mark retrograde grahas with (R) in house cells

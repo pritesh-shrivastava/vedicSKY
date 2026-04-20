@@ -22,7 +22,7 @@ A personal iOS app visualising the 9 Navagraha positions and Lagna in real time 
 | **AR Sky Overlay** | Coded, untested on device | `AR/VedicSkyviewController.swift` — ARKit + RealityKit scene placing 9 Navagraha spheres on a 1000 m sky-sphere |
 | Rashi / Nakshatra AR bands | Not started | Ecliptic arc segments as AR planes |
 | SwiftUI HUD | Not started | Tap-to-identify, graha name labels in AR |
-| Time-travel scrubber | Not started | Drag to set custom date/time |
+| Time-travel scrubber | Shipped in v1 | Date/time picker sheet — tap clock icon |
 | Retrograde (vakri) badges | Not started | ℞ indicator when SWE velocity < 0 |
 | Birth chart mode | Not started | Freeze positions to a birth date + location |
 

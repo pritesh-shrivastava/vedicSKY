@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Navgraha Clock** (`NavgrahaClock/`) — Native iOS app visualising the 9 Navagraha positions and Lagna in real time using on-device Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric). Four tabs: Rashi Chakra wheel, Celestial Sphere (orthographic globe), North Indian Kundali, South Indian Kundali. Architecture: `NavgrahaClock/design_doc.md`.
 
-**Status:** M1–M4 complete, build and tests passing. M5 (polish) pending. v2 AR Sky Overlay planned — see `NavgrahaClock/design_doc.md §11`.
+**Status:** M1–M5 complete, build and tests passing. v2 AR Sky Overlay planned — see `NavgrahaClock/design_doc.md §11`.
 
 ## Hardware Constraints
 
@@ -132,7 +132,7 @@ LocationHeadingManager ─────────► (ObservableObject)  ──
 | Rashi Wheel | `NavgrahaClock/UI/RashiWheelView.swift` | M2 complete |
 | Celestial Sphere | `NavgrahaClock/UI/CelestialSphereView.swift` | M3 complete |
 | Kundali Charts | `NavgrahaClock/UI/North+SouthIndianKundaliView.swift` | M4 complete |
-| Polish (M5) | Tap sheet, time-travel, settings | pending |
+| Polish (M5) | Tap sheet, time-travel, settings | complete |
 | AR Sky Overlay (v2) | `NavgrahaClock/AR/VedicSkyviewController.swift` | coded, device test pending |
 
 ## Key Implementation Rules
