@@ -2,7 +2,8 @@ import Foundation
 import CoreLocation
 import Combine
 
-struct GrahaPoint {
+struct GrahaPoint: Identifiable {
+    let id = UUID()
     let name: String
     let siderealLon: Double
 }
@@ -12,6 +13,9 @@ final class NavgrahaViewModel: ObservableObject {
     @Published var lagnaSidereal: Double = 0
     @Published var locationLabel: String = "Locating…"
     @Published var lastUpdate: Date = Date()
+    @Published var selectedGraha: GrahaPoint? = nil
+    @Published var isTimeTravelMode: Bool = false
+    @Published var displayDate: Date = Date()
 
     private let engine = EphemerisEngine(ephePath: Bundle.main.bundlePath)
     private let locationManager = LocationHeadingManager()
@@ -32,8 +36,7 @@ final class NavgrahaViewModel: ObservableObject {
                 self.latitude = loc.coordinate.latitude
                 self.longitude = loc.coordinate.longitude
                 self.altitude = loc.altitude
-                let city = self.cityLabel(lat: self.latitude, lon: self.longitude)
-                self.locationLabel = city
+                self.locationLabel = self.cityLabel(lat: self.latitude, lon: self.longitude)
                 self.refresh()
                 self.startTimer()
             }
@@ -46,16 +49,29 @@ final class NavgrahaViewModel: ObservableObject {
     private func startTimer() {
         guard updateTimer == nil else { return }
         updateTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
-            self?.refresh()
+            guard let self, !self.isTimeTravelMode else { return }
+            self.refresh()
         }
     }
 
+    func setTimeTravel(to date: Date) {
+        isTimeTravelMode = true
+        displayDate = date
+        refresh()
+    }
+
+    func returnToLive() {
+        isTimeTravelMode = false
+        displayDate = Date()
+        refresh()
+    }
+
     func refresh() {
-        let now = Date()
-        let positions = engine.positions(for: now, latitude: latitude, longitude: longitude, altitude: altitude)
+        let date = isTimeTravelMode ? displayDate : Date()
+        let positions = engine.positions(for: date, latitude: latitude, longitude: longitude, altitude: altitude)
         grahaPoints = positions.map { GrahaPoint(name: $0.graha, siderealLon: $0.siderealLongitude) }
-        lagnaSidereal = computeLagna(date: now)
-        lastUpdate = now
+        lagnaSidereal = computeLagna(date: date)
+        lastUpdate = date
     }
 
     private func computeLagna(date: Date) -> Double {

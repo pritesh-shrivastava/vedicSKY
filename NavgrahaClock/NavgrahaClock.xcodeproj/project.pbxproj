@@ -18,6 +18,9 @@
 		AA000000000000000000B009 /* NorthIndianKundaliView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00D /* NorthIndianKundaliView.swift */; };
 		AA000000000000000000B00A /* RashiWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00E /* RashiWheelView.swift */; };
 		AA000000000000000000B00B /* SouthIndianKundaliView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F00F /* SouthIndianKundaliView.swift */; };
+		AA000000000000000000B020 /* GrahaDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F02C /* GrahaDetailSheet.swift */; };
+		AA000000000000000000B021 /* TimeTravelSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F02D /* TimeTravelSheet.swift */; };
+		AA000000000000000000B022 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F02E /* SettingsView.swift */; };
 		AA000000000000000000B00C /* swecl.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F013 /* swecl.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		AA000000000000000000B00D /* swedate.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F014 /* swedate.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		AA000000000000000000B00E /* sweephe4.c in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000F015 /* sweephe4.c */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -76,6 +79,9 @@
 		AA000000000000000000F00D /* NorthIndianKundaliView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthIndianKundaliView.swift; sourceTree = "<group>"; };
 		AA000000000000000000F00E /* RashiWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RashiWheelView.swift; sourceTree = "<group>"; };
 		AA000000000000000000F00F /* SouthIndianKundaliView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SouthIndianKundaliView.swift; sourceTree = "<group>"; };
+		AA000000000000000000F02C /* GrahaDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrahaDetailSheet.swift; sourceTree = "<group>"; };
+		AA000000000000000000F02D /* TimeTravelSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelSheet.swift; sourceTree = "<group>"; };
+		AA000000000000000000F02E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AA000000000000000000F013 /* swecl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swecl.c; sourceTree = "<group>"; };
 		AA000000000000000000F014 /* swedate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swedate.c; sourceTree = "<group>"; };
 		AA000000000000000000F015 /* sweephe4.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sweephe4.c; sourceTree = "<group>"; };
@@ -169,6 +175,9 @@
 				AA000000000000000000F00D /* NorthIndianKundaliView.swift */,
 				AA000000000000000000F00E /* RashiWheelView.swift */,
 				AA000000000000000000F00F /* SouthIndianKundaliView.swift */,
+				AA000000000000000000F02C /* GrahaDetailSheet.swift */,
+				AA000000000000000000F02D /* TimeTravelSheet.swift */,
+				AA000000000000000000F02E /* SettingsView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -458,6 +467,9 @@
 				AA000000000000000000B009 /* NorthIndianKundaliView.swift in Sources */,
 				AA000000000000000000B00A /* RashiWheelView.swift in Sources */,
 				AA000000000000000000B00B /* SouthIndianKundaliView.swift in Sources */,
+				AA000000000000000000B020 /* GrahaDetailSheet.swift in Sources */,
+				AA000000000000000000B021 /* TimeTravelSheet.swift in Sources */,
+				AA000000000000000000B022 /* SettingsView.swift in Sources */,
 				AA000000000000000000B00C /* swecl.c in Sources */,
 				AA000000000000000000B00D /* swedate.c in Sources */,
 				AA000000000000000000B00E /* sweephe4.c in Sources */,

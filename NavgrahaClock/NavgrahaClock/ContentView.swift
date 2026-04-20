@@ -16,9 +16,15 @@ struct ContentView: View {
 
             SouthIndianKundaliView()
                 .tabItem { Label("South", systemImage: "tablecells") }
+
+            SettingsView()
+                .tabItem { Label("Settings", systemImage: "gearshape") }
         }
         .environmentObject(vm)
         .background(Color.black)
         .preferredColorScheme(.dark)
+        .sheet(item: $vm.selectedGraha) { graha in
+            GrahaDetailSheet(graha: graha)
+        }
     }
 }

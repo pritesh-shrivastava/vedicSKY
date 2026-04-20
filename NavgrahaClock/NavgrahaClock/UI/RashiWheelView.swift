@@ -65,6 +65,7 @@ private func project(lon: Double, lat: Double = 0, center: CGPoint, radius: CGFl
 
 struct RashiWheelView: View {
     @EnvironmentObject var vm: NavgrahaViewModel
+    @State private var showTimeTravelSheet = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -84,6 +85,9 @@ struct RashiWheelView: View {
                     drawGrahas(ctx, center, radius)
                 }
                 .background(Color.black)
+                .onTapGesture { location in
+                    hitTestGraha(at: location, center: center, radius: radius)
+                }
             }
 
             statusBar
@@ -92,6 +96,25 @@ struct RashiWheelView: View {
         }
         .background(Color.black)
         .ignoresSafeArea(edges: .top)
+        .sheet(isPresented: $showTimeTravelSheet) {
+            TimeTravelSheet()
+                .environmentObject(vm)
+        }
+    }
+
+    private func hitTestGraha(at location: CGPoint, center: CGPoint, radius: CGFloat) {
+        let threshold: CGFloat = 25
+        var best: (GrahaPoint, CGFloat)? = nil
+        for g in vm.grahaPoints {
+            let pt = project(lon: g.siderealLon, lat: 0, center: center, radius: radius)
+            let d = hypot(location.x - pt.x, location.y - pt.y)
+            if d < threshold, best == nil || d < best!.1 {
+                best = (g, d)
+            }
+        }
+        if let (g, _) = best {
+            vm.selectedGraha = g
+        }
     }
 
     // MARK: - Drawing
@@ -229,22 +252,40 @@ struct RashiWheelView: View {
     // MARK: - Status bar
 
     private var statusBar: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 10) {
             Image(systemName: "location.fill")
                 .font(.caption2)
                 .foregroundColor(rashiCyan)
             Text(vm.locationLabel)
                 .font(.caption2)
                 .foregroundColor(grahaLabelGray)
+                .lineLimit(1)
 
             Spacer()
 
-            Image(systemName: "clock")
-                .font(.caption2)
-                .foregroundColor(rashiCyan)
-            Text(vm.lastUpdate, style: .time)
-                .font(.caption2)
-                .foregroundColor(grahaLabelGray)
+            if vm.isTimeTravelMode {
+                Text(vm.displayDate, style: .date)
+                    .font(.caption2.bold())
+                    .foregroundColor(lagnaGold)
+                Button("Live") { vm.returnToLive() }
+                    .font(.caption2.bold())
+                    .foregroundColor(.green)
+            } else {
+                Image(systemName: "clock")
+                    .font(.caption2)
+                    .foregroundColor(rashiCyan)
+                Text(vm.lastUpdate, style: .time)
+                    .font(.caption2)
+                    .foregroundColor(grahaLabelGray)
+            }
+
+            Button {
+                showTimeTravelSheet = true
+            } label: {
+                Image(systemName: vm.isTimeTravelMode ? "calendar.badge.clock" : "calendar")
+                    .font(.caption)
+                    .foregroundColor(vm.isTimeTravelMode ? lagnaGold : rashiCyan)
+            }
 
             Button {
                 vm.refresh()
