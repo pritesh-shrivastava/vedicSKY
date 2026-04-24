@@ -3,3 +3,4 @@ streamlit-autorefresh
 pyswisseph
 pandas
 matplotlib
+plotly

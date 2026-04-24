@@ -8,6 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+import plotly.graph_objects as go
 from streamlit_autorefresh import st_autorefresh
 import swisseph as swe
 
@@ -93,9 +94,167 @@ lagna_rashi_idx = int(lagna_sidereal // 30)
 st.title("🪐 Navgraha Clock")
 st.caption(f"Current positions as of {now.strftime('%Y-%m-%d %H:%M %Z')} · Lahiri ayanamsha · Sidereal (Vedic)")
 
+# ── 3D celestial sphere builder ───────────────────────────────────────────────
+def build_celestial_sphere(df, lagna_sidereal, lagna_rashi_idx):
+    traces = []
+
+    # Sphere surface — subtle dark background to anchor the 3-D shape
+    u = np.linspace(0, 2 * np.pi, 80)
+    v = np.linspace(0, np.pi, 40)
+    xs = np.outer(np.cos(u), np.sin(v))
+    ys = np.outer(np.sin(u), np.sin(v))
+    zs = np.outer(np.ones(80), np.cos(v))
+    traces.append(go.Surface(
+        x=xs, y=ys, z=zs,
+        colorscale=[[0, "#050A1A"], [1, "#0B1530"]],
+        showscale=False, opacity=0.55, hoverinfo="none",
+    ))
+
+    # Latitude circles at ±30° and ±60° (ecliptic parallels) — grid reference
+    for lat_deg in (-60, -30, 30, 60):
+        lons = np.linspace(0, 360, 361)
+        r = np.cos(np.radians(lat_deg))
+        xc = r * np.cos(np.radians(lons))
+        yc = r * np.sin(np.radians(lons))
+        zc = np.full(361, np.sin(np.radians(lat_deg)))
+        traces.append(go.Scatter3d(
+            x=xc, y=yc, z=zc, mode="lines",
+            line=dict(color="rgba(255,255,255,0.08)", width=1),
+            hoverinfo="none", showlegend=False,
+        ))
+
+    # Rashi arcs on the ecliptic — thick, colour-coded
+    for i in range(12):
+        lons = np.linspace(i * 30, (i + 1) * 30, 60)
+        traces.append(go.Scatter3d(
+            x=np.cos(np.radians(lons)),
+            y=np.sin(np.radians(lons)),
+            z=np.zeros(60),
+            mode="lines",
+            line=dict(color=RASHI_COLORS[i], width=6),
+            hoverinfo="none", showlegend=False,
+        ))
+
+    # Rashi boundary meridians — full great circles
+    for i in range(12):
+        lon = i * 30
+        lats = np.linspace(-90, 90, 181)
+        traces.append(go.Scatter3d(
+            x=np.cos(np.radians(lats)) * np.cos(np.radians(lon)),
+            y=np.cos(np.radians(lats)) * np.sin(np.radians(lon)),
+            z=np.sin(np.radians(lats)),
+            mode="lines",
+            line=dict(color="rgba(255,255,255,0.30)", width=1),
+            hoverinfo="none", showlegend=False,
+        ))
+
+    # Nakshatra boundaries — short lines within ±22° latitude
+    for i in range(27):
+        lon = i * (360 / 27)
+        lats = np.linspace(-22, 22, 45)
+        traces.append(go.Scatter3d(
+            x=np.cos(np.radians(lats)) * np.cos(np.radians(lon)),
+            y=np.cos(np.radians(lats)) * np.sin(np.radians(lon)),
+            z=np.sin(np.radians(lats)),
+            mode="lines",
+            line=dict(color="rgba(180,180,180,0.15)", width=0.5),
+            hoverinfo="none", showlegend=False,
+        ))
+
+    # Rashi labels — floating just outside the sphere on the ecliptic plane
+    for i in range(12):
+        mid = (i + 0.5) * 30
+        r = 1.22
+        traces.append(go.Scatter3d(
+            x=[r * np.cos(np.radians(mid))],
+            y=[r * np.sin(np.radians(mid))],
+            z=[0.0],
+            mode="text",
+            text=[RASHI_SHORT[i]],
+            textfont=dict(color=RASHI_COLORS[i], size=11),
+            hoverinfo="none", showlegend=False,
+        ))
+
+    # Planet markers
+    for _, row in df.iterrows():
+        graha = row["graha"]
+        lon = float(row["sidereal_lon"])
+        traces.append(go.Scatter3d(
+            x=[np.cos(np.radians(lon))],
+            y=[np.sin(np.radians(lon))],
+            z=[0.0],
+            mode="markers+text",
+            marker=dict(
+                size=9, color=PLANET_COLOR[graha],
+                line=dict(color="white", width=1),
+            ),
+            text=[PLANET_ABBR[graha]],
+            textposition="top center",
+            textfont=dict(color=PLANET_COLOR[graha], size=12),
+            name=graha,
+            hovertemplate=(
+                f"<b>{graha}</b><br>"
+                f"Lon: {float(row['sidereal_lon']):.3f}°<br>"
+                f"Rashi: {row['rashi_en']} ({float(row['degree_in_rashi']):.2f}°)<br>"
+                f"Nakshatra: {row['nakshatra_en']} Pada {int(row['pada'])}"
+                "<extra></extra>"
+            ),
+        ))
+
+    # Lagna marker
+    traces.append(go.Scatter3d(
+        x=[np.cos(np.radians(lagna_sidereal))],
+        y=[np.sin(np.radians(lagna_sidereal))],
+        z=[0.0],
+        mode="markers+text",
+        marker=dict(
+            size=9, color=PLANET_COLOR["Lagna"], symbol="diamond",
+            line=dict(color="white", width=1),
+        ),
+        text=["La"],
+        textposition="top center",
+        textfont=dict(color=PLANET_COLOR["Lagna"], size=12),
+        name="Lagna",
+        hovertemplate=(
+            f"<b>Lagna</b><br>Lon: {lagna_sidereal:.3f}°<br>"
+            f"Rashi: {RASHI_SHORT[lagna_rashi_idx]}"
+            "<extra></extra>"
+        ),
+    ))
+
+    fig = go.Figure(data=traces)
+    fig.update_layout(
+        paper_bgcolor="#0D1117",
+        scene=dict(
+            bgcolor="#0D1117",
+            xaxis=dict(visible=False, range=[-1.5, 1.5]),
+            yaxis=dict(visible=False, range=[-1.5, 1.5]),
+            zaxis=dict(visible=False, range=[-1.5, 1.5]),
+            aspectmode="cube",
+            camera=dict(
+                eye=dict(x=1.5, y=1.0, z=0.6),
+                up=dict(x=0, y=0, z=1),
+            ),
+        ),
+        margin=dict(l=0, r=0, t=40, b=0),
+        height=640,
+        title=dict(
+            text="Celestial Sphere · Sidereal Ecliptic (Lahiri) · Drag to rotate",
+            font=dict(color="white", size=14),
+            x=0.5,
+        ),
+        legend=dict(
+            font=dict(color="white"),
+            bgcolor="rgba(0,0,0,0)",
+            itemsizing="constant",
+        ),
+    )
+    return fig
+
+
 # ── tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(
-    ["🔵 Rashi Wheel", "🌐 Celestial Map", "🔶 South Kundali"]
+    ["🔵 Rashi Wheel", "🌐 Celestial Sphere", "🔶 South Indian Rashi"]
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -153,50 +312,16 @@ with tab1:
     plt.close(fig)
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# TAB 2: CELESTIAL MAP (ecliptic longitude vs. ecliptic latitude placeholder)
+# TAB 2: 3D CELESTIAL SPHERE
 # ═══════════════════════════════════════════════════════════════════════════════
 with tab2:
-    fig, ax = plt.subplots(figsize=(12, 5))
-    fig.patch.set_facecolor("#0D1117")
-    ax.set_facecolor("#0D1117")
-
-    # Draw 12 rashi bands
-    for i in range(12):
-        x0, x1 = i * 30, (i + 1) * 30
-        ax.axvspan(x0, x1, alpha=0.12, color=RASHI_COLORS[i])
-        ax.text((x0 + x1) / 2, -4.5, RASHI_SHORT[i], ha="center", va="center",
-                fontsize=9, color="white", alpha=0.6)
-
-    # Plot planets along ecliptic (latitude ≈ 0 for all)
-    for _, row in df.iterrows():
-        graha = row["graha"]
-        x = float(row["sidereal_lon"])
-        y = 0.0  # planets are near the ecliptic plane
-        color = PLANET_COLOR[graha]
-        ax.scatter(x, y, color=color, s=100, zorder=5)
-        ax.annotate(
-            PLANET_ABBR[graha],
-            (x, y), textcoords="offset points", xytext=(0, 12),
-            ha="center", fontsize=9, color=color, fontweight="bold",
-        )
-
-    # Lagna marker
-    ax.axvline(lagna_sidereal, color=PLANET_COLOR["Lagna"], lw=1.5, ls="--", alpha=0.8)
-    ax.text(lagna_sidereal, 4.2, "La", ha="center", fontsize=9,
-            color=PLANET_COLOR["Lagna"], fontweight="bold")
-
-    ax.set_xlim(0, 360)
-    ax.set_ylim(-6, 6)
-    ax.set_xticks(range(0, 361, 30))
-    ax.set_xticklabels([f"{i*30}°" for i in range(13)], color="white", fontsize=8)
-    ax.set_yticks([])
-    ax.set_xlabel("Sidereal Ecliptic Longitude (°)", color="white")
-    ax.set_title("Celestial Map · Planets along the Ecliptic", color="white", fontsize=13)
-    ax.tick_params(colors="white")
-    for spine in ax.spines.values():
-        spine.set_edgecolor("#444444")
-    st.pyplot(fig)
-    plt.close(fig)
+    sphere_fig = build_celestial_sphere(df, lagna_sidereal, lagna_rashi_idx)
+    st.plotly_chart(sphere_fig, use_container_width=True)
+    st.caption(
+        "Ecliptic coordinate system: Aries (0°) points along +X axis. "
+        "Colour-coded arcs = 12 Rashis. Faint lines = 27 Nakshatra boundaries. "
+        "Drag to rotate · Scroll to zoom · Double-click to reset."
+    )
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # TAB 3: SOUTH INDIAN KUNDALI
@@ -254,9 +379,11 @@ with tab3:
         facecolor="#1A1A2E",
     )
     ax.add_patch(center_rect)
-    ax.text(2, 2.2, "Navgraha", ha="center", va="center", fontsize=11, color="#CCCCCC")
-    ax.text(2, 1.8, now.strftime("%d %b %Y"), ha="center", va="center",
-            fontsize=9, color="#888888")
+    lat_str = f"{abs(lat):.4f}°{'N' if lat >= 0 else 'S'}"
+    lon_str = f"{abs(lon):.4f}°{'E' if lon >= 0 else 'W'}"
+    ax.text(2, 2.3, f"{lat_str}, {lon_str}", ha="center", va="center", fontsize=9, color="#CCCCCC")
+    ax.text(2, 1.9, now.strftime("%d %b %Y"), ha="center", va="center", fontsize=9, color="#AAAAAA")
+    ax.text(2, 1.6, now.strftime("%H:%M %Z"), ha="center", va="center", fontsize=9, color="#AAAAAA")
 
     ax.set_title("South Indian Kundali", color="white", fontsize=13, pad=10)
     st.pyplot(fig)
