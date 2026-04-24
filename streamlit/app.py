@@ -94,8 +94,8 @@ st.title("🪐 Navgraha Clock")
 st.caption(f"Current positions as of {now.strftime('%Y-%m-%d %H:%M %Z')} · Lahiri ayanamsha · Sidereal (Vedic)")
 
 # ── tabs ──────────────────────────────────────────────────────────────────────
-tab1, tab2, tab3, tab4 = st.tabs(
-    ["🔵 Rashi Wheel", "🌐 Celestial Map", "🔷 North Kundali", "🔶 South Kundali"]
+tab1, tab2, tab3 = st.tabs(
+    ["🔵 Rashi Wheel", "🌐 Celestial Map", "🔶 South Kundali"]
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -127,28 +127,22 @@ with tab1:
         ax.plot([np.radians(i * 30), np.radians(i * 30)], [0, 1.0],
                 color="white", lw=0.5, alpha=0.3)
 
-    # Plot planets
-    planet_theta_by_rashi = {}  # track planets per rashi to offset overlaps
+    PLANET_R = 0.60  # all planets at the same radius
+    LAGNA_R  = 0.68  # Lagna just inside the rashi band
+
+    # Plot each planet at its exact sidereal longitude
     for _, row in df.iterrows():
-        graha = row["graha"]
-        lon_deg = float(row["sidereal_lon"])
-        rashi_i = int(row["rashi_index"])
-        theta = np.radians(lon_deg)
+        graha  = row["graha"]
+        theta  = np.radians(float(row["sidereal_lon"]))
+        color  = PLANET_COLOR[graha]
+        ax.plot(theta, PLANET_R, "o", color=color, markersize=9, zorder=5)
+        ax.text(theta, PLANET_R + 0.07, PLANET_ABBR[graha],
+                ha="center", va="center", fontsize=8, color=color, fontweight="bold")
 
-        # Stack planets in same rashi
-        count = planet_theta_by_rashi.get(rashi_i, 0)
-        r = 0.55 - count * 0.09
-        planet_theta_by_rashi[rashi_i] = count + 1
-
-        color = PLANET_COLOR[graha]
-        ax.plot(theta, r, "o", color=color, markersize=9, zorder=5)
-        ax.text(theta, r + 0.07, PLANET_ABBR[graha], ha="center", va="center",
-                fontsize=8, color=color, fontweight="bold")
-
-    # Plot Lagna
+    # Lagna — triangle at exact longitude
     lagna_theta = np.radians(lagna_sidereal)
-    ax.plot(lagna_theta, 0.68, "^", color=PLANET_COLOR["Lagna"], markersize=10, zorder=6)
-    ax.text(lagna_theta, 0.74, "La", ha="center", va="center",
+    ax.plot(lagna_theta, LAGNA_R, "^", color=PLANET_COLOR["Lagna"], markersize=10, zorder=6)
+    ax.text(lagna_theta, LAGNA_R + 0.04, "La", ha="center", va="center",
             fontsize=8, color=PLANET_COLOR["Lagna"], fontweight="bold")
 
     ax.set_yticks([])
@@ -205,79 +199,9 @@ with tab2:
     plt.close(fig)
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# TAB 3: NORTH INDIAN KUNDALI
+# TAB 3: SOUTH INDIAN KUNDALI
 # ═══════════════════════════════════════════════════════════════════════════════
 with tab3:
-    # 4×4 grid, center 2×2 = chart title area
-    # Houses relative to Lagna: house N is at rashi (lagna_rashi_idx + N - 1) % 12
-    # Cell coordinates (col, row) where (0,0) = bottom-left:
-    NORTH_CELLS = {
-        # (col, row): house_number
-        (1, 3): 1,  (2, 3): 2,  (3, 3): 3,
-        (0, 3): 12, (3, 2): 4,
-        (0, 2): 11, (3, 1): 5,
-        (0, 1): 10, (3, 0): 6,
-        (0, 0): 9,  (1, 0): 8,  (2, 0): 7,
-    }
-
-    # Map each rashi_index to a house number (1-12)
-    rashi_to_house = {(lagna_rashi_idx + h - 1) % 12: h for h in range(1, 13)}
-
-    # Collect planets per house
-    house_planets = {h: [] for h in range(1, 13)}
-    house_planets[rashi_to_house[lagna_rashi_idx]].append("La")
-    for _, row in df.iterrows():
-        h = rashi_to_house[int(row["rashi_index"])]
-        house_planets[h].append(PLANET_ABBR[row["graha"]])
-
-    fig, ax = plt.subplots(figsize=(7, 7))
-    fig.patch.set_facecolor("#0D1117")
-    ax.set_facecolor("#0D1117")
-    ax.set_xlim(0, 4)
-    ax.set_ylim(0, 4)
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    for (col, row_idx), house in NORTH_CELLS.items():
-        rashi_i = (lagna_rashi_idx + house - 1) % 12
-        rect = mpatches.FancyBboxPatch(
-            (col, row_idx), 1, 1,
-            boxstyle="square,pad=0",
-            linewidth=1.2, edgecolor="#555555",
-            facecolor=RASHI_COLORS[rashi_i] + "22",
-        )
-        ax.add_patch(rect)
-        # Rashi label (small, top-right of cell)
-        ax.text(col + 0.95, row_idx + 0.92, RASHI_SHORT[rashi_i],
-                ha="right", va="top", fontsize=7, color="white", alpha=0.5)
-        # House number (small, top-left)
-        ax.text(col + 0.05, row_idx + 0.92, str(house),
-                ha="left", va="top", fontsize=7, color="#AAAAAA")
-        # Planet abbreviations
-        planets_str = "  ".join(house_planets.get(house, []))
-        ax.text(col + 0.5, row_idx + 0.45, planets_str,
-                ha="center", va="center", fontsize=10, color="white", fontweight="bold")
-
-    # Center: chart title
-    center_rect = mpatches.FancyBboxPatch(
-        (1, 1), 2, 2,
-        boxstyle="square,pad=0",
-        linewidth=1.2, edgecolor="#555555",
-        facecolor="#1A1A2E",
-    )
-    ax.add_patch(center_rect)
-    ax.text(2, 2.2, "Navgraha", ha="center", va="center", fontsize=11, color="#CCCCCC")
-    ax.text(2, 1.8, now.strftime("%H:%M %Z"), ha="center", va="center",
-            fontsize=9, color="#888888")
-
-    ax.set_title("North Indian Kundali", color="white", fontsize=13, pad=10)
-    st.pyplot(fig)
-    plt.close(fig)
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# TAB 4: SOUTH INDIAN KUNDALI
-# ═══════════════════════════════════════════════════════════════════════════════
-with tab4:
     # Fixed sign layout — signs are fixed, Lagna and planets placed by rashi
     # Row 3 (top): Pi(11), Ar(0), Ta(1), Ge(2)
     # Row 2:       Aq(10), [**], [**], Ca(3)

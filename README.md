@@ -2,7 +2,7 @@
 
 Real-time Vedic astrology app showing the 9 Navagraha (planet) positions and Lagna using Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric).
 
-**Live demo:** *(Streamlit URL goes here after deployment)*
+**Live demo:** *(https://vediczodiac.streamlit.app/)*
 
 ---
 
