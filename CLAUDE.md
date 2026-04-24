@@ -4,9 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-**Navgraha Clock** (`NavgrahaClock/`) — Native iOS app visualising the 9 Navagraha positions and Lagna in real time using on-device Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric). Four tabs: Rashi Chakra wheel, Celestial Sphere (orthographic globe), North Indian Kundali, South Indian Kundali. Architecture: `NavgrahaClock/design_doc.md`.
+**Navgraha Clock** — multi-platform Vedic astrology app. iOS app in `iOS/`, Streamlit web POC in `streamlit/`, React web app (Phase 2) in `web/`.
 
-**Status:** M1–M5 complete, build and tests passing. v2 AR Sky Overlay planned — see `NavgrahaClock/design_doc.md §11`.
+**iOS app** (`iOS/`) — Native iOS app visualising the 9 Navagraha positions and Lagna in real time using on-device Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric). Four tabs: Rashi Chakra wheel, Celestial Sphere (orthographic globe), North Indian Kundali, South Indian Kundali. Architecture: `iOS/design_doc.md`.
+
+**Streamlit POC** (`streamlit/`) — Python web app using `scripts/graha_positions_reference.py` for calculations. Deploy to Streamlit Community Cloud. See `DESIGN.md`.
+
+**Status:** iOS M1–M5 complete. Streamlit POC in progress. v2 AR Sky Overlay planned — see `iOS/design_doc.md §11`.
 
 ## Hardware Constraints
 
@@ -28,19 +32,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build & Test
 
-**Xcode project:** `NavgrahaClock/NavgrahaClock.xcodeproj`
+**Xcode project:** `iOS/NavgrahaClock.xcodeproj`
 - iOS 16+ deployment target, Xcode 14+
 - Build and run tests via Xcode or `xcodebuild`
 
 **Run Swift tests (command line):**
 ```bash
-xcodebuild test -project "NavgrahaClock/NavgrahaClock.xcodeproj" \
+xcodebuild test -project "iOS/NavgrahaClock.xcodeproj" \
   -scheme "NavgrahaClock" -destination "platform=iOS Simulator,name=iPhone 14"
 ```
 
 **Run a single Swift test:**
 ```bash
-xcodebuild test -project "NavgrahaClock/NavgrahaClock.xcodeproj" \
+xcodebuild test -project "iOS/NavgrahaClock.xcodeproj" \
   -scheme "NavgrahaClock" -only-testing:"NavgrahaClockTests/EphemerisTests/testFixturesMatch" \
   -destination "platform=iOS Simulator,name=iPhone 14"
 ```
@@ -53,18 +57,24 @@ python -m pytest scripts/test_graha_positions.py -v
 **Generate fixture JSON** (requires `pip install swisseph pandas`):
 ```bash
 python scripts/export_fixtures.py
-# writes NavgrahaClockTests/EphemerisTests/graha_fixtures.json
+# writes iOS/NavgrahaClockTests/EphemerisTests/graha_fixtures.json
 ```
 
 ## Repo Structure
 
 ```
 /                                              ← git repo root
+├── DESIGN.md                                  ← Web port design doc
 ├── scripts/
 │   ├── graha_positions_reference.py           ← Canonical Python ground truth
 │   ├── export_fixtures.py                     ← Generates fixtures from Python ref
 │   └── test_graha_positions.py                ← Python tests for reference impl
-└── NavgrahaClock/                             ← iOS app (fully self-contained)
+├── streamlit/                                 ← Streamlit POC (Phase 1 web)
+│   ├── app.py
+│   └── requirements.txt
+├── web/                                       ← React web app (Phase 2, planned)
+│   └── README.md
+└── iOS/                                       ← iOS app (fully self-contained)
     ├── NavgrahaClock.xcodeproj
     ├── README.md
     ├── design_doc.md
@@ -101,20 +111,21 @@ python scripts/export_fixtures.py
 
 ## File Placement Rules
 
-New Swift source files go inside `NavgrahaClock/NavgrahaClock/`. Follow this pattern:
+New Swift source files go inside `iOS/NavgrahaClock/`. Follow this pattern:
 
 | What | Where |
 |---|---|
-| New Swift source layer (e.g. AR, UI) | `NavgrahaClock/NavgrahaClock/<LayerName>/` |
-| New XCTest file | `NavgrahaClockTests/<GroupName>/` |
+| New Swift source layer (e.g. AR, UI) | `iOS/NavgrahaClock/<LayerName>/` |
+| New XCTest file | `iOS/NavgrahaClockTests/<GroupName>/` |
 | New Python script or test | `scripts/` |
-| XCTest fixture data (JSON, etc.) | `NavgrahaClockTests/<TestGroupName>/` — add as bundle resource on test target |
-| New ephemeris data files | `NavgrahaClock/NavgrahaClock/Resources/ephemeris/` |
+| XCTest fixture data (JSON, etc.) | `iOS/NavgrahaClockTests/<TestGroupName>/` — add as bundle resource on test target |
+| New ephemeris data files | `iOS/NavgrahaClock/Resources/ephemeris/` |
+| Streamlit web app files | `streamlit/` |
 
 **When adding a new Swift file in Xcode:**
 - Right-click the appropriate group in the Navigator → Add Files
 - "Copy items if needed" = **OFF** if you created the file in the right place on disk already
-- Never use `path = ../` references — all paths should be relative within `NavgrahaClock/`
+- Never use `path = ../` references — all paths should be relative within `iOS/`
 
 ## Architecture
 
@@ -127,13 +138,14 @@ LocationHeadingManager ─────────► (ObservableObject)  ──
 
 | Layer | File(s) | Status |
 |---|---|---|
-| Ephemeris Engine | `NavgrahaClock/Ephemeris/EphemerisEngine.swift` | M1 complete, tests passing |
-| Coordinate Pipeline | `NavgrahaClock/Coordinates/CoordinatePipeline.swift` | M1 complete, tests passing |
-| Rashi Wheel | `NavgrahaClock/UI/RashiWheelView.swift` | M2 complete |
-| Celestial Sphere | `NavgrahaClock/UI/CelestialSphereView.swift` | M3 complete |
-| Kundali Charts | `NavgrahaClock/UI/North+SouthIndianKundaliView.swift` | M4 complete |
+| Ephemeris Engine | `iOS/NavgrahaClock/Ephemeris/EphemerisEngine.swift` | M1 complete, tests passing |
+| Coordinate Pipeline | `iOS/NavgrahaClock/Coordinates/CoordinatePipeline.swift` | M1 complete, tests passing |
+| Rashi Wheel | `iOS/NavgrahaClock/UI/RashiWheelView.swift` | M2 complete |
+| Celestial Sphere | `iOS/NavgrahaClock/UI/CelestialSphereView.swift` | M3 complete |
+| Kundali Charts | `iOS/NavgrahaClock/UI/North+SouthIndianKundaliView.swift` | M4 complete |
 | Polish (M5) | Tap sheet, time-travel, settings | complete |
-| AR Sky Overlay (v2) | `NavgrahaClock/AR/VedicSkyviewController.swift` | coded, device test pending |
+| AR Sky Overlay (v2) | `iOS/NavgrahaClock/AR/VedicSkyviewController.swift` | coded, device test pending |
+| Streamlit POC | `streamlit/app.py` | in progress |
 
 ## Key Implementation Rules
 
@@ -158,11 +170,11 @@ pada            = Int((sidereal_lon % NAKSHATRA_SPAN) / PADA_SPAN) + 1  // 1–4
 
 ## Ephemeris Data Files
 
-The ephemeris files in `NavgrahaClock/NavgrahaClock/Resources/ephemeris/` are **tracked in git** (trimmed to 1900–2100 range, ~1.9 MB total). Four files: `sepl_18.se1` (planets), `semo_18.se1` (moon), `sefstars.txt` (fixed stars), `seorbel.txt` (orbital elements). The path is passed to `swe_set_ephe_path` at init.
+The ephemeris files in `iOS/NavgrahaClock/Resources/ephemeris/` are **tracked in git** (trimmed to 1900–2100 range, ~1.9 MB total). Four files: `sepl_18.se1` (planets), `semo_18.se1` (moon), `sefstars.txt` (fixed stars), `seorbel.txt` (orbital elements). The path is passed to `swe_set_ephe_path` at init.
 
 ## libswe Integration
 
-Swiss Ephemeris C sources live in `NavgrahaClock/NavgrahaClock/Source/ThirdParty/swisseph/`. The bridging header at `NavgrahaClock/NavgrahaClock/NavgrahaClock-Bridging-Header.h` includes `swephexp.h`. C sources are compiled directly into the Xcode target — no package manager needed.
+Swiss Ephemeris C sources live in `iOS/NavgrahaClock/Source/ThirdParty/swisseph/`. The bridging header at `iOS/NavgrahaClock/NavgrahaClock-Bridging-Header.h` includes `swephexp.h`. C sources are compiled directly into the Xcode target — no package manager needed.
 
 ## Coordinate Pipeline
 
@@ -178,7 +190,7 @@ ARKit frame with `.gravityAndHeading`: +X=East, +Y=Up, -Z=North. Sky-sphere radi
 ## Testing Approach
 
 - Swift `EphemerisTests.testFixturesMatch` loads `graha_fixtures.json` from the test bundle (`Bundle(for: EphemerisTests.self)`) and compares computed vs expected longitudes within `tol = 1e-4°`
-- Fixture JSON lives at `NavgrahaClockTests/EphemerisTests/graha_fixtures.json` (tracked in git, bundled in the test target)
+- Fixture JSON lives at `iOS/NavgrahaClockTests/EphemerisTests/graha_fixtures.json` (tracked in git, bundled in the test target)
 - Regenerate it with `python scripts/export_fixtures.py`
 - Fixture test cases use Ujjain (23.1765°N, 75.7885°E) as the reference location for dates: 2026-01-01, 2000-01-01, 1990-12-23
 
