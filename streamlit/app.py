@@ -33,8 +33,8 @@ st_autorefresh(interval=60_000, key="planet_refresh")
 
 # ── planet display config ─────────────────────────────────────────────────────
 PLANET_ABBR = {
-    "Surya":   "Su", "Chandra": "Ch", "Mangala": "Ma",
-    "Budha":   "Bu", "Guru":    "Ju", "Shukra":  "Ve",
+    "Surya":   "Su", "Chandra": "Mo", "Mangala": "Ma",
+    "Budha":   "Me", "Guru":    "Ju", "Shukra":  "Ve",
     "Shani":   "Sa", "Rahu":    "Ra", "Ketu":    "Ke",
 }
 PLANET_COLOR = {
@@ -252,7 +252,7 @@ def build_celestial_sphere(df, lagna_sidereal, lagna_rashi_idx):
             size=9, color=PLANET_COLOR["Lagna"], symbol="diamond",
             line=dict(color="white", width=1),
         ),
-        text=["La"],
+        text=["Asc"],
         textposition="top center",
         textfont=dict(color=PLANET_COLOR["Lagna"], size=12),
         name="Lagna",
@@ -355,10 +355,11 @@ with tab1:
         ax.text(theta, PLANET_R + 0.07, PLANET_ABBR[graha],
                 ha="center", va="center", fontsize=8, color=color, fontweight="bold")
 
-    # Lagna — triangle at exact longitude
+    # Lagna — radial line from centre to circumference
     lagna_theta = np.radians(lagna_sidereal)
-    ax.plot(lagna_theta, LAGNA_R, "^", color=PLANET_COLOR["Lagna"], markersize=10, zorder=6)
-    ax.text(lagna_theta, LAGNA_R + 0.04, "La", ha="center", va="center",
+    ax.plot([lagna_theta, lagna_theta], [0, 1.0],
+            color=PLANET_COLOR["Lagna"], lw=1.8, alpha=0.9, zorder=6)
+    ax.text(lagna_theta, 1.08, "Asc", ha="center", va="center",
             fontsize=8, color=PLANET_COLOR["Lagna"], fontweight="bold")
 
     ax.set_ylim(0, 1.15)
@@ -400,7 +401,7 @@ with tab3:
 
     # Collect planets per rashi
     rashi_planets = {i: [] for i in range(12)}
-    rashi_planets[lagna_rashi_idx].append("La")
+    rashi_planets[lagna_rashi_idx].append("Asc")
     for _, row in df.iterrows():
         rashi_planets[int(row["rashi_index"])].append(PLANET_ABBR[row["graha"]])
 
