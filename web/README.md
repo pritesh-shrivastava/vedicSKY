@@ -1,9 +1,18 @@
-# NavgrahaClock Web App (Phase 2)
+# Vedic Zodiac — React Web App (Phase 2)
 
-React + TypeScript web app — specced in DESIGN.md, implementation planned after Streamlit POC ships.
+Replicates the two views from the Streamlit POC as a polished, mobile-responsive SPA.
 
-**Stack (planned):**
-- React + TypeScript + Vite
-- Canvas 2D for animated Rashi wheel and Kundali charts
-- Python backend (FastAPI) for ephemeris calculations
-- Hosted on GitHub Pages (frontend) + PythonAnywhere free tier (backend)
+**Stack:** React + TypeScript + Vite · react-plotly.js · SVG · Tailwind CSS
+**Backend:** FastAPI on PythonAnywhere free tier (`api/`)
+**Hosting:** GitHub Pages
+
+## Views (Phase 2)
+
+| Tab | Technology |
+|---|---|
+| Hindu Zodiac 2D | react-plotly.js polar wheel — port of `streamlit/app.py:build_zodiac_2d()` |
+| South Indian Rashi Chart | Plain SVG in JSX |
+
+North Indian chart and Celestial Sphere come later.
+
+## Full spec → `DESIGN.md` at repo root
