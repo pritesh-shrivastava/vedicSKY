@@ -22,7 +22,7 @@ from graha_positions_reference import (
 
 # ── page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Navgraha Clock",
+    page_title="Rashi Mandala",
     page_icon="🪐",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -144,7 +144,7 @@ retrograde_set = {
 }
 
 # ── header ────────────────────────────────────────────────────────────────────
-st.title("🪐 Navgraha Clock")
+st.title("🪐 Rashi Mandala")
 st.caption(f"Current positions as of {now.strftime('%Y-%m-%d %H:%M %Z')} · Lahiri ayanamsha · Sidereal (Vedic)")
 
 # ── 2D zodiac wheel builder ───────────────────────────────────────────────────
