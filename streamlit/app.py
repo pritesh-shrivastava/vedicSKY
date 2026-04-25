@@ -131,6 +131,18 @@ lagna_tropical  = ascmc[0] % 360.0
 lagna_sidereal  = (lagna_tropical - ayanamsha) % 360.0
 lagna_rashi_idx = int(lagna_sidereal // 30)
 
+# ── retrograde flags for the 7 physical grahas ───────────────────────────────
+_PHYSICAL_SWE = {
+    "Surya": swe.SUN, "Chandra": swe.MOON, "Mangala": swe.MARS,
+    "Budha": swe.MERCURY, "Guru": swe.JUPITER, "Shukra": swe.VENUS,
+    "Shani": swe.SATURN,
+}
+swe.set_topo(lon, lat, float(alt))
+retrograde_set = {
+    graha for graha, swe_id in _PHYSICAL_SWE.items()
+    if swe.calc_ut(jd, swe_id, swe.FLG_TOPOCTR | swe.FLG_SPEED)[0][3] < 0
+}
+
 # ── header ────────────────────────────────────────────────────────────────────
 st.title("🪐 Navgraha Clock")
 st.caption(f"Current positions as of {now.strftime('%Y-%m-%d %H:%M %Z')} · Lahiri ayanamsha · Sidereal (Vedic)")
@@ -175,9 +187,7 @@ def build_zodiac_2d(df, lagna_sidereal):
             nak, pada = nak_info(lon)
             star_r.append(R_STAR + lat * LAT_SCALE)
             star_theta.append(lon)
-            star_hover.append(
-                f"<b>{nak}</b>  Pada {pada}<br>{RASHI_SHORT[i]} · {lon:.1f}°"
-            )
+            star_hover.append(f"<b>{nak}</b>")
 
         # Stick-figure lines (no hover)
         for si, sj in outline["lines"]:
@@ -226,7 +236,7 @@ def build_zodiac_2d(df, lagna_sidereal):
             hovertemplate=(
                 f"<b>{graha}</b><br>"
                 f"{nak}  Pada {pada}<br>"
-                f"{lon:.3f}°  ·  {row['rashi_en']}"
+                f"{lon:.3f}°"
                 "<extra></extra>"
             ),
         ))
@@ -310,7 +320,11 @@ with tab2:
     rashi_planets = {i: [] for i in range(12)}
     rashi_planets[lagna_rashi_idx].append("Asc")
     for _, row in df.iterrows():
-        rashi_planets[int(row["rashi_index"])].append(PLANET_ABBR[row["graha"]])
+        graha = row["graha"]
+        abbr = PLANET_ABBR[graha]
+        if graha in retrograde_set:
+            abbr = f"({abbr})"
+        rashi_planets[int(row["rashi_index"])].append(abbr)
 
     fig, ax = plt.subplots(figsize=(7, 7))
     fig.patch.set_facecolor("#0D1117")
