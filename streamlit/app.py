@@ -22,7 +22,7 @@ from graha_positions_reference import (
 
 # ── page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Rashi Mandala",
+    page_title="Vedic Zodiac",
     page_icon="🪐",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -144,7 +144,7 @@ retrograde_set = {
 }
 
 # ── header ────────────────────────────────────────────────────────────────────
-st.title("🪐 Rashi Mandala")
+st.title("🪐 Vedic Zodiac")
 st.caption(f"Current positions as of {now.strftime('%Y-%m-%d %H:%M %Z')} · Lahiri ayanamsha · Sidereal (Vedic)")
 
 # ── 2D zodiac wheel builder ───────────────────────────────────────────────────
@@ -288,7 +288,7 @@ def build_zodiac_2d(df, lagna_sidereal):
 
 # ── tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2 = st.tabs(
-    ["🔵 Hindu Zodiac 2D", "🔶 South Indian Rashi"]
+    ["🔵 Hindu Zodiac 2D", "🔶 South Indian Rashi Chart"]
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -365,7 +365,7 @@ with tab2:
     ax.text(2, 1.9, now.strftime("%d %b %Y"), ha="center", va="center", fontsize=9, color="#AAAAAA")
     ax.text(2, 1.6, now.strftime("%H:%M %Z"), ha="center", va="center", fontsize=9, color="#AAAAAA")
 
-    ax.set_title("South Indian Kundali", color="white", fontsize=13, pad=10)
+    ax.set_title("South Indian Rashi Chart", color="white", fontsize=13, pad=10)
     st.pyplot(fig)
     plt.close(fig)
 
