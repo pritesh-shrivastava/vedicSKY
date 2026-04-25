@@ -255,12 +255,19 @@ Use a `useD3Wheel` hook with a `useEffect` that runs D3 imperatively on a
 ### Coordinate mapping
 
 ```ts
-const RADIUS = 340;          // px, outer edge of zodiac ring
-const R_INNER = 200;         // px, inner edge (planets live inside this)
-const R_ECLIPTIC = 280;      // px, reference circle for ecliptic-plane stars
-const ECL_LAT_SCALE = 3.5;   // px per degree of ecliptic latitude
+// Derive from container — makes the wheel responsive
+// Use ResizeObserver in useD3Wheel.ts to update when container resizes
+const svgSize   = Math.min(containerWidth, containerHeight);
+const RADIUS    = svgSize / 2 - 20;   // outer edge of zodiac ring
+const R_INNER   = RADIUS * 0.59;      // inner edge (planets live inside)
+const R_ECLIPTIC = RADIUS * 0.82;     // reference circle for ecliptic stars
+
+// ECL_LAT_SCALE = 1.5 (NOT 3.5 — at 3.5 high-latitude stars like Arcturus
+// and Altair render outside the wheel. At 1.5 all 27 yoga taras stay inside.)
+const ECL_LAT_SCALE = 1.5;
 
 // Sidereal lon → SVG angle (Aries at top, clockwise)
+// lonToAngle(0°) = 270° → cos=0, sin=-1 → TOP of SVG ✓
 const lonToAngle = (lon: number) => (lon - 90 + 360) % 360;
 
 // Star (lon, lat) → SVG (x, y)
@@ -270,6 +277,11 @@ const starToXY = (lon: number, lat: number) => {
   return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
 };
 ```
+
+> **Why ECL_LAT_SCALE = 1.5, not 3.5:** Three nakshatra yoga taras are far north
+> of the ecliptic — Arcturus (Swati, +30.8°), Altair (Shravana, +29.3°), β Del
+> (Dhanishta, +31.8°). At scale=3.5 they render at r≈388px, outside the 340px
+> ring. At scale=1.5 the worst case is Dhanishta at r≈328px — safely inside.
 
 ### Layers (drawn in order, back to front)
 
@@ -309,6 +321,95 @@ Centre 2×2: observer coordinates, date, time.
 Retrograde planets: `(Me)` in italic gold.
 
 ---
+
+## UI States (required — don't skip these)
+
+| State | What to show |
+|---|---|
+| Loading (API in-flight on first load) | Skeleton: dark SVG with faint grey ring outlines, no planets. Cinzel text "Calculating positions..." centred. |
+| Error (API unreachable / 500) | Same skeleton + gold text "Could not reach server. Retrying in 60s." |
+| Stale (tab was backgrounded, interval may have throttled) | Add `visibilitychange` listener → trigger immediate fetch on tab focus |
+| Retrograde planet (South Indian chart) | `(Me)` in italic gold — already in Streamlit, port directly |
+
+The loading skeleton matters. A blank dark screen on first load looks broken.
+
+## Location Input UI
+
+Not specified in earlier drafts — decided here:
+
+**Mobile:** Full-width collapsible panel below the tab bar. Tap a gear icon to expand.
+**Desktop:** Narrow left sidebar, always visible.
+
+Fields: Latitude (number), Longitude (number), Altitude m (number), Timezone (text, e.g. `Asia/Kolkata`). Default: Ujjain. An "Use my location" button calls `navigator.geolocation` — this is a 2-hour add-on, worth doing in Phase 2.
+
+## Backend Caching (mandatory for PythonAnywhere free tier)
+
+PythonAnywhere free tier has ~100 CPU-seconds/day. Each pyswisseph calc uses ~0.05–0.1s CPU. Without caching, 20 concurrent users polling every 60s exhausts the daily limit in under 1 hour.
+
+```python
+# In main.py — cache per (lat, lon, alt, minute_bucket)
+from functools import lru_cache
+from datetime import datetime
+
+@lru_cache(maxsize=128)
+def _cached_positions(lat, lon, alt, tz, minute_bucket):
+    # minute_bucket = datetime.now(tz).replace(second=0, microsecond=0)
+    return calculate_graha_positions_for_local_dt(...)
+```
+
+## `usePositions` — Stale Fetch Fix
+
+```ts
+useEffect(() => {
+  let cancelled = false;
+  const doFetch = () =>
+    fetchPositions(lat, lon, alt, tz).then(d => { if (!cancelled) setData(d); });
+  doFetch();
+  const id = setInterval(doFetch, 60_000);
+  // Re-fetch immediately when tab comes back into focus
+  const onVisible = () => { if (document.visibilityState === 'visible') doFetch(); };
+  document.addEventListener('visibilitychange', onVisible);
+  return () => { cancelled = true; clearInterval(id); document.removeEventListener('visibilitychange', onVisible); };
+}, [lat, lon, alt, tz]);
+```
+
+## D3 Wheel Re-render Pattern
+
+Clear before each redraw to prevent double-rendering on 60s poll:
+
+```ts
+useEffect(() => {
+  const svg = d3.select(svgRef.current);
+  svg.selectAll('*').remove();  // clear before redraw
+  // ... draw layers
+}, [data, svgSize]);  // re-run when data or container size changes
+```
+
+## Local Development Setup
+
+Two terminals:
+
+```bash
+# Terminal 1 — backend
+cd api
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+
+# Terminal 2 — frontend
+cd web
+npm install
+echo "VITE_API_URL=http://localhost:8000" > .env.local
+npm run dev   # runs at http://localhost:5173
+```
+
+Production `.env` (committed, safe — no secrets):
+```
+VITE_API_URL=https://yourusername.pythonanywhere.com
+```
+
+`vite.config.ts` base path:
+- Local dev: `base: "/"` (default, leave unset)
+- GitHub Pages build: `base: "/jyotish_skyview/"` — set via env or build script
 
 ## Build Order
 
@@ -358,3 +459,36 @@ Set `base: "/jyotish_skyview/"` in `vite.config.ts`.
 | Moon phase rendering | Compute illumination fraction from elongation; render crescent/gibbous shape as SVG arc inside the Moon dot |
 | Time scrubber / animation | Slider or play button; poll the API with a custom datetime param; D3 transitions animate planet positions between frames |
 | Birth chart (natal) input | Date/time/place picker — Phase 3 |
+
+---
+
+<!-- AUTONOMOUS DECISION LOG -->
+## Decision Audit Trail
+
+| # | Phase | Decision | Classification | Principle | Rationale |
+|---|-------|----------|---------------|-----------|-----------|
+| 1 | CEO | Accept all premises | Mechanical | P6 | All premises are valid; user confirmed the core problem |
+| 2 | CEO | Mode: SELECTIVE EXPANSION | Mechanical | P1 | 2-view scope is right-sized; no expansions needed |
+| 3 | CEO | Fix ECL_LAT_SCALE 3.5 → 1.5 | Mechanical | P1 | At 3.5 three yoga taras render outside the wheel |
+| 4 | CEO | Flag mobile sizing gap | Mechanical | P1 | RADIUS=340 hardcoded won't fit a phone screen |
+| 5 | CEO | Flag PythonAnywhere CPU caching | Mechanical | P1 | Free tier CPU limit hit quickly without caching |
+| 6 | CEO | Keep PythonAnywhere | Mechanical | P3 | Zero-cost constraint is real; right call |
+| 7 | CEO | Keep 2-view scope | Mechanical | P6 | Resist expansion; scope is correct |
+| 8 | Design | Loading skeleton is mandatory | Mechanical | P1 | Blank screen on API delay kills first impression |
+| 9 | Design | Error state is mandatory | Mechanical | P1 | API failure = blank screen without it |
+| 10 | Design | Make SVG sizing responsive | Mechanical | P1 | Hardcoded pixels break on mobile |
+| 11 | Design | Specify location input UI | Mechanical | P5 | Missing from plan; decided: sidebar desktop / collapsible mobile |
+| 12 | Eng | Add stale-fetch cancelled flag | Mechanical | P5 | Race condition on location change |
+| 13 | Eng | Add SVG clear before redraw | Mechanical | P5 | D3 double-renders without this |
+| 14 | Eng | Add visibilitychange listener | Mechanical | P5 | Browser throttles intervals on background tabs |
+| 15 | DX | Add local dev setup section | Mechanical | P1 | New React devs need two-terminal instructions |
+| 16 | DX | Add .env.local / VITE_API_URL | Mechanical | P1 | Required to hit local backend during dev |
+
+## GSTACK REVIEW REPORT
+
+| Review | Status | Issues | Critical |
+|--------|--------|--------|---------|
+| CEO Review | ✓ clean | 4 found, all auto-fixed | 0 |
+| Design Review | ✓ clean | 4 found, all auto-fixed | 0 |
+| Eng Review | ✓ clean | 5 found, all auto-fixed | 0 |
+| DX Review | ✓ clean | 3 found, all auto-fixed | 0 |
