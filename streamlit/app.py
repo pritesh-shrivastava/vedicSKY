@@ -53,6 +53,47 @@ RASHI_COLORS = [
     "#9370DB", "#708090", "#4169E1", "#20B2AA",
 ]
 
+# Constellation stick figures — (frac, ecl_lat_deg) per star, frac ∈ [0,1] within the 30° sector
+# Positions are stylised to sit within each rashi's sector while preserving the constellation shape.
+RASHI_OUTLINES = [
+    # 0 Mesha (Aries) — γ-β-α-41Ari short chain
+    dict(stars=[(0.12, 8.0),(0.14, 8.5),(0.26, 9.9),(0.35, 10.6)],
+         lines=[(0,1),(1,2),(2,3)]),
+    # 1 Vrishabha (Taurus) — Pleiades + Hyades V + two horns
+    dict(stars=[(0.15, 4.0),(0.37,-1.4),(0.45,-2.3),(0.54,-2.1),(0.65,-5.5),(0.28, 5.2),(0.90, 2.4)],
+         lines=[(0,1),(1,2),(2,3),(3,4),(2,5),(3,6)]),
+    # 2 Mithuna (Gemini) — twin chains (Castor + Pollux sides)
+    dict(stars=[(0.14,-7.0),(0.27, 1.0),(0.47, 7.3),(0.77, 9.9),(0.80, 6.7),(0.60, 2.5)],
+         lines=[(0,1),(1,2),(2,3),(3,4),(4,5),(1,5)]),
+    # 3 Karka (Cancer) — faint Y-shape
+    dict(stars=[(0.20, 5.0),(0.53, 3.1),(0.60, 0.1),(0.83,-5.7),(0.95,-5.0)],
+         lines=[(0,1),(1,2),(2,3),(2,4)]),
+    # 4 Simha (Leo) — sickle (ε-μ-ζ-γ-η-Regulus) + tail to Denebola
+    dict(stars=[(0.05, 7.5),(0.08, 6.0),(0.23,10.0),(0.30, 9.7),(0.28, 8.0),(0.55, 0.5),(0.75,13.0),(0.87,14.0),(0.95,14.0)],
+         lines=[(0,1),(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,8)]),
+    # 5 Kanya (Virgo) — Y-body with Vindemiatrix arm + Spica at tip
+    dict(stars=[(0.03, 0.4),(0.10,-0.7),(0.32, 3.1),(0.28,16.0),(0.65, 8.5),(0.57, 5.0),(0.80,-2.1)],
+         lines=[(0,1),(1,2),(2,3),(2,4),(4,5),(5,6)]),
+    # 6 Tula (Libra) — balance beam + two pans
+    dict(stars=[(0.37, 0.8),(0.60,-7.0),(0.75, 8.7),(0.80, 0.5)],
+         lines=[(0,2),(2,3),(3,0),(0,1)]),
+    # 7 Vrishchika (Scorpio) — long fishhook with curled stinger
+    dict(stars=[(0.05, 1.2),(0.10,-1.6),(0.32,-4.6),(0.47,-8.0),(0.58,-11.0),(0.67,-14.0),(0.80,-13.8),(0.88,-12.0)],
+         lines=[(0,1),(1,2),(2,3),(3,4),(4,5),(5,6),(6,7)]),
+    # 8 Dhanu (Sagittarius) — teapot asterism
+    dict(stars=[(0.23,-3.0),(0.30,-8.0),(0.37, 3.0),(0.43,-2.0),(0.57,-6.5),(0.58,-3.5),(0.65,-5.0),(0.80,-5.0)],
+         lines=[(0,2),(0,3),(3,2),(3,4),(4,5),(4,6),(6,7)]),
+    # 9 Makara (Capricorn) — arrowhead wedge (α-β-γ-δ)
+    dict(stars=[(0.02,-5.5),(0.03,-7.5),(0.25,-4.0),(0.47,-2.3)],
+         lines=[(0,1),(0,2),(2,3)]),
+    # 10 Kumbha (Aquarius) — zig-zag water stream
+    dict(stars=[(0.02,-8.0),(0.10,-11.0),(0.25,-14.0),(0.43,-15.0),(0.35,-11.0),(0.62,-13.0),(0.80,-10.0)],
+         lines=[(0,1),(1,2),(2,3),(3,4),(4,5),(5,6)]),
+    # 11 Meena (Pisces) — two fish joined by cord
+    dict(stars=[(0.30, 0.0),(0.47, 5.0),(0.62, 8.0),(0.77, 5.0),(0.90,-5.0),(0.95,-2.0)],
+         lines=[(0,1),(1,2),(2,3),(3,4),(4,5)]),
+]
+
 # ── sidebar: location input ───────────────────────────────────────────────────
 with st.sidebar:
     st.header("📍 Observer Location")
@@ -254,7 +295,7 @@ def build_celestial_sphere(df, lagna_sidereal, lagna_rashi_idx):
 
 # ── tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(
-    ["🔵 Rashi Wheel", "🌐 Celestial Sphere", "🔶 South Indian Rashi"]
+    ["🔵 Hindu Zodiac 2D", "🌐 Celestial Sphere", "🔶 South Indian Rashi"]
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -269,17 +310,33 @@ with tab1:
     ax.set_theta_zero_location("N")
     ax.set_theta_direction(-1)
 
-    # Draw 12 rashi sectors (30° each)
-    for i in range(12):
-        theta_start = np.radians(i * 30)
-        theta_end   = np.radians((i + 1) * 30)
-        thetas = np.linspace(theta_start, theta_end, 50)
-        ax.fill_between(thetas, 0.75, 1.0, color=RASHI_COLORS[i], alpha=0.35)
-        ax.fill_between(thetas, 0.0,  0.75, color=RASHI_COLORS[i], alpha=0.06)
-        # Rashi label
-        mid = np.radians(i * 30 + 15)
-        ax.text(mid, 0.875, RASHI_SHORT[i], ha="center", va="center",
-                fontsize=10, color="white", fontweight="bold")
+    # Constellation stick figures + rashi labels
+    R_STAR = 0.83      # reference radius for ecliptic-plane stars (lat=0°)
+    LAT_SCALE = 0.005  # radial shift per degree of ecliptic latitude
+    for i, outline in enumerate(RASHI_OUTLINES):
+        color = RASHI_COLORS[i]
+        rashi_start = i * 30  # sidereal degrees
+
+        # Label just outside the ring
+        mid = np.radians(rashi_start + 15)
+        ax.text(mid, 1.04, RASHI_SHORT[i], ha="center", va="center",
+                fontsize=9, color=color, fontweight="bold")
+
+        # Convert (frac, lat) → polar (theta, r)
+        star_coords = [
+            (np.radians(rashi_start + frac * 30), R_STAR + lat * LAT_SCALE)
+            for frac, lat in outline["stars"]
+        ]
+
+        # Draw stick-figure lines
+        for si, sj in outline["lines"]:
+            t0, r0 = star_coords[si]
+            t1, r1 = star_coords[sj]
+            ax.plot([t0, t1], [r0, r1], color=color, lw=0.9, alpha=0.7, zorder=3)
+
+        # Draw star dots
+        for theta, r in star_coords:
+            ax.plot(theta, r, "o", color=color, markersize=2.5, alpha=0.9, zorder=4)
 
     # Draw sector dividers
     for i in range(12):
@@ -304,10 +361,11 @@ with tab1:
     ax.text(lagna_theta, LAGNA_R + 0.04, "La", ha="center", va="center",
             fontsize=8, color=PLANET_COLOR["Lagna"], fontweight="bold")
 
+    ax.set_ylim(0, 1.15)
     ax.set_yticks([])
     ax.set_xticks([])
     ax.spines["polar"].set_visible(False)
-    ax.set_title("Rashi Chakra · Sidereal Vedic", color="white", pad=15, fontsize=13)
+    ax.set_title("Hindu Zodiac 2D · Constellation Outlines · Sidereal (Lahiri)", color="white", pad=15, fontsize=13)
     st.pyplot(fig)
     plt.close(fig)
 
