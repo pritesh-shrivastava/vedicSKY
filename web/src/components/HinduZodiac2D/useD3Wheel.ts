@@ -240,12 +240,12 @@ export function useD3Wheel(
       'Budha':   [3, 0.008],
       'Shukra':  [3, 0.009],
       'Chandra': [6, 0.014],   // bigger for phase detail
-      'Surya':   [4, 0.012],
+      'Surya':   [11, 0.028],  // Su — largest
       'Mangala': [6, 0.015],   // bigger for surface detail
       'Rahu':    [4, 0.012],
       'Ketu':    [4, 0.012],
       'Shani':   [7, 0.018],   // bigger for ring visibility
-      'Guru':    [8, 0.022],   // biggest for band + GRS detail
+      'Guru':    [8, 0.022],   // Ju — second largest
     }
 
     // Pre-compute Sun longitude for Moon phase
@@ -266,11 +266,6 @@ export function useD3Wheel(
       const clipId = `pc-${g.name}`
       defs.append('clipPath').attr('id', clipId)
         .append('circle').attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
-
-      // Glow halo (all planets)
-      planetGroup.append('circle')
-        .attr('cx', pt.x).attr('cy', pt.y)
-        .attr('r', dotR * 2.2).attr('fill', col).attr('opacity', 0.15)
 
       if (g.name === 'Rahu' || g.name === 'Ketu') {
         // ─ Lunar node symbols (☊ / ☋) ─────────────────────────────────────
@@ -330,22 +325,22 @@ export function useD3Wheel(
         planetGroup.append('ellipse')
           .attr('cx', pt.x).attr('cy', pt.y)
           .attr('rx', rRx).attr('ry', rRy)
-          .attr('fill', 'none').attr('stroke', '#c8a840')
+          .attr('fill', 'none').attr('stroke', '#2a5090')
           .attr('stroke-width', rsw).attr('opacity', 0.55)
         // Planet body (covers middle of back ring)
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
-          .attr('fill', '#d4b060')
+          .attr('fill', '#3a6aaa')
         // Subtle equatorial band
         planetGroup.append('rect')
           .attr('x', pt.x - dotR).attr('y', pt.y - dotR * 0.18)
           .attr('width', dotR * 2).attr('height', dotR * 0.20)
-          .attr('fill', '#a07830').attr('opacity', 0.55)
+          .attr('fill', '#1e3a70').attr('opacity', 0.55)
           .attr('clip-path', `url(#${clipId})`)
         // Front ring arc (lower half, appears in front of planet)
         planetGroup.append('path')
           .attr('d', `M ${pt.x - rRx},${pt.y} A ${rRx},${rRy} 0 0,1 ${pt.x + rRx},${pt.y}`)
-          .attr('fill', 'none').attr('stroke', '#c8a840')
+          .attr('fill', 'none').attr('stroke', '#2a5090')
           .attr('stroke-width', rsw).attr('opacity', 0.95)
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
@@ -378,8 +373,29 @@ export function useD3Wheel(
           .on('mouseleave', () => onHover(null))
           .style('cursor', 'pointer')
 
+      } else if (g.name === 'Surya') {
+        // ─ Sun: corona glow + bright disc ───────────────────────────────────
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 3.2)
+          .attr('fill', col).attr('opacity', 0.08)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 2.2)
+          .attr('fill', col).attr('opacity', 0.14)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 1.5)
+          .attr('fill', col).attr('opacity', 0.22)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', col).attr('filter', 'url(#glow)')
+          .on('mouseenter', () => onHover(hoverLabel))
+          .on('mouseleave', () => onHover(null))
+          .style('cursor', 'pointer')
+
       } else if (g.name === 'Chandra') {
-        // ─ Moon: dark base + correct phase + craters ────────────────────────
+        // ─ Moon: subtle glow + dark base + correct phase + craters ──────────
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 2.0)
+          .attr('fill', '#c8c8e0').attr('opacity', 0.12)
         const elong = ((g.sidereal_lon - sunLon + 360) % 360)
         const isNewMoon  = elong < 4 || elong > 356
         const isFullMoon = elong > 176 && elong < 184
