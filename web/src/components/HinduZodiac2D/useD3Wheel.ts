@@ -235,18 +235,21 @@ export function useD3Wheel(
     if (!data) return
     const planetGroup = svg.append('g').attr('class', 'planets')
 
-    // Per-planet size: Me smallest → Ju biggest
+    // Per-planet size: Me smallest → Ju biggest (bumped for detail visibility)
     const PLANET_SCALE: Record<string, [number, number]> = {
-      'Budha':   [3, 0.008],   // Me — smallest
-      'Shukra':  [3, 0.009],   // Ve
-      'Chandra': [4, 0.010],   // Mo
-      'Surya':   [4, 0.012],   // Su
-      'Mangala': [4, 0.012],   // Ma
-      'Rahu':    [4, 0.012],   // Ra — symbol sized
-      'Ketu':    [4, 0.012],   // Ke — symbol sized
-      'Shani':   [5, 0.015],   // Sa — bigger
-      'Guru':    [6, 0.018],   // Ju — biggest
+      'Budha':   [3, 0.008],
+      'Shukra':  [3, 0.009],
+      'Chandra': [6, 0.014],   // bigger for phase detail
+      'Surya':   [4, 0.012],
+      'Mangala': [6, 0.015],   // bigger for surface detail
+      'Rahu':    [4, 0.012],
+      'Ketu':    [4, 0.012],
+      'Shani':   [7, 0.018],   // bigger for ring visibility
+      'Guru':    [8, 0.022],   // biggest for band + GRS detail
     }
+
+    // Pre-compute Sun longitude for Moon phase
+    const sunLon = data.grahas.find(g => g.name === 'Surya')?.sidereal_lon ?? 0
 
     for (const g of data.grahas) {
       const a   = lonToAngle(g.sidereal_lon)
@@ -257,67 +260,185 @@ export function useD3Wheel(
       const dotR = Math.max(minR, size * scale)
       const devName = GRAHA_ABBR_DEV[g.name] ?? g.abbr
       const hoverLabel = `${g.name} · ${g.nakshatra_en} Pada ${g.pada} · ${g.sidereal_lon.toFixed(2)}° (lat ${g.ecl_lat.toFixed(2)}°)`
-      const sw = Math.max(1, size * 0.003)   // stroke width for node symbols
+      const sw = Math.max(1, size * 0.003)
+
+      // Clip path for texture details (Ju, Sa, Ma, Mo)
+      const clipId = `pc-${g.name}`
+      defs.append('clipPath').attr('id', clipId)
+        .append('circle').attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+
+      // Glow halo (all planets)
+      planetGroup.append('circle')
+        .attr('cx', pt.x).attr('cy', pt.y)
+        .attr('r', dotR * 2.2).attr('fill', col).attr('opacity', 0.15)
 
       if (g.name === 'Rahu' || g.name === 'Ketu') {
-        // ─ Lunar node symbols ──────────────────────────────────────────────
-        // Ra ☊: arch faces UP (∩), legs go DOWN  — sweep=0 (CCW in SVG = goes up)
-        // Ke ☋: arch faces DOWN (∪), legs go UP  — sweep=1 (CW in SVG = goes down)
-        const sr   = dotR           // arch half-width = symbol radius
-        const stem = dotR           // leg length = same as radius → symmetric height
+        // ─ Lunar node symbols (☊ / ☋) ─────────────────────────────────────
+        const sr = dotR, stem = dotR
         const isRa = g.name === 'Rahu'
-        const sweep = isRa ? 0 : 1
-        const legDY = isRa ? stem : -stem  // legs go down for Ra, up for Ke
-
         const pathD = [
           `M ${pt.x - sr},${pt.y}`,
-          `A ${sr},${sr} 0 0,${sweep} ${pt.x + sr},${pt.y}`,
-          `M ${pt.x - sr},${pt.y} L ${pt.x - sr},${pt.y + legDY}`,
-          `M ${pt.x + sr},${pt.y} L ${pt.x + sr},${pt.y + legDY}`,
+          `A ${sr},${sr} 0 0,${isRa ? 0 : 1} ${pt.x + sr},${pt.y}`,
+          `M ${pt.x - sr},${pt.y} L ${pt.x - sr},${pt.y + (isRa ? stem : -stem)}`,
+          `M ${pt.x + sr},${pt.y} L ${pt.x + sr},${pt.y + (isRa ? stem : -stem)}`,
         ].join(' ')
-
-        // Glow halo
-        planetGroup.append('circle')
-          .attr('cx', pt.x).attr('cy', pt.y)
-          .attr('r', dotR * 2)
-          .attr('fill', col)
-          .attr('opacity', 0.12)
-
-        // Horseshoe path
         planetGroup.append('path')
-          .attr('d', pathD)
-          .attr('fill', 'none')
-          .attr('stroke', col)
-          .attr('stroke-width', sw)
-          .attr('stroke-linecap', 'round')
-          .attr('filter', 'url(#glow)')
-
-        // Transparent hover circle (paths have no fill hit area)
+          .attr('d', pathD).attr('fill', 'none')
+          .attr('stroke', col).attr('stroke-width', sw)
+          .attr('stroke-linecap', 'round').attr('filter', 'url(#glow)')
         planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 1.5)
+          .attr('fill', 'transparent')
+          .on('mouseenter', () => onHover(hoverLabel))
+          .on('mouseleave', () => onHover(null))
+          .style('cursor', 'pointer')
+
+      } else if (g.name === 'Guru') {
+        // ─ Jupiter: cream base + brown cloud bands + Great Red Spot ─────────
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', '#e8d898')
+        ;[
+          { yf: -0.62, hf: 0.20, color: '#7a4f10' },
+          { yf: -0.22, hf: 0.22, color: '#a06828' },
+          { yf:  0.08, hf: 0.20, color: '#7a4f10' },
+          { yf:  0.42, hf: 0.22, color: '#9c6218' },
+        ].forEach(b => {
+          planetGroup.append('rect')
+            .attr('x', pt.x - dotR).attr('y', pt.y + b.yf * dotR)
+            .attr('width', dotR * 2).attr('height', b.hf * dotR)
+            .attr('fill', b.color).attr('opacity', 0.8)
+            .attr('clip-path', `url(#${clipId})`)
+        })
+        // Great Red Spot
+        planetGroup.append('ellipse')
+          .attr('cx', pt.x + dotR * 0.22).attr('cy', pt.y + dotR * 0.10)
+          .attr('rx', dotR * 0.30).attr('ry', dotR * 0.18)
+          .attr('fill', '#c03820').attr('opacity', 0.9)
+          .attr('clip-path', `url(#${clipId})`)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', 'transparent')
+          .on('mouseenter', () => onHover(hoverLabel))
+          .on('mouseleave', () => onHover(null))
+          .style('cursor', 'pointer')
+
+      } else if (g.name === 'Shani') {
+        // ─ Saturn: golden body + elliptical rings ───────────────────────────
+        const rRx = dotR * 2.1, rRy = dotR * 0.48, rsw = dotR * 0.38
+        // Back ring (full ellipse, behind planet)
+        planetGroup.append('ellipse')
           .attr('cx', pt.x).attr('cy', pt.y)
-          .attr('r', dotR * 1.5)
+          .attr('rx', rRx).attr('ry', rRy)
+          .attr('fill', 'none').attr('stroke', '#c8a840')
+          .attr('stroke-width', rsw).attr('opacity', 0.55)
+        // Planet body (covers middle of back ring)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', '#d4b060')
+        // Subtle equatorial band
+        planetGroup.append('rect')
+          .attr('x', pt.x - dotR).attr('y', pt.y - dotR * 0.18)
+          .attr('width', dotR * 2).attr('height', dotR * 0.20)
+          .attr('fill', '#a07830').attr('opacity', 0.55)
+          .attr('clip-path', `url(#${clipId})`)
+        // Front ring arc (lower half, appears in front of planet)
+        planetGroup.append('path')
+          .attr('d', `M ${pt.x - rRx},${pt.y} A ${rRx},${rRy} 0 0,1 ${pt.x + rRx},${pt.y}`)
+          .attr('fill', 'none').attr('stroke', '#c8a840')
+          .attr('stroke-width', rsw).attr('opacity', 0.95)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', 'transparent')
+          .on('mouseenter', () => onHover(hoverLabel))
+          .on('mouseleave', () => onHover(null))
+          .style('cursor', 'pointer')
+
+      } else if (g.name === 'Mangala') {
+        // ─ Mars: rust red + Syrtis Major + polar ice cap ────────────────────
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', '#c04020')
+        // Syrtis Major dark region
+        planetGroup.append('ellipse')
+          .attr('cx', pt.x + dotR * 0.05).attr('cy', pt.y + dotR * 0.12)
+          .attr('rx', dotR * 0.38).attr('ry', dotR * 0.48)
+          .attr('fill', '#6b1f08').attr('opacity', 0.55)
+          .attr('clip-path', `url(#${clipId})`)
+        // North polar ice cap
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y - dotR * 0.62)
+          .attr('r', dotR * 0.42)
+          .attr('fill', '#f0f0ff').attr('opacity', 0.90)
+          .attr('clip-path', `url(#${clipId})`)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', 'transparent')
+          .on('mouseenter', () => onHover(hoverLabel))
+          .on('mouseleave', () => onHover(null))
+          .style('cursor', 'pointer')
+
+      } else if (g.name === 'Chandra') {
+        // ─ Moon: dark base + correct phase + craters ────────────────────────
+        const elong = ((g.sidereal_lon - sunLon + 360) % 360)
+        const isNewMoon  = elong < 4 || elong > 356
+        const isFullMoon = elong > 176 && elong < 184
+
+        // Dark base
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', '#1e1e30')
+
+        if (isFullMoon) {
+          // Full — entirely illuminated
+          planetGroup.append('circle')
+            .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+            .attr('fill', '#c8c8e0').attr('clip-path', `url(#${clipId})`)
+        } else if (!isNewMoon) {
+          // Phase crescent/gibbous
+          // outerSweep=1: lit on right (waxing), 0: lit on left (waning)
+          // termSweep: crescent → opposite of outer; gibbous → same as outer
+          const isWaxing  = elong < 180
+          const isCrescent = elong < 90 || elong > 270
+          const outerSweep = isWaxing ? 1 : 0
+          const termSweep  = isCrescent ? (1 - outerSweep) : outerSweep
+          const termR = Math.max(0.5, Math.abs(dotR * Math.cos((elong * Math.PI) / 180)))
+          const pd = `M 0,${-dotR} A ${dotR},${dotR} 0 0,${outerSweep} 0,${dotR} A ${termR},${dotR} 0 0,${termSweep} 0,${-dotR} Z`
+          planetGroup.append('path')
+            .attr('d', pd)
+            .attr('transform', `translate(${pt.x},${pt.y})`)
+            .attr('fill', '#c8c8e0')
+            .attr('clip-path', `url(#${clipId})`)
+        }
+
+        // Craters (subtle outlines)
+        ;[
+          [0.25, -0.30, 0.18],
+          [-0.35,  0.20, 0.14],
+          [ 0.10,  0.44, 0.13],
+          [-0.15, -0.52, 0.10],
+        ].forEach(([xf, yf, rf]) => {
+          planetGroup.append('circle')
+            .attr('cx', pt.x + xf * dotR).attr('cy', pt.y + yf * dotR)
+            .attr('r', rf * dotR)
+            .attr('fill', 'none').attr('stroke', 'rgba(0,0,0,0.22)')
+            .attr('stroke-width', 0.5)
+            .attr('clip-path', `url(#${clipId})`)
+        })
+
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
           .attr('fill', 'transparent')
           .on('mouseenter', () => onHover(hoverLabel))
           .on('mouseleave', () => onHover(null))
           .style('cursor', 'pointer')
 
       } else {
-        // ─ Physical planet — filled circle ────────────────────────────────
-        // Glow halo
+        // ─ Other planets — solid filled circle ──────────────────────────────
         planetGroup.append('circle')
-          .attr('cx', pt.x).attr('cy', pt.y)
-          .attr('r', dotR * 2.2)
-          .attr('fill', col)
-          .attr('opacity', 0.15)
-
-        // Planet dot
-        planetGroup.append('circle')
-          .attr('cx', pt.x).attr('cy', pt.y)
-          .attr('r', dotR)
-          .attr('fill', col)
-          .attr('filter', 'url(#glow)')
-          .attr('stroke', 'white')
-          .attr('stroke-width', 0.5)
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
+          .attr('fill', col).attr('filter', 'url(#glow)')
+          .attr('stroke', 'white').attr('stroke-width', 0.5)
           .on('mouseenter', () => onHover(hoverLabel))
           .on('mouseleave', () => onHover(null))
           .style('cursor', 'pointer')
