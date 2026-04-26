@@ -317,7 +317,7 @@ export function useD3Wheel(
         planetGroup.append('ellipse')
           .attr('cx', pt.x + dotR * 0.22).attr('cy', pt.y + dotR * 0.10)
           .attr('rx', dotR * 0.30).attr('ry', dotR * 0.18)
-          .attr('fill', '#c03820').attr('opacity', 0.9)
+          .attr('fill', '#d4785a').attr('opacity', 0.55)
           .attr('clip-path', `url(#${clipId})`)
         // Front ring arc
         planetGroup.append('path')
@@ -372,12 +372,6 @@ export function useD3Wheel(
           .attr('cx', pt.x + dotR * 0.05).attr('cy', pt.y + dotR * 0.12)
           .attr('rx', dotR * 0.38).attr('ry', dotR * 0.48)
           .attr('fill', '#6b1f08').attr('opacity', 0.55)
-          .attr('clip-path', `url(#${clipId})`)
-        // North polar ice cap
-        planetGroup.append('circle')
-          .attr('cx', pt.x).attr('cy', pt.y - dotR * 0.62)
-          .attr('r', dotR * 0.42)
-          .attr('fill', '#f0f0ff').attr('opacity', 0.90)
           .attr('clip-path', `url(#${clipId})`)
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
