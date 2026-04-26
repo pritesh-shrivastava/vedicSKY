@@ -36,7 +36,7 @@ export function HinduZodiac2D({ data }: Props) {
   const [size, setSize]           = useState(0)
   const [tooltip, setTooltip]     = useState<string | null>(null)
   const [boundaries, setBoundaries] = useState<BoundaryMode>('rashi')
-  const [showConst, setShowConst] = useState(true)
+  const [showConst, setShowConst] = useState(false)
 
   useEffect(() => {
     const el = wrapRef.current
