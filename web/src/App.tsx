@@ -36,7 +36,7 @@ export default function App() {
           )}
           <button
             onClick={() => setOpen(o => !o)}
-            style={{ background: 'none', border: `1px solid ${PALETTE.goldFaint}`, borderRadius: 4, padding: '4px 8px', color: PALETTE.textMuted, cursor: 'pointer', fontSize: '0.75rem' }}
+            style={{ background: 'none', border: `1px solid ${PALETTE.goldFaint}`, borderRadius: 4, padding: '10px 12px', minHeight: '44px', color: PALETTE.textMuted, cursor: 'pointer', fontSize: '0.75rem' }}
           >
             ⚙ Location
           </button>

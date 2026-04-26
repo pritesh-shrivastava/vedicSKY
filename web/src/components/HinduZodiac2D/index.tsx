@@ -11,7 +11,8 @@ const BTN: React.CSSProperties = {
   background: 'none',
   border: `1px solid ${PALETTE.goldFaint}`,
   borderRadius: 4,
-  padding: '3px 10px',
+  padding: '10px 12px',
+  minHeight: '44px',
   fontFamily: 'Inter, sans-serif',
   fontSize: '0.72rem',
   cursor: 'pointer',
@@ -101,7 +102,7 @@ export function HinduZodiac2D({ data }: Props) {
         {tooltip}
       </div>
 
-      <p style={{ color: PALETTE.textMuted, fontSize: '0.7rem', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+      <p style={{ color: PALETTE.textPrimary, fontSize: '0.75rem', fontFamily: 'Inter, sans-serif', margin: 0, opacity: 0.5, letterSpacing: '0.04em' }}>
         Hover or tap any dot · Sidereal (Lahiri)
       </p>
     </div>

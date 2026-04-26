@@ -1,14 +1,14 @@
 export const PLANET_COLOR: Record<string, string> = {
   Surya:   '#FFA500',
   Chandra: '#C8C8FF',
-  Mangala: '#FF4444',
-  Budha:   '#44FF44',
-  Guru:    '#FFFF44',
+  Mangala: '#e05858',
+  Budha:   '#5aad6a',
+  Guru:    '#d4b84a',
   Shukra:  '#F5F0E8',
   Shani:   '#8888AA',
   Rahu:    '#888888',
   Ketu:    '#AA8844',
-  Lagna:   '#FF88FF',
+  Lagna:   '#c9a84c',
 }
 
 export const RASHI_COLORS: string[] = [
