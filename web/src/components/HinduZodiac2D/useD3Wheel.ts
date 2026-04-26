@@ -405,9 +405,7 @@ export function useD3Wheel(
         // ─ Moon: white glow ring + dark base + correct phase + craters ────────
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 1.8)
-          .attr('fill', 'none')
-          .attr('stroke', '#ffffff').attr('stroke-width', dotR * 0.3)
-          .attr('opacity', 0.18)
+          .attr('fill', '#ffffff').attr('opacity', 0.18)
         const elong = ((g.sidereal_lon - sunLon + 360) % 360)
         const isNewMoon  = elong < 4 || elong > 356
         const isFullMoon = elong > 176 && elong < 184
