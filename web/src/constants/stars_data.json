@@ -1,0 +1,835 @@
+{
+  "note": "Sidereal ecliptic positions, Lahiri ayanamsha, J2000.0",
+  "yoga_taras": [
+    {
+      "nakshatra_en": "Ashwini",
+      "nakshatra_dev": "अश्विनी",
+      "star_name": "Sheratan",
+      "bayer": "β Ari",
+      "lon": 10.12,
+      "lat": 8.49
+    },
+    {
+      "nakshatra_en": "Bharani",
+      "nakshatra_dev": "भरणी",
+      "star_name": "Bharani",
+      "bayer": "41 Ari",
+      "lon": 24.35,
+      "lat": 10.45
+    },
+    {
+      "nakshatra_en": "Krittika",
+      "nakshatra_dev": "कृत्तिका",
+      "star_name": "Alcyone",
+      "bayer": "η Tau",
+      "lon": 36.14,
+      "lat": 4.05
+    },
+    {
+      "nakshatra_en": "Rohini",
+      "nakshatra_dev": "रोहिणी",
+      "star_name": "Aldebaran",
+      "bayer": "α Tau",
+      "lon": 45.94,
+      "lat": -5.47
+    },
+    {
+      "nakshatra_en": "Mrigashira",
+      "nakshatra_dev": "मृगशिरा",
+      "star_name": "Meissa",
+      "bayer": "λ Ori",
+      "lon": 59.86,
+      "lat": -13.37
+    },
+    {
+      "nakshatra_en": "Ardra",
+      "nakshatra_dev": "आर्द्रा",
+      "star_name": "Betelgeuse",
+      "bayer": "α Ori",
+      "lon": 64.9,
+      "lat": -16.03
+    },
+    {
+      "nakshatra_en": "Punarvasu",
+      "nakshatra_dev": "पुनर्वसु",
+      "star_name": "Pollux",
+      "bayer": "β Gem",
+      "lon": 89.36,
+      "lat": 6.68
+    },
+    {
+      "nakshatra_en": "Pushya",
+      "nakshatra_dev": "पुष्य",
+      "star_name": "Asellus Australis",
+      "bayer": "δ Cnc",
+      "lon": 104.87,
+      "lat": 0.08
+    },
+    {
+      "nakshatra_en": "Ashlesha",
+      "nakshatra_dev": "आश्लेषा",
+      "star_name": "Ashlesha",
+      "bayer": "ε Hya",
+      "lon": 108.49,
+      "lat": -11.1
+    },
+    {
+      "nakshatra_en": "Magha",
+      "nakshatra_dev": "मघा",
+      "star_name": "Regulus",
+      "bayer": "α Leo",
+      "lon": 125.98,
+      "lat": 0.46
+    },
+    {
+      "nakshatra_en": "Purva Phalguni",
+      "nakshatra_dev": "पूर्व फाल्गुनी",
+      "star_name": "Zosma",
+      "bayer": "δ Leo",
+      "lon": 137.46,
+      "lat": 14.33
+    },
+    {
+      "nakshatra_en": "Uttara Phalguni",
+      "nakshatra_dev": "उत्तर फाल्गुनी",
+      "star_name": "Denebola",
+      "bayer": "β Leo",
+      "lon": 147.76,
+      "lat": 12.27
+    },
+    {
+      "nakshatra_en": "Hasta",
+      "nakshatra_dev": "हस्त",
+      "star_name": "Algorab",
+      "bayer": "δ Crv",
+      "lon": 169.59,
+      "lat": -12.2
+    },
+    {
+      "nakshatra_en": "Chitra",
+      "nakshatra_dev": "चित्रा",
+      "star_name": "Spica",
+      "bayer": "α Vir",
+      "lon": 179.98,
+      "lat": -2.05
+    },
+    {
+      "nakshatra_en": "Svati",
+      "nakshatra_dev": "स्वाति",
+      "star_name": "Arcturus",
+      "bayer": "α Boo",
+      "lon": 180.37,
+      "lat": 30.73
+    },
+    {
+      "nakshatra_en": "Vishakha",
+      "nakshatra_dev": "विशाखा",
+      "star_name": "Zubenelgenubi",
+      "bayer": "α Lib",
+      "lon": 201.22,
+      "lat": 0.33
+    },
+    {
+      "nakshatra_en": "Anuradha",
+      "nakshatra_dev": "अनुराधा",
+      "star_name": "Dschubba",
+      "bayer": "δ Sco",
+      "lon": 218.71,
+      "lat": -1.99
+    },
+    {
+      "nakshatra_en": "Jyeshtha",
+      "nakshatra_dev": "ज्येष्ठा",
+      "star_name": "Antares",
+      "bayer": "α Sco",
+      "lon": 225.9,
+      "lat": -4.57
+    },
+    {
+      "nakshatra_en": "Mula",
+      "nakshatra_dev": "मूल",
+      "star_name": "Shaula",
+      "bayer": "λ Sco",
+      "lon": 240.72,
+      "lat": -13.79
+    },
+    {
+      "nakshatra_en": "Purva Ashadha",
+      "nakshatra_dev": "पूर्वाषाढ़ा",
+      "star_name": "Kaus Australis",
+      "bayer": "ε Sgr",
+      "lon": 251.22,
+      "lat": -11.05
+    },
+    {
+      "nakshatra_en": "Uttara Ashadha",
+      "nakshatra_dev": "उत्तराषाढ़ा",
+      "star_name": "Nunki",
+      "bayer": "σ Sgr",
+      "lon": 258.52,
+      "lat": -3.45
+    },
+    {
+      "nakshatra_en": "Shravana",
+      "nakshatra_dev": "श्रवण",
+      "star_name": "Altair",
+      "bayer": "α Aql",
+      "lon": 277.91,
+      "lat": 29.3
+    },
+    {
+      "nakshatra_en": "Dhanishtha",
+      "nakshatra_dev": "धनिष्ठा",
+      "star_name": "Rotanev",
+      "bayer": "β Del",
+      "lon": 292.48,
+      "lat": 31.92
+    },
+    {
+      "nakshatra_en": "Shatabhisha",
+      "nakshatra_dev": "शतभिषा",
+      "star_name": "Hydor",
+      "bayer": "λ Aqr",
+      "lon": 317.72,
+      "lat": -0.39
+    },
+    {
+      "nakshatra_en": "Purva Bhadrapada",
+      "nakshatra_dev": "पूर्व भाद्रपद",
+      "star_name": "Markab",
+      "bayer": "α Peg",
+      "lon": 329.63,
+      "lat": 19.41
+    },
+    {
+      "nakshatra_en": "Uttara Bhadrapada",
+      "nakshatra_dev": "उत्तर भाद्रपद",
+      "star_name": "Alpheratz",
+      "bayer": "α And",
+      "lon": 350.45,
+      "lat": 25.68
+    },
+    {
+      "nakshatra_en": "Revati",
+      "nakshatra_dev": "रेवती",
+      "star_name": "Revati",
+      "bayer": "ζ Psc",
+      "lon": 356.02,
+      "lat": -0.21
+    }
+  ],
+  "constellations": [
+    {
+      "rashi": "Mesha",
+      "rashi_dev": "मेष",
+      "stars": [
+        {
+          "star": "Mesarthim",
+          "bayer": "γ Ari",
+          "lon": 9.33,
+          "lat": 7.16
+        },
+        {
+          "star": "Sheratan",
+          "bayer": "β Ari",
+          "lon": 10.12,
+          "lat": 8.49
+        },
+        {
+          "star": "Hamal",
+          "bayer": "α Ari",
+          "lon": 13.81,
+          "lat": 9.97
+        },
+        {
+          "star": "Bharani",
+          "bayer": "41 Ari",
+          "lon": 24.35,
+          "lat": 10.45
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "rashi": "Vrishabha",
+      "rashi_dev": "वृषभ",
+      "stars": [
+        {
+          "star": "Alcyone",
+          "bayer": "η Tau",
+          "lon": 36.14,
+          "lat": 4.05
+        },
+        {
+          "star": "Aldebaran",
+          "bayer": "α Tau",
+          "lon": 45.94,
+          "lat": -5.47
+        },
+        {
+          "star": "Ain",
+          "bayer": "ε Tau",
+          "lon": 44.61,
+          "lat": -2.57
+        },
+        {
+          "star": "Elnath",
+          "bayer": "β Tau",
+          "lon": 58.72,
+          "lat": 5.39
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "rashi": "Mithuna",
+      "rashi_dev": "मिथुन",
+      "stars": [
+        {
+          "star": "Alhena",
+          "bayer": "γ Gem",
+          "lon": 75.25,
+          "lat": -6.74
+        },
+        {
+          "star": "Mebsuta",
+          "bayer": "ε Gem",
+          "lon": 76.09,
+          "lat": 2.07
+        },
+        {
+          "star": "Castor",
+          "bayer": "α Gem",
+          "lon": 86.39,
+          "lat": 10.1
+        },
+        {
+          "star": "Pollux",
+          "bayer": "β Gem",
+          "lon": 89.36,
+          "lat": 6.68
+        },
+        {
+          "star": "Wasat",
+          "bayer": "δ Gem",
+          "lon": 84.67,
+          "lat": -0.18
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "rashi": "Karka",
+      "rashi_dev": "कर्क",
+      "stars": [
+        {
+          "star": "Asellus Borealis",
+          "bayer": "γ Cnc",
+          "lon": 103.69,
+          "lat": 3.19
+        },
+        {
+          "star": "Asellus Australis",
+          "bayer": "δ Cnc",
+          "lon": 104.87,
+          "lat": 0.08
+        },
+        {
+          "star": "Acubens",
+          "bayer": "α Cnc",
+          "lon": 109.79,
+          "lat": -5.08
+        },
+        {
+          "star": "Al Tarf",
+          "bayer": "β Cnc",
+          "lon": 100.41,
+          "lat": -10.29
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "rashi": "Simha",
+      "rashi_dev": "सिंह",
+      "stars": [
+        {
+          "star": "Regulus",
+          "bayer": "α Leo",
+          "lon": 125.98,
+          "lat": 0.46
+        },
+        {
+          "star": "Al Jabhah",
+          "bayer": "η Leo",
+          "lon": 124.05,
+          "lat": 4.87
+        },
+        {
+          "star": "Algieba",
+          "bayer": "γ Leo",
+          "lon": 125.76,
+          "lat": 8.81
+        },
+        {
+          "star": "Zosma",
+          "bayer": "δ Leo",
+          "lon": 137.46,
+          "lat": 14.33
+        },
+        {
+          "star": "Denebola",
+          "bayer": "β Leo",
+          "lon": 147.76,
+          "lat": 12.27
+        },
+        {
+          "star": "Adhafera",
+          "bayer": "ζ Leo",
+          "lon": 123.71,
+          "lat": 11.86
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "rashi": "Kanya",
+      "rashi_dev": "कन्या",
+      "stars": [
+        {
+          "star": "Vindemiatrix",
+          "bayer": "ε Vir",
+          "lon": 166.08,
+          "lat": 16.2
+        },
+        {
+          "star": "Porrima",
+          "bayer": "γ Vir",
+          "lon": 166.28,
+          "lat": 2.79
+        },
+        {
+          "star": "Zaniah",
+          "bayer": "η Vir",
+          "lon": 160.98,
+          "lat": 1.37
+        },
+        {
+          "star": "Spica",
+          "bayer": "α Vir",
+          "lon": 179.98,
+          "lat": -2.05
+        },
+        {
+          "star": "Heze",
+          "bayer": "ζ Vir",
+          "lon": 178.28,
+          "lat": 8.64
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "rashi": "Tula",
+      "rashi_dev": "तुला",
+      "stars": [
+        {
+          "star": "Zubenelgenubi",
+          "bayer": "α Lib",
+          "lon": 201.22,
+          "lat": 0.33
+        },
+        {
+          "star": "Zubeneshamali",
+          "bayer": "β Lib",
+          "lon": 205.51,
+          "lat": 8.5
+        },
+        {
+          "star": "Zubenelakrab",
+          "bayer": "γ Lib",
+          "lon": 211.28,
+          "lat": 4.39
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "rashi": "Vrischika",
+      "rashi_dev": "वृश्चिक",
+      "stars": [
+        {
+          "star": "Dschubba",
+          "bayer": "δ Sco",
+          "lon": 218.71,
+          "lat": -1.99
+        },
+        {
+          "star": "Graffias",
+          "bayer": "β Sco",
+          "lon": 219.33,
+          "lat": 1.01
+        },
+        {
+          "star": "Antares",
+          "bayer": "α Sco",
+          "lon": 225.9,
+          "lat": -4.57
+        },
+        {
+          "star": "Sargas",
+          "bayer": "θ Sco",
+          "lon": 241.74,
+          "lat": -19.64
+        },
+        {
+          "star": "Shaula",
+          "bayer": "λ Sco",
+          "lon": 240.72,
+          "lat": -13.79
+        },
+        {
+          "star": "Lesath",
+          "bayer": "υ Sco",
+          "lon": 240.15,
+          "lat": -14.01
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "rashi": "Dhanu",
+      "rashi_dev": "धनु",
+      "stars": [
+        {
+          "star": "Kaus Borealis",
+          "bayer": "λ Sgr",
+          "lon": 252.45,
+          "lat": -2.14
+        },
+        {
+          "star": "Kaus Media",
+          "bayer": "δ Sgr",
+          "lon": 250.72,
+          "lat": -6.47
+        },
+        {
+          "star": "Kaus Australis",
+          "bayer": "ε Sgr",
+          "lon": 251.22,
+          "lat": -11.05
+        },
+        {
+          "star": "Nunki",
+          "bayer": "σ Sgr",
+          "lon": 258.52,
+          "lat": -3.45
+        },
+        {
+          "star": "Ascella",
+          "bayer": "ζ Sgr",
+          "lon": 259.78,
+          "lat": -7.18
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "rashi": "Makara",
+      "rashi_dev": "मकर",
+      "stars": [
+        {
+          "star": "Algedi",
+          "bayer": "α Cap",
+          "lon": 279.91,
+          "lat": 6.99
+        },
+        {
+          "star": "Dabih",
+          "bayer": "β Cap",
+          "lon": 280.18,
+          "lat": 4.59
+        },
+        {
+          "star": "Nashira",
+          "bayer": "γ Cap",
+          "lon": 297.93,
+          "lat": -2.56
+        },
+        {
+          "star": "Deneb Algedi",
+          "bayer": "δ Cap",
+          "lon": 299.68,
+          "lat": -2.6
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "rashi": "Kumbha",
+      "rashi_dev": "कुंभ",
+      "stars": [
+        {
+          "star": "Sadalsuud",
+          "bayer": "β Aqr",
+          "lon": 299.53,
+          "lat": 8.62
+        },
+        {
+          "star": "Sadalachbia",
+          "bayer": "γ Aqr",
+          "lon": 312.85,
+          "lat": 8.24
+        },
+        {
+          "star": "Sadalmelik",
+          "bayer": "α Aqr",
+          "lon": 309.49,
+          "lat": 10.66
+        },
+        {
+          "star": "Hydor",
+          "bayer": "λ Aqr",
+          "lon": 317.72,
+          "lat": -0.39
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "rashi": "Meena",
+      "rashi_dev": "मीन",
+      "stars": [
+        {
+          "star": "Revati",
+          "bayer": "ζ Psc",
+          "lon": 356.02,
+          "lat": -0.21
+        },
+        {
+          "star": "Alrescha",
+          "bayer": "α Psc",
+          "lon": 5.52,
+          "lat": -9.06
+        },
+        {
+          "star": "Al Pherg",
+          "bayer": "η Psc",
+          "lon": 2.96,
+          "lat": 5.38
+        },
+        {
+          "star": "Fumalsamakah",
+          "bayer": "β Psc",
+          "lon": 324.73,
+          "lat": 9.05
+        }
+      ],
+      "lines": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    }
+  ]
+}
