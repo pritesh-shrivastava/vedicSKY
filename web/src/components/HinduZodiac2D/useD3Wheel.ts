@@ -425,10 +425,15 @@ export function useD3Wheel(
           const outerSweep = isWaxing ? 1 : 0
           const termSweep  = isCrescent ? (1 - outerSweep) : outerSweep
           const termR = Math.max(0.5, Math.abs(dotR * Math.cos((elong * Math.PI) / 180)))
-          const pd = `M 0,${-dotR} A ${dotR},${dotR} 0 0,${outerSweep} 0,${dotR} A ${termR},${dotR} 0 0,${termSweep} 0,${-dotR} Z`
+          // Use absolute coords — clip-path is in parent space, transform would break alignment
+          const pd = [
+            `M ${pt.x},${pt.y - dotR}`,
+            `A ${dotR},${dotR} 0 0,${outerSweep} ${pt.x},${pt.y + dotR}`,
+            `A ${termR},${dotR} 0 0,${termSweep} ${pt.x},${pt.y - dotR}`,
+            'Z',
+          ].join(' ')
           planetGroup.append('path')
             .attr('d', pd)
-            .attr('transform', `translate(${pt.x},${pt.y})`)
             .attr('fill', '#f0f0ff')
             .attr('clip-path', `url(#${clipId})`)
         }
