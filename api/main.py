@@ -4,8 +4,7 @@ from datetime import datetime
 from functools import lru_cache
 from zoneinfo import ZoneInfo
 
-from fastapi import FastAPI, Query, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
+from flask import Flask, request, jsonify
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 from graha_positions_reference import (
@@ -14,15 +13,9 @@ from graha_positions_reference import (
 )
 
 import swisseph as swe
+swe.set_ephe_path('/home/pritesh2312/ephemeris')
 
-app = FastAPI(title="Vedic Zodiac API")
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["GET"],
-    allow_headers=["*"],
-)
+app = Flask(__name__)
 
 _PHYSICAL_SWE = {
     "Surya": swe.SUN, "Chandra": swe.MOON, "Mangala": swe.MARS,
@@ -38,7 +31,7 @@ PLANET_ABBR = {
 
 
 @lru_cache(maxsize=256)
-def _cached_positions(lat: float, lon: float, alt: float, tz: str, minute_bucket: str):
+def _cached_positions(lat, lon, alt, tz, minute_bucket):
     loc = {"latitude": lat, "longitude": lon, "altitude": alt, "timezone": tz}
     now = datetime.now(ZoneInfo(tz))
     df = calculate_graha_positions_for_local_dt(now, loc)
@@ -53,14 +46,10 @@ def _cached_positions(lat: float, lon: float, alt: float, tz: str, minute_bucket
     lagna_sidereal = (lagna_tropical - ayanamsha) % 360.0
     lagna_rashi_idx = int(lagna_sidereal // 30)
 
-    # One calc_ut call per physical graha — get speed (retrograde) + ecliptic latitude
-    _graha_extra: dict[str, dict] = {}
+    _graha_extra = {}
     for graha, swe_id in _PHYSICAL_SWE.items():
         xx = swe.calc_ut(jd, swe_id, swe.FLG_TOPOCTR | swe.FLG_SPEED)[0]
-        _graha_extra[graha] = {
-            "is_retrograde": xx[3] < 0,
-            "ecl_lat": round(float(xx[1]), 4),
-        }
+        _graha_extra[graha] = {"is_retrograde": xx[3] < 0, "ecl_lat": round(float(xx[1]), 4)}
 
     grahas = []
     for _, row in df.iterrows():
@@ -81,37 +70,37 @@ def _cached_positions(lat: float, lon: float, alt: float, tz: str, minute_bucket
     return {
         "timestamp": now.isoformat(),
         "ayanamsha": round(ayanamsha, 4),
-        "lagna": {
-            "sidereal_lon": round(lagna_sidereal, 4),
-            "rashi_idx": lagna_rashi_idx,
-        },
+        "lagna": {"sidereal_lon": round(lagna_sidereal, 4), "rashi_idx": lagna_rashi_idx},
         "grahas": grahas,
     }
 
 
-@app.get("/positions")
-def positions(
-    lat: float = Query(default=DEFAULT_LOCATION["latitude"], ge=-90, le=90),
-    lon: float = Query(default=DEFAULT_LOCATION["longitude"], ge=-180, le=180),
-    alt: float = Query(default=DEFAULT_LOCATION["altitude"], ge=0, le=8848),
-    tz: str = Query(default=DEFAULT_LOCATION["timezone"]),
-):
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"})
+
+
+@app.route("/positions")
+def positions():
+    lat = request.args.get("lat", DEFAULT_LOCATION["latitude"], type=float)
+    lon = request.args.get("lon", DEFAULT_LOCATION["longitude"], type=float)
+    alt = request.args.get("alt", DEFAULT_LOCATION["altitude"], type=float)
+    tz = request.args.get("tz", DEFAULT_LOCATION["timezone"])
+
     try:
         ZoneInfo(tz)
     except Exception:
-        raise HTTPException(status_code=400, detail=f"Invalid timezone: {tz}")
+        return jsonify({"error": f"Invalid timezone: {tz}"}), 400
 
     now = datetime.now(ZoneInfo(tz))
     minute_bucket = now.strftime("%Y-%m-%dT%H:%M")
 
     try:
-        return _cached_positions(
-            round(lat, 4), round(lon, 4), round(alt, 1), tz, minute_bucket
-        )
+        result = _cached_positions(round(lat, 4), round(lon, 4), round(alt, 1), tz, minute_bucket)
+        return jsonify(result)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return jsonify({"error": str(e)}), 500
 
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+if __name__ == "__main__":
+    app.run(debug=True)
