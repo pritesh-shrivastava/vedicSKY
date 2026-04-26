@@ -30,68 +30,61 @@ export function SouthIndianRashi({ data, lat, lon }: Props) {
   const latStr  = `${Math.abs(lat).toFixed(4)}°${lat >= 0 ? 'N' : 'S'}`
   const lonStr  = `${Math.abs(lon).toFixed(4)}°${lon >= 0 ? 'E' : 'W'}`
 
-  // Render a 4×4 CSS grid
-  // Outer cells are at grid positions; inner 2×2 (cols 1-2, rows 1-2) is the centre
-  const cells: React.ReactNode[] = []
+  // Build cells with explicit grid positions — no auto-placement ambiguity
+  // row=3 (top) → CSS row 1; row=0 (bottom) → CSS row 4
+  // col=0 (left) → CSS col 1; col=3 (right) → CSS col 4
+  const cells: React.ReactNode[] = Object.entries(SOUTH_GRID).map(([key, rashiIdx]) => {
+    const [col, row] = key.split(',').map(Number)
+    const cssCol = col + 1
+    const cssRow = 4 - row
+    return (
+      <GridCell
+        key={key}
+        rashiIdx={rashiIdx}
+        planets={rashiPlanets[rashiIdx]}
+        isLagna={rashiIdx === lagna.rashi_idx}
+        gridCol={cssCol}
+        gridRow={cssRow}
+      />
+    )
+  })
 
-  for (let row = 3; row >= 0; row--) {
-    for (let col = 0; col <= 3; col++) {
-      const key = `${col},${row}`
-      const rashiIdx = SOUTH_GRID[key]
-
-      if (rashiIdx === undefined) {
-        // Inner 2×2 — only render once at top-left of the block (col=1,row=2)
-        if (col === 1 && row === 2) {
-          cells.push(
-            <div
-              key="centre"
-              style={{
-                gridColumn: '2 / 4',
-                gridRow: '2 / 4',  // rows are flipped because we go row=3 down to 0
-                background: '#0a0d1a',
-                border: `1px solid ${PALETTE.goldFaint}`,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '2px',
-                padding: '8px',
-              }}
-            >
-              <span style={{ color: PALETTE.textPrimary, fontSize: '0.75rem', fontFamily: 'Inter, sans-serif' }}>
-                {latStr}, {lonStr}
-              </span>
-              <span style={{ color: PALETTE.textMuted, fontSize: '0.75rem', fontFamily: 'Inter, sans-serif' }}>
-                {dateStr}
-              </span>
-              <span style={{ color: PALETTE.textMuted, fontSize: '0.75rem', fontFamily: 'Inter, sans-serif' }}>
-                {timeStr} {tzStr}
-              </span>
-            </div>
-          )
-        }
-        // Skip the other inner cells — they're covered by the spanning div
-        continue
-      }
-
-      cells.push(
-        <GridCell
-          key={key}
-          rashiIdx={rashiIdx}
-          planets={rashiPlanets[rashiIdx]}
-          isLagna={rashiIdx === lagna.rashi_idx}
-        />
-      )
-    }
-  }
+  // Centre 2×2 block — explicit placement, no auto-flow involvement
+  cells.push(
+    <div
+      key="centre"
+      style={{
+        gridColumn: '2 / 4',
+        gridRow: '2 / 4',
+        background: '#0a0d1a',
+        border: `1px solid ${PALETTE.goldFaint}`,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '2px',
+        padding: '6px',
+      }}
+    >
+      <span style={{ color: PALETTE.textPrimary, fontSize: '0.7rem', fontFamily: 'Inter, sans-serif', textAlign: 'center' }}>
+        {latStr}, {lonStr}
+      </span>
+      <span style={{ color: PALETTE.textMuted, fontSize: '0.7rem', fontFamily: 'Inter, sans-serif' }}>
+        {dateStr}
+      </span>
+      <span style={{ color: PALETTE.textMuted, fontSize: '0.7rem', fontFamily: 'Inter, sans-serif' }}>
+        {timeStr} {tzStr}
+      </span>
+    </div>
+  )
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', padding: '16px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', padding: '8px' }}>
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, minmax(80px, 140px))',
-          gridTemplateRows:    'repeat(4, minmax(80px, 120px))',
+          gridTemplateColumns: 'repeat(4, minmax(60px, 140px))',
+          gridTemplateRows:    'repeat(4, minmax(60px, 120px))',
           gap: 0,
           maxWidth: '560px',
           width: '100%',

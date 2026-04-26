@@ -79,15 +79,19 @@ export default function App() {
             key={id}
             onClick={() => setTab(id)}
             style={{
-              padding: '10px 16px',
+              flex: 1,
+              padding: '10px 8px',
               background: 'none',
               border: 'none',
               borderBottom: tab === id ? `2px solid ${PALETTE.gold}` : '2px solid transparent',
               color: tab === id ? PALETTE.gold : PALETTE.textMuted,
               fontFamily: 'Cinzel, serif',
-              fontSize: '0.8rem',
+              fontSize: '0.75rem',
               cursor: 'pointer',
               fontWeight: tab === id ? 600 : 400,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
             }}
           >
             {label}

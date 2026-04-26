@@ -6,9 +6,11 @@ interface Props {
   rashiIdx: number
   planets: string[]       // abbreviations, retrograde already formatted as "(Me)"
   isLagna: boolean
+  gridCol: number
+  gridRow: number
 }
 
-export function GridCell({ rashiIdx, planets, isLagna }: Props) {
+export function GridCell({ rashiIdx, planets, isLagna, gridCol, gridRow }: Props) {
   const border = isLagna
     ? `2px solid ${PALETTE.gold}`
     : `1px solid ${PALETTE.goldFaint}`
@@ -16,13 +18,15 @@ export function GridCell({ rashiIdx, planets, isLagna }: Props) {
   return (
     <div
       style={{
+        gridColumn: String(gridCol),
+        gridRow: String(gridRow),
         background: PALETTE.cellBg,
         border,
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '80px',
+        minHeight: '60px',
         padding: '4px',
       }}
     >
