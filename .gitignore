@@ -1,0 +1,28 @@
+# Xcode
+build/
+DerivedData/
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscheme
+DerivedData/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+
+# Ephemeris Data
+sep4_*
+
+# API keys
+.env

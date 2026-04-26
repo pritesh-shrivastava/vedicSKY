@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:deepwiki.com)",
+      "WebFetch(domain:stellarium-labs.com)",
+      "WebFetch(domain:www.visionvideo.com)"
+    ]
+  }
+}
