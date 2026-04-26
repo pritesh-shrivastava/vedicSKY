@@ -16,21 +16,24 @@ Deployed at https://vediczodiac.streamlit.app/
 - [x] **Set production env** — `web/.env.local` set to `VITE_API_URL=https://pritesh2312.pythonanywhere.com`
 - [x] **Deploy frontend** — live at `https://pritesh-shrivastava.github.io/vedicSKY/`
 
-### Phase 2b — Polish before sharing
+### Phase 2b — Polish before sharing ✅ DONE
 
 - [x] **Mobile layout** — tabs flex:1, South Indian grid minmax(60px), no overflow on 320px phones
 - [x] **South Indian chart** — explicit gridColumn/gridRow on all cells, centre 2×2 fixed
 - [x] **Loading skeleton** — SVG skeleton mirrors wheel rings + 12 rashi spokes, pulsing animation
 - [x] **Rashi/nakshatra label consistency** — rashi labels moved inside ring, grey, mode-gated
+- [x] **Devanagari script** — rashis, nakshatras, grahas in both charts; Noto Sans Devanagari font
+- [x] **Planetary glyphs** — per-planet sizes (Me smallest → Ju biggest); Ra ☊ / Ke ☋ horseshoe symbols
+- [x] **Constellation shapes** — real star positions from Swiss Ephemeris sefstars.txt via export_zodiac_stars.py; yoga taras also ephemeris-based
 
 ### Phase 2c — V2 (Stellarium-inspired)
 *(Inspired by https://www.youtube.com/watch?v=hBLA4WHQEIw)*
 
-- [ ] **Planetary glyphs** — per-planet sizes (Me smallest → Ju biggest); Ra as hollow ring, Ke as ✕; Sun disc, Moon crescent
-- [ ] **Constellation shapes** — review all 12 rashi figures visually; adjust star positions or connections that look wrong
-- [ ] **Browser geolocation** — add "Use my location" button that calls `navigator.geolocation.getCurrentPosition` to auto-fill lat/lon
-- [ ] **Moon phase rendering** — compute illumination fraction from elongation; render crescent/gibbous shape as SVG arc inside the Moon glyph
-- [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime, just need frontend UI and D3 transitions between planet positions
+- [ ] **Retrograde/stationary motion chart** — daily longitude bands for 7 grahas showing direct → stationary → retrograde transitions; new `/motion` API endpoint
+- [ ] **Constellation shapes visual review** — check all 12 rashi stick figures in browser, adjust line connections that look wrong
+- [ ] **Browser geolocation** — "Use my location" button via `navigator.geolocation.getCurrentPosition`
+- [ ] **Moon phase rendering** — compute illumination fraction from elongation; crescent/gibbous SVG arc inside Moon glyph
+- [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime
 - [ ] **North Indian Kundali** — diamond grid layout, separate sprint
 - [ ] **Birth chart input** — date/time/place picker for natal chart (Phase 3)
 
