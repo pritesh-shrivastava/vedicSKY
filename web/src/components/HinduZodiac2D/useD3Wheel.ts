@@ -413,18 +413,14 @@ export function useD3Wheel(
         // Dark base
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
-          .attr('fill', '#1e1e30')
+          .attr('fill', '#0d0d1a')
 
         if (isFullMoon) {
-          // Full — entirely illuminated
           planetGroup.append('circle')
             .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
-            .attr('fill', '#c8c8e0').attr('clip-path', `url(#${clipId})`)
+            .attr('fill', '#f0f0ff').attr('clip-path', `url(#${clipId})`)
         } else if (!isNewMoon) {
-          // Phase crescent/gibbous
-          // outerSweep=1: lit on right (waxing), 0: lit on left (waning)
-          // termSweep: crescent → opposite of outer; gibbous → same as outer
-          const isWaxing  = elong < 180
+          const isWaxing   = elong < 180
           const isCrescent = elong < 90 || elong > 270
           const outerSweep = isWaxing ? 1 : 0
           const termSweep  = isCrescent ? (1 - outerSweep) : outerSweep
@@ -433,11 +429,11 @@ export function useD3Wheel(
           planetGroup.append('path')
             .attr('d', pd)
             .attr('transform', `translate(${pt.x},${pt.y})`)
-            .attr('fill', '#c8c8e0')
+            .attr('fill', '#f0f0ff')
             .attr('clip-path', `url(#${clipId})`)
         }
 
-        // Craters (subtle outlines)
+        // Craters
         ;[
           [0.25, -0.30, 0.18],
           [-0.35,  0.20, 0.14],
@@ -447,8 +443,8 @@ export function useD3Wheel(
           planetGroup.append('circle')
             .attr('cx', pt.x + xf * dotR).attr('cy', pt.y + yf * dotR)
             .attr('r', rf * dotR)
-            .attr('fill', 'none').attr('stroke', 'rgba(0,0,0,0.22)')
-            .attr('stroke-width', 0.5)
+            .attr('fill', 'none').attr('stroke', 'rgba(0,0,0,0.30)')
+            .attr('stroke-width', 0.6)
             .attr('clip-path', `url(#${clipId})`)
         })
 
