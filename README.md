@@ -35,7 +35,7 @@ Real-time Vedic astrology app showing the 9 Navagraha positions and Lagna using 
                                      │ HTTPS
                                      ▼
               ┌──────────────────────────────────────┐
-              │   FastAPI  ·  PythonAnywhere free    │
+              │   Flask  ·  PythonAnywhere free      │
               │   api/main.py                         │
               │                                       │
               │   @lru_cache (minute-bucket per loc)  │
@@ -113,14 +113,14 @@ In this project: `src/types.ts` defines `GrahaPosition`, `ApiResponse`, `Locatio
 
 ## Run locally
 
-### Backend (FastAPI)
+### Backend (Flask)
 
 ```bash
 cd api
-pip3 install fastapi "uvicorn[standard]" pyswisseph pandas
-uvicorn main:app --reload
-# → http://localhost:8000
-# → http://localhost:8000/positions?lat=23.1765&lon=75.7885&alt=490&tz=Asia%2FKolkata
+pip3 install flask pyswisseph pandas
+flask --app main run --reload
+# → http://localhost:5000
+# → http://localhost:5000/positions?lat=23.1765&lon=75.7885&alt=490&tz=Asia%2FKolkata
 ```
 
 ### Frontend (React)

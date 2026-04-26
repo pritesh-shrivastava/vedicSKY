@@ -10,10 +10,11 @@ Deployed at https://vediczodiac.streamlit.app/
 
 ### Phase 2a — Ship the local build
 
-- [ ] **Deploy backend** — upload `api/` to PythonAnywhere free tier, configure WSGI, verify `curl https://yourusername.pythonanywhere.com/positions` returns JSON
+- [x] **Deploy backend** — Flask API live at `https://pritesh2312.pythonanywhere.com`; `/health` and `/positions` endpoints working
+- [x] **PythonAnywhere keep-alive** — GitHub Actions workflow (`.github/workflows/keepalive.yml`) pings `/health` daily at 8am UTC (free tier scheduled tasks not available)
+
 - [ ] **Set production env** — create `web/.env` with `VITE_API_URL=https://yourusername.pythonanywhere.com`
 - [ ] **Deploy frontend** — `npm run build && npm run deploy` → live at `https://pritesh-shrivastava.github.io/vedic_skyview/`
-- [ ] **PythonAnywhere keep-alive** — set up a scheduled task (free tier provides one) to ping `/health` every day so the app doesn't sleep after 3 months of inactivity
 
 ### Phase 2b — Polish before sharing
 
