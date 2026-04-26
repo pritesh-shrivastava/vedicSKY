@@ -133,17 +133,19 @@ export function useD3Wheel(
         .attr('font-family', 'Inter, sans-serif')
         .text(`${lon}°`)
 
-      // Rashi label inside the ecliptic ring — same style as nakshatra labels
-      const midA  = lonToAngle(lon + 15)
-      const midPt = toXY(cx, cy, R_RASHI_IN, midA)
-      rashiGroup.append('text')
-        .attr('x', midPt.x).attr('y', midPt.y)
-        .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
-        .attr('font-size', Math.max(6, size * 0.016))
-        .attr('fill', 'rgba(255,255,255,0.38)')
-        .attr('font-family', 'Cinzel, serif')
-        .attr('transform', `rotate(${midA + 90},${midPt.x},${midPt.y})`)
-        .text(RASHI_SHORT[i])
+      // Rashi label inside the ecliptic ring — only in rashi mode
+      if (boundaries === 'rashi') {
+        const midA  = lonToAngle(lon + 15)
+        const midPt = toXY(cx, cy, R_RASHI_IN, midA)
+        rashiGroup.append('text')
+          .attr('x', midPt.x).attr('y', midPt.y)
+          .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+          .attr('font-size', Math.max(6, size * 0.016))
+          .attr('fill', 'rgba(255,255,255,0.38)')
+          .attr('font-family', 'Cinzel, serif')
+          .attr('transform', `rotate(${midA + 90},${midPt.x},${midPt.y})`)
+          .text(RASHI_SHORT[i])
+      }
     }
 
     // ── reference lines: 0° Aries + Ascendant ────────────────────────────
