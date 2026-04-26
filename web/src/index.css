@@ -6,3 +6,8 @@
 body { background: #05060f; color: #e8e0d0; }
 button { transition: opacity 0.15s; }
 button:hover { opacity: 0.85; }
+
+@keyframes wheel-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1;   }
+}

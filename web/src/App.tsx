@@ -115,11 +115,50 @@ export default function App() {
 }
 
 function LoadingState() {
+  // Mirror the wheel's actual proportions:
+  // RADIUS = size/2 - 20  →  r=180 in a 400×400 viewBox
+  // R_ECLIPTIC = RADIUS * 0.72  →  r≈130
+  // 12 rashi spokes at 30° intervals
+  const cx = 200, cy = 200
+  const R_OUTER    = 180
+  const R_ECLIPTIC = 130
+  const R_INNER    = 55
+  const spokes = Array.from({ length: 12 }, (_, i) => {
+    const rad = ((i * 30 - 90) * Math.PI) / 180
+    return {
+      x2: cx + R_ECLIPTIC * Math.cos(rad),
+      y2: cy + R_ECLIPTIC * Math.sin(rad),
+    }
+  })
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', gap: 16 }}>
-      <div style={{ width: '60vw', maxWidth: 400, aspectRatio: '1/1', borderRadius: '50%', border: '1px solid rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ width: '80%', aspectRatio: '1/1', borderRadius: '50%', border: '1px solid rgba(201,168,76,0.1)' }} />
-      </div>
+      <svg
+        viewBox="0 0 400 400"
+        style={{
+          width: 'min(60vw, 360px)',
+          height: 'min(60vw, 360px)',
+          animation: 'wheel-pulse 2.4s ease-in-out infinite',
+        }}
+      >
+        {/* Outer boundary ring */}
+        <circle cx={cx} cy={cy} r={R_OUTER} fill="none" stroke="rgba(201,168,76,0.12)" strokeWidth={1} />
+
+        {/* Rashi spokes from centre to ecliptic */}
+        {spokes.map((s, i) => (
+          <line key={i} x1={cx} y1={cy} x2={s.x2} y2={s.y2}
+            stroke="rgba(255,255,255,0.07)" strokeWidth={0.8} />
+        ))}
+
+        {/* Ecliptic ring */}
+        <circle cx={cx} cy={cy} r={R_ECLIPTIC} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={0.8} />
+
+        {/* Inner decoration ring */}
+        <circle cx={cx} cy={cy} r={R_INNER} fill="none" stroke="rgba(201,168,76,0.08)" strokeWidth={0.6} />
+
+        {/* Centre dot */}
+        <circle cx={cx} cy={cy} r={3} fill="rgba(201,168,76,0.2)" />
+      </svg>
       <span style={{ fontFamily: 'Cinzel, serif', color: PALETTE.textMuted, fontSize: '0.85rem', letterSpacing: '0.1em' }}>
         Calculating positions…
       </span>
