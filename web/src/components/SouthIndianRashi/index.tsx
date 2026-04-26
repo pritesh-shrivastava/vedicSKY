@@ -28,8 +28,8 @@ export function SouthIndianRashi({ data, lat, lon }: Props) {
   const now = new Date(data.timestamp)
   const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
   const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`
-  const tzRaw   = data.timestamp.slice(19)                          // "+05:30"
-  const tzStr   = tzRaw.replace(/([+-])0(\d)/, '$1$2')             // "+5:30"
+  const tzRaw   = data.timestamp.match(/[+-]\d{2}:\d{2}$/)?.[0] ?? ''  // "+05:30"
+  const tzStr   = tzRaw.replace(/([+-])0(\d)/, '$1$2')                 // "+5:30"
   const latStr  = `${Math.abs(lat).toFixed(1)}°${lat >= 0 ? 'N' : 'S'}`
   const lonStr  = `${Math.abs(lon).toFixed(1)}°${lon >= 0 ? 'E' : 'W'}`
 
