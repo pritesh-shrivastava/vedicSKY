@@ -28,9 +28,27 @@ export function SouthIndianRashi({ data, lat, lon }: Props) {
   const now = new Date(data.timestamp)
   const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
   const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false })
-  const tzStr   = data.timestamp.slice(19)   // "+05:30" portion
+  const tzStr   = data.timestamp.slice(19)
   const latStr  = `${Math.abs(lat).toFixed(4)}°${lat >= 0 ? 'N' : 'S'}`
   const lonStr  = `${Math.abs(lon).toFixed(4)}°${lon >= 0 ? 'E' : 'W'}`
+
+  // Tithi from Moon–Sun elongation
+  const TITHI_NAMES_DEV = [
+    'प्रतिपदा','द्वितीया','तृतीया','चतुर्थी','पंचमी',
+    'षष्ठी','सप्तमी','अष्टमी','नवमी','दशमी',
+    'एकादशी','द्वादशी','त्रयोदशी','चतुर्दशी','पूर्णिमा',
+  ]
+  const AMAVASYA_DEV = 'अमावस्या'
+  const sunLon  = grahas.find(g => g.name === 'Surya')?.sidereal_lon ?? 0
+  const moonLon = grahas.find(g => g.name === 'Chandra')?.sidereal_lon ?? 0
+  const elong   = ((moonLon - sunLon + 360) % 360)
+  const tithiNum = Math.ceil(elong / 12) || 1   // 1–30 (30 = Amavasya)
+  const isShukla = tithiNum <= 15
+  const tithiIdx = isShukla ? tithiNum - 1 : tithiNum - 16   // 0-indexed into TITHI_NAMES_DEV
+  const tithiName = tithiNum === 30
+    ? AMAVASYA_DEV
+    : TITHI_NAMES_DEV[tithiIdx]
+  const tithiStr = `${isShukla ? 'शुक्ल' : 'कृष्ण'} ${tithiName}`
 
   // Build cells with explicit grid positions — no auto-placement ambiguity
   // row=3 (top) → CSS row 1; row=0 (bottom) → CSS row 4
@@ -68,14 +86,17 @@ export function SouthIndianRashi({ data, lat, lon }: Props) {
         padding: '6px',
       }}
     >
-      <span style={{ color: PALETTE.textPrimary, fontSize: '0.7rem', fontFamily: 'Inter, sans-serif', textAlign: 'center' }}>
+      <span style={{ color: PALETTE.textPrimary, fontSize: '0.65rem', fontFamily: 'Inter, sans-serif', textAlign: 'center' }}>
         {latStr}, {lonStr}
       </span>
-      <span style={{ color: PALETTE.textMuted, fontSize: '0.7rem', fontFamily: 'Inter, sans-serif' }}>
+      <span style={{ color: PALETTE.textMuted, fontSize: '0.65rem', fontFamily: 'Inter, sans-serif' }}>
         {dateStr}
       </span>
-      <span style={{ color: PALETTE.textMuted, fontSize: '0.7rem', fontFamily: 'Inter, sans-serif' }}>
+      <span style={{ color: PALETTE.textMuted, fontSize: '0.65rem', fontFamily: 'Inter, sans-serif' }}>
         {timeStr} {tzStr}
+      </span>
+      <span style={{ color: PALETTE.gold, fontSize: '0.65rem', fontFamily: 'Noto Sans Devanagari, sans-serif', textAlign: 'center' }}>
+        {tithiStr}
       </span>
     </div>
   )
