@@ -13,8 +13,8 @@ Deployed at https://vediczodiac.streamlit.app/
 - [x] **Deploy backend** — Flask API live at `https://pritesh2312.pythonanywhere.com`; `/health` and `/positions` endpoints working
 - [x] **PythonAnywhere keep-alive** — GitHub Actions workflow (`.github/workflows/keepalive.yml`) pings `/health` daily at 8am UTC (free tier scheduled tasks not available)
 
-- [ ] **Set production env** — create `web/.env` with `VITE_API_URL=https://yourusername.pythonanywhere.com`
-- [ ] **Deploy frontend** — `npm run build && npm run deploy` → live at `https://pritesh-shrivastava.github.io/vedic_skyview/`
+- [x] **Set production env** — `web/.env.local` set to `VITE_API_URL=https://pritesh2312.pythonanywhere.com`
+- [x] **Deploy frontend** — live at `https://pritesh-shrivastava.github.io/vedicSKY/`
 
 ### Phase 2b — Polish before sharing
 

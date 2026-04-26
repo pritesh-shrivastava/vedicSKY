@@ -11,7 +11,7 @@ Real-time Vedic astrology app showing the 9 Navagraha positions and Lagna using 
 | Folder | Platform | Status |
 |---|---|---|
 | `streamlit/` | Web — Streamlit POC | ✅ Complete (titled "Vedic Zodiac") |
-| `web/` | Web — React SPA | 🔜 In progress |
+| `web/` | Web — React SPA | ✅ Live at [pritesh-shrivastava.github.io/vedicSKY](https://pritesh-shrivastava.github.io/vedicSKY/) |
 | `iOS/` | Native iOS (SwiftUI) | ✅ M1–M5 complete, blocked on Xcode 14/iOS 18 |
 
 ---
@@ -117,7 +117,7 @@ In this project: `src/types.ts` defines `GrahaPosition`, `ApiResponse`, `Locatio
 
 ```bash
 cd api
-pip3 install flask pyswisseph pandas
+pip3 install flask flask-cors pyswisseph pandas
 flask --app main run --reload
 # → http://localhost:5000
 # → http://localhost:5000/positions?lat=23.1765&lon=75.7885&alt=490&tz=Asia%2FKolkata
