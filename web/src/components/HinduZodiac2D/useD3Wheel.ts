@@ -40,7 +40,7 @@ export function useD3Wheel(
     const RADIUS      = size / 2 - 20
     const R_ECLIPTIC  = RADIUS * 0.72   // THE single ecliptic circle — everything anchors here
     const ECL_LAT_SCALE = 1.5
-    const R_LABEL_OUT = R_ECLIPTIC + Math.max(14, size * 0.038)  // rashi names outside circle
+    const R_RASHI_IN  = R_ECLIPTIC - Math.max(14, size * 0.036)  // rashi names inside circle
     const R_DEG_OUT   = R_ECLIPTIC + Math.max(10, size * 0.026)  // degree labels outside circle
 
     // ── defs: glow filter ────────────────────────────────────────────────
@@ -133,16 +133,16 @@ export function useD3Wheel(
         .attr('font-family', 'Inter, sans-serif')
         .text(`${lon}°`)
 
-      // Rashi label further outside
+      // Rashi label inside the ecliptic ring — same style as nakshatra labels
       const midA  = lonToAngle(lon + 15)
-      const midPt = toXY(cx, cy, R_LABEL_OUT, midA)
+      const midPt = toXY(cx, cy, R_RASHI_IN, midA)
       rashiGroup.append('text')
         .attr('x', midPt.x).attr('y', midPt.y)
         .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
-        .attr('font-size', Math.max(8, size * 0.021))
-        .attr('fill', RASHI_COLORS[i])
+        .attr('font-size', Math.max(6, size * 0.016))
+        .attr('fill', 'rgba(255,255,255,0.38)')
         .attr('font-family', 'Cinzel, serif')
-        .attr('font-weight', '600')
+        .attr('transform', `rotate(${midA + 90},${midPt.x},${midPt.y})`)
         .text(RASHI_SHORT[i])
     }
 
