@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import * as d3 from 'd3'
 import type { RefObject } from 'react'
 import type { ApiResponse } from '../../types'
-import { RASHI_SHORT } from '../../constants/rashis'
+import { RASHI_DEV_SHORT } from '../../constants/rashis'
 import { RASHI_COLORS } from '../../constants/colors'
 import { PLANET_COLOR } from '../../constants/colors'
-import { NAKSHATRA_YOGA_TARAS, NAK_NAMES, CONSTELLATION_DATA } from '../../constants/stars'
+import { NAKSHATRA_YOGA_TARAS, NAK_NAMES_DEV, NAK_NAMES_DEV_SHORT, CONSTELLATION_DATA } from '../../constants/stars'
+import { GRAHA_ABBR_DEV } from '../../constants/grahas'
 
 const NAK_SPAN = 360 / 27
 
@@ -94,9 +95,9 @@ export function useD3Wheel(
           .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
           .attr('font-size', Math.max(5, size * 0.013))
           .attr('fill', 'rgba(255,255,255,0.28)')
-          .attr('font-family', 'Cinzel, serif')
+          .attr('font-family', 'Noto Sans Devanagari, sans-serif')
           .attr('transform', `rotate(${midA + 90},${midPt.x},${midPt.y})`)
-          .text(NAK_NAMES[i].slice(0, 4))
+          .text(NAK_NAMES_DEV_SHORT[i])
       }
     }
 
@@ -142,9 +143,9 @@ export function useD3Wheel(
           .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
           .attr('font-size', Math.max(6, size * 0.016))
           .attr('fill', 'rgba(255,255,255,0.38)')
-          .attr('font-family', 'Cinzel, serif')
+          .attr('font-family', 'Noto Sans Devanagari, sans-serif')
           .attr('transform', `rotate(${midA + 90},${midPt.x},${midPt.y})`)
-          .text(RASHI_SHORT[i])
+          .text(RASHI_DEV_SHORT[i])
       }
     }
 
@@ -215,7 +216,7 @@ export function useD3Wheel(
 
     // Yoga tara dots — only when constellation figures are on
     if (showConstellations) {
-      for (const [name, lon, lat] of NAKSHATRA_YOGA_TARAS) {
+      NAKSHATRA_YOGA_TARAS.forEach(([, lon, lat], ni) => {
         const a  = lonToAngle(lon)
         const r  = R_ECLIPTIC + lat * ECL_LAT_SCALE
         const pt = toXY(cx, cy, r, a)
@@ -224,10 +225,10 @@ export function useD3Wheel(
           .attr('r', Math.max(2, size * 0.005))
           .attr('fill', 'rgba(255,255,220,0.75)')
           .attr('filter', 'url(#glow)')
-          .on('mouseenter', () => onHover(name))
+          .on('mouseenter', () => onHover(NAK_NAMES_DEV[ni]))
           .on('mouseleave', () => onHover(null))
           .style('cursor', 'pointer')
-      }
+      })
     }
 
     // ── planet layer — positioned by actual ecliptic latitude ─────────────
@@ -254,6 +255,7 @@ export function useD3Wheel(
       const col = PLANET_COLOR[g.name] ?? '#ffffff'
       const [minR, scale] = PLANET_SCALE[g.name] ?? [5, 0.013]
       const dotR = Math.max(minR, size * scale)
+      const devName = GRAHA_ABBR_DEV[g.name] ?? g.abbr
       const hoverLabel = `${g.name} · ${g.nakshatra_en} Pada ${g.pada} · ${g.sidereal_lon.toFixed(2)}° (lat ${g.ecl_lat.toFixed(2)}°)`
       const sw = Math.max(1, size * 0.003)   // stroke width for node symbols
 
@@ -329,9 +331,9 @@ export function useD3Wheel(
         .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
         .attr('font-size', Math.max(8, size * 0.022))
         .attr('fill', col)
-        .attr('font-family', 'Cinzel, serif')
+        .attr('font-family', 'Noto Sans Devanagari, sans-serif')
         .attr('font-weight', '600')
-        .text(g.is_retrograde ? `(${g.abbr})` : g.abbr)
+        .text(g.is_retrograde ? `(${devName})` : devName)
         .style('pointer-events', 'none')
     }
   }, [svgRef, data, size, onHover, boundaries, showConstellations])

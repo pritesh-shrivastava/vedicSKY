@@ -248,6 +248,24 @@ export const NAK_NAMES: string[] = [
   'Purva Bhadrapada', 'Uttara Bhadrapada', 'Revati',
 ]
 
+// Devanagari — full names for hover tooltips
+export const NAK_NAMES_DEV: string[] = [
+  'अश्विनी', 'भरणी', 'कृत्तिका', 'रोहिणी', 'मृगशिरा', 'आर्द्रा',
+  'पुनर्वसु', 'पुष्य', 'आश्लेषा', 'मघा', 'पूर्व फाल्गुनी', 'उत्तर फाल्गुनी',
+  'हस्त', 'चित्रा', 'स्वाति', 'विशाखा', 'अनुराधा', 'ज्येष्ठा',
+  'मूल', 'पूर्वाषाढ़ा', 'उत्तराषाढ़ा', 'श्रवण', 'धनिष्ठा', 'शतभिषा',
+  'पूर्व भाद्रपद', 'उत्तर भाद्रपद', 'रेवती',
+]
+
+// Short labels for the nakshatra wheel (4-char max for space)
+export const NAK_NAMES_DEV_SHORT: string[] = [
+  'अश्वि', 'भरणि', 'कृत्ति', 'रोहिणि', 'मृग', 'आर्द्रा',
+  'पुनर्व', 'पुष्य', 'आश्ले', 'मघा', 'पू.फा', 'उ.फा',
+  'हस्त', 'चित्रा', 'स्वाति', 'विशाखा', 'अनुरा', 'ज्येष्ठा',
+  'मूल', 'पू.षा', 'उ.षा', 'श्रवण', 'धनिष्ठा', 'शतभि',
+  'पू.भा', 'उ.भा', 'रेवती',
+]
+
 // Yoga tara (principal star) for each nakshatra.
 // Vedic sidereal positions — the coordinate system used throughout this app.
 // [name, sidereal_lon, ecl_lat, star_id]

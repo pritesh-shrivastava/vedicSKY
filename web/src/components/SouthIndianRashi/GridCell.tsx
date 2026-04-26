@@ -1,4 +1,4 @@
-import { RASHI_SHORT } from '../../constants/rashis'
+import { RASHI_DEV } from '../../constants/rashis'
 import { RASHI_COLORS } from '../../constants/colors'
 import { PALETTE } from '../../constants/colors'
 
@@ -39,10 +39,10 @@ export function GridCell({ rashiIdx, planets, isLagna, gridCol, gridRow }: Props
           fontSize: '0.65rem',
           color: RASHI_COLORS[rashiIdx],
           opacity: 0.8,
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Noto Sans Devanagari, sans-serif',
         }}
       >
-        {RASHI_SHORT[rashiIdx]}
+        {RASHI_DEV[rashiIdx]}
       </span>
 
       {/* Planet abbreviations */}
@@ -51,7 +51,7 @@ export function GridCell({ rashiIdx, planets, isLagna, gridCol, gridRow }: Props
           fontSize: '0.9rem',
           fontWeight: 600,
           color: PALETTE.textPrimary,
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Noto Sans Devanagari, sans-serif',
           textAlign: 'center',
           lineHeight: 1.6,
         }}

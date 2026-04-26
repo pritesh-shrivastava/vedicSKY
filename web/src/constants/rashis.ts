@@ -8,6 +8,18 @@ export const RASHI_FULL: string[] = [
   'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces',
 ]
 
+// Devanagari — full names used in South Indian chart corner labels
+export const RASHI_DEV: string[] = [
+  'मेष', 'वृषभ', 'मिथुन', 'कर्क', 'सिंह', 'कन्या',
+  'तुला', 'वृश्चिक', 'धनु', 'मकर', 'कुंभ', 'मीन',
+]
+
+// Devanagari — short labels for inside the zodiac wheel
+export const RASHI_DEV_SHORT: string[] = [
+  'मेष', 'वृष', 'मिथ', 'कर्क', 'सिंह', 'कन्या',
+  'तुला', 'वृश्चि', 'धनु', 'मकर', 'कुंभ', 'मीन',
+]
+
 // Fixed sign positions for South Indian chart
 // key = "col,row" (col 0-3, row 0-3), value = rashi index (0=Aries … 11=Pisces)
 export const SOUTH_GRID: Record<string, number> = {

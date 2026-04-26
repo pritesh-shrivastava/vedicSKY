@@ -2,6 +2,7 @@ import type { ApiResponse } from '../../types'
 import { SOUTH_GRID } from '../../constants/rashis'
 import { PALETTE } from '../../constants/colors'
 import { GridCell } from './GridCell'
+import { GRAHA_ABBR_DEV, LAGNA_DEV } from '../../constants/grahas'
 
 interface Props {
   data: ApiResponse
@@ -16,11 +17,12 @@ export function SouthIndianRashi({ data, lat, lon }: Props) {
   const rashiPlanets: Record<number, string[]> = {}
   for (let i = 0; i < 12; i++) rashiPlanets[i] = []
 
-  rashiPlanets[lagna.rashi_idx].push('Asc')
+  rashiPlanets[lagna.rashi_idx].push(LAGNA_DEV)
 
   for (const g of grahas) {
-    const abbr = g.is_retrograde ? `(${g.abbr})` : g.abbr
-    rashiPlanets[g.rashi_idx].push(abbr)
+    const devAbbr = GRAHA_ABBR_DEV[g.name] ?? g.abbr
+    const label = g.is_retrograde ? `(${devAbbr})` : devAbbr
+    rashiPlanets[g.rashi_idx].push(label)
   }
 
   const now = new Date(data.timestamp)
