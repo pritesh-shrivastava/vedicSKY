@@ -1,4 +1,4 @@
-# Vedic Zodiac
+# Vedic Skyview
 
 Real-time Vedic astrology app showing the 9 Navagraha positions and Lagna using Swiss Ephemeris calculations (Lahiri ayanamsha, sidereal, topocentric).
 
@@ -128,7 +128,7 @@ flask --app main run --reload
 ```bash
 cd web
 npm install
-cp .env.example .env.local     # sets VITE_API_URL=http://localhost:8000
+cp .env.example .env.local     # sets VITE_API_URL=http://localhost:5000
 npm run dev
 # → http://localhost:5173
 ```

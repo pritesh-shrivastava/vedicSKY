@@ -33,6 +33,7 @@ Deployed at https://vediczodiac.streamlit.app/
 - [ ] **Browser geolocation** — "Use my location" button via `navigator.geolocation.getCurrentPosition`
 - [ ] **Moon phase rendering** — compute illumination fraction from elongation; crescent/gibbous SVG arc inside Moon glyph
 - [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime
+- [ ] **Layout whitespace** — wheel and South Indian chart leave ~35% of viewport empty; improve vertical fill
 - [ ] **North Indian Kundali** — diamond grid layout, separate sprint
 - [ ] **Birth chart input** — date/time/place picker for natal chart (Phase 3)
 
