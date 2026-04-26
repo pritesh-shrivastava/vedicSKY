@@ -47,7 +47,45 @@ Ujjain (23.1765°N, 75.7885°E) — used when location permission is denied. Ujj
 
 ---
 
-## 4. Ephemeris Engine
+## 4. On-Device vs API Calculation
+
+The iOS app uses on-device libswe (compiled C) for all calculations. The web app (Vedic Skyview) uses a Flask API on PythonAnywhere backed by pyswisseph. This section records why the iOS app will stay on-device.
+
+### On-device (current approach)
+
+**Pros:**
+- Works fully offline — on a mountain, in an observatory, anywhere you can see the sky
+- Zero latency — libswe calculates in microseconds, no network round-trip
+- No dependency on PythonAnywhere uptime or the free tier's CPU quota
+- No CORS, no cold start, no rate limiting
+- Battery efficient — no network radio usage per refresh cycle
+- Privacy — device location never leaves the device
+
+**Cons:**
+- 1.9 MB of ephemeris files bundled in the app binary
+- Calculation logic updates require a new Xcode build
+- C bridging header adds build complexity
+- Harder to add new server-side features (retrograde chart, batch queries) without app update
+
+### Flask API (rejected for iOS)
+
+**Pros:**
+- Calculation logic in one place (Python, already tested against fixtures)
+- Backend updates without touching iOS code
+- Lighter app binary — ephemeris files and libswe C sources removed
+
+**Cons:**
+- Breaks offline — useless without network, which defeats the purpose of a sky-watching app
+- PythonAnywhere free tier has a 300s worker timeout, daily CPU quota, and occasional sleeps — unreliable for a native app polling every 60 seconds
+- Network latency on every 60-second refresh cycle
+- API downtime means the iOS app shows nothing
+- Two clients (web + iOS) polling the same free-tier API simultaneously risks quota exhaustion
+
+**Decision: keep on-device.** The network dependency is the wrong tradeoff for a tool designed for use under an open sky. The Flask API serves the web app only.
+
+---
+
+## 5. Ephemeris Engine
 
 Identical to Vedic Skyview. Key decisions:
 - `SE_SIDM_LAHIRI` ayanamsha
@@ -59,7 +97,7 @@ Identical to Vedic Skyview. Key decisions:
 
 ---
 
-## 5. Lagna (Ascendant)
+## 6. Lagna (Ascendant)
 
 Computed via `swe_houses()` using the Placidus system:
 ```swift
@@ -71,7 +109,7 @@ lagnaSidereal = (ascmc[0] - ayanamsha + 360) % 360
 
 ---
 
-## 6. Views
+## 7. Views
 
 ### 6.1 Rashi Wheel (Tab 1)
 
@@ -139,13 +177,13 @@ Row 3: Dhanu | Vrish | Tula  | Kanya
 
 ---
 
-## 7. Constellation Data
+## 8. Constellation Data
 
 `ConstellationData.swift` hardcodes ~5–8 key stars per zodiac constellation with sidereal ecliptic coordinates (Lahiri, J2000.0 tropical − 23.85°). Accuracy ±1–2°. Connection lines form recognisable stick figures.
 
 ---
 
-## 8. Milestones
+## 9. Milestones
 
 | Milestone | Deliverables | Status |
 |---|---|---|
@@ -157,7 +195,7 @@ Row 3: Dhanu | Vrish | Tula  | Kanya
 
 ---
 
-## 9. Color Palette
+## 10. Color Palette
 
 | Element | Color |
 |---|---|
@@ -174,7 +212,7 @@ Row 3: Dhanu | Vrish | Tula  | Kanya
 
 ---
 
-## 10. Open Questions / Future (v1)
+## 11. Open Questions / Future (v1)
 
 Shipped in M5:
 - ~~**Time travel:** Scrubber to set custom date/time for historical/future charts~~ → `TimeTravelSheet.swift`
@@ -187,7 +225,7 @@ Still open:
 
 ---
 
-## 11. v2 — AR Sky Overlay
+## 12. v2 — AR Sky Overlay
 
 **Goal:** Point the device camera at the sky and see the 9 Navagrahas rendered at their live sidereal positions as a camera passthrough AR overlay.
 
