@@ -30,7 +30,6 @@ Deployed at https://vediczodiac.streamlit.app/
 *(Inspired by https://www.youtube.com/watch?v=hBLA4WHQEIw)*
 
 - [ ] **Retrograde/stationary motion chart** — daily longitude bands for 7 grahas showing direct → stationary → retrograde transitions; new `/motion` API endpoint
-- [ ] **Constellation shapes visual review** — check all 12 rashi stick figures in browser, adjust line connections that look wrong
 - [ ] **Browser geolocation** — "Use my location" button via `navigator.geolocation.getCurrentPosition`
 - [ ] **Moon phase rendering** — compute illumination fraction from elongation; crescent/gibbous SVG arc inside Moon glyph
 - [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime

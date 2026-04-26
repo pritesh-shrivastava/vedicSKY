@@ -28,9 +28,10 @@ export function SouthIndianRashi({ data, lat, lon }: Props) {
   const now = new Date(data.timestamp)
   const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
   const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false })
-  const tzStr   = data.timestamp.slice(19)
-  const latStr  = `${Math.abs(lat).toFixed(4)}°${lat >= 0 ? 'N' : 'S'}`
-  const lonStr  = `${Math.abs(lon).toFixed(4)}°${lon >= 0 ? 'E' : 'W'}`
+  const tzRaw   = data.timestamp.slice(19)                          // "+05:30"
+  const tzStr   = tzRaw.replace(/([+-])0(\d)/, '$1$2')             // "+5:30"
+  const latStr  = `${Math.abs(lat).toFixed(1)}°${lat >= 0 ? 'N' : 'S'}`
+  const lonStr  = `${Math.abs(lon).toFixed(1)}°${lon >= 0 ? 'E' : 'W'}`
 
   // Tithi from Moon–Sun elongation
   const TITHI_NAMES_DEV = [

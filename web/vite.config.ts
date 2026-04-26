@@ -5,5 +5,5 @@ export default defineConfig({
   plugins: [react()],
   // For GitHub Pages: set base to '/jyotish_skyview/' in production build.
   // Local dev uses '/' (the default).
-  base: process.env.NODE_ENV === 'production' ? '/vedic_skyview/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/vedicSKY/' : '/',
 })
