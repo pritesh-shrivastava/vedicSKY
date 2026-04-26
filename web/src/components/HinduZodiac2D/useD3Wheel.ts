@@ -289,7 +289,15 @@ export function useD3Wheel(
           .style('cursor', 'pointer')
 
       } else if (g.name === 'Guru') {
-        // ─ Jupiter: cream base + brown cloud bands + Great Red Spot ─────────
+        // ─ Jupiter: rings + cream base + cloud bands + GRS ──────────────────
+        const jRx = dotR * 1.7, jRy = dotR * 0.30, jsw = dotR * 0.12
+        // Back ring
+        planetGroup.append('ellipse')
+          .attr('cx', pt.x).attr('cy', pt.y)
+          .attr('rx', jRx).attr('ry', jRy)
+          .attr('fill', 'none').attr('stroke', '#8b6020')
+          .attr('stroke-width', jsw).attr('opacity', 0.45)
+        // Planet body
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
           .attr('fill', '#e8d898')
@@ -311,6 +319,11 @@ export function useD3Wheel(
           .attr('rx', dotR * 0.30).attr('ry', dotR * 0.18)
           .attr('fill', '#c03820').attr('opacity', 0.9)
           .attr('clip-path', `url(#${clipId})`)
+        // Front ring arc
+        planetGroup.append('path')
+          .attr('d', `M ${pt.x - jRx},${pt.y} A ${jRx},${jRy} 0 0,1 ${pt.x + jRx},${pt.y}`)
+          .attr('fill', 'none').attr('stroke', '#8b6020')
+          .attr('stroke-width', jsw).attr('opacity', 0.85)
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
           .attr('fill', 'transparent')
@@ -376,14 +389,11 @@ export function useD3Wheel(
       } else if (g.name === 'Surya') {
         // ─ Sun: corona glow + bright disc ───────────────────────────────────
         planetGroup.append('circle')
-          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 3.2)
-          .attr('fill', col).attr('opacity', 0.08)
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 2.8)
+          .attr('fill', col).attr('opacity', 0.10)
         planetGroup.append('circle')
-          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 2.2)
-          .attr('fill', col).attr('opacity', 0.14)
-        planetGroup.append('circle')
-          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 1.5)
-          .attr('fill', col).attr('opacity', 0.22)
+          .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR * 1.7)
+          .attr('fill', col).attr('opacity', 0.20)
         planetGroup.append('circle')
           .attr('cx', pt.x).attr('cy', pt.y).attr('r', dotR)
           .attr('fill', col).attr('filter', 'url(#glow)')
