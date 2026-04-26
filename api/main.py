@@ -5,6 +5,7 @@ from functools import lru_cache
 from zoneinfo import ZoneInfo
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 from graha_positions_reference import (
@@ -16,6 +17,7 @@ import swisseph as swe
 swe.set_ephe_path('/home/pritesh2312/ephemeris')
 
 app = Flask(__name__)
+CORS(app)
 
 _PHYSICAL_SWE = {
     "Surya": swe.SUN, "Chandra": swe.MOON, "Mangala": swe.MARS,
