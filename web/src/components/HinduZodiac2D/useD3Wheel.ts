@@ -121,8 +121,8 @@ export function useD3Wheel(
       const dotPt = toXY(cx, cy, R_ECLIPTIC, a)
       rashiGroup.append('circle')
         .attr('cx', dotPt.x).attr('cy', dotPt.y)
-        .attr('r', Math.max(2, size * 0.004))
-        .attr('fill', 'rgba(255,255,255,0.6)')
+        .attr('r', Math.max(1, size * 0.002))
+        .attr('fill', 'rgba(255,255,255,0.5)')
 
       // Degree label just outside the ecliptic circle
       const degPt = toXY(cx, cy, R_DEG_OUT, a)
