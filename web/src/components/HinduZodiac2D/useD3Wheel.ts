@@ -180,7 +180,8 @@ export function useD3Wheel(
         .attr('fill', PLANET_COLOR.Lagna)
         .attr('font-family', 'Cinzel, serif')
         .attr('dy', -8)
-        .text('Asc')
+        .attr('font-family', 'Noto Sans Devanagari, sans-serif')
+        .text('लग्न')
     }
 
     // ── nakshatra yoga tara dots + draw-in asterism lines ─────────────────

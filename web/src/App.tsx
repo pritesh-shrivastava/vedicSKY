@@ -31,7 +31,7 @@ export default function App() {
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           {state.status === 'ok' && (
             <span style={{ fontSize: '0.65rem', color: PALETTE.textMuted }}>
-              {new Date(state.data.timestamp).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
+              {(() => { const d = new Date(state.data.timestamp); return `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}` })()}
             </span>
           )}
           <button
