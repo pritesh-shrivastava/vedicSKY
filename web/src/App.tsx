@@ -26,7 +26,7 @@ export default function App() {
       {/* Header */}
       <header style={{ padding: '12px 16px', borderBottom: `1px solid ${PALETTE.goldFaint}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <h1 style={{ fontFamily: 'Cinzel, serif', fontSize: '1.2rem', fontWeight: 700, color: PALETTE.gold, margin: 0, letterSpacing: '0.08em' }}>
-          Vedic Zodiac
+          Vedic Skyview
         </h1>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           {state.status === 'ok' && (
