@@ -18,18 +18,19 @@ Deployed at https://vediczodiac.streamlit.app/
 
 ### Phase 2b — Polish before sharing
 
-- [ ] **Constellation shapes** — review all 12 rashi figures visually; adjust star positions or connections that look wrong
-- [ ] **Mobile layout** — test on phone; check toggle buttons, tooltip, font sizes are usable on small screen
-- [ ] **Browser geolocation** — add "Use my location" button that calls `navigator.geolocation.getCurrentPosition` to auto-fill lat/lon (2 hours)
-- [ ] **South Indian chart** — fix the inner 2×2 CSS grid centre cell (currently spans wrong rows when rendered); verify retrograde `(Me)` formatting looks right
-- [ ] **Loading skeleton** — currently just text; add faint concentric circle rings to match the wheel shape while API loads
+- [x] **Mobile layout** — tabs flex:1, South Indian grid minmax(60px), no overflow on 320px phones
+- [x] **South Indian chart** — explicit gridColumn/gridRow on all cells, centre 2×2 fixed
+- [x] **Loading skeleton** — SVG skeleton mirrors wheel rings + 12 rashi spokes, pulsing animation
+- [x] **Rashi/nakshatra label consistency** — rashi labels moved inside ring, grey, mode-gated
 
 ### Phase 2c — V2 (Stellarium-inspired)
 *(Inspired by https://www.youtube.com/watch?v=hBLA4WHQEIw)*
 
-- [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime, just need frontend UI and D3 transitions between planet positions
-- [ ] **Planetary glyphs** — SVG sprite per graha replacing plain dots: Saturn with rings, Jupiter with bands, Sun as disc, Moon showing phase
+- [ ] **Planetary glyphs** — per-planet sizes (Me smallest → Ju biggest); Ra as hollow ring, Ke as ✕; Sun disc, Moon crescent
+- [ ] **Constellation shapes** — review all 12 rashi figures visually; adjust star positions or connections that look wrong
+- [ ] **Browser geolocation** — add "Use my location" button that calls `navigator.geolocation.getCurrentPosition` to auto-fill lat/lon
 - [ ] **Moon phase rendering** — compute illumination fraction from elongation; render crescent/gibbous shape as SVG arc inside the Moon glyph
+- [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime, just need frontend UI and D3 transitions between planet positions
 - [ ] **North Indian Kundali** — diamond grid layout, separate sprint
 - [ ] **Birth chart input** — date/time/place picker for natal chart (Phase 3)
 

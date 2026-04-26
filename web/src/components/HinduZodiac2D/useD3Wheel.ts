@@ -234,34 +234,92 @@ export function useD3Wheel(
     if (!data) return
     const planetGroup = svg.append('g').attr('class', 'planets')
 
+    // Per-planet size: Me smallest → Ju biggest
+    const PLANET_SCALE: Record<string, [number, number]> = {
+      'Budha':   [3, 0.008],   // Me — smallest
+      'Shukra':  [3, 0.009],   // Ve
+      'Chandra': [4, 0.010],   // Mo
+      'Surya':   [4, 0.012],   // Su
+      'Mangala': [4, 0.012],   // Ma
+      'Rahu':    [4, 0.012],   // Ra — symbol sized
+      'Ketu':    [4, 0.012],   // Ke — symbol sized
+      'Shani':   [5, 0.015],   // Sa — bigger
+      'Guru':    [6, 0.018],   // Ju — biggest
+    }
+
     for (const g of data.grahas) {
-      const a    = lonToAngle(g.sidereal_lon)
-      // Planet sits on the ecliptic circle shifted by its ecliptic latitude
-      const r    = R_ECLIPTIC + g.ecl_lat * ECL_LAT_SCALE
-      const pt   = toXY(cx, cy, r, a)
-      const col  = PLANET_COLOR[g.name] ?? '#ffffff'
-      const dotR = Math.max(5, size * 0.013)
+      const a   = lonToAngle(g.sidereal_lon)
+      const r   = R_ECLIPTIC + g.ecl_lat * ECL_LAT_SCALE
+      const pt  = toXY(cx, cy, r, a)
+      const col = PLANET_COLOR[g.name] ?? '#ffffff'
+      const [minR, scale] = PLANET_SCALE[g.name] ?? [5, 0.013]
+      const dotR = Math.max(minR, size * scale)
+      const hoverLabel = `${g.name} · ${g.nakshatra_en} Pada ${g.pada} · ${g.sidereal_lon.toFixed(2)}° (lat ${g.ecl_lat.toFixed(2)}°)`
+      const sw = Math.max(1, size * 0.003)   // stroke width for node symbols
 
-      // Glow halo
-      planetGroup.append('circle')
-        .attr('cx', pt.x).attr('cy', pt.y)
-        .attr('r', dotR * 2.2)
-        .attr('fill', col)
-        .attr('opacity', 0.15)
+      if (g.name === 'Rahu' || g.name === 'Ketu') {
+        // ─ Lunar node symbols ──────────────────────────────────────────────
+        // Ra ☊: arch faces UP (∩), legs go DOWN  — sweep=0 (CCW in SVG = goes up)
+        // Ke ☋: arch faces DOWN (∪), legs go UP  — sweep=1 (CW in SVG = goes down)
+        const sr   = dotR           // arch half-width = symbol radius
+        const stem = dotR           // leg length = same as radius → symmetric height
+        const isRa = g.name === 'Rahu'
+        const sweep = isRa ? 0 : 1
+        const legDY = isRa ? stem : -stem  // legs go down for Ra, up for Ke
 
-      // Planet dot
-      planetGroup.append('circle')
-        .attr('cx', pt.x).attr('cy', pt.y)
-        .attr('r', dotR)
-        .attr('fill', col)
-        .attr('filter', 'url(#glow)')
-        .attr('stroke', 'white')
-        .attr('stroke-width', 0.5)
-        .on('mouseenter', () =>
-          onHover(`${g.name} · ${g.nakshatra_en} Pada ${g.pada} · ${g.sidereal_lon.toFixed(2)}° (lat ${g.ecl_lat.toFixed(2)}°)`)
-        )
-        .on('mouseleave', () => onHover(null))
-        .style('cursor', 'pointer')
+        const pathD = [
+          `M ${pt.x - sr},${pt.y}`,
+          `A ${sr},${sr} 0 0,${sweep} ${pt.x + sr},${pt.y}`,
+          `M ${pt.x - sr},${pt.y} L ${pt.x - sr},${pt.y + legDY}`,
+          `M ${pt.x + sr},${pt.y} L ${pt.x + sr},${pt.y + legDY}`,
+        ].join(' ')
+
+        // Glow halo
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y)
+          .attr('r', dotR * 2)
+          .attr('fill', col)
+          .attr('opacity', 0.12)
+
+        // Horseshoe path
+        planetGroup.append('path')
+          .attr('d', pathD)
+          .attr('fill', 'none')
+          .attr('stroke', col)
+          .attr('stroke-width', sw)
+          .attr('stroke-linecap', 'round')
+          .attr('filter', 'url(#glow)')
+
+        // Transparent hover circle (paths have no fill hit area)
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y)
+          .attr('r', dotR * 1.5)
+          .attr('fill', 'transparent')
+          .on('mouseenter', () => onHover(hoverLabel))
+          .on('mouseleave', () => onHover(null))
+          .style('cursor', 'pointer')
+
+      } else {
+        // ─ Physical planet — filled circle ────────────────────────────────
+        // Glow halo
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y)
+          .attr('r', dotR * 2.2)
+          .attr('fill', col)
+          .attr('opacity', 0.15)
+
+        // Planet dot
+        planetGroup.append('circle')
+          .attr('cx', pt.x).attr('cy', pt.y)
+          .attr('r', dotR)
+          .attr('fill', col)
+          .attr('filter', 'url(#glow)')
+          .attr('stroke', 'white')
+          .attr('stroke-width', 0.5)
+          .on('mouseenter', () => onHover(hoverLabel))
+          .on('mouseleave', () => onHover(null))
+          .style('cursor', 'pointer')
+      }
 
       // Label offset outward from centre
       const labelR  = r + dotR + Math.max(8, size * 0.018)
