@@ -34,6 +34,8 @@ Deployed at https://vediczodiac.streamlit.app/
 - [ ] **Moon phase rendering** — compute illumination fraction from elongation; crescent/gibbous SVG arc inside Moon glyph
 - [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime
 - [ ] **Layout whitespace** — wheel and South Indian chart leave ~35% of viewport empty; improve vertical fill
+- [ ] **`useD3Wheel.ts` refactor** — 340+ line `useEffect` needs decomposition into sub-functions (`drawPlanets`, `drawRashiLabels`, `drawConstellations`) before Phase 2c features make it worse
+- [ ] **PythonAnywhere quota risk** — `/motion` endpoint needs batch date-range queries; free tier daily CPU quota will be hit fast; cache aggressively per date-range key, or plan upgrade before shipping retrograde chart
 - [ ] **North Indian Kundali** — diamond grid layout, separate sprint
 - [ ] **Birth chart input** — date/time/place picker for natal chart (Phase 3)
 
