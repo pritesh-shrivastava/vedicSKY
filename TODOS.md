@@ -29,11 +29,11 @@ Deployed at https://vediczodiac.streamlit.app/
 ### Phase 2c — V2 (Stellarium-inspired)
 *(Inspired by https://www.youtube.com/watch?v=hBLA4WHQEIw)*
 
-- [ ] **Retrograde/stationary motion chart** — daily longitude bands for 7 grahas showing direct → stationary → retrograde transitions; new `/motion` API endpoint
-- [ ] **Browser geolocation** — "Use my location" button via `navigator.geolocation.getCurrentPosition`
+- [x] **Retrograde/stationary motion chart** — daily longitude bands for 7 grahas showing direct → stationary → retrograde transitions; new `/motion` API endpoint
+- [x] **Browser geolocation** — "Use my location" button via `navigator.geolocation.getCurrentPosition`
 - [ ] **Moon phase rendering** — compute illumination fraction from elongation; crescent/gibbous SVG arc inside Moon glyph
-- [ ] **Time scrubber** — date/time slider + play button; backend already accepts any datetime
-- [ ] **Layout whitespace** — wheel and South Indian chart leave ~35% of viewport empty; improve vertical fill
+- [x] **Time scrubber** — date/time slider + play button; backend already accepts any datetime
+- [x] **Layout whitespace** — wheel and South Indian chart leave ~35% of viewport empty; improve vertical fill
 - [ ] **`useD3Wheel.ts` refactor** — 340+ line `useEffect` needs decomposition into sub-functions (`drawPlanets`, `drawRashiLabels`, `drawConstellations`) before Phase 2c features make it worse
 - [ ] **PythonAnywhere quota risk** — `/motion` endpoint needs batch date-range queries; free tier daily CPU quota will be hit fast; cache aggressively per date-range key, or plan upgrade before shipping retrograde chart
 - [ ] **North Indian Kundali** — diamond grid layout, separate sprint

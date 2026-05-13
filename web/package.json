@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc -p . && vite build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },

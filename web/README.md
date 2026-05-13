@@ -2,8 +2,8 @@
 
 Replicates the two views from the Streamlit POC as a polished, mobile-responsive SPA.
 
-**Stack:** React + TypeScript + Vite · react-plotly.js · SVG · Tailwind CSS
-**Backend:** FastAPI on PythonAnywhere free tier (`api/`)
+**Stack:** React + TypeScript + Vite · D3.js · SVG · Tailwind CSS
+**Backend:** Flask on PythonAnywhere free tier (`api/`)
 **Hosting:** GitHub Pages
 
 ## Views (Phase 2)

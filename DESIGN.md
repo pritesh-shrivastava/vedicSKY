@@ -82,14 +82,14 @@ CSS Grid, not matplotlib. Cells separated by 1 px `#c9a84c` lines at 25% opacity
 
 ## Stack
 
-| Layer | Choice | Why |
+| Stack | Choice | Why |
 |---|---|---|
 | Framework | React 18 + TypeScript + Vite | Large ecosystem, resume value |
 | Zodiac wheel | **D3.js v7** | Full SVG control — glow, animation, precise star placement. Plotly can't match the visual quality. |
 | South Indian chart | CSS Grid + inline SVG | No library needed for a 4×4 grid |
 | Styling | Tailwind CSS | Utility-first, pairs well with inline SVG |
 | Fonts | Google Fonts (Cinzel + Inter) | Free, self-hostable |
-| Backend | FastAPI on PythonAnywhere free tier | Genuine free, no credit card, runs pyswisseph |
+| Backend | Flask on PythonAnywhere free tier | Genuine free, no credit card, runs pyswisseph |
 | Frontend hosting | GitHub Pages via Vite | Free, HTTPS, public repo |
 
 ---
