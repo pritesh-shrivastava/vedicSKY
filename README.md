@@ -27,9 +27,11 @@ Real-time Vedic astrology app showing the 9 Navagraha positions and Lagna using 
 │   │                                                             │  │
 │   │   HinduZodiac2D         SouthIndianRashi                   │  │
 │   │   (D3.js SVG wheel)     (CSS Grid chart)                   │  │
+│   │   MotionPanel           Location + time controls            │  │
 │   │                                                             │  │
 │   │   usePositions.ts  ──── GET /positions?lat&lon&tz ──────►  │  │
-│   │   (polls every 60s) ◄── JSON (9 grahas + lagna + retro) ─  │  │
+│   │   useMotion.ts     ───── GET /motion?start&days&step ───►  │  │
+│   │   (polls every 60s) ◄── JSON (grahas + lagna + motion) ─── │  │
 │   └───────────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
                                      │ HTTPS
@@ -113,25 +115,26 @@ In this project: `src/types.ts` defines `GrahaPosition`, `ApiResponse`, `Locatio
 
 ## Run locally
 
-### Backend (Flask)
-
-```bash
-cd api
-pip3 install flask flask-cors pyswisseph pandas
-flask --app main run --reload
-# → http://localhost:5000
-# → http://localhost:5000/positions?lat=23.1765&lon=75.7885&alt=490&tz=Asia%2FKolkata
-```
-
 ### Frontend (React)
 
 ```bash
 cd web
 npm install
-cp .env.example .env.local     # sets VITE_API_URL=http://localhost:5000
+cp .env.example .env.local     # sets VITE_API_URL=http://localhost:8000
 npm run dev
 # → http://localhost:5173
 ```
+
+### Backend API
+
+The calculation backend is deployed separately and is not committed in this repository.
+If you are running a local backend, point `VITE_API_URL` at it (for example,
+`http://localhost:8000`) and ensure it exposes `/positions` and `/motion`.
+
+The current frontend also includes:
+- location controls for latitude / longitude / altitude / timezone
+- live polling every 60 s
+- motion bands for the 7 classical planets
 
 ### Streamlit POC
 

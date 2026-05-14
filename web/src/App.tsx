@@ -210,8 +210,8 @@ export default function App() {
         {state.status === 'ok' && (
           <>
             {tab === 'zodiac' && <HinduZodiac2D data={state.data} />}
-            {tab === 'south' && <SouthIndianRashi data={state.data} lat={loc.lat} lon={loc.lon} />}
-            {motion.status === 'ok' && <MotionPanel data={motion.data} />}
+            {tab === 'south' && <SouthIndianRashi data={state.data} lat={loc.lat} lon={loc.lon} timeZone={loc.tz} />}
+            {motion.status === 'ok' && <MotionPanel data={motion.data} timeZone={loc.tz} />}
             {motion.status === 'loading' && state.status === 'ok' && (
               <div style={{ padding: '0 14px', color: PALETTE.textMuted, fontSize: '0.72rem' }}>Loading motion bands…</div>
             )}

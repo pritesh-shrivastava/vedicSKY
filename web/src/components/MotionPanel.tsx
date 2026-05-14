@@ -3,16 +3,21 @@ import { PALETTE, PLANET_COLOR } from '../constants/colors'
 
 interface Props {
   data: MotionResponse | null
+  timeZone: string
 }
 
 const GRAHA_ORDER = ['Surya', 'Chandra', 'Mangala', 'Budha', 'Guru', 'Shukra', 'Shani']
 
-export function MotionPanel({ data }: Props) {
+export function MotionPanel({ data, timeZone }: Props) {
   if (!data) return null
 
   const dates = data.samples.map(sample => {
     const d = new Date(sample.timestamp)
-    return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })
+    return new Intl.DateTimeFormat('en-IN', {
+      timeZone,
+      day: '2-digit',
+      month: 'short',
+    }).format(d)
   })
 
   return (

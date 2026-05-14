@@ -8,9 +8,10 @@ interface Props {
   data: ApiResponse
   lat: number
   lon: number
+  timeZone: string
 }
 
-export function SouthIndianRashi({ data, lat, lon }: Props) {
+export function SouthIndianRashi({ data, lat, lon, timeZone }: Props) {
   const { lagna, grahas } = data
 
   // Build planet list per rashi
@@ -26,8 +27,20 @@ export function SouthIndianRashi({ data, lat, lon }: Props) {
   }
 
   const now = new Date(data.timestamp)
-  const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
-  const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`
+  const dateFormatter = new Intl.DateTimeFormat('en-IN', {
+    timeZone,
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  })
+  const timeFormatter = new Intl.DateTimeFormat('en-IN', {
+    timeZone,
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  })
+  const dateStr = dateFormatter.format(now)
+  const timeStr = timeFormatter.format(now)
   const tzRaw   = data.timestamp.match(/[+-]\d{2}:\d{2}$/)?.[0] ?? ''  // "+05:30"
   const tzStr   = tzRaw.replace(/([+-])0(\d)/, '$1$2')                 // "+5:30"
   const latStr  = `${Math.abs(lat).toFixed(1)}°${lat >= 0 ? 'N' : 'S'}`

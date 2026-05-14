@@ -6,7 +6,7 @@ Deployed at https://vediczodiac.streamlit.app/
 
 ---
 
-## React Web App (`web/` + `api/`)
+## React Web App (`web/` + external backend)
 
 ### Phase 2a — Ship the local build
 
@@ -31,10 +31,10 @@ Deployed at https://vediczodiac.streamlit.app/
 
 - [x] **Retrograde/stationary motion chart** — daily longitude bands for 7 grahas showing direct → stationary → retrograde transitions; new `/motion` API endpoint
 - [x] **Browser geolocation** — "Use my location" button via `navigator.geolocation.getCurrentPosition`
-- [ ] **Moon phase rendering** — compute illumination fraction from elongation; crescent/gibbous SVG arc inside Moon glyph
+- [x] **Moon phase rendering** — compute illumination fraction from elongation; crescent/gibbous SVG arc inside Moon glyph
 - [x] **Time scrubber** — date/time slider + play button; backend already accepts any datetime
 - [x] **Layout whitespace** — wheel and South Indian chart leave ~35% of viewport empty; improve vertical fill
-- [ ] **`useD3Wheel.ts` refactor** — 340+ line `useEffect` needs decomposition into sub-functions (`drawPlanets`, `drawRashiLabels`, `drawConstellations`) before Phase 2c features make it worse
+- [x] **`useD3Wheel.ts` refactor** — D3 rendering split into `wheelRenderer.ts` / `planetRenderers.ts`; hook is now a small resize-aware wrapper
 - [ ] **PythonAnywhere quota risk** — `/motion` endpoint needs batch date-range queries; free tier daily CPU quota will be hit fast; cache aggressively per date-range key, or plan upgrade before shipping retrograde chart
 - [ ] **North Indian Kundali** — diamond grid layout, separate sprint
 - [ ] **Birth chart input** — date/time/place picker for natal chart (Phase 3)
