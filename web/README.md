@@ -29,6 +29,7 @@ The included `.env.example` defaults to `http://localhost:8000`.
   markers, and timezone-aware date/time display
 - **Motion bands** — daily direct / retrograde strip for the 7 classical planets
 - **Location controls** — latitude, longitude, altitude, timezone, and geolocation
+- Invalid timezone entries fall back to `Asia/Kolkata` so the UI stays render-safe while you correct the input
 
 ## Build
 

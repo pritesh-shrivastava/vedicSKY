@@ -6,6 +6,7 @@ import { HinduZodiac2D } from './components/HinduZodiac2D'
 import { SouthIndianRashi } from './components/SouthIndianRashi'
 import { MotionPanel } from './components/MotionPanel'
 import { PALETTE } from './constants/colors'
+import { DEFAULT_TIME_ZONE, resolveTimeZone } from './utils/timeZone'
 
 const DEFAULT_LOCATION: Location = {
   lat: 23.1765,
@@ -18,7 +19,7 @@ type Tab = 'zodiac' | 'south'
 
 function formatForInput(date: Date, timeZone: string) {
   const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone,
+    timeZone: resolveTimeZone(timeZone),
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -33,7 +34,7 @@ function formatForInput(date: Date, timeZone: string) {
 
 function formatInZone(iso: string, timeZone: string) {
   return new Intl.DateTimeFormat('en-IN', {
-    timeZone,
+    timeZone: resolveTimeZone(timeZone),
     day: '2-digit',
     month: 'short',
     year: 'numeric',
@@ -54,13 +55,15 @@ export default function App() {
   const state = usePositions(loc, liveTime)
   const currentIso = state.status === 'ok' ? state.data.timestamp : null
   const motion = useMotion(loc, currentIso, 7, 24)
+  const displayTimeZone = resolveTimeZone(loc.tz)
+  const timeZoneFallbackActive = displayTimeZone !== (loc.tz || '').trim()
 
   const timeLabel = useMemo(() => {
     if (!currentIso) return null
-    return formatInZone(currentIso, loc.tz)
-  }, [currentIso, loc.tz])
+    return formatInZone(currentIso, displayTimeZone)
+  }, [currentIso, displayTimeZone])
 
-  const setCurrentTime = () => setScrubValue(formatForInput(new Date(), loc.tz))
+  const setCurrentTime = () => setScrubValue(formatForInput(new Date(), displayTimeZone))
   const clearTime = () => setScrubValue('')
 
   const handleGeo = () => {
@@ -99,7 +102,7 @@ export default function App() {
         <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           {state.status === 'ok' && (
             <span style={{ fontSize: '0.65rem', color: PALETTE.textMuted, whiteSpace: 'nowrap' }}>
-              {new Date(state.data.timestamp).toLocaleTimeString('en-IN', { timeZone: loc.tz, hour: '2-digit', minute: '2-digit', hour12: false })}
+              {new Date(state.data.timestamp).toLocaleTimeString('en-IN', { timeZone: displayTimeZone, hour: '2-digit', minute: '2-digit', hour12: false })}
             </span>
           )}
           <button
@@ -175,6 +178,11 @@ export default function App() {
               {geoStatus}
             </div>
           )}
+          {timeZoneFallbackActive && (
+            <div style={{ color: PALETTE.textMuted, fontSize: '0.72rem' }}>
+              Invalid timezone entered. Falling back to {DEFAULT_TIME_ZONE} until you provide a valid IANA timezone.
+            </div>
+          )}
         </div>
       )}
 
@@ -210,8 +218,8 @@ export default function App() {
         {state.status === 'ok' && (
           <>
             {tab === 'zodiac' && <HinduZodiac2D data={state.data} />}
-            {tab === 'south' && <SouthIndianRashi data={state.data} lat={loc.lat} lon={loc.lon} timeZone={loc.tz} />}
-            {motion.status === 'ok' && <MotionPanel data={motion.data} timeZone={loc.tz} />}
+            {tab === 'south' && <SouthIndianRashi data={state.data} lat={loc.lat} lon={loc.lon} timeZone={displayTimeZone} />}
+            {motion.status === 'ok' && <MotionPanel data={motion.data} timeZone={displayTimeZone} />}
             {motion.status === 'loading' && state.status === 'ok' && (
               <div style={{ padding: '0 14px', color: PALETTE.textMuted, fontSize: '0.72rem' }}>Loading motion bands…</div>
             )}
