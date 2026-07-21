@@ -8,7 +8,8 @@ only own scheduling, delivery targets, and its own runtime config.
 
 `daily_panchang.py` prints a sunrise-based daily panchang summary to stdout:
 sunrise, sunset, moonrise, moonset, vara, tithi, nakshatra, yoga, karana, and
-Moon rashi. Hermes delivers that stdout to Telegram.
+Moon rashi. Tithi and nakshatra include local transition times and the next
+value. Hermes delivers that stdout to Telegram.
 
 Run manually from the repo root:
 

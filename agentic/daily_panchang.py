@@ -144,6 +144,12 @@ def sidereal_lon(jd: float, body: int) -> float:
     return (tropical - float(swe.get_ayanamsa_ut(jd))) % 360.0
 
 
+def elongation_at(jd: float) -> float:
+    sun = sidereal_lon(jd, swe.SUN)
+    moon = sidereal_lon(jd, swe.MOON)
+    return (moon - sun) % 360.0
+
+
 def rise_set_for(day: date, zone: ZoneInfo, loc: dict[str, float | str], body: int, event: int) -> datetime | None:
     local_midnight = datetime.combine(day, time.min, tzinfo=zone)
     jd = julian_day(local_midnight)
@@ -163,6 +169,14 @@ def format_event_time(value: datetime | None) -> str:
     return value.strftime("%H:%M %Z")
 
 
+def format_boundary_time(value: datetime | None, day: date) -> str:
+    if value is None:
+        return "after 48h"
+    if value.date() == day:
+        return value.strftime("%H:%M %Z")
+    return value.strftime("%d %b %H:%M %Z")
+
+
 def karana_name(elongation: float) -> str:
     index = int(elongation // KARANA_SPAN)
     if index == 0:
@@ -174,6 +188,69 @@ def karana_name(elongation: float) -> str:
     if index == 59:
         return "Naga"
     return KARANAS[(index - 1) % len(KARANAS)]
+
+
+def next_tithi_boundary(jd: float, zone: ZoneInfo, day: date) -> tuple[str, datetime | None, str]:
+    start_elongation = elongation_at(jd)
+    tithi_index = int(start_elongation // TITHI_SPAN)
+    target = (tithi_index + 1) * TITHI_SPAN
+
+    def unwrapped_elongation(sample_jd: float) -> float:
+        delta = (elongation_at(sample_jd) - start_elongation) % 360.0
+        return start_elongation + delta
+
+    low = jd
+    high = jd
+
+    for _ in range(96):
+        high += 0.5 / 24.0
+        if unwrapped_elongation(high) >= target:
+            break
+    else:
+        return TITHIS[tithi_index], None, TITHIS[(tithi_index + 1) % len(TITHIS)]
+
+    for _ in range(48):
+        mid = (low + high) / 2.0
+        if unwrapped_elongation(mid) < target:
+            low = mid
+        else:
+            high = mid
+
+    boundary = local_from_jd(high, zone)
+    return TITHIS[tithi_index], boundary, TITHIS[(tithi_index + 1) % len(TITHIS)]
+
+
+def next_nakshatra_boundary(jd: float, zone: ZoneInfo) -> tuple[str, datetime | None, str]:
+    start_moon = sidereal_lon(jd, swe.MOON)
+    nakshatra_index = int(start_moon // NAKSHATRA_SPAN)
+    target = (nakshatra_index + 1) * NAKSHATRA_SPAN
+
+    def unwrapped_moon(sample_jd: float) -> float:
+        delta = (sidereal_lon(sample_jd, swe.MOON) - start_moon) % 360.0
+        return start_moon + delta
+
+    low = jd
+    high = jd
+
+    for _ in range(96):
+        high += 0.5 / 24.0
+        if unwrapped_moon(high) >= target:
+            break
+    else:
+        current = NAKSHATRAS[nakshatra_index]["english"]
+        next_name = NAKSHATRAS[(nakshatra_index + 1) % len(NAKSHATRAS)]["english"]
+        return current, None, next_name
+
+    for _ in range(48):
+        mid = (low + high) / 2.0
+        if unwrapped_moon(mid) < target:
+            low = mid
+        else:
+            high = mid
+
+    current = NAKSHATRAS[nakshatra_index]["english"]
+    next_name = NAKSHATRAS[(nakshatra_index + 1) % len(NAKSHATRAS)]["english"]
+    return current, local_from_jd(high, zone), next_name
 
 
 def format_panchang(day: date, loc: dict[str, float | str]) -> str:
@@ -194,8 +271,8 @@ def format_panchang(day: date, loc: dict[str, float | str]) -> str:
     moon = sidereal_lon(jd, swe.MOON)
 
     elongation = (moon - sun) % 360.0
-    tithi = TITHIS[int(elongation // TITHI_SPAN)]
-    nakshatra = NAKSHATRAS[int(moon // NAKSHATRA_SPAN)]["english"]
+    tithi, tithi_end, next_tithi = next_tithi_boundary(jd, zone, day)
+    nakshatra, nakshatra_end, next_nakshatra = next_nakshatra_boundary(jd, zone)
     moon_rashi = RASHIS[int(moon // 30.0)]["english"]
     yoga = YOGAS[int(((sun + moon) % 360.0) // YOGA_SPAN)]
     karana = karana_name(elongation)
@@ -211,8 +288,8 @@ def format_panchang(day: date, loc: dict[str, float | str]) -> str:
             f"Moonset: {format_event_time(moonset)}",
             "",
             f"Vara: {vara}",
-            f"Tithi: {tithi}",
-            f"Nakshatra: {nakshatra}",
+            f"Tithi: {tithi} till {format_boundary_time(tithi_end, day)}, then {next_tithi}",
+            f"Nakshatra: {nakshatra} till {format_boundary_time(nakshatra_end, day)}, then {next_nakshatra}",
             f"Yoga: {yoga}",
             f"Karana: {karana}",
             f"Moon Rashi: {moon_rashi}",
