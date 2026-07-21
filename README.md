@@ -144,6 +144,24 @@ streamlit run streamlit/app.py
 # → http://localhost:8501
 ```
 
+### Agentic Telegram Jobs
+
+The repo includes Hermes-friendly commands under `agentic/` for scheduled
+Telegram delivery:
+
+```bash
+uv run --with pyswisseph --with pandas python agentic/daily_panchang.py
+uv run --with pyswisseph --with pandas python agentic/daily_ephemeris.py
+```
+
+Current VPS schedules:
+- `vedicsky-daily-panchang` posts the daily panchang at `06:00` IST.
+- `vedicsky-daily-ephemeris` posts the 9-graha ephemeris table at `09:00` IST.
+
+Both deliver to the Telegram DM topic `Jyotish` at
+`telegram:5727496535:10101`. See `agentic/README.md` for command options,
+location overrides, and the full Hermes cron setup.
+
 ---
 
 ## Calculation ground truth
